@@ -7,7 +7,10 @@ import static rift.World.*;
 import static java.awt.event.KeyEvent.*;
 
 final class Game {
+<<<<<<< HEAD
     double simulationMillis;
+=======
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     enum Phase { MENU, BUY, LIVE, END, MATCH, TRAIN }
     enum Ability { DASH, SMOKE, HEAL, SCAN, FLASH, FOCUS, ORBITAL, SURGE,
         QUICK_SMOKE, UPDRAFT, STIM, INCENDIARY, SUPPRESS, TOXIC_WALL, POISON_CLOUD, ACID, TOXIC_DOME,
@@ -96,7 +99,10 @@ final class Game {
     }
     static final class Actor {
         final int id;int team;final String name;
+<<<<<<< HEAD
         final Bots.Mind mind = new Bots.Mind();
+=======
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         double x,y,z,yaw,pitch,vy,hp=100,armor,walk,flash,react,repath,respawn,healing,revealed,perception;
         double vx,vz,tagTime,landRecovery,nearSight,eRegen;double moveSpeed,objective,shotGlow,damageGlow,intentX,intentZ;int kills,deaths,credits=800,slot=1;
         int qCharges,cCharges,eCharges,ult=0,losses,agentIndex,aces; boolean crouch,dead,grounded=true,carrier;
@@ -131,20 +137,27 @@ final class Game {
     static final class Pulse {final V at;final int color;final double maxRadius,duration;double age;Pulse(V at,int color,double max,double duration){this.at=at;this.color=color;maxRadius=max;this.duration=duration;}double radius(){return maxRadius*Settings.clamp(age/duration,0,1);}}
     static final class Trace {final V from,to;final int color;double life=.085;Trace(V a,V b,int col){from=a;to=b;color=col;} }
     record Feed(String killer,String victim,boolean head,int team,double expires) { }
+<<<<<<< HEAD
     World world;
     boolean duel;
     volatile boolean multiplayerRequested;
+=======
+    World world = new World();
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     final Abilities abilities=new Abilities(this);
     final Combat combat=new Combat(this);
     final ShotEffects shotFX=new ShotEffects(this);
     final UltimateOrbs orbs=new UltimateOrbs(this);
     final Sentinels sentinels=new Sentinels(this);
     final MatchFlow flow=new MatchFlow(this);
+<<<<<<< HEAD
     final Loadout loadout=new Loadout(this);
     final Spike spike=new Spike(this);
     final Rules rules=new Rules(this);
     final Economy economy=new Economy(this);
     final Bots bots;
+=======
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     final Profile profile;
     final Settings settings;final Random rng;final AudioEngine audio;
     final List<Actor> actors=new ArrayList<>(); final List<Smoke> smokes=new ArrayList<>();
@@ -157,7 +170,11 @@ final class Game {
     String ui="menu",backUi="menu",notice="",endTitle="",endReason="";
     int round=1,attackTeam=0,scoreBlue,scoreRed,roundWinner=-1,spectate=1,trainingHits,trainingShots;
     double timer=20,time,visualTime,noticeTime,plantProgress,defuseProgress,damageFlash,hitMarker,hitHead,recoil,focus,scan,footstep;
+<<<<<<< HEAD
     double damageYaw;double aimLerp; boolean planted,training,scoreboard,aiming,observing;volatile boolean quit;
+=======
+    double damageYaw;double aimLerp; boolean planted,training,scoreboard,aiming;volatile boolean quit;
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     double spikeX,spikeZ,spikeTime,spikeBeep; Actor defuser;
     int fps;long matchSeed;
     boolean pendingStart,pendingTraining,smokeRightHeld;String agentReturn="menu";
@@ -166,8 +183,12 @@ final class Game {
     double aceTime,killToast,ultimateBurst,endAge;int lastKillCount,scanCount,flashCount,surgeCount;
     String aceName="",abilityToast="";int aceTeam;
 
+<<<<<<< HEAD
     Game(Settings settings,boolean sound,long seed){this(settings,sound,seed,new World());}
     Game(Settings settings,boolean sound,long seed,World world){this.world=world;this.settings=settings;this.profile=new Profile(settings.path==null?null:settings.path.resolveSibling("profile.properties"));this.rng=new Random(seed);matchSeed=seed;agent=Agent.values()[settings.agent];audio=new AudioEngine(settings,sound);bots=new Bots(this,seed);world.setShadows(settings.shadows);}
+=======
+    Game(Settings settings,boolean sound,long seed){this.settings=settings;this.profile=new Profile(settings.path==null?null:settings.path.resolveSibling("profile.properties"));this.rng=new Random(seed);matchSeed=seed;agent=Agent.values()[settings.agent];audio=new AudioEngine(settings,sound);world.setShadows(settings.shadows);}
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     void openAgentSelect(boolean train,boolean launch){pendingStart=launch;pendingTraining=train;agentReturn=ui.equals("menu")?"menu":"play";tacticalTargets.clear();ui="agents";audio.play("ui");}
     boolean selectAgent(int index){
         if(index<0||index>=Agent.values().length)return false;
@@ -182,6 +203,7 @@ final class Game {
         settings.save();audio.play("select");return true;
     }
     void confirmAgent(){if(flow.accepted&&!pendingTraining){flow.lockAgent();return;}if(pendingStart){boolean train=pendingTraining;pendingStart=false;start(train);}else{ui=agentReturn;tell(agent.name+" selecionado",2);}}
+<<<<<<< HEAD
     void start(boolean train) { start(train,false); }
     void startBots() { flow.mode=MatchFlow.Mode.UNRANKED;start(false,true);beginRound(); }
     void start(boolean train,boolean watch) {
@@ -189,6 +211,12 @@ final class Game {
         training=train;flow.rewarded=false;flow.accepted=false;flow.locked=false;abilities.clear();if(world.mapIndex!=flow.mapIndex)world=new World(flow.mapIndex);world.setShadows(settings.shadows);scoreBlue=scoreRed=0;round=1;time=0;actors.clear();smokes.clear();feed.clear();traces.clear();particles.clear();orbitals.clear();pulses.clear();
         agent=Agent.values()[settings.agent];
         actors.add(new Actor(0,0,observing?"VECTOR":"VOCÊ"));
+=======
+    void start(boolean train) {
+        training=train;flow.rewarded=false;flow.accepted=false;flow.locked=false;abilities.clear();if(world.mapIndex!=flow.mapIndex)world=new World(flow.mapIndex);world.setShadows(settings.shadows);scoreBlue=scoreRed=0;round=1;time=0;actors.clear();smokes.clear();feed.clear();traces.clear();particles.clear();orbitals.clear();pulses.clear();
+        agent=Agent.values()[settings.agent];
+        actors.add(new Actor(0,0,"VOCÊ"));
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         String[] names={"SABLE","KITE","ORBIT","EMBER","VEX","RUNE","FLINT","QUILL","ONYX"};
         for(int i=1;i<10;i++)actors.add(new Actor(i,!train&&flow.mode==MatchFlow.Mode.DEATHMATCH?i:i<5?0:1,names[i-1]));
         player=actors.get(0);player.agentIndex=settings.agent;trainingHits=trainingShots=0;ui="play";pendingStart=false;spawn(false);
@@ -227,9 +255,14 @@ final class Game {
             a.carrier=atk&&(a.id==0||a.id==5);
             if(a.carrier){spikeX=a.x;spikeZ=a.z;}
             a.skillCooldown=2+a.id*.8;a.slow=a.emp=a.stim=a.vulnerable=a.detained=a.invulnerable=a.returnTime=a.teleportTime=0;a.bodyYaw=a.yaw;a.animSpeed=a.animCrouch=0;
+<<<<<<< HEAD
             if(overtime()){a.credits=5000;a.primary=null;a.armor=0;a.slot=1;}if(a.id!=0||observing){equipBot(a);if(carry){a.qCharges=kit.qs;a.cCharges=kit.cs;}}if(flow.mode==MatchFlow.Mode.SPIKE_RUSH){a.primary=new Gun(new Weapon[]{Weapon.WISP,Weapon.HELIX,Weapon.MARROW,Weapon.ECHO}[Math.floorMod(round-1,4)]);a.slot=2;a.armor=50;a.ult=6;}
         }
         bots.beginRound();
+=======
+            if(overtime()){a.credits=5000;a.primary=null;a.armor=0;a.slot=1;}if(a.id!=0){equipBot(a);if(carry){a.qCharges=kit.qs;a.cCharges=kit.cs;}}if(flow.mode==MatchFlow.Mode.SPIKE_RUSH){a.primary=new Gun(new Weapon[]{Weapon.WISP,Weapon.HELIX,Weapon.MARROW,Weapon.ECHO}[Math.floorMod(round-1,4)]);a.slot=2;a.armor=50;a.ult=6;}
+        }
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         ui="play";
         if(overtime())tell(round>=19?"MORTE SÚBITA  •  Esta rodada decide a partida":"PRORROGAÇÃO  •  Vença por duas  •  5.000 créditos",5);else if(halftime)tell("TROCA DE LADOS  •  Economia reiniciada",5);
     }
@@ -257,7 +290,11 @@ final class Game {
             if(in.pressed(VK_ENTER))confirmAgent();return;
         }
         if(ui.equals("collection")||ui.equals("menu")||ui.equals("settings")||ui.equals("agents")||ui.equals("help")||ui.equals("pause"))return;
+<<<<<<< HEAD
         if(!observing&&in.pressed(VK_G)&&(phase==Phase.BUY||phase==Phase.TRAIN)&&!player.dead&&dashTime<=0){openAgentSelect(training,false);return;}
+=======
+        if(in.pressed(VK_G)&&(phase==Phase.BUY||phase==Phase.TRAIN)&&!player.dead&&dashTime<=0){openAgentSelect(training,false);return;}
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         if(training&&in.pressed(VK_H)&&!player.dead){player.hp=Math.max(5,player.hp-35);tell("Treino: -35 de vida para testar reparo e ressonância",3);}
         if(ui.equals("tactical")){
             if(in.aim()&&!smokeRightHeld&&!tacticalTargets.isEmpty()){tacticalTargets.remove(tacticalTargets.size()-1);audio.play("ui");}
@@ -265,9 +302,15 @@ final class Game {
             if(in.pressed(VK_ENTER)||settings.abilityHold&&!in.held(tacticalSlot==0?VK_Q:tacticalSlot==1?VK_C:tacticalSlot==3?VK_E:VK_X)){if(tacticalTargets.isEmpty())cancelTactical();else deployTactical();}
             if(in.pressed(tacticalSlot==0?VK_Q:tacticalSlot==1?VK_C:tacticalSlot==3?VK_E:VK_X)){cancelTactical();in=Input.Frame.empty();}
         }
+<<<<<<< HEAD
         if(!observing&&in.pressed(VK_B) && (phase==Phase.BUY||phase==Phase.TRAIN||flow.mode.respawn)&&dashTime<=0)ui=ui.equals("shop")?"play":"shop";
         if(in.pressed(VK_ENTER)) {if(phase==Phase.BUY)beginRound();else if(phase==Phase.MATCH){flow.play();return;}}
         if(!observing){if(in.pressed(VK_K))quickBuy();if(in.pressed(VK_L))requestFunds();}
+=======
+        if(in.pressed(VK_B) && (phase==Phase.BUY||phase==Phase.TRAIN||flow.mode.respawn)&&dashTime<=0)ui=ui.equals("shop")?"play":"shop";
+        if(in.pressed(VK_ENTER)) {if(phase==Phase.BUY)beginRound();else if(phase==Phase.MATCH){flow.play();return;}}
+        if(in.pressed(VK_K))quickBuy();if(in.pressed(VK_L))requestFunds();
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         if(training&&in.pressed(VK_T)){bhopTrainer=!bhopTrainer;combat.hops=0;combat.bestSpeed=0;tell(bhopTrainer?"BHOP  •  Espaço no pouso + A/D e giro do mouse":"TREINO DE MIRA",4);}
         time+=dt;noticeTime=Math.max(0,noticeTime-dt);damageFlash=Math.max(0,damageFlash-dt*2);hitMarker=Math.max(0,hitMarker-dt);hitHead=Math.max(0,hitHead-dt);
         focus=Math.max(0,focus-dt);scan=Math.max(0,scan-dt);recoil=player.melee()?0:player.gun().bloom*30;combat.tick(dt);
@@ -287,6 +330,7 @@ final class Game {
         if(phase==Phase.END){endAge+=dt;for(Orbital o:orbitals)o.age+=dt;orbitals.removeIf(o->o.age>=5.2);timer-=dt;if(timer<=0){if(matchFinished()){flow.complete(scoreBlue>scoreRed);}else{round++;spawn(true);}}return;}
         if(phase==Phase.BUY){timer-=dt;if(timer<=0)beginRound();}
         boolean playing=ui.equals("play");
+<<<<<<< HEAD
         if(playing&&!player.dead&&!observing){if(sentinels.watching())sentinels.control(dt,in);else controlPlayer(dt,in);}
         else {aiming=false;aimLerp=Math.max(0,aimLerp-dt*8);plantProgress=0;if(!observing)player.gun().burstLeft=0;}
         if((player.dead||observing) && in.pressed(VK_SPACE))spectate++;
@@ -297,6 +341,17 @@ final class Game {
             tickOrbitals(dt);abilities.tick(dt);if(!flow.mode.respawn)orbs.tick(dt,!observing&&playing&&in.held(VK_F));if(flow.mode.respawn)flow.tickRespawn(dt);else{updateSpike(dt,!observing&&playing&&in.held(VK_F)&&dashTime<=0);checkRules();}
         }
         if(phase==Phase.TRAIN){tickOrbitals(dt);abilities.tick(dt);orbs.tick(dt,!observing&&playing&&in.held(VK_F));for(Actor a:actors)if(a.team==1&&a.dead){a.respawn-=dt;if(a.respawn<=0)placeTarget(a);}}
+=======
+        if(playing&&!player.dead){if(sentinels.watching())sentinels.control(dt,in);else controlPlayer(dt,in);}
+        else {aiming=false;aimLerp=Math.max(0,aimLerp-dt*8);plantProgress=0;player.gun().burstLeft=0;}
+        if(player.dead && in.pressed(VK_SPACE))spectate++;
+        if(phase==Phase.LIVE) {
+            timer-=dt;
+            for(Actor a:actors)if(a.id!=0&&!a.dead){bot(a,dt);actorGravity(a,dt);}
+            tickOrbitals(dt);abilities.tick(dt);if(!flow.mode.respawn)orbs.tick(dt,playing&&in.held(VK_F));if(flow.mode.respawn)flow.tickRespawn(dt);else{updateSpike(dt,playing&&in.held(VK_F)&&dashTime<=0);checkRules();}
+        }
+        if(phase==Phase.TRAIN){tickOrbitals(dt);abilities.tick(dt);orbs.tick(dt,playing&&in.held(VK_F));for(Actor a:actors)if(a.team==1&&a.dead){a.respawn-=dt;if(a.respawn<=0)placeTarget(a);}}
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     }
     void controlPlayer(double dt,Input.Frame in) {
         player.yaw+=in.dx()*settings.sensitivity*(aiming?settings.adsSensitivity:1);
@@ -317,10 +372,17 @@ final class Game {
         combat.jump(dt,in);double ox=player.x,oz=player.z;if(dashTime>0){player.vx=player.vz=0;advanceDash(dt);}else combat.movement(dt,speed);
         if(phase==Phase.BUY && (attackTeam==0?player.z<113:player.z>10)){player.x=ox;player.z=oz;}
         player.moveSpeed=Math.hypot(player.x-ox,player.z-oz)/dt;player.walk+=player.moveSpeed*dt;
+<<<<<<< HEAD
         footstep-=dt;if(footstep<=0&&player.moveSpeed>3.3&&player.grounded){audio.play("step");bots.noise(player,Bots.Noise.STEP,19);footstep=.36;}
         
         double oldY=player.y;player.vy-=16*dt;player.y+=player.vy*dt;double floor=world.groundAt(player.x,player.z,oldY);
         if(player.y<=floor){if(!player.grounded&&player.vy<-3){combat.landed();player.landRecovery=.11;landing=Math.min(1,Math.abs(player.vy)*.08);audio.play("land");bots.noise(player,Bots.Noise.LAND,Math.min(28,8+Math.abs(player.vy)*1.3));}player.y=floor;player.vy=0;player.grounded=true;}else player.grounded=false;
+=======
+        footstep-=dt;if(footstep<=0&&player.moveSpeed>3.3&&player.grounded){audio.play("step");footstep=.36;}
+        
+        double oldY=player.y;player.vy-=16*dt;player.y+=player.vy*dt;double floor=world.groundAt(player.x,player.z,oldY);
+        if(player.y<=floor){if(!player.grounded&&player.vy<-3){combat.landed();player.landRecovery=.11;landing=Math.min(1,Math.abs(player.vy)*.08);audio.play("land");}player.y=floor;player.vy=0;player.grounded=true;}else player.grounded=false;
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         if(in.pressed(VK_1))combat.equip(1);if(in.pressed(VK_2))combat.equip(2);if(in.pressed(VK_3))combat.equip(3);
         if(in.pressed(VK_V)&&weaponEquip<=0&&combat.swing<=0&&player.gun().reload<=0)combat.inspect=2.4;
         if(in.pressed(VK_R)&&dashTime<=0)reload(player);
@@ -431,7 +493,11 @@ final class Game {
     void particle(V at,V velocity,double life,double size,int color){if(particles.size()<170)particles.add(new Particle(at,velocity,life,size,color));}
     void reload(Actor a) {
         if(a.melee())return;Gun gun=a.gun();if(gun.reload>0||gun.ammo==gun.kind.mag||gun.reserve<=0)return;
+<<<<<<< HEAD
         gun.burstLeft=0;gun.reloadTotal=gun.kind.reload*(a==player&&focus>0?.6:1);gun.reload=gun.reloadTotal;gun.reloadStage=0;bots.noise(a,Bots.Noise.RELOAD,13);if(a==player){combat.inspect=0;audio.play("reload");}
+=======
+        gun.burstLeft=0;gun.reloadTotal=gun.kind.reload*(a==player&&focus>0?.6:1);gun.reload=gun.reloadTotal;gun.reloadStage=0;if(a==player){combat.inspect=0;audio.play("reload");}
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     }
     double playerSpread(){
         Gun gun=player.gun();Weapon w=gun.kind;
@@ -447,7 +513,11 @@ final class Game {
         gun.cooldown=Math.max(.001,interval/((focus>0?1.3:1)*(player.stim>0?1.25:1))-gun.cooldownDebt);gun.cooldownDebt=0;player.shotGlow=.065;trainingShots++;
         double spread=playerSpread();kickVelocity+=(.35+gun.kind.kick*3)*(focus>0?.3:1);
 
+<<<<<<< HEAD
         audio.play(gun.kind.sound());shotFX.fired(player);bots.noise(player,Bots.Noise.SHOT,gun.kind.silenced()?34:64);
+=======
+        audio.play(gun.kind.sound());shotFX.fired(player);
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         for(int i=0;i<gun.kind.pellets;i++) {
             double yaw=player.yaw+gun.yawRecoil+(rng.nextDouble()-.5)*spread*2;
             double pitch=player.pitch+gun.pitchRecoil+(rng.nextDouble()-.5)*spread*2;
@@ -482,7 +552,10 @@ final class Game {
         if(a.vulnerable>0)amount*=1.5;
         if(a.teleportTime>0){a.teleportTime=0;if(a==player)tell("Travessia interrompida pelo dano",2);}
         double absorb=Math.min(a.armor,amount*.66);a.armor-=absorb;a.hp-=amount-absorb;a.damageGlow=.17;a.healing=0;a.tagTime=.55;
+<<<<<<< HEAD
         bots.hurt(a,from);
+=======
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         if(a==player){if(from!=null)damageYaw=Math.atan2(from.x-a.x,from.z-a.z);damageFlash=.65;audio.play("hurt");}
         if(a.hp<=0){
             if(a.returnTime>0){abilities.returnActor(a);return;}
@@ -504,6 +577,7 @@ final class Game {
         return abilities.wallObscures(from,to);
     }
     boolean canSee(Actor from,Actor to){return (from.nearSight<=0||from.distance(to)<7)&&world.visible(from.eye(),to.center())&&!obscured(from.eye(),to.center());}
+<<<<<<< HEAD
     void bot(Actor a,double dt) { bots.tick(a,dt); }
     void updateSpike(double dt,boolean interact){spike.updateSpike(dt,interact);}
     void plant(Actor a){spike.plant(a);}
@@ -517,17 +591,156 @@ final class Game {
         if(player==null)return null;
         if(duel)return player;
         if(observing){int live=0;for(Actor a:actors)if(!a.dead)live++;if(live==0)return player;int index=Math.floorMod(spectate,live);for(Actor a:actors)if(!a.dead&&index--==0)return a;}
+=======
+    void bot(Actor a,double dt) {
+        a.skillCooldown-=dt;a.perception-=dt;Actor seen=a.target;double nearest=seen==null?38:a.distance(seen);
+        if(a.perception<=0||seen!=null&&seen.dead){
+            seen=null;nearest=38;a.perception=.12;
+            for(Actor enemy:actors)if(enemy.team!=a.team&&!enemy.dead){double d=a.distance(enemy);if(d<nearest&&canSee(a,enemy)){nearest=d;seen=enemy;}}
+        }
+        if(a.flash>0||a.detained>0)seen=null;
+        if(seen!=a.target){a.react=.27+rng.nextDouble()*.30+(2-settings.difficulty)*.12;a.target=seen;}
+        a.react=Math.max(0,a.react-dt);
+        if(seen!=null){
+            V to=seen.center().sub(a.eye());a.yaw=Math.atan2(to.x(),to.z());a.pitch=Math.atan2(to.y(),Math.hypot(to.x(),to.z()));
+            seen.revealed=Math.max(seen.revealed,a.team==0?.35:0);
+            Gun gun=a.gun();
+            if(gun.ammo==0)reload(a);
+            if(a.detained<=0&&a.react<=0&&gun.cooldown<=0&&gun.reload<=0&&gun.ammo>0) {
+                gun.ammo--;double interval=gun.kind.interval+.18+(2-settings.difficulty)*.08;
+                if(gun.kind.mode==FireMode.BURST){if(gun.burstLeft==0)gun.burstLeft=3;gun.burstLeft--;interval=gun.burstLeft>0?gun.kind.interval:.44+(2-settings.difficulty)*.08;}if(gun.ammo==0)gun.burstLeft=0;
+                gun.cooldown=interval/(a.stim>0?1.25:1);a.shotGlow=.06;
+                boolean head=rng.nextDouble()<(.05+settings.difficulty*.065);
+                double miss=(.026+(2-settings.difficulty)*.018)*(seen==player&&player.moveSpeed>3?1.5:1);
+                V aim=new V(seen.x,seen.y+(head?(seen.crouch?1.03:1.61):.96),seen.z).sub(a.eye());
+                V dir=aim.unit().add(new V(rng.nextGaussian()*miss,rng.nextGaussian()*miss*.75,rng.nextGaussian()*miss)).unit();
+                for(int pellet=0;pellet<gun.kind.pellets;pellet++){double spread=gun.kind.pellets>1?gun.kind.spread:.002;shoot(a,dir.add(new V((rng.nextDouble()-.5)*spread*2,(rng.nextDouble()-.5)*spread*2,(rng.nextDouble()-.5)*spread*2)).unit(),gun.kind);}
+                if(player.distance(a)<40)audio.playAt("distant",Math.sin(Math.atan2(a.x-player.x,a.z-player.z)-player.yaw),Math.max(.08,1-player.distance(a)/45)*(world.visible(player.eye(),a.eye())?1:.35));
+            }
+        }
+        if(seen!=null&&a.skillCooldown<=0&&a.emp<=0&&a.detained<=0){abilities.botCast(a,seen);a.skillCooldown=8+rng.nextDouble()*6;}
+        boolean urgent=planted&&a.team!=attackTeam;
+        if(seen!=null&&nearest<19&&!urgent){a.moveSpeed=0;return;}
+        double tx,tz;
+        Site chosen=(round%2==1)?world.a:world.b;
+        if(abilities.pingLife>0&&a.team==player.team&&!a.carrier&&!planted){tx=abilities.pingPoint.x();tz=abilities.pingPoint.z();}else if(flow.mode.respawn){Actor rival=flow.roamTarget(a);tx=rival.x;tz=rival.z;} else if(planted) {
+            if(a.team!=attackTeam){tx=spikeX;tz=spikeZ;}
+            else {tx=spikeX+(a.id%2==0?-5:5);tz=spikeZ+(a.id%3-1)*4;}
+        } else if(a.team==attackTeam) {
+            boolean hasCarrier=actors.stream().anyMatch(b->b.carrier&&!b.dead);
+            if(!hasCarrier){tx=spikeX;tz=spikeZ;}
+            else if(a.z>84){tx=chosen==world.a?(a.lane==0?6:23):(a.lane==0?137:117);tz=78;}
+            else if(a.z>46){tx=chosen==world.a?(a.lane==0?6:23):(a.lane==0?137:117);tz=40;}
+            else {tx=chosen.x()+(a.carrier?3:(a.id%3-1)*4);tz=chosen.z()+(a.carrier?2:5);}
+        } else {
+            Site guard=a.id%2==0?world.a:world.b;
+            if(timer<65){tx=guard==world.a?23:117;tz=timer<35?78:40;}
+            else {tx=guard.x()+(a.id%3==0?5:-6);tz=guard.z()+(a.id%3==1?5:-7);}
+            if(timer>=65&&a.gun().kind.scoped()&&!world.platforms.isEmpty()){Box perch=world.platforms.get(a.id%world.platforms.size());tx=(perch.x1()+perch.x2())/2;tz=(perch.z1()+perch.z2())/2;}
+        }
+        if(a.carrier&&!planted&&world.site(a.x,a.z)!=null&&(seen==null||nearest>15)){a.moveSpeed=0;return;}
+        if(urgent&&Math.hypot(a.x-spikeX,a.z-spikeZ)<2.25){a.moveSpeed=0;return;}
+        a.repath-=dt;
+        if(a.repath<=0||Math.hypot(tx-a.destX,tz-a.destZ)>2){a.path=world.path(a.x,a.z,tx,tz);a.pathIndex=0;a.destX=tx;a.destZ=tz;a.repath=1.2+rng.nextDouble()*.45;}
+        double ox=a.x,oz=a.z;
+        if(a.pathIndex<a.path.size()){
+            V waypoint=a.path.get(a.pathIndex);double dx=waypoint.x()-a.x,dz=waypoint.z()-a.z,l=Math.hypot(dx,dz);
+            if(l<.28)a.pathIndex++;
+            else {double speed=(a.flash>0?1.2:4.3)*(a.slow>0?.4:1)*(a.detained>0?.35:1)*(a.stim>0?1.25:1)*(a.tagTime>0?.60:1)*a.gun().kind.mobility*dt;move(a,dx/l*Math.min(speed,l),dz/l*Math.min(speed,l));if(seen==null){double turn=Math.atan2(Math.sin(Math.atan2(dx,dz)-a.yaw),Math.cos(Math.atan2(dx,dz)-a.yaw));a.yaw+=turn*Math.min(1,dt*8);a.pitch*=Math.max(0,1-dt*8);}}
+        }
+        a.moveSpeed=Math.hypot(a.x-ox,a.z-oz)/dt;a.walk+=a.moveSpeed*dt;
+    }
+    void updateSpike(double dt,boolean interact) {
+        if(phase!=Phase.LIVE)return;
+        if(!planted) {
+            boolean carrying=actors.stream().anyMatch(a->a.carrier&&!a.dead);
+            if(!carrying)for(Actor a:actors)if(!a.dead&&a.team==attackTeam&&Math.hypot(a.x-spikeX,a.z-spikeZ)<1.7){a.carrier=true;if(a==player)tell("Núcleo recuperado",2);break;}
+            for(Actor a:actors)if(!a.dead&&a.carrier) {
+                boolean canPlant=world.site(a.x,a.z)!=null&&a.damageGlow<=0;
+                if(a==player){if(canPlant&&interact){plantProgress+=dt;if(plantProgress>=3.2)plant(a);}else plantProgress=0;}
+                else {if(canPlant&&a.moveSpeed<.1&&(a.target==null||a.distance(a.target)>15)){a.objective+=dt;if(a.objective>=3.2)plant(a);}else a.objective=0;}
+                break;
+            }
+        } else {
+            spikeTime-=dt;spikeBeep-=dt;
+            if(spikeBeep<=0){audio.play("beep");spikeBeep=spikeTime<10?.28:spikeTime<20?.6:1;}
+            Actor candidate=null;
+            for(Actor a:actors)if(!a.dead&&a.team!=attackTeam&&Math.hypot(a.x-spikeX,a.z-spikeZ)<2.5){
+                if(a==player&&interact){candidate=a;break;}
+                if(a!=player&&(a.target==null||a.distance(a.target)>9)&&a.damageGlow<=0)candidate=a;
+            }
+            if(candidate!=defuser){defuseProgress=0;defuser=candidate;}
+            if(defuser!=null)defuseProgress+=dt;else defuseProgress=0;
+            if(defuseProgress>=5){defuser.credits=Math.min(9000,defuser.credits+300);defuser.ult=Math.min(6,defuser.ult+1);finishRound(1-attackTeam,"Núcleo desarmado");audio.play("defuse");}
+            else if(spikeTime<=0){finishRound(attackTeam,"Núcleo detonado");audio.play("boom");}
+        }
+    }
+    void plant(Actor a) {
+        planted=true;spikeX=a.x;spikeZ=a.z;spikeTime=40;spikeBeep=0;a.carrier=false;plantProgress=0;
+        a.credits=Math.min(9000,a.credits+300);a.ult=Math.min(6,a.ult+1);
+        for(Actor b:actors){b.repath=0;b.objective=0;}
+        tell("NÚCLEO ARMADO  •  40 segundos",3);audio.play("plant");
+    }
+    long living(int team){return actors.stream().filter(a->a.team==team&&!a.dead).count();}
+    void checkRules() {
+        if(phase!=Phase.LIVE)return;
+        if(living(1-attackTeam)==0)finishRound(attackTeam,"Equipe defensora eliminada");
+        else if(living(attackTeam)==0&&!planted)finishRound(1-attackTeam,"Equipe atacante eliminada");
+        else if(timer<=0&&!planted)finishRound(1-attackTeam,"Tempo esgotado");
+    }
+    void finishRound(int winner,String reason) {
+        if(phase==Phase.END||phase==Phase.MATCH)return;
+        combat.swing=combat.inspect=0;phase=Phase.END;timer=5;roundWinner=winner;endAge=0;dashTime=0;tacticalTargets.clear();
+        if(winner==0)scoreBlue++;else scoreRed++;
+        endTitle=winner==0?"RODADA VENCIDA":"RODADA PERDIDA";endReason=reason;
+        for(Actor a:actors){if(a.team==winner){a.credits=Math.min(9000,a.credits+3000);a.losses=0;}else{a.losses++;a.credits=Math.min(9000,a.credits+Math.min(2900,1900+(a.losses-1)*500));}}
+        ui="play";audio.play(winner==0?"win":"lose");
+    }
+    boolean buyWeapon(Weapon w) {
+        if(!(phase==Phase.BUY||phase==Phase.TRAIN||flow.mode.respawn)||player.dead)return false;
+        Gun existing=w.sidearm()?player.pistol:player.primary;
+        if(existing!=null&&existing.kind==w){player.gun().burstLeft=0;player.gun().reload=0;combat.swing=combat.inspect=0;if(player.slot!=(w.sidearm()?1:2)){player.slot=w.sidearm()?1:2;weaponEquip=.4;recoil=aimLerp=0;aiming=false;}tell("Arma já equipada",2);return false;}
+        if(!training&&!flow.mode.respawn&&player.credits<w.price){tell("Créditos insuficientes",2);audio.play("deny");return false;}
+        if(!training&&!flow.mode.respawn)player.credits-=w.price;player.gun().burstLeft=0;player.gun().reload=0;combat.swing=combat.inspect=0;if(w.sidearm()){player.pistol=new Gun(w);player.slot=1;}else{player.primary=new Gun(w);player.slot=2;}
+        recoil=0;aiming=false;aimLerp=0;weaponEquip=.4;audio.play("equip");tell(w.label+" equipado",2);return true;
+    }
+    void equipBot(Actor a){
+        if(a.primary==null){Weapon[] preference={Weapon.ECHO,Weapon.SHADE,Weapon.HELIX,Weapon.WISP,Weapon.CIRCUIT,Weapon.RIDGE,Weapon.BASTION,Weapon.MARROW,Weapon.HORIZON};Weapon wanted=preference[Math.floorMod(a.id+round,preference.length)];
+            if(a.credits>=wanted.price+400){a.primary=new Gun(wanted);a.credits-=wanted.price;a.slot=2;}
+            else if(a.credits>=1600){a.primary=new Gun(Weapon.CIRCUIT);a.credits-=1200;a.slot=2;}
+            else if(a.credits>=500&&a.id%3==0&&a.pistol.kind==Weapon.SPARK){a.pistol=new Gun(Weapon.VEIL);a.credits-=500;}
+        }
+        if(a.armor<25&&a.credits>=400){a.armor=25;a.credits-=400;}
+    }
+    boolean buyArmor(int amount) {
+        if(!(phase==Phase.BUY||phase==Phase.TRAIN||flow.mode.respawn)||player.dead)return false;
+        int price=amount==25?400:1000;
+        if(player.armor>=amount){tell("Proteção já equipada",2);return false;}
+        if(!training&&!flow.mode.respawn&&player.credits<price){tell("Créditos insuficientes",2);return false;}
+        if(!training&&!flow.mode.respawn)player.credits-=price;player.armor=amount;audio.play("ui");return true;
+    }
+    Actor cameraActor() {
+        if(player==null)return null;
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         if(sentinels.watching())return sentinels.eye;
         if(!player.dead)return player;
         if(player.deathAge<.85)return player;
         List<Actor> live=actors.stream().filter(a->a.team==0&&!a.dead).toList();
         return live.isEmpty()?player:live.get(Math.floorMod(spectate,live.size()));
     }
+<<<<<<< HEAD
     boolean buyAbility(int slot){return loadout.buyAbility(slot);}
     boolean overtime(){return rules.overtime();}
     boolean matchFinished(){return rules.matchFinished();}
     void quickBuy(){loadout.quickBuy();}
     void requestFunds(){economy.requestFunds();}
+=======
+    boolean buyAbility(int slot){if(!(phase==Phase.BUY||phase==Phase.TRAIN)||player.dead||slot==2)return false;int max=agent.charges(slot);if(charges(slot)>=max){tell("Cargas completas",2);return false;}if(!training&&player.credits<200){tell("Créditos insuficientes",2);return false;}if(!training)player.credits-=200;if(slot==0)player.qCharges++;else if(slot==1)player.cCharges++;else player.eCharges++;audio.play("ui");return true;}
+    boolean overtime(){return flow.mode==MatchFlow.Mode.COMPETITIVE&&scoreBlue>=flow.mode.target-1&&scoreRed>=flow.mode.target-1;}
+    boolean matchFinished(){int max=Math.max(scoreBlue,scoreRed);if(max<flow.mode.target)return false;return flow.mode!=MatchFlow.Mode.COMPETITIVE||Math.abs(scoreBlue-scoreRed)>=2||round>=19;}
+    void quickBuy(){if(player==null||!(phase==Phase.BUY||phase==Phase.TRAIN)||player.dead)return;buyWeapon(profile.savedPistol);buyWeapon(profile.savedPrimary);buyArmor(50);tell("Recompra: itens disponíveis dentro do seu saldo",2);}
+    void requestFunds(){if(player==null||phase!=Phase.BUY||fundsAsked)return;Actor donor=null;for(Actor a:actors)if(a!=player&&a.team==player.team&&a.credits>1400&&(donor==null||a.credits>donor.credits))donor=a;if(donor==null){tell("Aliados sem créditos disponíveis",2);return;}int amount=Math.min(600,9000-player.credits);donor.credits-=amount;player.credits+=amount;fundsAsked=true;tell(donor.name+" transferiu "+amount+" créditos",3);}
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     void tell(String text,double seconds){notice=text;noticeTime=seconds;}
     void close(){settings.save();audio.close();}
 }

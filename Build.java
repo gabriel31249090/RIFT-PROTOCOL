@@ -29,7 +29,11 @@ public class Build {
         Manifest manifest = new Manifest();
         manifest.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION, "1.0");
         manifest.getMainAttributes().put(Attributes.Name.MAIN_CLASS, "rift.Main");
+<<<<<<< HEAD
         try (JarOutputStream jar = new JarOutputStream(Files.newOutputStream(Path.of("RiftProtocol.jar.tmp")), manifest);
+=======
+        try (JarOutputStream jar = new JarOutputStream(Files.newOutputStream(Path.of("RiftProtocol.jar")), manifest);
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
              var files = Files.walk(out)) {
             for (Path file : files.filter(Files::isRegularFile).sorted().toList()) {
                 jar.putNextEntry(new JarEntry(out.relativize(file).toString().replace('\\', '/')));
@@ -37,7 +41,10 @@ public class Build {
                 jar.closeEntry();
             }
         }
+<<<<<<< HEAD
         Files.move(Path.of("RiftProtocol.jar.tmp"), Path.of("RiftProtocol.jar"), StandardCopyOption.REPLACE_EXISTING);
+=======
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         System.out.println("Build OK: RiftProtocol.jar (Java 17+)");
     }
 }

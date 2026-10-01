@@ -10,7 +10,10 @@ final class Renderer {
     BufferedImage image;int width,height;int[] pixels;float[] depth;
     double cx,cy,cz,yaw,pitch,sinY,cosY,sinP,cosP,focal;
     final List<Tri> dynamic=new ArrayList<>(2500);
+<<<<<<< HEAD
     final TriangleSpan span=new TriangleSpan();SceneMesh scene;
+=======
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     final int[] smokeOpacity=new int[4096];final float[] smokeNoise=new float[128*128];
     static final BufferedImage SKY=EnvironmentArt.sky();
     static final int[] SKY_PIXELS=SKY.getRGB(0,0,SKY.getWidth(),SKY.getHeight(),null,0,SKY.getWidth());
@@ -32,8 +35,12 @@ final class Renderer {
             camera(e.x(),e.y()+bob-death*.95-(cam==game.player?game.landing*.06:0),e.z(),cam.yaw+(cam==game.player&&!cam.melee()?cam.gun().yawRecoil:0),cam.pitch+(cam==game.player&&!cam.melee()?cam.gun().pitchRecoil+(game.settings.lowMotion?0:game.viewKick*.025):0)-death*.15,fov);
         }
         floor(game.world);triangleCount=0;
+<<<<<<< HEAD
         if(scene==null||scene.world!=game.world||scene.sourceCount!=game.world.triangles.size())scene=new SceneMesh(game.world);
         scene.render(this);
+=======
+        for(Tri tri:game.world.triangles)staticTriangle(tri);
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         for(Decal decal:game.world.decals)decal(decal);
         dynamic.clear();
         if(!menu){
@@ -51,7 +58,11 @@ final class Renderer {
             if(game.planted) {
                 addBox(dynamic,-.25,0,-.25,.25,.55,.25,0x273F4B,game.spikeX,0,game.spikeZ,game.visualTime*.5);
                 addBox(dynamic,-.12,.5,-.12,.12,.85,.12,((int)(game.visualTime*5)%2==0)?0xFF755C:0xF4D7A0,game.spikeX,0,game.spikeZ,game.visualTime*.5);
+<<<<<<< HEAD
             }else if(!game.duel&&game.phase==Game.Phase.LIVE&&game.actors.stream().noneMatch(a->a.carrier&&!a.dead)){
+=======
+            }else if(game.phase==Game.Phase.LIVE&&game.actors.stream().noneMatch(a->a.carrier&&!a.dead)){
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
                 addBox(dynamic,-.28,.05,-.2,.28,.25,.2,0xEED0A3,game.spikeX,0,game.spikeZ,0);
             }
         }
@@ -61,7 +72,11 @@ final class Renderer {
             for(Game.Trace trace:game.traces)line(trace.from,trace.to,trace.color);
             ArrayList<Game.Smoke> sorted=new ArrayList<>(game.smokes);sorted.sort(Comparator.comparingDouble((Game.Smoke s)->Math.hypot(s.x-cx,s.z-cz)).reversed());
             for(Game.Smoke smoke:sorted)volumeSmoke(smoke,game.visualTime);
+<<<<<<< HEAD
             if(!game.observing&&cam==game.player&&!game.player.dead&&game.phase!=Game.Phase.MATCH&&!game.ui.equals("tactical"))weapon(game);
+=======
+            if(cam==game.player&&!game.player.dead&&game.phase!=Game.Phase.MATCH&&!game.ui.equals("tactical"))weapon(game);
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         }
         return image;
     }
@@ -118,6 +133,7 @@ final class Renderer {
     }
     void worldTriangle(Tri tri) {
         if(textures&&tri.material()>=0){TextureRaster.draw(this,tri);return;}
+<<<<<<< HEAD
         double ax=tri.a().x()-cx,ay=tri.a().y()-cy,az=tri.a().z()-cz;
         double bx=tri.b().x()-cx,by=tri.b().y()-cy,bz=tri.b().z()-cz;
         double dx=tri.c().x()-cx,dy=tri.c().y()-cy,dz=tri.c().z()-cz;
@@ -134,6 +150,14 @@ final class Renderer {
         else clip(new V(x0,y0,z0),new V(x1,y1,z1),new V(x2,y2,z2),color);
     }
 
+=======
+        V a=transform(tri.a()),b=transform(tri.b()),c=transform(tri.c());
+        if(a.z()<.09&&b.z()<.09&&c.z()<.09||a.z()>far&&b.z()>far&&c.z()>far)return;
+        int fog=(int)Settings.clamp(((a.z()+b.z()+c.z())/3-12)*1.7,0,215);
+        int color=blend(tri.color(),0xC3D1C5,fog);if(nearSight)color=blend(color,0x272637,(int)Settings.clamp(((a.z()+b.z()+c.z())/3-2)*55,0,255));
+        clip(a,b,c,color);
+    }
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     void clip(V a,V b,V c,int color){
         if(a.z()>=.09&&b.z()>=.09&&c.z()>=.09){triangle(a,b,c,color);return;}
         V[] in={a,b,c},out=new V[5];int n=0;
@@ -144,17 +168,25 @@ final class Renderer {
         }
         for(int i=1;i<n-1;i++)triangle(out[0],out[i],out[i+1],color);
     }
+<<<<<<< HEAD
     void triangle(V a,V b,V c,int color){triangle(a.x(),a.y(),a.z(),b.x(),b.y(),b.z(),c.x(),c.y(),c.z(),color);}
     void triangle(double x0,double y0,double z0,double x1,double y1,double z1,double x2,double y2,double z2,int color){
         double ax=width*.5+x0*focal/z0,ay=height*.5-y0*focal/z0;
         double bx=width*.5+x1*focal/z1,by=height*.5-y1*focal/z1;
         double cx=width*.5+x2*focal/z2,cy=height*.5-y2*focal/z2;
+=======
+    void triangle(V a,V b,V c,int color){
+        double ax=width*.5+a.x()*focal/a.z(),ay=height*.5-a.y()*focal/a.z();
+        double bx=width*.5+b.x()*focal/b.z(),by=height*.5-b.y()*focal/b.z();
+        double cx=width*.5+c.x()*focal/c.z(),cy=height*.5-c.y()*focal/c.z();
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         double area=(bx-ax)*(cy-ay)-(by-ay)*(cx-ax);if(Math.abs(area)<.01)return;
         int minX=Math.max(0,(int)Math.floor(Math.min(ax,Math.min(bx,cx)))),maxX=Math.min(width-1,(int)Math.ceil(Math.max(ax,Math.max(bx,cx))));
         int minY=Math.max(0,(int)Math.floor(Math.min(ay,Math.min(by,cy)))),maxY=Math.min(height-1,(int)Math.ceil(Math.max(ay,Math.max(by,cy))));
         if(minX>maxX||minY>maxY)return;triangleCount++;
         double ia=1/area,a0=(by-cy)*ia,b0=(cx-bx)*ia,c0=(bx*cy-by*cx)*ia;
         double a1=(cy-ay)*ia,b1=(ax-cx)*ia,c1=(cx*ay-cy*ax)*ia;
+<<<<<<< HEAD
         double za=1/z0,zb=1/z1,zc=1/z2;
         double dzx=a0*(za-zc)+a1*(zb-zc),dzy=b0*(za-zc)+b1*(zb-zc);
         double w0row=a0*(minX+.5)+b0*(minY+.5)+c0,w1row=a1*(minX+.5)+b1*(minY+.5)+c1;
@@ -166,6 +198,17 @@ final class Renderer {
         }
     }
 
+=======
+        double za=1/a.z(),zb=1/b.z(),zc=1/c.z();
+        double dzx=a0*(za-zc)+a1*(zb-zc),dzy=b0*(za-zc)+b1*(zb-zc);
+        double w0row=a0*(minX+.5)+b0*(minY+.5)+c0,w1row=a1*(minX+.5)+b1*(minY+.5)+c1;
+        double zrow=zc+w0row*(za-zc)+w1row*(zb-zc);
+        for(int y=minY;y<=maxY;y++,w0row+=b0,w1row+=b1,zrow+=dzy){
+            double w0=w0row,w1=w1row,z=zrow;int offset=y*width+minX;
+            for(int x=minX;x<=maxX;x++,offset++,w0+=a0,w1+=a1,z+=dzx)if(w0>=-.00001&&w1>=-.00001&&w0+w1<=1.00001&&z>depth[offset]){depth[offset]=(float)z;pixels[offset]=color;}
+        }
+    }
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     void line(V start,V end,int color){
         V a=transform(start),b=transform(end);if(a.z()<.1&&b.z()<.1)return;
         if(a.z()<.1){double t=(.1-a.z())/(b.z()-a.z());a=a.add(b.sub(a).mul(t));}

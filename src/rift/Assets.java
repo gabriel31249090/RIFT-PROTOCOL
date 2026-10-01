@@ -10,9 +10,13 @@ final class Assets {
     static final int PLASTER=0,CONCRETE=1,BRICK=2,STONE=3,TEAL=4,RUST=5,STEEL=6,BRASS=7,WOOD=8,FLOOR=9,ASPHALT=10,PLATE=11,RUBBER=12,CLOTH=13,GLASS=14,ROOF=15;
     static final BufferedImage HERO=load("menu-keyart.png"),MATERIALS=load("materials.png"),ICONS=load("abilities.png"),AGENTS=load("agents.png");
     static final BufferedImage[] portraits=new BufferedImage[12],icons=new BufferedImage[48];
+<<<<<<< HEAD
     // Each render thread owns its palettes: two local windows cannot recolor each other's triangles.
     static final class TintCache { final long[] keys=new long[8192]; final int[][] colors=new int[8192][]; }
     static final ThreadLocal<TintCache> TINT=ThreadLocal.withInitial(TintCache::new);
+=======
+    static final java.util.Map<Long,int[]> tintCache=new java.util.LinkedHashMap<>(){protected boolean removeEldestEntry(java.util.Map.Entry<Long,int[]> e){return size()>384;}};
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     static final int[][] average=new int[16][3];
     static final int[][][] tiles=new int[16][5][];
     static final byte[][][] indices=new byte[16][5][];
@@ -38,6 +42,7 @@ final class Assets {
     static BufferedImage cell(BufferedImage image,int cols,int rows,int i){int x=i%cols*image.getWidth()/cols,y=i/cols*image.getHeight()/rows;int xx=(i%cols+1)*image.getWidth()/cols,yy=(i/cols+1)*image.getHeight()/rows;BufferedImage out=new BufferedImage(xx-x,yy-y,BufferedImage.TYPE_INT_RGB);Graphics2D g=out.createGraphics();g.drawImage(image,0,0,out.getWidth(),out.getHeight(),x,y,xx,yy,null);g.dispose();return out;}
     static int sample(int material,double u,double v,int level){level=Math.min(4,Math.max(0,level));int size=256>>level,mask=size-1;int x=(int)Math.floor(u*size)&mask,y=(int)Math.floor(v*size)&mask;return tiles[material][level][y*size+x];}
     static int[] tinted(int material,int level,int color){
+<<<<<<< HEAD
         TintCache cache=TINT.get();long[] tintKeys=cache.keys;int[][] tintCache=cache.colors;
         color&=0xFCFCFC;long key=((long)color<<9)|(material<<4)|level;
         int slot=((int)(key^(key>>>32))*0x9E3779B9)>>>19;int[] out=tintCache[slot];if(out!=null&&tintKeys[slot]==key)return out;
@@ -45,6 +50,12 @@ final class Assets {
         int[] src=palettes[material][level];int cr=color>>16&255,cg=color>>8&255,cb=color&255;
         for(int i=0;i<out.length;i++){int c=src[i];int r=Math.min(255,cr*(average[material][0]+(c>>16&255))/(2*average[material][0])),g=Math.min(255,cg*(average[material][1]+(c>>8&255))/(2*average[material][1])),b=Math.min(255,cb*(average[material][2]+(c&255))/(2*average[material][2]));out[i]=r<<16|g<<8|b;}
         tintKeys[slot]=key;return out;
+=======
+        long key=((long)(color&0xffffff)<<9)|(material<<4)|level;int[] cached=tintCache.get(key);if(cached!=null)return cached;
+        int[] src=palettes[material][level],out=new int[src.length];int cr=color>>16&255,cg=color>>8&255,cb=color&255;
+        for(int i=0;i<out.length;i++){int c=src[i];int r=Math.min(255,cr*(average[material][0]+(c>>16&255))/(2*average[material][0])),g=Math.min(255,cg*(average[material][1]+(c>>8&255))/(2*average[material][1])),b=Math.min(255,cb*(average[material][2]+(c&255))/(2*average[material][2]));out[i]=r<<16|g<<8|b;}
+        tintCache.put(key,out);return out;
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     }
     static void portrait(Graphics2D g,int index,int x,int y,int w,int h){g.drawImage(portraits[Math.floorMod(index,12)],x,y,w,h,null);}
     static void icon(Graphics2D g,Game.Ability a,double x,double y,double r){int d=(int)Math.ceil(r*3.1);g.drawImage(icons[a.ordinal()],(int)(x-d/2.),(int)(y-d/2.),d,d,null);}

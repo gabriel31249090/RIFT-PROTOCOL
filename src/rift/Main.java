@@ -16,6 +16,7 @@ public final class Main extends Canvas implements Runnable,KeyListener,MouseList
     public static void main(String[] args)throws Exception {
         if(args.length>0){
             switch(args[0]){
+<<<<<<< HEAD
                 case "--duel-benchmark"->{DuelTests.benchmark();return;}
                 case "--duel-test"->{DuelTests.run();System.out.println(Tests.passed+" checks passed.");return;}
                 case "--duel-capture"->{DuelTests.capture(Path.of(args.length>1?args[1]:"screenshots"));return;}
@@ -31,6 +32,8 @@ public final class Main extends Canvas implements Runnable,KeyListener,MouseList
                 case "--performance"->{ }
                 case "--performance-test"->{PerformanceTests.run();System.out.println(Tests.passed+" checks passed.");return;}
                 case "--benchmark-full"->{PerformanceTests.benchmark();return;}
+=======
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
                 case "--impact-capture"->{ImpactTests.capture(Path.of(args.length>1?args[1]:"screenshots"));return;}
                 case "--impact-test"->{ImpactTests.run();ImpactTests.throwables();System.out.println(Tests.passed+" checks passed.");return;}
                 case "--tactical-capture"->{TacticalTests.capture(Path.of(args.length>1?args[1]:"screenshots"));return;}
@@ -38,10 +41,13 @@ public final class Main extends Canvas implements Runnable,KeyListener,MouseList
                 case "--loadout-frames"->{LoadoutPreview.frames(Path.of(args.length>1?args[1]:"loadout-frames"));return;}
                 case "--feel-capture"->{FeelTests.capture(Path.of(args.length>1?args[1]:"screenshots"));return;}
                 case "--feel-test"->{FeelTests.run();System.out.println(Tests.passed+" checks passed.");return;}
+<<<<<<< HEAD
                 case "--benchmark-bots"->{BotBenchmark.main(new String[0]);return;}
                 case "--simulate-bots"->{BotSimulation.run(args.length>1?Integer.parseInt(args[1]):6);return;}
                 case "--bot-test"->{BotTests.run();System.out.println(Tests.passed+" checks passed.");return;}
                 case "--bot-capture"->{BotTests.capture(Path.of(args.length>1?args[1]:"screenshots"));return;}
+=======
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
                 case "--self-test"->{Tests.run();return;}
                 case "--capture"->{Tests.capture(args.length>1?args[1]:"screenshots");return;}
                 case "--benchmark"->{Tests.benchmark();return;}
@@ -50,7 +56,11 @@ public final class Main extends Canvas implements Runnable,KeyListener,MouseList
             }
         }
         if(GraphicsEnvironment.isHeadless()){System.err.println("O jogo precisa de um ambiente gráfico. Para os testes: java -jar RiftProtocol.jar --self-test");return;}
+<<<<<<< HEAD
         Main app=new Main();if(args.length>0&&args[0].equals("--performance")){app.game.settings.performance();app.game.world.setShadows(false);app.view.adaptive.reset(1);}SwingUtilities.invokeAndWait(app::open);if(args.length>0&&args[0].equals("--multiplayer"))app.game.multiplayerRequested=true;new Thread(app,"rift-game").start();
+=======
+        Main app=new Main();SwingUtilities.invokeAndWait(app::open);new Thread(app,"rift-game").start();
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     }
     void open(){
         frame=new JFrame("RIFT Protocol — Tactical FPS / Java");frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -68,8 +78,11 @@ public final class Main extends Canvas implements Runnable,KeyListener,MouseList
         long previous=System.nanoTime(),fpsStart=previous;int frames=0;
         try{
             while(!game.quit){
+<<<<<<< HEAD
                 if(!frame.isVisible()){locked=false;game.audio.menu=false;input.clear();previous=System.nanoTime();LockSupport.parkNanos(50_000_000L);continue;}
                 if(game.multiplayerRequested){game.multiplayerRequested=false;EventQueue.invokeLater(()->DuelLobby.show(frame,game.settings));}
+=======
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
                 long start=System.nanoTime();double dt=Math.min(.05,(start-previous)/1e9);previous=start;
                 Input.Frame in=input.poll();view.pointer(in.mx(),in.my());
                 if(pauseRequested){pauseRequested=false;if(game.ui.equals("play")||game.ui.equals("shop")||game.ui.equals("tactical")){if(game.ui.equals("tactical"))game.cancelTactical();game.ui="pause";}}
@@ -77,7 +90,11 @@ public final class Main extends Canvas implements Runnable,KeyListener,MouseList
                 if(in.click()&&(!game.ui.equals("play")||game.phase==Game.Phase.MATCH)){
                     if(view.click(in.mx(),in.my())){input.clear();in=Input.Frame.empty();}
                 }
+<<<<<<< HEAD
                 long simStart=System.nanoTime();game.tick(dt,in);game.simulationMillis=(System.nanoTime()-simStart)/1e6;captureMouse();
+=======
+                game.tick(dt,in);captureMouse();
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
                 BufferStrategy strategy=getBufferStrategy();
                 if(strategy==null){createBufferStrategy(2);continue;}
                 try {

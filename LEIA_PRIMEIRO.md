@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RIFT Protocol 1.8
 
 FPS tático 3D original em Java, com **onze agentes, três mapas táticos com alturas, 15 armas de fogo, três lâminas e seis modos locais contra bots**. JAR compilado, código-fonte, testes, capturas incluídas. O solo funciona offline. O duelo entre PCs usa a rede; o modo de dois conjuntos no Windows usa um auxiliar Raw Input.
@@ -25,6 +26,11 @@ A mesma opção existe em **F10 → Gráficos → MODO DESEMPENHO**. O renderiza
 A qualidade AUTO reage ao quadro completo, reduz resolução rapidamente sob carga e a recupera devagar quando sobra tempo. Vai de 384 × 216 a 1066 × 599 internos; HUD, textos e cliques continuam na resolução da janela. As qualidades fixas continuam disponíveis. O canto superior direito mostra FPS, tempo do quadro em ms e resolução interna.
 
 Se ainda estiver lento, execute **DIAGNOSTICO_FPS_WINDOWS.bat** e envie `DIAGNOSTICO_FPS.txt`, junto de uma captura com o contador visível. O diagnóstico mede sem janela e não altera seu perfil. Medições e limitações ficam em `DESEMPENHO_1.6.1.md` e `VERIFICACAO.txt`.
+=======
+# RIFT Protocol 1.6
+
+FPS tático 3D original em Java, com **onze agentes, três mapas táticos com alturas, 15 armas de fogo, três lâminas e seis modos locais contra bots**. JAR compilado, código-fonte, testes, capturas incluídas. Não usa internet nem dependências externas durante o jogo.
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
 
 ## Novidades da versão 1.6 — Impacto e identidade
 
@@ -204,7 +210,11 @@ Preferências, coleção e progressão são salvas em `.rift-protocol` dentro da
 
 ## Desempenho e problemas comuns
 
+<<<<<<< HEAD
 - A qualidade **AUTO** ajusta a resolução interna pelo tempo do quadro completo, incluindo simulação, cenário e interface. Reduz sob carga em poucos quadros e exige folga sustentada antes de subir. A apresentação da janela pelo sistema operacional fica fora dessa medição.
+=======
+- A qualidade **AUTO** ajusta a resolução interna do cenário conforme o tempo de renderização. A interface permanece na resolução da janela.
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
 - Configurações permitem qualidade baixa, média ou alta fixa e limite de 60, 120, 144 ou 240 FPS. O padrão é AUTO e 120 FPS. Distância: 60, 100, 160 ou 210 m; sombras podem ser desligadas.
 - Se houver lentidão, escolha AUTO ou BAIXA e limite 60 FPS. Reduza a distância, desligue sombras, texturas de materiais e marcas/cápsulas se necessário. As ilustrações da interface e o piso continuam visíveis.
 - O renderizador elimina faces escondidas antes de desenhá-las, usa menos cálculos por smoke e evita alocações temporárias nas interseções de tiro.
@@ -220,7 +230,11 @@ Para recompilar com um JDK 17+: `java Build.java`, `COMPILAR_WINDOWS.bat` ou `sh
 
 ```sh
 java -jar RiftProtocol.jar --self-test
+<<<<<<< HEAD
 java -jar RiftProtocol.jar --benchmark-full
+=======
+java -jar RiftProtocol.jar --benchmark
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
 java -jar RiftProtocol.jar --impact-test
 java -jar RiftProtocol.jar --impact-capture screenshots
 ```

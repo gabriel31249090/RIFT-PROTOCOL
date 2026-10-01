@@ -22,7 +22,11 @@ java -Xms128m -Xmx768m -jar "RiftProtocol.jar"
 if errorlevel 1 (
     echo.
     echo Nao foi possivel iniciar. Confira se o comando java -version mostra 17 ou superior.
+<<<<<<< HEAD
     echo Leia o arquivo LEIA_PRIMEIRO.txt para resolver problemas.
+=======
+    echo Leia o arquivo LEIA_PRIMEIRO.md para resolver problemas.
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     pause
 )
 endlocal

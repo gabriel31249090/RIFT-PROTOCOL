@@ -13,7 +13,11 @@ record SurfaceHit(double distance, V point, V normal, int material) {
             V p=from.add(direction.mul(t));V n=normal(p,expanded,direction);
             if(direction.dot(n)>=-1e-8)continue;
             if(t<1e-8)p=new V(n.x()<0?expanded.x1():n.x()>0?expanded.x2():p.x(),n.y()<0?expanded.y1():n.y()>0?expanded.y2():p.y(),n.z()<0?expanded.z1():n.z()>0?expanded.z2():p.z());
+<<<<<<< HEAD
             best=new SurfaceHit(t,p,n,world.material(b).texture);
+=======
+            best=new SurfaceHit(t,p,n,world.penetrable.contains(b)?Assets.WOOD:Assets.CONCRETE);
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         }
         if(direction.y()<-.000001){double t=(radius-from.y())/direction.y();if(t>=-1e-7&&t<=limit&&(best==null||t<best.distance))best=new SurfaceHit(Math.max(0,t),from.add(direction.mul(Math.max(0,t))),new V(0,1,0),Assets.FLOOR);}
         for(Ramp ramp:world.ramps){

@@ -6,9 +6,14 @@ import static rift.Game.*;
 
 /** Articulated low-poly rig: feet, knees, hips, spine, elbows and independently aimed head. */
 final class CharacterModel {
+<<<<<<< HEAD
     static final int[] SKIN={0xCEB8A1,0xAF9073,0x7B8C9A,0xAE9579,0x84909C,0xAE8064,0xCFAC8C,0xB28D76,0xC1A082,0xAC8063,0xD1B299};
     final List<Tri> out;final Actor actor;final double yaw,base,lean,sinYaw,cosYaw,sinLean,cosLean;final int coat,dark=0x263844,skin;
     CharacterModel(List<Tri> out,Actor a,double base,double lean){this.out=out;actor=a;this.base=base;this.lean=lean;yaw=a.bodyYaw;sinYaw=Math.sin(yaw);cosYaw=Math.cos(yaw);sinLean=Math.sin(lean);cosLean=Math.cos(lean);coat=Agent.values()[a.agentIndex].color;skin=SKIN[a.agentIndex];}
+=======
+    final List<Tri> out;final Actor actor;final double yaw,base,lean,sinYaw,cosYaw,sinLean,cosLean;final int coat,dark=0x263844,skin;
+    CharacterModel(List<Tri> out,Actor a,double base,double lean){this.out=out;actor=a;this.base=base;this.lean=lean;yaw=a.bodyYaw;sinYaw=Math.sin(yaw);cosYaw=Math.cos(yaw);sinLean=Math.sin(lean);cosLean=Math.cos(lean);coat=Agent.values()[a.agentIndex].color;skin=new int[]{0xCEB8A1,0xAF9073,0x7B8C9A,0xAE9579,0x84909C,0xAE8064,0xCFAC8C,0xB28D76,0xC1A082,0xAC8063,0xD1B299}[a.agentIndex];}
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     static void animate(Actor a,double dt){
         double k=1-Math.exp(-dt*12);a.animSpeed+=(Math.min(6,a.moveSpeed)-a.animSpeed)*k;a.animCrouch+=((a.crouch?1:0)-a.animCrouch)*k;
         double d=Math.atan2(Math.sin(a.yaw-a.bodyYaw),Math.cos(a.yaw-a.bodyYaw));a.animTurn+=(Settings.clamp(d,-1,1)-a.animTurn)*k;a.bodyYaw+=d*(1-Math.exp(-dt*(a.moveSpeed>.4?10:6)));a.lean+=(Settings.clamp(a.moveSpeed/7,0,.7)-a.lean)*k;
@@ -19,6 +24,7 @@ final class CharacterModel {
         V dir=b.sub(a).unit(),side=new V(dir.z(),0,-dir.x());if(side.length()<.05)side=new V(1,0,0);side=side.unit();V up=new V(dir.y()*side.z()-dir.z()*side.y(),dir.z()*side.x()-dir.x()*side.z(),dir.x()*side.y()-dir.y()*side.x());
         for(int i=0;i<sides;i++){double t=i*Math.PI*2/sides,tt=(i+1)*Math.PI*2/sides;V n=side.mul(Math.cos(t)).add(up.mul(Math.sin(t))),nn=side.mul(Math.cos(tt)).add(up.mul(Math.sin(tt)));V aa=a.add(n.mul(ra)),ab=a.add(nn.mul(ra)),bb=b.add(nn.mul(rb)),ba=b.add(n.mul(rb));int shade=World.shade(color,.70+.28*Math.max(0,Math.sin(t+.5)));tri(aa,ab,bb,shade);tri(aa,bb,ba,shade);tri(a,ab,aa,World.shade(color,.85));tri(b,ba,bb,World.shade(color,1.1));}
     }
+<<<<<<< HEAD
     void box(double x,double y,double z,double xx,double yy,double zz,int color){
         // Share eight transformed corners, instead of transforming 36 triangle vertices.
         V a=p(new V(x,y,z)),b=p(new V(xx,y,z)),c=p(new V(x,yy,z)),d=p(new V(xx,yy,z));
@@ -27,6 +33,9 @@ final class CharacterModel {
         quad(out,a,c,h,e,shade(color,.78));quad(out,b,f,i,d,shade(color,.97));
         quad(out,c,d,i,h,shade(color,1.13));quad(out,a,e,f,b,shade(color,.55));
     }
+=======
+    void box(double x,double y,double z,double xx,double yy,double zz,int color){List<Tri> temp=new ArrayList<>(12);addBox(temp,x,y,z,xx,yy,zz,color,0,0,0,0);for(Tri t:temp)tri(t.a(),t.b(),t.c(),t.color());}
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     void oval(V center,double rx,double ry,double rz,int color,int sides){
         for(int j=0;j<4;j++){double lat=-Math.PI/2+j*Math.PI/4,lat2=lat+Math.PI/4;for(int i=0;i<sides;i++){double t=i*Math.PI*2/sides,t2=(i+1)*Math.PI*2/sides;V a=ellipsoid(center,rx,ry,rz,lat,t),b=ellipsoid(center,rx,ry,rz,lat2,t),c=ellipsoid(center,rx,ry,rz,lat2,t2),d=ellipsoid(center,rx,ry,rz,lat,t2);int col=World.shade(color,.80+.18*Math.sin(t+.8)+.12*Math.sin(lat2));tri(a,b,c,col);tri(a,c,d,col);}}
     }
@@ -37,7 +46,11 @@ final class CharacterModel {
         CharacterModel m=new CharacterModel(out,a,base, a.dead?0:a.lean*.1+duck*.15);int sides=detailed?6:4;
         double hip=.91-duck*.27,torso=1.32-duck*.38,head=1.65-duck*.46;
         // Each foot plants during its stance phase; the swing phase lifts the knee.
+<<<<<<< HEAD
         for(int side=-1;side<=1;side+=2){
+=======
+        for(int side:new int[]{-1,1}){
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
             double phase=cycle+(side==1?0:Math.PI),stride=Math.sin(phase)*.34*speed,lift=Math.max(0,Math.cos(phase))*.19*speed;
             V h=new V(side*.135,hip,-duck*.08),foot=new V(side*.15,.10+lift,stride+duck*.12);
             if(!a.grounded)foot=new V(side*.18,.32+(side==1?.15:0),side*.12-.12);
@@ -80,7 +93,11 @@ final class CharacterModel {
             m.box(-.16,hip+.1,.195,.16,torso-.05,.24,0x334B57);
         }
         if(ai==2){m.oval(new V(0,torso-.14,.242),.10,.10,.03,0xC4C5FE,6);m.box(-.29,torso-.08,-.18,-.23,torso+.03,.13,0xCBD1EC);}
+<<<<<<< HEAD
         if(ai==3){for(int side=-1;side<=1;side+=2)m.bone(new V(side*.22,hip+.16,-.22),new V(side*.22,torso-.04,-.22),.10,.10,0x6C873F,6);}
+=======
+        if(ai==3){for(int side:new int[]{-1,1})m.bone(new V(side*.22,hip+.16,-.22),new V(side*.22,torso-.04,-.22),.10,.10,0x6C873F,6);}
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         if(ai==5){m.box(-.19,hip+.10,.25,-.10,torso-.07,.28,0xF0C689);m.box(.15,torso-.11,-.13,.30,torso+.04,.13,0xC58858);}
         if(ai==6){for(int i=0;i<3;i++)m.bone(new V(-.16+i*.12,torso-.16-i*.065,.25),new V(-.16+i*.12,torso-.28-i*.065,.25),.042,.042,0xDBBA82,6);}
         if(ai==7){m.box(-.235,hip-.20,-.19,-.15,torso-.07,.10,World.shade(m.coat,.85));m.box(.15,hip-.20,-.19,.235,torso-.07,.10,World.shade(m.coat,.85));m.oval(new V(.27,torso-.01,.01),.09,.13,.12,0xC7F5E9,6);}
@@ -89,7 +106,11 @@ final class CharacterModel {
         double shot=a.shotGlow>0?.045:0,armSwing=Math.sin(cycle)*speed*.065;
         V grip=new V(.07,torso-.21+shot,.37-shot),support=new V(-.04-reach*.19,torso-.24-reach*.32,.55-reach*.30);
         if(a.flash>0){support=new V(-.14,head-.08,.26);grip=new V(.17,torso-.35,.22);}
+<<<<<<< HEAD
         for(int side=-1;side<=1;side+=2){
+=======
+        for(int side:new int[]{-1,1}){
+>>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
             V shoulder=new V(side*.255,torso-.02,armSwing*side),hand=side==1?grip:support,elbow=new V(side*.30,torso-.29-reach*(side==-1?.12:0),.10+armSwing*side);
             m.bone(shoulder,elbow,.115,.08,m.coat,sides);m.bone(elbow,hand,.08,.064,m.dark,sides);if(detailed)m.oval(hand,.075,.075,.09,0x455763,6);
             if(side==1)m.bone(shoulder.add(elbow.sub(shoulder).mul(.35)),shoulder.add(elbow.sub(shoulder).mul(.55)),.113,.105,a.team==0?0xADE8CE:0xE78275,sides);
