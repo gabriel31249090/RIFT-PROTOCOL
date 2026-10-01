@@ -1,0 +1,1 @@
+0494a24e6d0adf433b37742387c80ab19cef51cfbf9d2dde8b8267a093ad3793  RiftProtocol.jar

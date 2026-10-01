@@ -1,0 +1,59 @@
+PASS  Duelo 0: spawn livre J1
+PASS  Duelo 0: spawn livre J2
+PASS  Duelo 0: spawn sem linha de tiro direta
+PASS  Duelo 0: passagem entre os lados
+PASS  Duelo 0: perímetro fechado
+PASS  Duelo 1: spawn livre J1
+PASS  Duelo 1: spawn livre J2
+PASS  Duelo 1: spawn sem linha de tiro direta
+PASS  Duelo 1: passagem entre os lados
+PASS  Duelo 1: perímetro fechado
+PASS  Duelo 2: spawn livre J1
+PASS  Duelo 2: spawn livre J2
+PASS  Duelo 2: spawn sem linha de tiro direta
+PASS  Duelo 2: passagem entre os lados
+PASS  Duelo 2: perímetro fechado
+PASS  Dois jogadores prontos iniciam preparação
+PASS  Loadouts diferentes no mesmo servidor
+PASS  Munição e recarga sem referências compartilhadas
+PASS  Cosméticos independentes
+PASS  Movimento bloqueado durante preparação
+PASS  Contagem regressiva libera o duelo
+PASS  W do jogador 1 não movimenta o jogador 2
+PASS  Troca de loadout rejeitada em combate
+PASS  Troca de slot isolada
+PASS  Disparo só consome munição do atirador
+PASS  Servidor calcula headshot, armadura e eliminação
+PASS  Abate encerra rodada e soma uma vitória
+PASS  Rodada seguinte troca lados e repõe equipamentos
+PASS  Desempate por vida e escudo ao fim do tempo
+PASS  Primeiro a sete encerra a partida
+PASS  Revanche exige ambos prontos e zera o placar
+PASS  Snapshot conserva inventário e rodada
+PASS  Snapshot respeita limite de pacote
+PASS  Desconexão finaliza duelo em andamento
+PASS  Protocolo preserva controles e sequência
+PASS  NaN rejeitado na orientação
+PASS  Teclas de habilidades e bits desconhecidos rejeitados
+PASS  Pacotes excessivos rejeitados antes de alocar memória
+PASS  Raw Input converte pontuação e Delete para binds Java
+PASS  Dispositivo J1 conserva teclado, clique e movimento bruto
+PASS  Dispositivo J1 não vaza para J2
+PASS  Ambos jogadores podem manter comandos distintos
+PASS  Pacote antigo de dispositivo é descartado
+PASS  Alt+Tab/recadastro limpa as duas entradas
+PASS  Ponte interrompida não deixa tecla presa
+PASS  Sala real rejeita código errado
+PASS  Duas conexões reais recebem assentos diferentes
+PASS  Os dois clientes recebem snapshots do servidor
+PASS  Sala 1v1 recusa um terceiro jogador
+PASS  Ready atravessa a conexão e inicia preparação
+PASS  Entrada de rede move somente o jogador autenticado
+PASS  Servidor libera teclas após 350 ms sem comandos
+PASS  Tiro enviado pela rede elimina o oponente e replica o placar
+PASS  Servidor desconecta comando não finito
+PASS  Outro cliente recebe saída e resultado
+PASS  Dois renderizadores paralelos preservam as mesmas cores e pixels
+DUEL TESTS OK
+
+56 checks passed.

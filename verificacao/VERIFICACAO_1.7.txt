@@ -1,0 +1,50 @@
+RIFT Protocol 1.7 — verificação de entrega
+Data: 30/09/2026
+Ambiente: OpenJDK 17.0.20, Linux, sem janela nativa.
+
+BUILD
+java Build.java: aprovado; compilação --release 17, recursos incluídos.
+
+REGRESSÃO
+java -Djava.awt.headless=true -jar RiftProtocol.jar --self-test
+631 verificações passaram.
+Inclui 50 verificações de IA/observador/penetração e quatro gates adicionais
+para geometria e raster dinâmico, além dos testes anteriores de armas,
+movimento, economia, rounds, mapas, habilidades, preferências e render.
+
+IA / PARTIDAS COMPLETAS
+RIFT 1.7 / bots × bots / 60 ticks por segundo simulado / sem render
+Java 17.0.20 / Linux
+seed=17000 mapa=CAIS-7 placar=5:0 rounds=5 ataque=4 ticks=25335
+seed=17001 mapa=MONTE AURORA placar=2:5 rounds=7 ataque=5 ticks=35125
+seed=17002 mapa=FERROVIA placar=5:0 rounds=5 ataque=4 ticks=22105
+seed=17003 mapa=CAIS-7 placar=5:4 rounds=9 ataque=7 ticks=46387
+seed=17004 mapa=MONTE AURORA placar=2:5 rounds=7 ataque=5 ticks=38242
+seed=17005 mapa=FERROVIA placar=3:5 rounds=8 ataque=5 ticks=34950
+CONCLUÍDO: 6 partidas / 41 rounds / ataque 73.2% / 38 plants / 8 defuses / 0 timeouts
+CPU simulação: média 0.013 ms/tick / p95 0.064 ms / p99 0.136 ms (amostra inicial 24000)
+Amostra pequena e local; não valida win rate competitivo nem FPS com janela.
+
+
+DESEMPENHO: 1.6.1 (cenário de combate; vida alta para manter dez atores)
+quality=0 interno=640x360 | 12.95ms 77.2FPS p95=17.80ms | IA+sim=0.119ms | simAllocation=6120 bytes/tick | live=10
+quality=1 interno=854x480 | 15.18ms 65.9FPS p95=18.86ms | IA+sim=0.070ms | simAllocation=5315 bytes/tick | live=10
+quality=2 interno=1066x599 | 19.19ms 52.1FPS p95=23.69ms | IA+sim=0.062ms | simAllocation=4349 bytes/tick | live=10
+
+DESEMPENHO: 1.7 final (mesmo programa e configuração inicial)
+quality=0 interno=640x360 | 12.80ms 78.1FPS p95=16.78ms | IA+sim=0.129ms | simAllocation=5533 bytes/tick | live=10
+quality=1 interno=854x480 | 15.03ms 66.5FPS p95=17.80ms | IA+sim=0.086ms | simAllocation=5381 bytes/tick | live=10
+quality=2 interno=1066x599 | 19.60ms 51.0FPS p95=24.70ms | IA+sim=0.079ms | simAllocation=5110 bytes/tick | live=10
+
+
+VISUAL
+Capturas reais do menu e do modo observador renderizadas e inspecionadas.
+Bot olha na altura dos olhos durante deslocamento; novo botão acessível.
+O teste de janela nativa, áudio em dispositivo e entrada de mouse física
+precisa ser feito no PC do jogador. Não foram medidos FPS nessa máquina.
+
+LIMITES
+Rank/progressão/matchmaking/Premier continuam locais. Observador usa POV.
+Não foram publicados GitHub Releases, itch.io ou serviços multiplayer.
+O favorecimento do ataque na amostra de bots ainda exige balanceamento.
+Renderização paralela e navmesh poligonal continuam no roadmap.

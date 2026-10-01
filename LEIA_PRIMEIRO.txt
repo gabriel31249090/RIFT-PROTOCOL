@@ -1,0 +1,30 @@
+RIFT PROTOCOL 1.8 - DUELO
+
+1. Extraia o ZIP inteiro para uma pasta nova.
+2. E necessario Java 17 ou superior.
+3. Para o jogo solo: INICIAR_WINDOWS.bat.
+4. Para duelos: INICIAR_MULTIPLAYER_WINDOWS.bat.
+
+DUAS PESSOAS EM PCS DIFERENTES
+O anfitriao cria a sala. O convidado informa endereco, porta e codigo.
+Cada jogador escolhe suas armas e aperta Enter. Primeiro a sete.
+Internet usa conexao direta: o anfitriao precisa ser alcancavel por porta
+encaminhada no roteador ou por uma VPN entre os PCs. Nao ha matchmaking.
+
+DOIS TECLADOS + DOIS MOUSES NO MESMO WINDOWS (EXPERIMENTAL)
+Escolha Local / dois conjuntos. Abrem duas janelas e um cadastro de dispositivos.
+Cada pessoa aperta Enter no proprio teclado e clica no proprio mouse.
+F9 recadastra. F12 sai. Alt+Tab libera o cursor.
+A ponte Windows ainda precisa de teste com os dispositivos fisicos reais.
+Na primeira vez, usa o compilador do .NET Framework 4.x do Windows.
+
+EQUIPAMENTO
+F5 principal / F6 pistola / F7 agente / F8 skin / Home pingente / End lamina.
+Enter pronto ou revanche. B esconde o painel. 1/2/3 trocam de slot.
+As habilidades estao desativadas no duelo. O solo mantem seus kits.
+Itens e perfis sao separados para cada jogador.
+
+Leia MULTIPLAYER.md para os passos completos e os limites desta versao.
+O ZIP ja inclui o JAR com artes e ponte de dispositivos embutidos.
+Nao abra o JAR de dentro do WinRAR: extraia os arquivos primeiro.
+Se o ZIP der "Final inesperado", descarte a copia incompleta e baixe de novo.
