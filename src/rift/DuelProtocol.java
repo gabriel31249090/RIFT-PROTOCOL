@@ -8,7 +8,7 @@ import static rift.World.*;
 
 /** Bounded, versioned binary messages. Clients can submit controls and loadouts, never damage or positions. */
 final class DuelProtocol {
-    static final int MAGIC=0x52465438,VERSION=1,MAX_PACKET=16384,PORT=27960;
+    static final int MAGIC=0x52465438,VERSION=2,MAX_PACKET=16384,PORT=27960;
     static final int[] KEYS={VK_W,VK_S,VK_A,VK_D,VK_SPACE,VK_SHIFT,VK_CONTROL,VK_R,VK_1,VK_2,VK_3,VK_V};
     static final int KEY_MASK=(1<<KEYS.length)-1;
     record Choice(int primary,int pistol,int agent,int skin,int charm,int blade){

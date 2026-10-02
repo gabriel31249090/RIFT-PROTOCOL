@@ -48,12 +48,16 @@ final class DuelTests {
             s.phase=DuelSimulation.LIVE;s.timer=0;s.players[0].hp=80;s.players[1].hp=45;s.step(new DuelProtocol.Command[]{null,null});check(s.winner==0,"Desempate por vida e escudo ao fim do tempo");
             s.scores[0]=6;s.phase=DuelSimulation.LIVE;s.finish(0,"Teste");s.timer=0;s.step(new DuelProtocol.Command[]{null,null});check(s.phase==DuelSimulation.FINISHED&&s.scores[0]==7,"Primeiro a sete encerra a partida");
             s.step(new DuelProtocol.Command[]{command(true),command(true)});check(s.phase==DuelSimulation.PREP&&s.scores[0]==0&&s.players[0].kills==0,"Revanche exige ambos prontos e zera o placar");
+            Gun serverGun=s.players[0].primary;for(int shot=0;shot<6;shot++)Combat.recoil(serverGun,false,false);serverGun.tick(.1);
             byte[] packet=DuelProtocol.snapshot(s,0,123);Game copy=replica(s.world,0);DuelProtocol.State state=new DuelProtocol.State();DuelProtocol.snapshot(packet,copy,state,0);
             check(copy.player.primary.kind==s.players[0].primary.kind&&state.epoch==s.epoch,"Snapshot conserva inventário e rodada");
+            Gun clientGun=copy.player.primary;
+            check(Math.abs(clientGun.pitchRecoil-serverGun.pitchRecoil)<1e-6&&Math.abs(clientGun.yawRecoil-serverGun.yawRecoil)<1e-6
+                &&Math.abs(clientGun.bloom-serverGun.bloom)<1e-6&&Math.abs(clientGun.shotAge-serverGun.shotAge)<1e-6,"Snapshot replica recuo e dispersão acumulados após rajada");
             check(packet.length<DuelProtocol.MAX_PACKET,"Snapshot respeita limite de pacote");copy.close();
             s.disconnect(1);check(s.phase==DuelSimulation.FINISHED&&s.winner==0,"Desconexão finaliza duelo em andamento");
         }
-        protocol();raw();network();parallelRender();System.out.println("DUEL TESTS OK");
+        protocol();raw();versionMismatch();network();parallelRender();System.out.println("DUEL TESTS OK");
     }
     static Game replica(World world,int seat){Settings settings=new Settings(false);settings.shadows=false;Game g=new Game(settings,false,2,world);g.duel=true;g.ui="play";for(int j=0;j<2;j++){Actor a=new Actor(j,j,"J"+j);a.primary=new Gun(Weapon.ECHO);g.actors.add(a);}g.player=g.actors.get(seat);return g;}
     static void protocol()throws Exception{
@@ -61,6 +65,19 @@ final class DuelTests {
         check(!command(1,0,0,0,Float.NaN,c.choice(),false).valid(),"NaN rejeitado na orientação");
         check(!command(1,1<<29,0,0,0,c.choice(),false).valid(),"Teclas de habilidades e bits desconhecidos rejeitados");
         boolean rejected=false;try{DuelProtocol.receive(new DataInputStream(new ByteArrayInputStream(new byte[]{0x7f,-1,-1,-1})));}catch(IOException ex){rejected=true;}check(rejected,"Pacotes excessivos rejeitados antes de alocar memória");
+    }
+    static void versionMismatch()throws Exception{
+        try(DuelServer server=new DuelServer(0,0,"TEST-19",true);
+            java.net.Socket socket=new java.net.Socket(java.net.InetAddress.getLoopbackAddress(),server.port())){
+            socket.setSoTimeout(3000);
+            DataOutputStream out=new DataOutputStream(socket.getOutputStream());
+            DuelProtocol.send(out,DuelProtocol.bytes(o->{
+                o.writeInt(DuelProtocol.MAGIC);o.writeInt(1);
+                DuelProtocol.text(o,server.code,24);DuelProtocol.text(o,"Cliente 1.8",64);o.writeByte(0);
+            }));
+            DataInputStream reply=DuelProtocol.receive(new DataInputStream(socket.getInputStream()));
+            check(!reply.readBoolean()&&DuelProtocol.text(reply,240).contains("incompat"),"Duelo rejeita cliente 1.8 antes de atribuir um assento");
+        }
     }
     static String hex(int... keys){char[] hex=new char[64];Arrays.fill(hex,'0');for(int k:keys)hex[k/4]=Character.forDigit(Character.digit(hex[k/4],16)|(1<<(k%4)),16);return new String(hex);}
     static void raw(){

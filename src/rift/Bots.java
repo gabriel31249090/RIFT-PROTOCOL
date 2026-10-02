@@ -278,13 +278,11 @@ final class Bots {
         }
         if (!gun.kind.sidearm() && !gun.kind.scoped() && gun.sprayStep >= 3 + g.settings.difficulty * 2) interval = .34;
         gun.cooldown = (interval + (2 - g.settings.difficulty) * .035) / (a.stim > 0 ? 1.25 : 1);
-        double error = .004 + (2 - g.settings.difficulty) * .005 + Combat.movementError(a) * .006;
-        if (!a.grounded) error += .075;
+        double spread = shotSpread(a);
         double compensation = .28 + g.settings.difficulty * .26;
         double yaw = a.yaw + gun.yawRecoil * (1 - compensation);
         double pitch = a.pitch + gun.pitchRecoil * (1 - compensation);
         for (int pellet = 0; pellet < gun.kind.pellets; pellet++) {
-            double spread = gun.kind.pellets > 1 ? gun.kind.spread : error + gun.kind.spread * .3;
             double sy = yaw + (random.nextDouble() - .5) * spread * 2;
             double sp = pitch + (random.nextDouble() - .5) * spread * 2;
             g.shoot(a, new V(Math.sin(sy) * Math.cos(sp), Math.sin(sp), Math.cos(sy) * Math.cos(sp)), gun.kind);
@@ -296,6 +294,10 @@ final class Bots {
             g.audio.playAt("distant", Math.sin(Math.atan2(a.x - listener.x, a.z - listener.z) - listener.yaw),
                 Math.max(.08, 1 - listener.distance(a) / 45) * (g.world.visible(listener.eye(), a.eye()) ? 1 : .35));
         }
+    }
+
+    double shotSpread(Actor a) {
+        return Combat.spread(a, a.gun().kind.scoped(), false) + .004 + (2 - g.settings.difficulty) * .005;
     }
 
     void duel(Actor a, double dt) {

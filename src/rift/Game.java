@@ -31,16 +31,20 @@ final class Game {
         RIDGE("RIDGE",Category.PRECISION,FireMode.SEMI,2250,12,36,65,195,.32,2.3,.004,1,0xB4BE9F,45,.31,.92,39),
         HORIZON("HORIZON",Category.PRECISION,FireMode.SEMI,4200,5,20,100,170,1.12,2.6,.005,1,0xABA3CE,95,.48,.85,57),
         BASTION("BASTION",Category.HEAVY,FireMode.AUTO,3200,75,150,32,104,.105,3.7,.024,1,0xB7C3AB,35,.20,.80,24);
-        final String label,type;final Category category;final FireMode mode;
+        final String label,type;final Category category;final FireMode mode;final WeaponHandling handling;
         final int price,mag,reserve,body,head,pellets,color;final double interval,reload,spread,range,kick,mobility,zoom;
         Weapon(String label,Category category,FireMode mode,int price,int mag,int reserve,int body,int head,double interval,double reload,double spread,int pellets,int color,double range,double kick,double mobility,double zoom) {
             this.label=label;this.category=category;this.type=category.label;this.mode=mode;this.price=price;this.mag=mag;this.reserve=reserve;this.body=body;this.head=head;
             this.interval=interval;this.reload=reload;this.spread=spread;this.pellets=pellets;this.color=color;this.range=range;this.kick=kick;this.mobility=mobility;this.zoom=zoom;
+            this.handling=WeaponHandling.valueOf(name());
         }
         boolean sidearm(){return category==Category.PISTOL;}
         boolean scoped(){return zoom>=35;}
         boolean silenced(){return this==VEIL||this==SHADE;}
-        double damageAt(double distance,boolean headshot){double fall=pellets>1?Settings.clamp(1-(distance-range)/25,.18,1):distance>range?.82:1;return (headshot?head:body)*fall;}
+        double damageAt(double distance,boolean headshot){
+            double fall=Math.max(pellets>1?.18:.45,Math.pow(handling.rangeRetention,Math.max(0,distance-range)/25));
+            return (headshot?head:body)*fall;
+        }
         String sound(){return "shot_"+name();}
         String detail(){return switch(this){case SPARK->"Pistola leve, um disparo por clique.";case VEIL->"Silenciador, precisão e pouca dispersão.";case TALON->"Revólver de seis tiros e alto impacto.";case RUSH->"Pistola automática para combate próximo.";case DART->"Dois canos, 12 projéteis por disparo.";case WISP->"Controle e mobilidade em distâncias curtas.";case CIRCUIT->"Alta cadência e carregador de 32 tiros.";case ECHO->"Fuzil de alto dano e recuo progressivo.";case SHADE->"Fuzil silenciado, estável e de tiro rápido.";case HELIX->"Três disparos por clique, com pausa entre rajadas.";case MARROW->"Escopeta de bombeamento e nove projéteis.";case BREACH->"Escopeta automática com carregador destacável.";case RIDGE->"Fuzil semiautomático com luneta curta.";case HORIZON->"Precisão pesada, luneta e ação por ferrolho.";case BASTION->"75 tiros, cadência sustentada e movimento pesado.";};}
     }
@@ -92,7 +96,11 @@ final class Game {
     static final class Gun {
         final Weapon kind;int ammo,reserve,burstLeft;double reload,cooldown,cooldownDebt,reloadTotal,shotAge=9,pitchRecoil,yawRecoil,bloom;int sprayStep,reloadStage;
         Gun(Weapon w){kind=w;ammo=w.mag;reserve=w.reserve;reloadTotal=w.reload;}
-        void tick(double dt){shotAge+=dt;if(shotAge>Combat.recovery(kind)){sprayStep=0;double decay=Math.exp(-dt*27);pitchRecoil*=decay;yawRecoil*=decay;bloom*=decay;}cooldownDebt=0;if(cooldown>0){cooldown-=dt;if(cooldown<0){cooldownDebt=-cooldown;cooldown=0;}}if(reload>0){reload-=dt;if(reload<=0){int take=Math.min(kind.mag-ammo,reserve);ammo+=take;reserve-=take;}}}
+        void tick(double dt){
+            Combat.recover(this,dt);
+            cooldownDebt=0;if(cooldown>0){cooldown-=dt;if(cooldown<0){cooldownDebt=-cooldown;cooldown=0;}}
+            if(reload>0){reload-=dt;if(reload<=0){int take=Math.min(kind.mag-ammo,reserve);ammo+=take;reserve-=take;}}
+        }
     }
     static final class Actor {
         final int id;int team;final String name;
@@ -433,13 +441,7 @@ final class Game {
         if(a.melee())return;Gun gun=a.gun();if(gun.reload>0||gun.ammo==gun.kind.mag||gun.reserve<=0)return;
         gun.burstLeft=0;gun.reloadTotal=gun.kind.reload*(a==player&&focus>0?.6:1);gun.reload=gun.reloadTotal;gun.reloadStage=0;bots.noise(a,Bots.Noise.RELOAD,13);if(a==player){combat.inspect=0;audio.play("reload");}
     }
-    double playerSpread(){
-        Gun gun=player.gun();Weapon w=gun.kind;
-        double base=w.spread*(w.pellets>1?1:.30)*(aiming?.35:1)*(player.crouch?.8:1);
-        if(w==Weapon.HORIZON&&!aiming)base+=.035;
-        base+=Combat.movementError(player)*.018+(player.grounded?0:.10)+(player.landRecovery>0?.018:0)+gun.bloom;
-        return base*(focus>0?.18:1);
-    }
+    double playerSpread(){return Combat.spread(player,aiming,focus>0);}
     void firePlayer() {
         if(player.melee())return;combat.inspect=0;Gun gun=player.gun();if(gun.ammo<=0){reload(player);return;}
         player.invulnerable=0;gun.ammo--;double interval=gun.kind.interval;

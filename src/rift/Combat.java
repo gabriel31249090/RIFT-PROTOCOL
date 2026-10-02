@@ -20,11 +20,21 @@ final class Combat {
     void movement(double dt,double speed){
         Actor a=g.player;int n=Math.max(1,(int)Math.ceil(dt*240));double step=dt/n;
         for(int i=0;i<n;i++){
-            double tx=a.intentX*speed,tz=a.intentZ*speed,dx=tx-a.vx,dz=tz-a.vz,length=Math.hypot(dx,dz);
             if(a.grounded){
-                boolean stop=Math.abs(tx)+Math.abs(tz)<.01,reverse=tx*a.vx+tz*a.vz<-.01;
-                double acceleration=stop?85:reverse?100:60;
-                double t=length<.001?1:Math.min(1,acceleration*step/length);a.vx+=dx*t;a.vz+=dz*t;
+                boolean moving=speed>0&&Math.hypot(a.intentX,a.intentZ)>.1;
+                double velocity=Math.hypot(a.vx,a.vz),stopSpeed=moving?Math.min(1.2,speed*.25):6.2;
+                if(velocity>0){
+                    double remaining=Math.max(0,velocity-Math.max(velocity,stopSpeed)*(moving?6:14)*step);
+                    a.vx*=remaining/velocity;a.vz*=remaining/velocity;
+                }
+                if(moving){
+                    // Friction removes old momentum; acceleration only fills the requested projection.
+                    double projection=a.vx*a.intentX+a.vz*a.intentZ;
+                    double add=Math.min(Math.max(0,speed-projection),speed*12*step);
+                    a.vx+=a.intentX*add;a.vz+=a.intentZ*add;
+                    velocity=Math.hypot(a.vx,a.vz);
+                    if(velocity>speed){a.vx*=speed/velocity;a.vz*=speed/velocity;}
+                }
             }else if(speed>0&&Math.hypot(a.intentX,a.intentZ)>.1){
                 // Projection-limited air acceleration allows orthogonal strafe to add speed.
                 double projection=a.vx*a.intentX+a.vz*a.intentZ;
@@ -73,12 +83,30 @@ final class Combat {
         g.kickVelocity+=.45;
     }
     void impact(V at,boolean hit){g.audio.play(hit?"bladehit":"metal");for(int i=0;i<7;i++)g.particle(at,new V((g.rng.nextDouble()-.5)*2,g.rng.nextDouble()*2,(g.rng.nextDouble()-.5)*2),.25,.026,hit?0xF3D5B0:0xABD7DD);}
-    static double recovery(Weapon w){return w.pellets>1?.32:w.scoped()?.40:w.category==Category.SMG?.20:w.sidearm()?.21:.28;}
+    static double recovery(Weapon w){return w.handling.recoveryDelay;}
+    static void recover(Gun gun,double dt){
+        double before=gun.shotAge;gun.shotAge+=dt;
+        // Only time past the recovery delay counts, including frames that cross it.
+        double active=Math.max(0,gun.shotAge-recovery(gun.kind))-Math.max(0,before-recovery(gun.kind));
+        if(active>0){
+            gun.sprayStep=0;double decay=Math.exp(-active*gun.kind.handling.recoveryRate);
+            gun.pitchRecoil*=decay;gun.yawRecoil*=decay;gun.bloom*=decay;
+        }
+    }
     static double movementError(Actor p){double max=p.melee()?6.2:5.4*p.gun().kind.mobility;return Math.max(0,p.moveSpeed-max*.275);}
+    static double spread(Actor actor,boolean aiming,boolean focus){
+        Gun gun=actor.gun();Weapon w=gun.kind;WeaponHandling h=w.handling;
+        double base=w.spread*(w.pellets>1?1:.30)*(aiming?.35:1)*(actor.crouch?.8:1);
+        if(w==Weapon.HORIZON&&!aiming)base+=.035;
+        base+=movementError(actor)*h.moveSpread+(actor.grounded?0:h.airSpread)+(actor.landRecovery>0?.018:0)+gun.bloom;
+        return base*(focus?.18:1);
+    }
     static void recoil(Gun gun,boolean crouch,boolean focus){
-        gun.shotAge=0;int step=++gun.sprayStep;double strength=(crouch?.82:1)*(focus?.25:1)*gun.kind.kick/.16;
-        gun.pitchRecoil=Math.min(.080,.006*step+.003*Math.max(0,step-3))*strength;
-        gun.yawRecoil=step<=5?0:Math.sin((step-5)*.72)*Math.min(.034,(step-5)*.005)*strength;
-        gun.bloom=Math.min(.028,Math.max(0,step-2)*.0024)*strength;
+        gun.shotAge=0;int step=++gun.sprayStep;WeaponHandling h=gun.kind.handling;
+        double strength=(crouch?.82:1)*(focus?.25:1);
+        gun.pitchRecoil=Math.min(h.riseCap,h.rise+(step-1)*h.riseGrowth)*strength;
+        int lateral=Math.max(0,step-h.sideStart);
+        gun.yawRecoil=Math.sin(lateral*h.sideFrequency)*Math.min(h.sideCap,lateral*h.sideGrowth)*strength;
+        gun.bloom=Math.min(h.bloomCap,Math.max(0,step-2)*h.bloomGrowth)*strength;
     }
 }

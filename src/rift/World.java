@@ -246,8 +246,11 @@ final class World {
         return floor;
     }
     double ray(V start,V dir,double max) {
+        return ray(start,dir,max,List.of());
+    }
+    double ray(V start,V dir,double max,Collection<Box> ignoredSolids) {
         double best=max;
-        for(Box b:solids) {double t=rayBox(start,dir,b);if(t>=0&&t<best)best=t;}
+        for(Box b:solids) {if(ignoredSolids.contains(b))continue;double t=rayBox(start,dir,b);if(t>=0&&t<best)best=t;}
         for(Box b:temporary){double t=rayBox(start,dir,b);if(t>=0&&t<best)best=t;}
         for(Ramp r:ramps){double slope=(r.reverse?-1:1)*r.height/(r.z2-r.z1),base=r.reverse?r.height:0,den=dir.y-slope*dir.z;
             double entry=rayBox(start,dir,new Box(r.x1,0,r.z1,r.x2,r.height,r.z2,0));

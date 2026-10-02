@@ -1,4 +1,4 @@
-# RIFT Protocol 1.8.1
+# RIFT Protocol 1.9
 
 FPS tático 3D original em Java, com **onze agentes, três mapas táticos com alturas, 15 armas de fogo, três lâminas e seis modos locais contra bots**. JAR compilado, código-fonte, testes, capturas incluídas. O solo funciona offline. O duelo entre PCs usa a rede; o modo de dois conjuntos no Windows usa um auxiliar Raw Input.
 
@@ -192,7 +192,9 @@ O corte repete segurando o botão; o golpe forte exige um novo clique. Golpes ex
 
 **Luneta:** clicar e soltar mantém a mira. Clique direito novamente para fechar. Trocar de arma ou morrer desativa a luneta; a recarga a oculta temporariamente. A opção de alternar para as outras armas é independente.
 
-Semiautomáticas disparam uma vez por clique. Automáticas disparam enquanto o botão estiver pressionado. A Helix completa uma rajada de três tiros por clique. Pare de correr para melhorar a precisão; agachar e mirar reduzem dispersão. Disparos longos exigem compensar o recuo com o mouse. A frenagem atravessa um limiar de precisão a 27,5% da velocidade de corrida da arma; tiros no ar e logo após aterrissar recebem penalidade. O recuo se recupera ao pausar a rajada. Horizon tem dispersão maior sem usar a luneta.
+Semiautomáticas disparam uma vez por clique. Automáticas disparam enquanto o botão estiver pressionado. A Helix completa uma rajada de três tiros por clique. Pare de correr para melhorar a precisão; agachar e mirar reduzem dispersão. Disparos longos exigem compensar o recuo com o mouse. A frenagem atravessa um limiar de precisão a 27,5% da velocidade de corrida da arma; tiros no ar e logo após aterrissar recebem penalidade. Cada arma tem seu padrão, limite e tempo de recuperação de recuo; pausar a rajada restaura a precisão. Os bots recebem as mesmas penalidades físicas, além do erro de mira da dificuldade. Horizon tem dispersão maior sem usar a luneta.
+
+Além do alcance nominal, o dano diminui gradualmente conforme a arma. A penetração depende da potência, material, espessura e ângulo; pistolas/SMGs atravessam no máximo uma cobertura, fuzis/precisão/pesadas no máximo duas e escopetas não atravessam. Barreiras sólidas e temporárias continuam bloqueando o tiro.
 
 ## Progressão
 

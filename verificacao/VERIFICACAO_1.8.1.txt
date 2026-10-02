@@ -1,0 +1,59 @@
+RIFT Protocol 1.8.1 - verificacao de entrega
+Data: 02/10/2026
+Ambiente: Windows 10 informado pelo Java, Temurin/OpenJDK 17.0.12, 4 CPUs logicas.
+
+RESOLUCAO DO MERGE
+23 arquivos continham marcadores de conflito commitados em 96a550e.
+Cada resolucao foi comparada com 08d40f4, a versao 1.8 antes do merge.
+Todos os 23 arquivos coincidiram com essa referencia antes das mudancas
+de identificacao/documentacao da 1.8.1. Nenhuma logica antiga foi reintroduzida.
+Revisao e busca final confirmam ausencia de marcadores de conflito.
+
+COMPILACAO E PACOTE
+java Build.java: aprovado; --release 17; recursos incluidos no JAR.
+Manifesto: Main-Class rift.Main; Implementation-Version 1.8.1.
+Log: verificacao/build-1.8.1.log.
+O self-test executou em pasta temporaria contendo somente o novo JAR,
+sem fontes nem assets externos, validando o carregamento dos recursos internos.
+SHA256SUMS.txt registra o hash do executavel recompilado.
+
+REGRESSAO, SOLO E MULTIPLAYER
+java -Xmx1g "-Djava.awt.headless=true" -jar RiftProtocol.jar --self-test
+687 verificacoes aprovadas. Log: verificacao/self-test-1.8.1.log.
+Inclui compra, economia, armas, movimento, habilidades, mapas, configuracoes,
+percepcao e combate dos bots, penetracao e equivalencia de pixels do raster.
+A mesma suite inclui servidor e dois clientes TCP reais em loopback:
+codigo de sala, lotacao, movimento, disparo, placar, timeout e desconexao.
+Tambem verifica isolamento das entradas e renderizacao paralela do duelo.
+Nao foi necessario repetir a suite --duel-test separadamente.
+
+PARTIDAS COMPLETAS DOS BOTS
+--simulate-bots 3: aprovado; 3 mapas, 17 rodadas, 16 plants e 3 defuses.
+CAIS-7: 5:0; MONTE AURORA: 2:5; FERROVIA: 5:0.
+Nenhuma partida travou; estados finitos e creditos/municao nao negativos.
+Media da simulacao: 0.049 ms/tick; p95: 0.106 ms; p99: 0.413 ms.
+Log: verificacao/bots-1.8.1.log. A amostra nao valida equilibrio competitivo.
+
+PONTE WINDOWS
+RawInputBridge.cs compilou com csc do .NET Framework 4.x no Windows.
+Foi gerado um executavel temporario, sem inicia-lo ou cadastrar dispositivos.
+Aviso CS0108: o metodo Name oculta Control.Name; nao impediu a compilacao.
+Log: verificacao/native-build-1.8.1.log.
+O modo de dois conjuntos permanece experimental: hardware nao foi testado.
+
+VISUAL E DESEMPENHO
+Capturas de menu, treino, solo, placar, materiais, arsenal, habilidades,
+equipamento e tres arenas em verificacao/capturas-1.8.1 e verificacao/duelo-1.8.1.
+Menu, solo e as tres arenas/painel de equipamento foram inspecionados.
+Os PNGs sao saidas do renderizador sem janela, nao capturas de jogo presencial.
+Benchmarks do JAR original 1.8 e do recompilado 1.8.1 rodaram sequencialmente
+na mesma maquina. Veja DESEMPENHO_1.8.1.md e os logs em verificacao/.
+A primeira amostra do original variou muito; uma repeticao foi registrada.
+Nao ha promessa de FPS, e esta versao nao adiciona otimizacoes de render.
+
+LIMITES
+Nao foram testados dois teclados/mouses fisicos, dois monitores, foco/cursor,
+tela cheia, audio fisico, LAN entre PCs, roteador ou internet publica.
+Duelo continua sem habilidades, previsao, compensacao de latencia, reconexao,
+matchmaking/relay hospedado ou ranking global.
+Historico da entrega anterior: verificacao/VERIFICACAO_1.8.txt.

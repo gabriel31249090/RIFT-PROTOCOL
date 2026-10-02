@@ -1,0 +1,521 @@
+PASS  Perfil exclusivo ligado a SPARK
+PASS  Parametros de manejo finitos e limitados: SPARK
+PASS  Perfil exclusivo ligado a VEIL
+PASS  Parametros de manejo finitos e limitados: VEIL
+PASS  Perfil exclusivo ligado a TALON
+PASS  Parametros de manejo finitos e limitados: TALON
+PASS  Perfil exclusivo ligado a RUSH
+PASS  Parametros de manejo finitos e limitados: RUSH
+PASS  Perfil exclusivo ligado a DART
+PASS  Parametros de manejo finitos e limitados: DART
+PASS  Perfil exclusivo ligado a WISP
+PASS  Parametros de manejo finitos e limitados: WISP
+PASS  Perfil exclusivo ligado a CIRCUIT
+PASS  Parametros de manejo finitos e limitados: CIRCUIT
+PASS  Perfil exclusivo ligado a ECHO
+PASS  Parametros de manejo finitos e limitados: ECHO
+PASS  Perfil exclusivo ligado a SHADE
+PASS  Parametros de manejo finitos e limitados: SHADE
+PASS  Perfil exclusivo ligado a HELIX
+PASS  Parametros de manejo finitos e limitados: HELIX
+PASS  Perfil exclusivo ligado a MARROW
+PASS  Parametros de manejo finitos e limitados: MARROW
+PASS  Perfil exclusivo ligado a BREACH
+PASS  Parametros de manejo finitos e limitados: BREACH
+PASS  Perfil exclusivo ligado a RIDGE
+PASS  Parametros de manejo finitos e limitados: RIDGE
+PASS  Perfil exclusivo ligado a HORIZON
+PASS  Parametros de manejo finitos e limitados: HORIZON
+PASS  Perfil exclusivo ligado a BASTION
+PASS  Parametros de manejo finitos e limitados: BASTION
+PASS  As quinze armas possuem perfis independentes
+PASS  Padrao de recuo deterministico: SPARK
+PASS  Recuo e dispersao crescem ate os limites: SPARK
+PASS  Disparo avanca contador e reinicia recuperacao: SPARK
+PASS  Agachar reduz recuo sem ampliar dispersao: SPARK
+PASS  FOCO reduz recuo e dispersao: SPARK
+PASS  Instancias da mesma arma nao compartilham estado: SPARK
+PASS  Padrao de recuo deterministico: VEIL
+PASS  Recuo e dispersao crescem ate os limites: VEIL
+PASS  Disparo avanca contador e reinicia recuperacao: VEIL
+PASS  Agachar reduz recuo sem ampliar dispersao: VEIL
+PASS  FOCO reduz recuo e dispersao: VEIL
+PASS  Instancias da mesma arma nao compartilham estado: VEIL
+PASS  Padrao de recuo deterministico: TALON
+PASS  Recuo e dispersao crescem ate os limites: TALON
+PASS  Disparo avanca contador e reinicia recuperacao: TALON
+PASS  Agachar reduz recuo sem ampliar dispersao: TALON
+PASS  FOCO reduz recuo e dispersao: TALON
+PASS  Instancias da mesma arma nao compartilham estado: TALON
+PASS  Padrao de recuo deterministico: RUSH
+PASS  Recuo e dispersao crescem ate os limites: RUSH
+PASS  Disparo avanca contador e reinicia recuperacao: RUSH
+PASS  Agachar reduz recuo sem ampliar dispersao: RUSH
+PASS  FOCO reduz recuo e dispersao: RUSH
+PASS  Instancias da mesma arma nao compartilham estado: RUSH
+PASS  Padrao de recuo deterministico: DART
+PASS  Recuo e dispersao crescem ate os limites: DART
+PASS  Disparo avanca contador e reinicia recuperacao: DART
+PASS  Agachar reduz recuo sem ampliar dispersao: DART
+PASS  FOCO reduz recuo e dispersao: DART
+PASS  Instancias da mesma arma nao compartilham estado: DART
+PASS  Padrao de recuo deterministico: WISP
+PASS  Recuo e dispersao crescem ate os limites: WISP
+PASS  Disparo avanca contador e reinicia recuperacao: WISP
+PASS  Agachar reduz recuo sem ampliar dispersao: WISP
+PASS  FOCO reduz recuo e dispersao: WISP
+PASS  Instancias da mesma arma nao compartilham estado: WISP
+PASS  Padrao de recuo deterministico: CIRCUIT
+PASS  Recuo e dispersao crescem ate os limites: CIRCUIT
+PASS  Disparo avanca contador e reinicia recuperacao: CIRCUIT
+PASS  Agachar reduz recuo sem ampliar dispersao: CIRCUIT
+PASS  FOCO reduz recuo e dispersao: CIRCUIT
+PASS  Instancias da mesma arma nao compartilham estado: CIRCUIT
+PASS  Padrao de recuo deterministico: ECHO
+PASS  Recuo e dispersao crescem ate os limites: ECHO
+PASS  Disparo avanca contador e reinicia recuperacao: ECHO
+PASS  Agachar reduz recuo sem ampliar dispersao: ECHO
+PASS  FOCO reduz recuo e dispersao: ECHO
+PASS  Instancias da mesma arma nao compartilham estado: ECHO
+PASS  Padrao de recuo deterministico: SHADE
+PASS  Recuo e dispersao crescem ate os limites: SHADE
+PASS  Disparo avanca contador e reinicia recuperacao: SHADE
+PASS  Agachar reduz recuo sem ampliar dispersao: SHADE
+PASS  FOCO reduz recuo e dispersao: SHADE
+PASS  Instancias da mesma arma nao compartilham estado: SHADE
+PASS  Padrao de recuo deterministico: HELIX
+PASS  Recuo e dispersao crescem ate os limites: HELIX
+PASS  Disparo avanca contador e reinicia recuperacao: HELIX
+PASS  Agachar reduz recuo sem ampliar dispersao: HELIX
+PASS  FOCO reduz recuo e dispersao: HELIX
+PASS  Instancias da mesma arma nao compartilham estado: HELIX
+PASS  Padrao de recuo deterministico: MARROW
+PASS  Recuo e dispersao crescem ate os limites: MARROW
+PASS  Disparo avanca contador e reinicia recuperacao: MARROW
+PASS  Agachar reduz recuo sem ampliar dispersao: MARROW
+PASS  FOCO reduz recuo e dispersao: MARROW
+PASS  Instancias da mesma arma nao compartilham estado: MARROW
+PASS  Padrao de recuo deterministico: BREACH
+PASS  Recuo e dispersao crescem ate os limites: BREACH
+PASS  Disparo avanca contador e reinicia recuperacao: BREACH
+PASS  Agachar reduz recuo sem ampliar dispersao: BREACH
+PASS  FOCO reduz recuo e dispersao: BREACH
+PASS  Instancias da mesma arma nao compartilham estado: BREACH
+PASS  Padrao de recuo deterministico: RIDGE
+PASS  Recuo e dispersao crescem ate os limites: RIDGE
+PASS  Disparo avanca contador e reinicia recuperacao: RIDGE
+PASS  Agachar reduz recuo sem ampliar dispersao: RIDGE
+PASS  FOCO reduz recuo e dispersao: RIDGE
+PASS  Instancias da mesma arma nao compartilham estado: RIDGE
+PASS  Padrao de recuo deterministico: HORIZON
+PASS  Recuo e dispersao crescem ate os limites: HORIZON
+PASS  Disparo avanca contador e reinicia recuperacao: HORIZON
+PASS  Agachar reduz recuo sem ampliar dispersao: HORIZON
+PASS  FOCO reduz recuo e dispersao: HORIZON
+PASS  Instancias da mesma arma nao compartilham estado: HORIZON
+PASS  Padrao de recuo deterministico: BASTION
+PASS  Recuo e dispersao crescem ate os limites: BASTION
+PASS  Disparo avanca contador e reinicia recuperacao: BASTION
+PASS  Agachar reduz recuo sem ampliar dispersao: BASTION
+PASS  FOCO reduz recuo e dispersao: BASTION
+PASS  Instancias da mesma arma nao compartilham estado: BASTION
+PASS  ECHO mantem recuo vertical e lateral em rajada longa
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: SPARK
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: SPARK
+PASS  Recuo respeita limites durante cadencia legal: SPARK
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: SPARK
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: SPARK
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: VEIL
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: VEIL
+PASS  Recuo respeita limites durante cadencia legal: VEIL
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: VEIL
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: VEIL
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: TALON
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: TALON
+PASS  Recuo respeita limites durante cadencia legal: TALON
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: TALON
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: TALON
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: RUSH
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: RUSH
+PASS  Recuo respeita limites durante cadencia legal: RUSH
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: RUSH
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: RUSH
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: DART
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: DART
+PASS  Recuo respeita limites durante cadencia legal: DART
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: DART
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: DART
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: WISP
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: WISP
+PASS  Recuo respeita limites durante cadencia legal: WISP
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: WISP
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: WISP
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: CIRCUIT
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: CIRCUIT
+PASS  Recuo respeita limites durante cadencia legal: CIRCUIT
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: CIRCUIT
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: CIRCUIT
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: ECHO
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: ECHO
+PASS  Recuo respeita limites durante cadencia legal: ECHO
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: ECHO
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: ECHO
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: SHADE
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: SHADE
+PASS  Recuo respeita limites durante cadencia legal: SHADE
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: SHADE
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: SHADE
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: HELIX
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: HELIX
+PASS  Recuo respeita limites durante cadencia legal: HELIX
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: HELIX
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: HELIX
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: MARROW
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: MARROW
+PASS  Recuo respeita limites durante cadencia legal: MARROW
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: MARROW
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: MARROW
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: BREACH
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: BREACH
+PASS  Recuo respeita limites durante cadencia legal: BREACH
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: BREACH
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: BREACH
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: RIDGE
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: RIDGE
+PASS  Recuo respeita limites durante cadencia legal: RIDGE
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: RIDGE
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: RIDGE
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: HORIZON
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: HORIZON
+PASS  Recuo respeita limites durante cadencia legal: HORIZON
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: HORIZON
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: HORIZON
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: BASTION
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: BASTION
+PASS  Recuo respeita limites durante cadencia legal: BASTION
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: BASTION
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: BASTION
+PASS  Recuo permanece durante atraso de recuperacao: SPARK
+PASS  Passo que cruza atraso recupera somente o tempo ativo: SPARK
+PASS  Recuperacao independe da particao temporal: SPARK
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: SPARK
+PASS  Pausa reduz recuo e reinicia a primeira rajada: SPARK
+PASS  Recuo permanece durante atraso de recuperacao: VEIL
+PASS  Passo que cruza atraso recupera somente o tempo ativo: VEIL
+PASS  Recuperacao independe da particao temporal: VEIL
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: VEIL
+PASS  Pausa reduz recuo e reinicia a primeira rajada: VEIL
+PASS  Recuo permanece durante atraso de recuperacao: TALON
+PASS  Passo que cruza atraso recupera somente o tempo ativo: TALON
+PASS  Recuperacao independe da particao temporal: TALON
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: TALON
+PASS  Pausa reduz recuo e reinicia a primeira rajada: TALON
+PASS  Recuo permanece durante atraso de recuperacao: RUSH
+PASS  Passo que cruza atraso recupera somente o tempo ativo: RUSH
+PASS  Recuperacao independe da particao temporal: RUSH
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: RUSH
+PASS  Pausa reduz recuo e reinicia a primeira rajada: RUSH
+PASS  Recuo permanece durante atraso de recuperacao: DART
+PASS  Passo que cruza atraso recupera somente o tempo ativo: DART
+PASS  Recuperacao independe da particao temporal: DART
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: DART
+PASS  Pausa reduz recuo e reinicia a primeira rajada: DART
+PASS  Recuo permanece durante atraso de recuperacao: WISP
+PASS  Passo que cruza atraso recupera somente o tempo ativo: WISP
+PASS  Recuperacao independe da particao temporal: WISP
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: WISP
+PASS  Pausa reduz recuo e reinicia a primeira rajada: WISP
+PASS  Recuo permanece durante atraso de recuperacao: CIRCUIT
+PASS  Passo que cruza atraso recupera somente o tempo ativo: CIRCUIT
+PASS  Recuperacao independe da particao temporal: CIRCUIT
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: CIRCUIT
+PASS  Pausa reduz recuo e reinicia a primeira rajada: CIRCUIT
+PASS  Recuo permanece durante atraso de recuperacao: ECHO
+PASS  Passo que cruza atraso recupera somente o tempo ativo: ECHO
+PASS  Recuperacao independe da particao temporal: ECHO
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: ECHO
+PASS  Pausa reduz recuo e reinicia a primeira rajada: ECHO
+PASS  Recuo permanece durante atraso de recuperacao: SHADE
+PASS  Passo que cruza atraso recupera somente o tempo ativo: SHADE
+PASS  Recuperacao independe da particao temporal: SHADE
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: SHADE
+PASS  Pausa reduz recuo e reinicia a primeira rajada: SHADE
+PASS  Recuo permanece durante atraso de recuperacao: HELIX
+PASS  Passo que cruza atraso recupera somente o tempo ativo: HELIX
+PASS  Recuperacao independe da particao temporal: HELIX
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: HELIX
+PASS  Pausa reduz recuo e reinicia a primeira rajada: HELIX
+PASS  Recuo permanece durante atraso de recuperacao: MARROW
+PASS  Passo que cruza atraso recupera somente o tempo ativo: MARROW
+PASS  Recuperacao independe da particao temporal: MARROW
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: MARROW
+PASS  Pausa reduz recuo e reinicia a primeira rajada: MARROW
+PASS  Recuo permanece durante atraso de recuperacao: BREACH
+PASS  Passo que cruza atraso recupera somente o tempo ativo: BREACH
+PASS  Recuperacao independe da particao temporal: BREACH
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: BREACH
+PASS  Pausa reduz recuo e reinicia a primeira rajada: BREACH
+PASS  Recuo permanece durante atraso de recuperacao: RIDGE
+PASS  Passo que cruza atraso recupera somente o tempo ativo: RIDGE
+PASS  Recuperacao independe da particao temporal: RIDGE
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: RIDGE
+PASS  Pausa reduz recuo e reinicia a primeira rajada: RIDGE
+PASS  Recuo permanece durante atraso de recuperacao: HORIZON
+PASS  Passo que cruza atraso recupera somente o tempo ativo: HORIZON
+PASS  Recuperacao independe da particao temporal: HORIZON
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: HORIZON
+PASS  Pausa reduz recuo e reinicia a primeira rajada: HORIZON
+PASS  Recuo permanece durante atraso de recuperacao: BASTION
+PASS  Passo que cruza atraso recupera somente o tempo ativo: BASTION
+PASS  Recuperacao independe da particao temporal: BASTION
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: BASTION
+PASS  Pausa reduz recuo e reinicia a primeira rajada: BASTION
+PASS  Recuperacao conserva recarga e compensacao de cadencia
+PASS  Dano base preservado ate alcance nominal: SPARK
+PASS  Dano continuo no antigo degrau de alcance: SPARK
+PASS  Queda gradual preserva fator comum de corpo e cabeca: SPARK
+PASS  Retencao calibrada por arma a cada 25 metros: SPARK
+PASS  Dano base preservado ate alcance nominal: VEIL
+PASS  Dano continuo no antigo degrau de alcance: VEIL
+PASS  Queda gradual preserva fator comum de corpo e cabeca: VEIL
+PASS  Retencao calibrada por arma a cada 25 metros: VEIL
+PASS  Dano base preservado ate alcance nominal: TALON
+PASS  Dano continuo no antigo degrau de alcance: TALON
+PASS  Queda gradual preserva fator comum de corpo e cabeca: TALON
+PASS  Retencao calibrada por arma a cada 25 metros: TALON
+PASS  Dano base preservado ate alcance nominal: RUSH
+PASS  Dano continuo no antigo degrau de alcance: RUSH
+PASS  Queda gradual preserva fator comum de corpo e cabeca: RUSH
+PASS  Retencao calibrada por arma a cada 25 metros: RUSH
+PASS  Dano base preservado ate alcance nominal: DART
+PASS  Dano continuo no antigo degrau de alcance: DART
+PASS  Queda gradual preserva fator comum de corpo e cabeca: DART
+PASS  Retencao calibrada por arma a cada 25 metros: DART
+PASS  Dano base preservado ate alcance nominal: WISP
+PASS  Dano continuo no antigo degrau de alcance: WISP
+PASS  Queda gradual preserva fator comum de corpo e cabeca: WISP
+PASS  Retencao calibrada por arma a cada 25 metros: WISP
+PASS  Dano base preservado ate alcance nominal: CIRCUIT
+PASS  Dano continuo no antigo degrau de alcance: CIRCUIT
+PASS  Queda gradual preserva fator comum de corpo e cabeca: CIRCUIT
+PASS  Retencao calibrada por arma a cada 25 metros: CIRCUIT
+PASS  Dano base preservado ate alcance nominal: ECHO
+PASS  Dano continuo no antigo degrau de alcance: ECHO
+PASS  Queda gradual preserva fator comum de corpo e cabeca: ECHO
+PASS  Retencao calibrada por arma a cada 25 metros: ECHO
+PASS  Dano base preservado ate alcance nominal: SHADE
+PASS  Dano continuo no antigo degrau de alcance: SHADE
+PASS  Queda gradual preserva fator comum de corpo e cabeca: SHADE
+PASS  Retencao calibrada por arma a cada 25 metros: SHADE
+PASS  Dano base preservado ate alcance nominal: HELIX
+PASS  Dano continuo no antigo degrau de alcance: HELIX
+PASS  Queda gradual preserva fator comum de corpo e cabeca: HELIX
+PASS  Retencao calibrada por arma a cada 25 metros: HELIX
+PASS  Dano base preservado ate alcance nominal: MARROW
+PASS  Dano continuo no antigo degrau de alcance: MARROW
+PASS  Queda gradual preserva fator comum de corpo e cabeca: MARROW
+PASS  Retencao calibrada por arma a cada 25 metros: MARROW
+PASS  Dano base preservado ate alcance nominal: BREACH
+PASS  Dano continuo no antigo degrau de alcance: BREACH
+PASS  Queda gradual preserva fator comum de corpo e cabeca: BREACH
+PASS  Retencao calibrada por arma a cada 25 metros: BREACH
+PASS  Dano base preservado ate alcance nominal: RIDGE
+PASS  Dano continuo no antigo degrau de alcance: RIDGE
+PASS  Queda gradual preserva fator comum de corpo e cabeca: RIDGE
+PASS  Retencao calibrada por arma a cada 25 metros: RIDGE
+PASS  Dano base preservado ate alcance nominal: HORIZON
+PASS  Dano continuo no antigo degrau de alcance: HORIZON
+PASS  Queda gradual preserva fator comum de corpo e cabeca: HORIZON
+PASS  Retencao calibrada por arma a cada 25 metros: HORIZON
+PASS  Dano base preservado ate alcance nominal: BASTION
+PASS  Dano continuo no antigo degrau de alcance: BASTION
+PASS  Queda gradual preserva fator comum de corpo e cabeca: BASTION
+PASS  Retencao calibrada por arma a cada 25 metros: BASTION
+PASS  DART perde eficacia fora de combate proximo
+PASS  Precisao pesada retem mais dano que submetralhadora apos alcance nominal
+PASS  Precisao responde a corrida, salto, pouso e agachamento: SPARK
+PASS  Mira e FOCO melhoram precisao: SPARK
+PASS  Rajada aumenta dispersao comum: SPARK
+PASS  Precisao responde a corrida, salto, pouso e agachamento: VEIL
+PASS  Mira e FOCO melhoram precisao: VEIL
+PASS  Rajada aumenta dispersao comum: VEIL
+PASS  Precisao responde a corrida, salto, pouso e agachamento: TALON
+PASS  Mira e FOCO melhoram precisao: TALON
+PASS  Rajada aumenta dispersao comum: TALON
+PASS  Precisao responde a corrida, salto, pouso e agachamento: RUSH
+PASS  Mira e FOCO melhoram precisao: RUSH
+PASS  Rajada aumenta dispersao comum: RUSH
+PASS  Precisao responde a corrida, salto, pouso e agachamento: DART
+PASS  Mira e FOCO melhoram precisao: DART
+PASS  Rajada aumenta dispersao comum: DART
+PASS  Precisao responde a corrida, salto, pouso e agachamento: WISP
+PASS  Mira e FOCO melhoram precisao: WISP
+PASS  Rajada aumenta dispersao comum: WISP
+PASS  Precisao responde a corrida, salto, pouso e agachamento: CIRCUIT
+PASS  Mira e FOCO melhoram precisao: CIRCUIT
+PASS  Rajada aumenta dispersao comum: CIRCUIT
+PASS  Precisao responde a corrida, salto, pouso e agachamento: ECHO
+PASS  Mira e FOCO melhoram precisao: ECHO
+PASS  Rajada aumenta dispersao comum: ECHO
+PASS  Precisao responde a corrida, salto, pouso e agachamento: SHADE
+PASS  Mira e FOCO melhoram precisao: SHADE
+PASS  Rajada aumenta dispersao comum: SHADE
+PASS  Precisao responde a corrida, salto, pouso e agachamento: HELIX
+PASS  Mira e FOCO melhoram precisao: HELIX
+PASS  Rajada aumenta dispersao comum: HELIX
+PASS  Precisao responde a corrida, salto, pouso e agachamento: MARROW
+PASS  Mira e FOCO melhoram precisao: MARROW
+PASS  Rajada aumenta dispersao comum: MARROW
+PASS  Precisao responde a corrida, salto, pouso e agachamento: BREACH
+PASS  Mira e FOCO melhoram precisao: BREACH
+PASS  Rajada aumenta dispersao comum: BREACH
+PASS  Precisao responde a corrida, salto, pouso e agachamento: RIDGE
+PASS  Mira e FOCO melhoram precisao: RIDGE
+PASS  Rajada aumenta dispersao comum: RIDGE
+PASS  Precisao responde a corrida, salto, pouso e agachamento: HORIZON
+PASS  Mira e FOCO melhoram precisao: HORIZON
+PASS  Rajada aumenta dispersao comum: HORIZON
+PASS  Precisao responde a corrida, salto, pouso e agachamento: BASTION
+PASS  Mira e FOCO melhoram precisao: BASTION
+PASS  Rajada aumenta dispersao comum: BASTION
+PASS  HORIZON exige luneta para precisao
+PASS  Penalidade aerea forte permanece no fuzil
+PASS  Jogador usa precisao compartilhada: SPARK
+PASS  Bot adiciona apenas erro de dificuldade 0: SPARK
+PASS  Bot adiciona apenas erro de dificuldade 1: SPARK
+PASS  Bot adiciona apenas erro de dificuldade 2: SPARK
+PASS  Jogador usa precisao compartilhada: VEIL
+PASS  Bot adiciona apenas erro de dificuldade 0: VEIL
+PASS  Bot adiciona apenas erro de dificuldade 1: VEIL
+PASS  Bot adiciona apenas erro de dificuldade 2: VEIL
+PASS  Jogador usa precisao compartilhada: TALON
+PASS  Bot adiciona apenas erro de dificuldade 0: TALON
+PASS  Bot adiciona apenas erro de dificuldade 1: TALON
+PASS  Bot adiciona apenas erro de dificuldade 2: TALON
+PASS  Jogador usa precisao compartilhada: RUSH
+PASS  Bot adiciona apenas erro de dificuldade 0: RUSH
+PASS  Bot adiciona apenas erro de dificuldade 1: RUSH
+PASS  Bot adiciona apenas erro de dificuldade 2: RUSH
+PASS  Jogador usa precisao compartilhada: DART
+PASS  Bot adiciona apenas erro de dificuldade 0: DART
+PASS  Bot adiciona apenas erro de dificuldade 1: DART
+PASS  Bot adiciona apenas erro de dificuldade 2: DART
+PASS  Jogador usa precisao compartilhada: WISP
+PASS  Bot adiciona apenas erro de dificuldade 0: WISP
+PASS  Bot adiciona apenas erro de dificuldade 1: WISP
+PASS  Bot adiciona apenas erro de dificuldade 2: WISP
+PASS  Jogador usa precisao compartilhada: CIRCUIT
+PASS  Bot adiciona apenas erro de dificuldade 0: CIRCUIT
+PASS  Bot adiciona apenas erro de dificuldade 1: CIRCUIT
+PASS  Bot adiciona apenas erro de dificuldade 2: CIRCUIT
+PASS  Jogador usa precisao compartilhada: ECHO
+PASS  Bot adiciona apenas erro de dificuldade 0: ECHO
+PASS  Bot adiciona apenas erro de dificuldade 1: ECHO
+PASS  Bot adiciona apenas erro de dificuldade 2: ECHO
+PASS  Jogador usa precisao compartilhada: SHADE
+PASS  Bot adiciona apenas erro de dificuldade 0: SHADE
+PASS  Bot adiciona apenas erro de dificuldade 1: SHADE
+PASS  Bot adiciona apenas erro de dificuldade 2: SHADE
+PASS  Jogador usa precisao compartilhada: HELIX
+PASS  Bot adiciona apenas erro de dificuldade 0: HELIX
+PASS  Bot adiciona apenas erro de dificuldade 1: HELIX
+PASS  Bot adiciona apenas erro de dificuldade 2: HELIX
+PASS  Jogador usa precisao compartilhada: MARROW
+PASS  Bot adiciona apenas erro de dificuldade 0: MARROW
+PASS  Bot adiciona apenas erro de dificuldade 1: MARROW
+PASS  Bot adiciona apenas erro de dificuldade 2: MARROW
+PASS  Jogador usa precisao compartilhada: BREACH
+PASS  Bot adiciona apenas erro de dificuldade 0: BREACH
+PASS  Bot adiciona apenas erro de dificuldade 1: BREACH
+PASS  Bot adiciona apenas erro de dificuldade 2: BREACH
+PASS  Jogador usa precisao compartilhada: RIDGE
+PASS  Bot adiciona apenas erro de dificuldade 0: RIDGE
+PASS  Bot adiciona apenas erro de dificuldade 1: RIDGE
+PASS  Bot adiciona apenas erro de dificuldade 2: RIDGE
+PASS  Jogador usa precisao compartilhada: HORIZON
+PASS  Bot adiciona apenas erro de dificuldade 0: HORIZON
+PASS  Bot adiciona apenas erro de dificuldade 1: HORIZON
+PASS  Bot adiciona apenas erro de dificuldade 2: HORIZON
+PASS  Jogador usa precisao compartilhada: BASTION
+PASS  Bot adiciona apenas erro de dificuldade 0: BASTION
+PASS  Bot adiciona apenas erro de dificuldade 1: BASTION
+PASS  Bot adiciona apenas erro de dificuldade 2: BASTION
+PASS  Arma guardada tambem recupera recuo no tempo de jogo
+PASS  Reequipar arma recuperada restaura precisao sem estado congelado
+PASS  Troca de direcao conserva impulso ortogonal com atrito separado
+PASS  Aceleracao projetada nao excede o limite de corrida no solo
+PASS  Atrito sem entrada inicia frenagem continua
+PASS  Atrito interrompe corrida com lamina em menos de 100 ms
+PASS  Contra-strafe usa projecao oposta e cruza o repouso em 80 ms
+PASS  Atrito de controle respeita combinacoes muito lentas de agachar e efeitos
+PASS  Entrada diagonal normalizada nao aumenta a velocidade no solo
+PASS  Giro de trinta graus redireciona impulso sem acelerar alem do limite no solo
+PASS  Atrito e mudanca de direcao sao consistentes em 60, 120 e 144 FPS
+PASS  SPARK: atravessa madeira de cinco centimetros
+PASS  SPARK: retencao de dano respeita a cobertura
+PASS  SPARK: limite individual de superficies
+PASS  VEIL: atravessa madeira de cinco centimetros
+PASS  VEIL: retencao de dano respeita a cobertura
+PASS  VEIL: limite individual de superficies
+PASS  TALON: atravessa madeira de cinco centimetros
+PASS  TALON: retencao de dano respeita a cobertura
+PASS  TALON: limite individual de superficies
+PASS  RUSH: atravessa madeira de cinco centimetros
+PASS  RUSH: retencao de dano respeita a cobertura
+PASS  RUSH: limite individual de superficies
+PASS  DART: pellets param na primeira cobertura
+PASS  WISP: atravessa madeira de cinco centimetros
+PASS  WISP: retencao de dano respeita a cobertura
+PASS  WISP: limite individual de superficies
+PASS  CIRCUIT: atravessa madeira de cinco centimetros
+PASS  CIRCUIT: retencao de dano respeita a cobertura
+PASS  CIRCUIT: limite individual de superficies
+PASS  ECHO: atravessa madeira de cinco centimetros
+PASS  ECHO: retencao de dano respeita a cobertura
+PASS  ECHO: limite individual de superficies
+PASS  SHADE: atravessa madeira de cinco centimetros
+PASS  SHADE: retencao de dano respeita a cobertura
+PASS  SHADE: limite individual de superficies
+PASS  HELIX: atravessa madeira de cinco centimetros
+PASS  HELIX: retencao de dano respeita a cobertura
+PASS  HELIX: limite individual de superficies
+PASS  MARROW: pellets param na primeira cobertura
+PASS  BREACH: pellets param na primeira cobertura
+PASS  RIDGE: atravessa madeira de cinco centimetros
+PASS  RIDGE: retencao de dano respeita a cobertura
+PASS  RIDGE: limite individual de superficies
+PASS  HORIZON: atravessa madeira de cinco centimetros
+PASS  HORIZON: retencao de dano respeita a cobertura
+PASS  HORIZON: limite individual de superficies
+PASS  BASTION: atravessa madeira de cinco centimetros
+PASS  BASTION: retencao de dano respeita a cobertura
+PASS  BASTION: limite individual de superficies
+PASS  Pistolas leves possuem potencias distintas
+PASS  SMGs possuem potencias distintas
+PASS  Fuzis possuem potencias distintas
+PASS  Armas de precisao possuem potencias distintas
+PASS  Arma pesada para na terceira superficie mesmo com potencia restante
+PASS  Metal custa mais potencia e retencao que madeira
+PASS  Bala sem potencia suficiente para dentro do metal
+PASS  Concreto bloqueia sem criar fator de dano NaN
+PASS  Espessuras consomem um unico orcamento ao longo do trajeto
+PASS  Angulo obliquo aumenta espessura fisica e pode impedir saida
+PASS  Dois paineis sobrepostos compartilham potencia sem serem ignorados
+PASS  Saidas aninhadas ficam em ordem espacial
+PASS  Dano dentro da cobertura usa apenas espessura realmente percorrida
+PASS  Coberturas sobrepostas acumulam retencao depois das duas saidas
+PASS  Orcamento acaba dentro de duas coberturas sobrepostas
+PASS  Resultado de sobreposicao independe da ordem de cadastro
+PASS  Terceiro painel interno ainda respeita limite de superficies
+PASS  Solido opaco dentro de painel interrompe a bala
+PASS  Barreira temporaria dentro de painel interrompe a bala
+PASS  Barreira temporaria coincidente nao herda penetracao do painel
+PASS  Solido opaco coincidente tem precedencia sobre painel
+PASS  Obstaculo a meio milimetro da saida nao e pulado
+PASS  Rampa dentro de painel mantem sua obstrucao geometrica
+PASS  Chao dentro de painel interrompe tiro descendente
+PASS  Raio sem geometria conserva alcance maximo de 210 metros
+PASS  Tiro real acerta alvo parcialmente interno sem cobrar espessura posterior nem dar dano integral
+PASS  Alvo alem do orcamento percorrivel permanece protegido
+PASS  Tiro real nao atinge alvo apos barreira temporaria interna
+520 checks passed.

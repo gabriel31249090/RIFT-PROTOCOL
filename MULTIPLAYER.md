@@ -1,4 +1,6 @@
-# RIFT Protocol 1.8 — duelos com pessoas
+# RIFT Protocol 1.9 — duelos com pessoas
+
+O combate 1.9 usa o protocolo de rede 2. Todos na sala precisam desta atualização; clientes 1.8/1.8.1 são rejeitados para evitar regras de precisão e dano diferentes.
 
 Esta é a primeira versão do multiplayer: **1v1 de armas**, com servidor autoritativo e três arenas próprias. Primeiro a sete vitórias; preparação de seis segundos; rodadas de até 60 segundos; os jogadores trocam de lado a cada rodada. Empate por tempo: vence quem tiver mais vida + escudo; valores iguais não dão ponto. Os dois confirmam uma revanche com Enter.
 

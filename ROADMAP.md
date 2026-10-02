@@ -1,4 +1,4 @@
-# RIFT Protocol — roadmap após 1.8.1
+# RIFT Protocol — roadmap após 1.9
 
 A lista do projeto foi dividida por dependências. **Entregue** significa presente no pacote; **parcial** significa uma base funcional com limites; **planejado** ainda não existe. Versões futuras são propostas de escopo, sem datas prometidas.
 
@@ -6,8 +6,8 @@ A lista do projeto foi dividida por dependências. **Entregue** significa presen
 
 | Versão | Foco | Entrega |
 | --- | --- | --- |
-| 1.8.1 | Estabilidade | Resolver conflitos, recompilar e verificar solo, bots, duelo e desempenho. |
-| 1.9 | Combate e movimento | Precisão e recuo por arma, dano gradual por distância, penetração, aceleração e frenagem; adaptar algoritmos do ReGameDLL para Java. |
+| 1.8.1 | Estabilidade | Entregue: conflitos resolvidos, pacote recompilado e base verificada. |
+| 1.9 | Combate e movimento | Perfis das 15 armas, recuperação por tempo, dano gradual, penetração por arma, atrito e aceleração; algoritmos adaptados do ReGameDLL para Java. |
 | 1.9.1 | Áudio e superfícies | WAV, passos por material, impactos, recargas e pousos. |
 | 1.9.2 | Cenários | Texturas com identidade própria, importação de malhas estáticas e atualização visual de um mapa. |
 | 1.9.3 | Arsenal visual | Malhas e materiais de armas, mecanismos e animações em primeira pessoa e no mundo. |
@@ -16,6 +16,10 @@ A lista do projeto foi dividida por dependências. **Entregue** significa presen
 | 2.0 | Multiplayer | Latência, interpolação e reconciliação; depois expandir para 2–4 jogadores. |
 
 Antes dos cenários, definir materiais, símbolos, silhuetas e equipamentos do RIFT. Recursos convertidos do CS exigem verificação da licença correspondente antes da distribuição; a licença do ReGameDLL não concede automaticamente direitos sobre os modelos e texturas da instalação do jogo. Cada etapa exige testes do comportamento e comparação de tempo de quadro. As frentes abaixo detalham objetivos futuros, além dessa sequência.
+
+## 1.9 — Combate e movimento
+
+Perfis próprios por arma e precisão física comum a jogador/bots. Queda contínua de dano além do alcance, orçamento de penetração por arma e movimento com atrito/aceleração separados. Verificação da entrega: [VERIFICACAO.txt](VERIFICACAO.txt). Referências/licenças: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Próxima etapa: 1.9.1, áudio e superfícies.
 
 ## 1.8 — Entregue: base de duelo entre pessoas
 

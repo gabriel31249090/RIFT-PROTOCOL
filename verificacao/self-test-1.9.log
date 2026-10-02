@@ -1,0 +1,1217 @@
+PASS  Rota do ataque ao ponto A
+PASS  Rota do ataque ao ponto B
+PASS  Rota da defesa ao ponto A
+PASS  Rota da defesa ao ponto B
+PASS  Spawn válido: VOCÊ
+PASS  Spawn válido: SABLE
+PASS  Spawn válido: KITE
+PASS  Spawn válido: ORBIT
+PASS  Spawn válido: EMBER
+PASS  Spawn válido: VEX
+PASS  Spawn válido: RUNE
+PASS  Spawn válido: FLINT
+PASS  Spawn válido: QUILL
+PASS  Spawn válido: ONYX
+PASS  Um único portador do núcleo
+PASS  Colisão impede atravessar edifício, inclusive com impulso
+PASS  Linha de visão livre
+PASS  Parede bloqueia a linha de visão
+PASS  Compra desconta créditos e equipa arma
+PASS  Compra da proteção completa
+PASS  Créditos insuficientes não alteram inventário
+PASS  Compra bloqueada durante combate
+PASS  Absorção de dano não cria vida nem proteção negativa
+PASS  Fogo amigo não causa dano
+PASS  Recarga transfere somente a munição disponível
+PASS  Núcleo armado mantém rodada após eliminação do ataque
+PASS  Bots concluem o desarme em 5 segundos
+PASS  Detonação concede a rodada ao ataque
+PASS  Troca de lados e reinício econômico após quatro rodadas
+PASS  Tempo esgotado dá vitória à defesa
+PASS  Pausa interrompe o relógio
+PASS  Fumaça bloqueia a percepção dos bots
+PASS  Tiro real na cabeça elimina e contabiliza abate
+PASS  Tiro não atravessa uma parede
+PASS  Alvo de treino reaparece
+PASS  Arsenal de treino sem custo
+PASS  W move o jogador no sentido da câmera
+PASS  Pulo aplica gravidade e retorna ao piso
+PASS  Impulso inicia uma animação, sem teleportar
+PASS  Dash percorre apenas parte da distância após 100 ms
+PASS  Impulso completa a distância na direção do movimento
+PASS  Dash animado para ao encontrar um edifício
+PASS  Reparo recupera 55 de vida gradualmente
+PASS  Suprema do duelista ativa o foco
+PASS  Treino mantém habilidades disponíveis sem inflar cargas
+PASS  Segurar F planta o núcleo pela entrada real do jogador
+PASS  Segurar F conclui o desarme pelo jogador
+PASS  Aliado recupera o núcleo de um jogador eliminado
+PASS  Q da Bruma abre o mapa sem gastar fumaças
+PASS  Mapa rejeita ponto fora do alcance
+PASS  Mapa rejeita ponto dentro de edifício
+PASS  Mapa permite marcar dois pontos válidos
+PASS  Clicar outra vez remove a marcação
+PASS  Relógio e partida continuam enquanto o mapa está aberto
+PASS  Cancelar não consome cargas
+PASS  Confirmar lança as fumaças e debita somente as marcações
+PASS  Fumaça começa com atraso de chegada
+PASS  Fumaça se expande progressivamente
+PASS  Fumaça atinge o raio completo
+PASS  Fumaça retrai antes de desaparecer
+PASS  Repetir a tecla fecha o mapa sem reabri-lo no mesmo quadro
+PASS  Morrer fecha o mapa e cancela alvos pendentes sem custo
+PASS  Mapa alinha frente/acima e direita/direita em 0 graus
+PASS  Clique inverso preserva o local real ao girar o mapa
+PASS  Smoke surge no ponto escolhido, sem espelhamento
+PASS  Mapa alinha frente/acima e direita/direita em 90 graus
+PASS  Clique inverso preserva o local real ao girar o mapa
+PASS  Smoke surge no ponto escolhido, sem espelhamento
+PASS  Mapa alinha frente/acima e direita/direita em 180 graus
+PASS  Clique inverso preserva o local real ao girar o mapa
+PASS  Smoke surge no ponto escolhido, sem espelhamento
+PASS  Mapa alinha frente/acima e direita/direita em 270 graus
+PASS  Clique inverso preserva o local real ao girar o mapa
+PASS  Smoke surge no ponto escolhido, sem espelhamento
+PASS  Mapa alinha frente/acima e direita/direita em 35 graus
+PASS  Clique inverso preserva o local real ao girar o mapa
+PASS  Smoke surge no ponto escolhido, sem espelhamento
+PASS  Mapa alinha frente/acima e direita/direita em 131 graus
+PASS  Clique inverso preserva o local real ao girar o mapa
+PASS  Smoke surge no ponto escolhido, sem espelhamento
+PASS  Arma funcional: SPARK / slot, munição e projéteis
+PASS  Recarga conserva munição: SPARK
+PASS  Arma funcional: VEIL / slot, munição e projéteis
+PASS  Recarga conserva munição: VEIL
+PASS  Arma funcional: TALON / slot, munição e projéteis
+PASS  Recarga conserva munição: TALON
+PASS  Arma funcional: RUSH / slot, munição e projéteis
+PASS  Recarga conserva munição: RUSH
+PASS  Arma funcional: DART / slot, munição e projéteis
+PASS  Recarga conserva munição: DART
+PASS  Arma funcional: WISP / slot, munição e projéteis
+PASS  Recarga conserva munição: WISP
+PASS  Arma funcional: CIRCUIT / slot, munição e projéteis
+PASS  Recarga conserva munição: CIRCUIT
+PASS  Arma funcional: ECHO / slot, munição e projéteis
+PASS  Recarga conserva munição: ECHO
+PASS  Arma funcional: SHADE / slot, munição e projéteis
+PASS  Recarga conserva munição: SHADE
+PASS  Arma funcional: HELIX / slot, munição e projéteis
+PASS  Recarga conserva munição: HELIX
+PASS  Arma funcional: MARROW / slot, munição e projéteis
+PASS  Recarga conserva munição: MARROW
+PASS  Arma funcional: BREACH / slot, munição e projéteis
+PASS  Recarga conserva munição: BREACH
+PASS  Arma funcional: RIDGE / slot, munição e projéteis
+PASS  Recarga conserva munição: RIDGE
+PASS  Arma funcional: HORIZON / slot, munição e projéteis
+PASS  Recarga conserva munição: HORIZON
+PASS  Arma funcional: BASTION / slot, munição e projéteis
+PASS  Recarga conserva munição: BASTION
+PASS  Pistola e principal usam inventários independentes
+PASS  Sobrevivência preserva ambas as armas na rodada seguinte
+PASS  Morte restaura pistola gratuita e remove armas compradas
+PASS  Pistola semiautomática dispara uma vez ao segurar o mouse
+PASS  Novo clique dispara o segundo tiro da pistola
+PASS  Pistola automática mantém fogo ao segurar o mouse
+PASS  Helix conclui três disparos após um único clique
+PASS  Rajada respeita a munição restante
+PASS  Escopeta curta perde dano à distância e revólver causa alto impacto
+PASS  Recomprar arma já possuída não repõe munição ou desconta créditos
+PASS  Compra negada preserva a pistola anterior
+PASS  Foco reduz a dispersão total, incluindo movimento e recuo
+PASS  Foco aumenta a cadência em 30%
+PASS  Foco reduz o tempo de recarga em 40%
+PASS  Suprema da Bruma exige escolha e confirmação no mapa
+PASS  Ataque orbital respeita o aviso antes de causar dano
+PASS  Ataque orbital causa dano durante sua janela ativa
+PASS  Ataque orbital pode eliminar um alvo que permaneça na área
+PASS  Ressonância recupera vida e proteção de aliados próximos e consome a suprema
+PASS  Receber dano interrompe reparo
+PASS  Pulso revela alvos e informa a quantidade
+PASS  Clarão lança uma granada e respeita tempo de detonação
+PASS  Quatro eliminações ainda não são ACE
+PASS  Cinco adversários distintos na mesma rodada geram ACE
+PASS  Um inimigo já eliminado não duplica o ACE
+PASS  Nova rodada limpa a sequência e preserva o total de ACEs
+PASS  Alvos que reaparecem no treino não geram ACE falso
+SIM   rodada 1 concluída, placar 0:1
+SIM   rodada 2 concluída, placar 0:2
+SIM   rodada 3 concluída, placar 1:2
+SIM   rodada 4 concluída, placar 1:3
+SIM   rodada 5 concluída, placar 1:4
+PASS  Partida autônoma completa sem travar (31475 ticks, 6 plantios)
+PASS  Partida termina em até nove rodadas
+PASS  Jogar abre escolha de modo, sem iniciar partida
+PASS  Confirmar inicia fila local
+PASS  Fila local exige aceite ao encontrar partida
+PASS  Aceitar leva à seleção de agentes
+PASS  Terceiro cartão seleciona Íon
+PASS  Travar aguarda os bots antes de iniciar
+PASS  Carregamento inicia a partida com o agente travado
+PASS  Troca de agente disponível durante compra
+PASS  Botão do arsenal compra o fuzil
+PASS  Filtro e compra de pistola preservam o fuzil
+PASS  Mapa circular converte clique e confirma lançamento
+PASS  Menu e seleção funcionam em janela redimensionada
+PASS  Renderização completa sem janela
+PASS  Elenco contém onze agentes
+PASS  Quatro habilidades distintas: VÉRTICE
+PASS  Quatro habilidades distintas: BRUMA
+PASS  Quatro habilidades distintas: ÍON
+PASS  Quatro habilidades distintas: CÁUSTICA
+PASS  Quatro habilidades distintas: ESPECTRO
+PASS  Quatro habilidades distintas: SOLAR
+PASS  Quatro habilidades distintas: ESTOPIM
+PASS  Quatro habilidades distintas: BASTILHA
+PASS  Quatro habilidades distintas: VIGIA
+PASS  Quatro habilidades distintas: ÁUREO
+PASS  Quatro habilidades distintas: TRAMA
+PASS  Quatro funções representadas
+PASS  Mapa maior e com alturas: CAIS-7
+PASS  Spawn livre no mapa 0: 0
+PASS  Spawn livre no mapa 0: 1
+PASS  Spawn livre no mapa 0: 2
+PASS  Spawn livre no mapa 0: 3
+PASS  Spawn livre no mapa 0: 4
+PASS  Spawn livre no mapa 0: 5
+PASS  Spawn livre no mapa 0: 6
+PASS  Spawn livre no mapa 0: 7
+PASS  Spawn livre no mapa 0: 8
+PASS  Spawn livre no mapa 0: 9
+PASS  Ambos os objetivos acessíveis no mapa 0
+PASS  Subida real de rampa 0 / 4.0
+PASS  Bots possuem rota com elevação 0 / 4.0
+PASS  Tiro intercepta superfície inclinada 0
+PASS  Subida real de rampa 0 / 133.0
+PASS  Bots possuem rota com elevação 0 / 133.0
+PASS  Tiro intercepta superfície inclinada 0
+PASS  Subida real de rampa 0 / 63.0
+PASS  Bots possuem rota com elevação 0 / 63.0
+PASS  Tiro intercepta superfície inclinada 0
+PASS  Mapa maior e com alturas: MONTE AURORA
+PASS  Spawn livre no mapa 1: 0
+PASS  Spawn livre no mapa 1: 1
+PASS  Spawn livre no mapa 1: 2
+PASS  Spawn livre no mapa 1: 3
+PASS  Spawn livre no mapa 1: 4
+PASS  Spawn livre no mapa 1: 5
+PASS  Spawn livre no mapa 1: 6
+PASS  Spawn livre no mapa 1: 7
+PASS  Spawn livre no mapa 1: 8
+PASS  Spawn livre no mapa 1: 9
+PASS  Ambos os objetivos acessíveis no mapa 1
+PASS  Subida real de rampa 1 / 4.0
+PASS  Bots possuem rota com elevação 1 / 4.0
+PASS  Tiro intercepta superfície inclinada 1
+PASS  Subida real de rampa 1 / 133.0
+PASS  Bots possuem rota com elevação 1 / 133.0
+PASS  Tiro intercepta superfície inclinada 1
+PASS  Subida real de rampa 1 / 63.0
+PASS  Bots possuem rota com elevação 1 / 63.0
+PASS  Tiro intercepta superfície inclinada 1
+PASS  Mapa maior e com alturas: FERROVIA
+PASS  Spawn livre no mapa 2: 0
+PASS  Spawn livre no mapa 2: 1
+PASS  Spawn livre no mapa 2: 2
+PASS  Spawn livre no mapa 2: 3
+PASS  Spawn livre no mapa 2: 4
+PASS  Spawn livre no mapa 2: 5
+PASS  Spawn livre no mapa 2: 6
+PASS  Spawn livre no mapa 2: 7
+PASS  Spawn livre no mapa 2: 8
+PASS  Spawn livre no mapa 2: 9
+PASS  Ambos os objetivos acessíveis no mapa 2
+PASS  Subida real de rampa 2 / 4.0
+PASS  Bots possuem rota com elevação 2 / 4.0
+PASS  Tiro intercepta superfície inclinada 2
+PASS  Subida real de rampa 2 / 133.0
+PASS  Bots possuem rota com elevação 2 / 133.0
+PASS  Tiro intercepta superfície inclinada 2
+PASS  Subida real de rampa 2 / 63.0
+PASS  Bots possuem rota com elevação 2 / 63.0
+PASS  Tiro intercepta superfície inclinada 2
+PASS  Salto com degrau não prende o jogador dentro de caixas baixas
+PASS  Sair da plataforma inicia queda, sem teleportar ao chão
+PASS  Vértice lança C diretamente, sem mapa
+PASS  Smoke rápida chega em menos de meio segundo
+PASS  Smoke rápida expande e tem duração curta
+PASS  Dois alvos dentro da mesma smoke podem se ver
+PASS  Borda da smoke bloqueia visão do exterior
+PASS  Render preserva objetos próximos no interior oco
+PASS  Casca esconde objetos além da esfera
+PASS  Íon não cega instantaneamente ao apertar C
+PASS  Explosão cega inimigo e também o usuário olhando para ela
+PASS  Virar de costas reduz a duração do clarão
+PASS  Clarão curvo muda a trajetória em voo
+PASS  Ascensão alcança plataformas elevadas
+PASS  Área aceleradora aplica buff de cadência e movimento
+PASS  Disco suprime habilidades na área
+PASS  Supressão realmente bloqueia a suprema sem consumir pontos
+PASS  Biosfera corrói e marca invasores próximos
+PASS  Cortina tóxica bloqueia visão ao cruzá-la
+PASS  Cortina afeta inimigos que a atravessam
+PASS  Teleporte curto tem canalização
+PASS  Passo sombrio chega ao destino válido
+PASS  Dano cancela teleporte longo
+PASS  Renascimento devolve o jogador vivo à marca
+PASS  Barreira cria colisão física
+PASS  Jogador não atravessa barreira
+PASS  Tiros destroem a barreira e removem colisão
+PASS  Torreta causa dano a alvo visível
+PASS  Confinamento desarma após aviso de sete segundos
+PASS  Destruir o dispositivo impede o confinamento
+PASS  Reanimação restaura aliado caído próximo
+PASS  Propulsor combina movimento vertical e horizontal
+PASS  Ping registra posição no mundo
+PASS  Dano funcional da habilidade INCENDIARY
+PASS  Dano funcional da habilidade ACID
+PASS  Corrosão aplica vulnerabilidade
+PASS  Dano funcional da habilidade FRAG
+PASS  Dano funcional da habilidade ROCKET
+PASS  Campo de lentidão reduz o deslocamento real
+PASS  Fogo de Solar recupera vida do usuário
+PASS  Armadilha detecta e desacelera invasor
+PASS  Sensor revela posição em pulso
+PASS  Robô percorre rota e explode perto do alvo
+PASS  Onda de visão reduzida atinge alvos à frente
+PASS  E do Espectro abre sua visão astral para posicionar estrela
+PASS  Confirmação astral cria o vórtice de visão reduzida
+PASS  Suprema do Espectro transporta ao ponto global escolhido
+PASS  Compra de habilidade repõe carga e debita créditos
+PASS  Próxima rodada preserva cargas compradas restantes
+PASS  Condição de vitória própria: COMPETITIVO
+PASS  Condição de vitória própria: SEM RANQUE
+PASS  Condição de vitória própria: DISPUTA DA SPIKE
+PASS  Modo de abates sem Spike: MATA-MATA
+PASS  Respawn funciona em MATA-MATA
+PASS  Mata-Mata tem dez equipes individuais
+PASS  Limite de abates encerra MATA-MATA
+PASS  Modo de abates sem Spike: TEAM DEATHMATCH
+PASS  Respawn funciona em TEAM DEATHMATCH
+PASS  Limite de abates encerra TEAM DEATHMATCH
+PASS  Condição de vitória própria: PREMIER
+PASS  Copa avança da semifinal à final
+PASS  Final carrega outro mapa e nova partida
+PASS  Aceite expira sem iniciar partida automaticamente
+PASS  Contratos iniciais permitem liberar os seis novos agentes
+PASS  Desbloqueio debita XP uma vez
+PASS  Desbloqueio repetido não debita XP
+PASS  Contrato persiste após reabrir o perfil
+PASS  XP, maestria, destaques e rank persistem
+PASS  Velocidade e rotação do corpo fazem transição gradual
+PASS  Rig articulado muda vértices durante caminhada
+PASS  Movimento acelera a partir do repouso
+PASS  Velocidade de corrida responde em menos de 0,3 s
+PASS  Soltar tecla inicia frenagem contínua
+PASS  Parar recupera a precisão de movimento em até 100 ms
+PASS  Contra-direção atravessa o repouso e inverte o strafe
+PASS  Aceleração produz deslocamento real
+PASS  Lâmina equipada aumenta mobilidade
+PASS  Caminhada lenta funciona com lâmina
+PASS  Impacto reduz temporariamente a velocidade
+PASS  Deslocamento consistente a 60, 120 e 144 FPS
+PASS  Velocidade é anulada na parede, sem atravessar colisão
+PASS  Rajada longa acumula recuo vertical, lateral e dispersão
+PASS  Pausa entre rajadas restaura o primeiro disparo
+PASS  Tiro no ar recebe penalidade forte de precisão
+PASS  Trocar de arma cancela recarga sem conceder munição
+PASS  Disparo interrompe inspeção imediatamente
+PASS  Cadência automática não cai ao passar de 144 para 60 FPS
+PASS  Luneta estabiliza a precisão da sniper
+PASS  Corte respeita antecipação antes do contato
+PASS  Corte causa 50 de dano frontal sem gastar munição
+PASS  Golpe não repete dano dentro da mesma animação
+PASS  Segundo corte elimina e entra no placar
+PASS  Golpe forte pelas costas causa 150 de dano
+PASS  Golpe forte frontal causa 75 de dano
+PASS  Lâmina não alcança inimigo a quatro metros
+PASS  Golpe exige alvo dentro do arco à frente
+PASS  Golpe corpo a corpo não atravessa parede
+PASS  Troca de arma cancela golpe pendente
+PASS  Tecla 3 usa combate corpo a corpo em vez do gatilho da pistola
+PASS  Skin e pingente persistem por arma
+PASS  Visuais de armas distintas são independentes
+PASS  Modelo e acabamento corpo a corpo persistem
+PASS  Perfil antigo ou inválido não quebra a coleção
+PASS  Equipar na coleção altera o equipamento usado em partida
+PASS  Aplicar a todas mantém estatísticas de combate
+PASS  Seleção da lâmina equipa modelo correspondente
+PASS  Voltar da coleção funciona em janela reduzida
+PASS  Os seis acabamentos geram materiais visivelmente distintos
+PASS  Três armas corpo a corpo possuem malhas distintas
+PASS  Pingente reage e retorna ao repouso sem instabilidade
+PASS  Mapas possuem mais de 2,6 vezes a área da versão 1.3
+PASS  Rota longa e conectada até A no mapa 0
+PASS  Ponto A permanece plantável no mapa 0
+PASS  Rota longa e conectada até B no mapa 0
+PASS  Ponto B permanece plantável no mapa 0
+PASS  Rotação entre A e B acessível no mapa 0
+PASS  Novo setor leste possui posição elevada no mapa 0
+PASS  Rota longa e conectada até A no mapa 1
+PASS  Ponto A permanece plantável no mapa 1
+PASS  Rota longa e conectada até B no mapa 1
+PASS  Ponto B permanece plantável no mapa 1
+PASS  Rotação entre A e B acessível no mapa 1
+PASS  Novo setor leste possui posição elevada no mapa 1
+PASS  Rota longa e conectada até A no mapa 2
+PASS  Ponto A permanece plantável no mapa 2
+PASS  Rota longa e conectada até B no mapa 2
+PASS  Ponto B permanece plantável no mapa 2
+PASS  Rotação entre A e B acessível no mapa 2
+PASS  Novo setor leste possui posição elevada no mapa 2
+PASS  Habilidade exclusiva no elenco: VÉRTICE / IMPULSO
+PASS  Habilidade exclusiva no elenco: VÉRTICE / VÉU RÁPIDO
+PASS  Habilidade exclusiva no elenco: VÉRTICE / FOCO
+PASS  Habilidade exclusiva no elenco: VÉRTICE / ASCENSÃO
+PASS  Habilidade exclusiva no elenco: BRUMA / NÉVOA
+PASS  Habilidade exclusiva no elenco: BRUMA / BRASA
+PASS  Habilidade exclusiva no elenco: BRUMA / RUPTURA
+PASS  Habilidade exclusiva no elenco: BRUMA / ACELERADOR
+PASS  Habilidade exclusiva no elenco: ÍON / PULSO
+PASS  Habilidade exclusiva no elenco: ÍON / CLARÃO
+PASS  Habilidade exclusiva no elenco: ÍON / RESSONÂNCIA
+PASS  Habilidade exclusiva no elenco: ÍON / SILÊNCIO
+PASS  Habilidade exclusiva no elenco: CÁUSTICA / CORTINA ÁCIDA
+PASS  Habilidade exclusiva no elenco: CÁUSTICA / CORROSÃO
+PASS  Habilidade exclusiva no elenco: CÁUSTICA / BIOSFERA
+PASS  Habilidade exclusiva no elenco: CÁUSTICA / MANTO TÓXICO
+PASS  Habilidade exclusiva no elenco: ESPECTRO / PASSO SOMBRIO
+PASS  Habilidade exclusiva no elenco: ESPECTRO / PESADELO
+PASS  Habilidade exclusiva no elenco: ESPECTRO / TRAVESSIA
+PASS  Habilidade exclusiva no elenco: ESPECTRO / ECLIPSE
+PASS  Habilidade exclusiva no elenco: SOLAR / CENTELHA
+PASS  Habilidade exclusiva no elenco: SOLAR / LABAREDA
+PASS  Habilidade exclusiva no elenco: SOLAR / RENASCER
+PASS  Habilidade exclusiva no elenco: SOLAR / REACENDER
+PASS  Habilidade exclusiva no elenco: ESTOPIM / PROPULSOR
+PASS  Habilidade exclusiva no elenco: ESTOPIM / RASTREADOR
+PASS  Habilidade exclusiva no elenco: ESTOPIM / DEMOLIÇÃO
+PASS  Habilidade exclusiva no elenco: ESTOPIM / ESTILHAÇO
+PASS  Habilidade exclusiva no elenco: BASTILHA / BASTIÃO
+PASS  Habilidade exclusiva no elenco: BASTILHA / GEADA
+PASS  Habilidade exclusiva no elenco: BASTILHA / REANIMAR
+PASS  Habilidade exclusiva no elenco: BASTILHA / REPARO
+PASS  Habilidade exclusiva no elenco: VIGIA / TORRETA
+PASS  Habilidade exclusiva no elenco: VIGIA / SONAR
+PASS  Habilidade exclusiva no elenco: VIGIA / CONFINAMENTO
+PASS  Habilidade exclusiva no elenco: VIGIA / ARMADILHA
+PASS  Habilidade exclusiva no elenco: ÁUREO / VEREDITO
+PASS  Habilidade exclusiva no elenco: ÁUREO / APÓLICE
+PASS  Habilidade exclusiva no elenco: ÁUREO / EXECUÇÃO
+PASS  Habilidade exclusiva no elenco: ÁUREO / ÂNCORA
+PASS  Habilidade exclusiva no elenco: TRAMA / FIO DE ALARME
+PASS  Habilidade exclusiva no elenco: TRAMA / REDE SURDA
+PASS  Habilidade exclusiva no elenco: TRAMA / RASTREAMENTO
+PASS  Habilidade exclusiva no elenco: TRAMA / OLHO REMOTO
+PASS  44 ícones com desenhos distintos
+PASS  Impacto oblíquo reflete normal e preserva sentido tangencial
+PASS  Ricochete perde energia, sem amplificar velocidade
+PASS  Gravidade continua agindo após o ricochete
+PASS  Impacto oblíquo reflete normal e preserva sentido tangencial
+PASS  Ricochete perde energia, sem amplificar velocidade
+PASS  Gravidade continua agindo após o ricochete
+PASS  Piso reflete só a componente vertical e aplica atrito
+PASS  Clarão curvo passa a trajetória balística após colisão
+PASS  Foguete detona no impacto sem ricochetear
+PASS  Véu rápido abre ao tocar a parede
+PASS  Varredura impede atravessar parede em alta velocidade
+PASS  Ricochetes consistentes a 60 / 120 / 144 FPS
+PASS  Veredito invoca seis tiros e consome carga
+PASS  Veredito aplica 70 de dano no corpo
+PASS  Reequipar Veredito não cobra segunda carga
+PASS  Execução elimina alvo com 150 totais e gasta suprema
+PASS  Reativar âncora consome dispositivo, não outra carga
+PASS  Âncora retorna ao local e zera velocidade
+PASS  Apólice intercepta tiro inimigo
+PASS  Apólice permite passagem de jogadores
+PASS  Fio conecta paredes atingidas pela mira
+PASS  Saltar por cima evita fio
+PASS  Cruzar fio prende e revela durante janela de contra-ataque
+PASS  Fio conclui atordoamento após aviso
+PASS  Gaiola espera reativação
+PASS  Reativação inicia sete segundos de gaiola
+PASS  Gaiola esconde através da borda e mantém interior oco
+PASS  Olho remoto instala em superfície atingida pelo raio
+PASS  Reativação troca a visão para câmera
+PASS  Dardo da câmera marca inimigo realmente visível
+PASS  Morrer no corpo encerra controle remoto
+PASS  Rastreamento não ativa sem corpo próximo
+PASS  Corpo próximo habilita primeira varredura global
+PASS  Segunda varredura ocorre após três segundos
+PASS  Sensor acústico não revela alvo parado
+PASS  Corrida ativa sensor acústico
+PASS  Eclipse reduz visão e apaga revelação
+PASS  Segurar frente no ar não concede aceleração gratuita
+PASS  Air strafe bem orientado ganha velocidade com limite de 11,5 m/s
+PASS  Ganho por strafe consistente entre taxas de atualização
+PASS  Três saltos sincronizados preservam impulso e deslocam pelo corredor
+PASS  Permanecer no chão aplica atrito e encerra ganho de bhop
+PASS  Segurar espaço sozinho não automatiza saltos
+PASS  Preferências visuais, acessibilidade e agente persistem
+PASS  Três volumes persistem independentemente
+PASS  Remapeamento troca conflitos sem duplicar ações
+PASS  Tecla de saída permanece reservada
+PASS  Configuração inválida recupera limites seguros
+PASS  F10 abre configurações durante a partida
+PASS  Configurações pausam simulação local
+PASS  F10 retorna ao jogo
+PASS  Agachar alternável permanece após soltar tecla
+PASS  ADS alternável permanece após soltar mouse
+PASS  Painel fino deixa passar fuzil com perda de dano
+PASS  Pistola leve não atravessa painel acima da sua penetração
+PASS  Dano nas pernas aplica multiplicador de 75%
+PASS  Competitivo exige vantagem de duas rodadas na prorrogação
+PASS  Dois pontos de vantagem encerram prorrogação
+PASS  Rodada 19 funciona como morte súbita
+PASS  Prorrogação concede 5.000 créditos e portador válido
+PASS  Prorrogação alterna lados a cada rodada
+PASS  Pedido transfere 600 créditos de aliado local
+PASS  Só um pedido de créditos por rodada
+PASS  Recompra respeita loadout e preços reais
+PASS  Segurar interação coleta orbe compartilhado uma vez
+PASS  Orbe coletado não duplica pontos
+PASS  Nova rodada repõe orbes
+PASS  Assinatura recarrega após 30 segundos
+PASS  Layout 0 dedica espaço a rotas controladas, sem planície aberta
+PASS  Ataque e defesa alcançam A no layout 0
+PASS  Ataque e defesa alcançam B no layout 0
+PASS  Sem visão direta de base até site no layout 0
+PASS  Layout 1 dedica espaço a rotas controladas, sem planície aberta
+PASS  Ataque e defesa alcançam A no layout 1
+PASS  Ataque e defesa alcançam B no layout 1
+PASS  Sem visão direta de base até site no layout 1
+PASS  Layout 2 dedica espaço a rotas controladas, sem planície aberta
+PASS  Ataque e defesa alcançam A no layout 2
+PASS  Ataque e defesa alcançam B no layout 2
+PASS  Sem visão direta de base até site no layout 2
+PASS  Sniper mantém a mira após soltar o botão direito
+PASS  Segundo clique desativa luneta
+PASS  Segurar direito não alterna repetidamente
+PASS  Troca de arma cancela a luneta travada
+PASS  Pistola continua usando segurar com configuração padrão
+PASS  Sniper respeita opção de segurar quando escolhida
+PASS  Preferências novas persistem separadamente
+PASS  Q mostra fio válido sem gastar carga
+PASS  Cancelar prévia preserva carga
+PASS  Confirmar instala o fio na superfície e cobra uma carga
+PASS  Cruzamento rápido dispara mesmo terminando além do fio
+PASS  Destruir a âncora durante o aviso impede o dano final
+PASS  Salto sobre fio não dispara a varredura
+PASS  Agachar permite passar sob fio alto
+PASS  Posição inválida não consome carga
+PASS  Trocar para arma cancela prévia do fio
+PASS  Morrer cancela instalação pendente do fio
+PASS  Abrir painel não cobra habilidade do agente 1
+PASS  Clique e mapa coincidem no painel 1
+PASS  Painel rejeita posição fora do alcance 1
+PASS  Painel aceita piso dentro do alcance 1
+PASS  Confirmar aplica efeito e cobra exatamente uma carga 1
+PASS  Abrir painel não cobra habilidade do agente 3
+PASS  Clique e mapa coincidem no painel 3
+PASS  Painel rejeita posição fora do alcance 3
+PASS  Painel aceita piso dentro do alcance 3
+PASS  Confirmar aplica efeito e cobra exatamente uma carga 3
+PASS  Abrir painel não cobra habilidade do agente 4
+PASS  Clique e mapa coincidem no painel 4
+PASS  Painel rejeita posição fora do alcance 4
+PASS  Painel aceita piso dentro do alcance 4
+PASS  Confirmar aplica efeito e cobra exatamente uma carga 4
+PASS  Três instrumentos de posicionamento visualmente distintos
+PASS  Vértice mantém smoke instantânea sem abrir mapa
+PASS  Artes reais carregadas dos recursos do pacote
+PASS  Material bitmap com detalhe: 0
+PASS  Material bitmap com detalhe: 1
+PASS  Material bitmap com detalhe: 2
+PASS  Material bitmap com detalhe: 3
+PASS  Material bitmap com detalhe: 4
+PASS  Material bitmap com detalhe: 5
+PASS  Material bitmap com detalhe: 6
+PASS  Material bitmap com detalhe: 7
+PASS  Material bitmap com detalhe: 8
+PASS  Material bitmap com detalhe: 9
+PASS  Material bitmap com detalhe: 10
+PASS  Material bitmap com detalhe: 11
+PASS  Material bitmap com detalhe: 12
+PASS  Material bitmap com detalhe: 13
+PASS  Material bitmap com detalhe: 14
+PASS  Material bitmap com detalhe: 15
+PASS  Texturas alteram a cena renderizada, não apenas o menu
+PASS  Texturas atravessando o near plane renderizam sem falha
+PASS  Disparo em camadas com energia audível: SPARK
+PASS  Disparo em camadas com energia audível: VEIL
+PASS  Disparo em camadas com energia audível: TALON
+PASS  Disparo em camadas com energia audível: RUSH
+PASS  Disparo em camadas com energia audível: DART
+PASS  Disparo em camadas com energia audível: WISP
+PASS  Disparo em camadas com energia audível: CIRCUIT
+PASS  Disparo em camadas com energia audível: ECHO
+PASS  Disparo em camadas com energia audível: SHADE
+PASS  Disparo em camadas com energia audível: HELIX
+PASS  Disparo em camadas com energia audível: MARROW
+PASS  Disparo em camadas com energia audível: BREACH
+PASS  Disparo em camadas com energia audível: RIDGE
+PASS  Disparo em camadas com energia audível: HORIZON
+PASS  Disparo em camadas com energia audível: BASTION
+PASS  As quinze armas têm sons diferentes
+PASS  Disparo ejeta cápsula com simulação própria
+PASS  Tiro deixa marca na superfície realmente atingida
+PASS  Cápsulas têm limite para controlar custo visual
+PASS  Perfil exclusivo ligado a SPARK
+PASS  Parametros de manejo finitos e limitados: SPARK
+PASS  Perfil exclusivo ligado a VEIL
+PASS  Parametros de manejo finitos e limitados: VEIL
+PASS  Perfil exclusivo ligado a TALON
+PASS  Parametros de manejo finitos e limitados: TALON
+PASS  Perfil exclusivo ligado a RUSH
+PASS  Parametros de manejo finitos e limitados: RUSH
+PASS  Perfil exclusivo ligado a DART
+PASS  Parametros de manejo finitos e limitados: DART
+PASS  Perfil exclusivo ligado a WISP
+PASS  Parametros de manejo finitos e limitados: WISP
+PASS  Perfil exclusivo ligado a CIRCUIT
+PASS  Parametros de manejo finitos e limitados: CIRCUIT
+PASS  Perfil exclusivo ligado a ECHO
+PASS  Parametros de manejo finitos e limitados: ECHO
+PASS  Perfil exclusivo ligado a SHADE
+PASS  Parametros de manejo finitos e limitados: SHADE
+PASS  Perfil exclusivo ligado a HELIX
+PASS  Parametros de manejo finitos e limitados: HELIX
+PASS  Perfil exclusivo ligado a MARROW
+PASS  Parametros de manejo finitos e limitados: MARROW
+PASS  Perfil exclusivo ligado a BREACH
+PASS  Parametros de manejo finitos e limitados: BREACH
+PASS  Perfil exclusivo ligado a RIDGE
+PASS  Parametros de manejo finitos e limitados: RIDGE
+PASS  Perfil exclusivo ligado a HORIZON
+PASS  Parametros de manejo finitos e limitados: HORIZON
+PASS  Perfil exclusivo ligado a BASTION
+PASS  Parametros de manejo finitos e limitados: BASTION
+PASS  As quinze armas possuem perfis independentes
+PASS  Padrao de recuo deterministico: SPARK
+PASS  Recuo e dispersao crescem ate os limites: SPARK
+PASS  Disparo avanca contador e reinicia recuperacao: SPARK
+PASS  Agachar reduz recuo sem ampliar dispersao: SPARK
+PASS  FOCO reduz recuo e dispersao: SPARK
+PASS  Instancias da mesma arma nao compartilham estado: SPARK
+PASS  Padrao de recuo deterministico: VEIL
+PASS  Recuo e dispersao crescem ate os limites: VEIL
+PASS  Disparo avanca contador e reinicia recuperacao: VEIL
+PASS  Agachar reduz recuo sem ampliar dispersao: VEIL
+PASS  FOCO reduz recuo e dispersao: VEIL
+PASS  Instancias da mesma arma nao compartilham estado: VEIL
+PASS  Padrao de recuo deterministico: TALON
+PASS  Recuo e dispersao crescem ate os limites: TALON
+PASS  Disparo avanca contador e reinicia recuperacao: TALON
+PASS  Agachar reduz recuo sem ampliar dispersao: TALON
+PASS  FOCO reduz recuo e dispersao: TALON
+PASS  Instancias da mesma arma nao compartilham estado: TALON
+PASS  Padrao de recuo deterministico: RUSH
+PASS  Recuo e dispersao crescem ate os limites: RUSH
+PASS  Disparo avanca contador e reinicia recuperacao: RUSH
+PASS  Agachar reduz recuo sem ampliar dispersao: RUSH
+PASS  FOCO reduz recuo e dispersao: RUSH
+PASS  Instancias da mesma arma nao compartilham estado: RUSH
+PASS  Padrao de recuo deterministico: DART
+PASS  Recuo e dispersao crescem ate os limites: DART
+PASS  Disparo avanca contador e reinicia recuperacao: DART
+PASS  Agachar reduz recuo sem ampliar dispersao: DART
+PASS  FOCO reduz recuo e dispersao: DART
+PASS  Instancias da mesma arma nao compartilham estado: DART
+PASS  Padrao de recuo deterministico: WISP
+PASS  Recuo e dispersao crescem ate os limites: WISP
+PASS  Disparo avanca contador e reinicia recuperacao: WISP
+PASS  Agachar reduz recuo sem ampliar dispersao: WISP
+PASS  FOCO reduz recuo e dispersao: WISP
+PASS  Instancias da mesma arma nao compartilham estado: WISP
+PASS  Padrao de recuo deterministico: CIRCUIT
+PASS  Recuo e dispersao crescem ate os limites: CIRCUIT
+PASS  Disparo avanca contador e reinicia recuperacao: CIRCUIT
+PASS  Agachar reduz recuo sem ampliar dispersao: CIRCUIT
+PASS  FOCO reduz recuo e dispersao: CIRCUIT
+PASS  Instancias da mesma arma nao compartilham estado: CIRCUIT
+PASS  Padrao de recuo deterministico: ECHO
+PASS  Recuo e dispersao crescem ate os limites: ECHO
+PASS  Disparo avanca contador e reinicia recuperacao: ECHO
+PASS  Agachar reduz recuo sem ampliar dispersao: ECHO
+PASS  FOCO reduz recuo e dispersao: ECHO
+PASS  Instancias da mesma arma nao compartilham estado: ECHO
+PASS  Padrao de recuo deterministico: SHADE
+PASS  Recuo e dispersao crescem ate os limites: SHADE
+PASS  Disparo avanca contador e reinicia recuperacao: SHADE
+PASS  Agachar reduz recuo sem ampliar dispersao: SHADE
+PASS  FOCO reduz recuo e dispersao: SHADE
+PASS  Instancias da mesma arma nao compartilham estado: SHADE
+PASS  Padrao de recuo deterministico: HELIX
+PASS  Recuo e dispersao crescem ate os limites: HELIX
+PASS  Disparo avanca contador e reinicia recuperacao: HELIX
+PASS  Agachar reduz recuo sem ampliar dispersao: HELIX
+PASS  FOCO reduz recuo e dispersao: HELIX
+PASS  Instancias da mesma arma nao compartilham estado: HELIX
+PASS  Padrao de recuo deterministico: MARROW
+PASS  Recuo e dispersao crescem ate os limites: MARROW
+PASS  Disparo avanca contador e reinicia recuperacao: MARROW
+PASS  Agachar reduz recuo sem ampliar dispersao: MARROW
+PASS  FOCO reduz recuo e dispersao: MARROW
+PASS  Instancias da mesma arma nao compartilham estado: MARROW
+PASS  Padrao de recuo deterministico: BREACH
+PASS  Recuo e dispersao crescem ate os limites: BREACH
+PASS  Disparo avanca contador e reinicia recuperacao: BREACH
+PASS  Agachar reduz recuo sem ampliar dispersao: BREACH
+PASS  FOCO reduz recuo e dispersao: BREACH
+PASS  Instancias da mesma arma nao compartilham estado: BREACH
+PASS  Padrao de recuo deterministico: RIDGE
+PASS  Recuo e dispersao crescem ate os limites: RIDGE
+PASS  Disparo avanca contador e reinicia recuperacao: RIDGE
+PASS  Agachar reduz recuo sem ampliar dispersao: RIDGE
+PASS  FOCO reduz recuo e dispersao: RIDGE
+PASS  Instancias da mesma arma nao compartilham estado: RIDGE
+PASS  Padrao de recuo deterministico: HORIZON
+PASS  Recuo e dispersao crescem ate os limites: HORIZON
+PASS  Disparo avanca contador e reinicia recuperacao: HORIZON
+PASS  Agachar reduz recuo sem ampliar dispersao: HORIZON
+PASS  FOCO reduz recuo e dispersao: HORIZON
+PASS  Instancias da mesma arma nao compartilham estado: HORIZON
+PASS  Padrao de recuo deterministico: BASTION
+PASS  Recuo e dispersao crescem ate os limites: BASTION
+PASS  Disparo avanca contador e reinicia recuperacao: BASTION
+PASS  Agachar reduz recuo sem ampliar dispersao: BASTION
+PASS  FOCO reduz recuo e dispersao: BASTION
+PASS  Instancias da mesma arma nao compartilham estado: BASTION
+PASS  ECHO mantem recuo vertical e lateral em rajada longa
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: SPARK
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: SPARK
+PASS  Recuo respeita limites durante cadencia legal: SPARK
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: SPARK
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: SPARK
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: VEIL
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: VEIL
+PASS  Recuo respeita limites durante cadencia legal: VEIL
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: VEIL
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: VEIL
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: TALON
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: TALON
+PASS  Recuo respeita limites durante cadencia legal: TALON
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: TALON
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: TALON
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: RUSH
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: RUSH
+PASS  Recuo respeita limites durante cadencia legal: RUSH
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: RUSH
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: RUSH
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: DART
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: DART
+PASS  Recuo respeita limites durante cadencia legal: DART
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: DART
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: DART
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: WISP
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: WISP
+PASS  Recuo respeita limites durante cadencia legal: WISP
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: WISP
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: WISP
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: CIRCUIT
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: CIRCUIT
+PASS  Recuo respeita limites durante cadencia legal: CIRCUIT
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: CIRCUIT
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: CIRCUIT
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: ECHO
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: ECHO
+PASS  Recuo respeita limites durante cadencia legal: ECHO
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: ECHO
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: ECHO
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: SHADE
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: SHADE
+PASS  Recuo respeita limites durante cadencia legal: SHADE
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: SHADE
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: SHADE
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: HELIX
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: HELIX
+PASS  Recuo respeita limites durante cadencia legal: HELIX
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: HELIX
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: HELIX
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: MARROW
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: MARROW
+PASS  Recuo respeita limites durante cadencia legal: MARROW
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: MARROW
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: MARROW
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: BREACH
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: BREACH
+PASS  Recuo respeita limites durante cadencia legal: BREACH
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: BREACH
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: BREACH
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: RIDGE
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: RIDGE
+PASS  Recuo respeita limites durante cadencia legal: RIDGE
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: RIDGE
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: RIDGE
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: HORIZON
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: HORIZON
+PASS  Recuo respeita limites durante cadencia legal: HORIZON
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: HORIZON
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: HORIZON
+PASS  Carregador real respeita cadencia e bloqueia tiro antecipado: BASTION
+PASS  Padrao acumula entre tiros rapidos e recupera antes dos tiros lentos: BASTION
+PASS  Recuo respeita limites durante cadencia legal: BASTION
+PASS  Pausa apos carregador recupera pelo atraso e taxa do perfil: BASTION
+PASS  Primeiro tiro apos pausa retorna ao padrao inicial: BASTION
+PASS  Recuo permanece durante atraso de recuperacao: SPARK
+PASS  Passo que cruza atraso recupera somente o tempo ativo: SPARK
+PASS  Recuperacao independe da particao temporal: SPARK
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: SPARK
+PASS  Pausa reduz recuo e reinicia a primeira rajada: SPARK
+PASS  Recuo permanece durante atraso de recuperacao: VEIL
+PASS  Passo que cruza atraso recupera somente o tempo ativo: VEIL
+PASS  Recuperacao independe da particao temporal: VEIL
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: VEIL
+PASS  Pausa reduz recuo e reinicia a primeira rajada: VEIL
+PASS  Recuo permanece durante atraso de recuperacao: TALON
+PASS  Passo que cruza atraso recupera somente o tempo ativo: TALON
+PASS  Recuperacao independe da particao temporal: TALON
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: TALON
+PASS  Pausa reduz recuo e reinicia a primeira rajada: TALON
+PASS  Recuo permanece durante atraso de recuperacao: RUSH
+PASS  Passo que cruza atraso recupera somente o tempo ativo: RUSH
+PASS  Recuperacao independe da particao temporal: RUSH
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: RUSH
+PASS  Pausa reduz recuo e reinicia a primeira rajada: RUSH
+PASS  Recuo permanece durante atraso de recuperacao: DART
+PASS  Passo que cruza atraso recupera somente o tempo ativo: DART
+PASS  Recuperacao independe da particao temporal: DART
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: DART
+PASS  Pausa reduz recuo e reinicia a primeira rajada: DART
+PASS  Recuo permanece durante atraso de recuperacao: WISP
+PASS  Passo que cruza atraso recupera somente o tempo ativo: WISP
+PASS  Recuperacao independe da particao temporal: WISP
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: WISP
+PASS  Pausa reduz recuo e reinicia a primeira rajada: WISP
+PASS  Recuo permanece durante atraso de recuperacao: CIRCUIT
+PASS  Passo que cruza atraso recupera somente o tempo ativo: CIRCUIT
+PASS  Recuperacao independe da particao temporal: CIRCUIT
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: CIRCUIT
+PASS  Pausa reduz recuo e reinicia a primeira rajada: CIRCUIT
+PASS  Recuo permanece durante atraso de recuperacao: ECHO
+PASS  Passo que cruza atraso recupera somente o tempo ativo: ECHO
+PASS  Recuperacao independe da particao temporal: ECHO
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: ECHO
+PASS  Pausa reduz recuo e reinicia a primeira rajada: ECHO
+PASS  Recuo permanece durante atraso de recuperacao: SHADE
+PASS  Passo que cruza atraso recupera somente o tempo ativo: SHADE
+PASS  Recuperacao independe da particao temporal: SHADE
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: SHADE
+PASS  Pausa reduz recuo e reinicia a primeira rajada: SHADE
+PASS  Recuo permanece durante atraso de recuperacao: HELIX
+PASS  Passo que cruza atraso recupera somente o tempo ativo: HELIX
+PASS  Recuperacao independe da particao temporal: HELIX
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: HELIX
+PASS  Pausa reduz recuo e reinicia a primeira rajada: HELIX
+PASS  Recuo permanece durante atraso de recuperacao: MARROW
+PASS  Passo que cruza atraso recupera somente o tempo ativo: MARROW
+PASS  Recuperacao independe da particao temporal: MARROW
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: MARROW
+PASS  Pausa reduz recuo e reinicia a primeira rajada: MARROW
+PASS  Recuo permanece durante atraso de recuperacao: BREACH
+PASS  Passo que cruza atraso recupera somente o tempo ativo: BREACH
+PASS  Recuperacao independe da particao temporal: BREACH
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: BREACH
+PASS  Pausa reduz recuo e reinicia a primeira rajada: BREACH
+PASS  Recuo permanece durante atraso de recuperacao: RIDGE
+PASS  Passo que cruza atraso recupera somente o tempo ativo: RIDGE
+PASS  Recuperacao independe da particao temporal: RIDGE
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: RIDGE
+PASS  Pausa reduz recuo e reinicia a primeira rajada: RIDGE
+PASS  Recuo permanece durante atraso de recuperacao: HORIZON
+PASS  Passo que cruza atraso recupera somente o tempo ativo: HORIZON
+PASS  Recuperacao independe da particao temporal: HORIZON
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: HORIZON
+PASS  Pausa reduz recuo e reinicia a primeira rajada: HORIZON
+PASS  Recuo permanece durante atraso de recuperacao: BASTION
+PASS  Passo que cruza atraso recupera somente o tempo ativo: BASTION
+PASS  Recuperacao independe da particao temporal: BASTION
+PASS  Pausa de 650 ms recupera igual em um passo, 60 e 144 FPS: BASTION
+PASS  Pausa reduz recuo e reinicia a primeira rajada: BASTION
+PASS  Recuperacao conserva recarga e compensacao de cadencia
+PASS  Dano base preservado ate alcance nominal: SPARK
+PASS  Dano continuo no antigo degrau de alcance: SPARK
+PASS  Queda gradual preserva fator comum de corpo e cabeca: SPARK
+PASS  Retencao calibrada por arma a cada 25 metros: SPARK
+PASS  Dano base preservado ate alcance nominal: VEIL
+PASS  Dano continuo no antigo degrau de alcance: VEIL
+PASS  Queda gradual preserva fator comum de corpo e cabeca: VEIL
+PASS  Retencao calibrada por arma a cada 25 metros: VEIL
+PASS  Dano base preservado ate alcance nominal: TALON
+PASS  Dano continuo no antigo degrau de alcance: TALON
+PASS  Queda gradual preserva fator comum de corpo e cabeca: TALON
+PASS  Retencao calibrada por arma a cada 25 metros: TALON
+PASS  Dano base preservado ate alcance nominal: RUSH
+PASS  Dano continuo no antigo degrau de alcance: RUSH
+PASS  Queda gradual preserva fator comum de corpo e cabeca: RUSH
+PASS  Retencao calibrada por arma a cada 25 metros: RUSH
+PASS  Dano base preservado ate alcance nominal: DART
+PASS  Dano continuo no antigo degrau de alcance: DART
+PASS  Queda gradual preserva fator comum de corpo e cabeca: DART
+PASS  Retencao calibrada por arma a cada 25 metros: DART
+PASS  Dano base preservado ate alcance nominal: WISP
+PASS  Dano continuo no antigo degrau de alcance: WISP
+PASS  Queda gradual preserva fator comum de corpo e cabeca: WISP
+PASS  Retencao calibrada por arma a cada 25 metros: WISP
+PASS  Dano base preservado ate alcance nominal: CIRCUIT
+PASS  Dano continuo no antigo degrau de alcance: CIRCUIT
+PASS  Queda gradual preserva fator comum de corpo e cabeca: CIRCUIT
+PASS  Retencao calibrada por arma a cada 25 metros: CIRCUIT
+PASS  Dano base preservado ate alcance nominal: ECHO
+PASS  Dano continuo no antigo degrau de alcance: ECHO
+PASS  Queda gradual preserva fator comum de corpo e cabeca: ECHO
+PASS  Retencao calibrada por arma a cada 25 metros: ECHO
+PASS  Dano base preservado ate alcance nominal: SHADE
+PASS  Dano continuo no antigo degrau de alcance: SHADE
+PASS  Queda gradual preserva fator comum de corpo e cabeca: SHADE
+PASS  Retencao calibrada por arma a cada 25 metros: SHADE
+PASS  Dano base preservado ate alcance nominal: HELIX
+PASS  Dano continuo no antigo degrau de alcance: HELIX
+PASS  Queda gradual preserva fator comum de corpo e cabeca: HELIX
+PASS  Retencao calibrada por arma a cada 25 metros: HELIX
+PASS  Dano base preservado ate alcance nominal: MARROW
+PASS  Dano continuo no antigo degrau de alcance: MARROW
+PASS  Queda gradual preserva fator comum de corpo e cabeca: MARROW
+PASS  Retencao calibrada por arma a cada 25 metros: MARROW
+PASS  Dano base preservado ate alcance nominal: BREACH
+PASS  Dano continuo no antigo degrau de alcance: BREACH
+PASS  Queda gradual preserva fator comum de corpo e cabeca: BREACH
+PASS  Retencao calibrada por arma a cada 25 metros: BREACH
+PASS  Dano base preservado ate alcance nominal: RIDGE
+PASS  Dano continuo no antigo degrau de alcance: RIDGE
+PASS  Queda gradual preserva fator comum de corpo e cabeca: RIDGE
+PASS  Retencao calibrada por arma a cada 25 metros: RIDGE
+PASS  Dano base preservado ate alcance nominal: HORIZON
+PASS  Dano continuo no antigo degrau de alcance: HORIZON
+PASS  Queda gradual preserva fator comum de corpo e cabeca: HORIZON
+PASS  Retencao calibrada por arma a cada 25 metros: HORIZON
+PASS  Dano base preservado ate alcance nominal: BASTION
+PASS  Dano continuo no antigo degrau de alcance: BASTION
+PASS  Queda gradual preserva fator comum de corpo e cabeca: BASTION
+PASS  Retencao calibrada por arma a cada 25 metros: BASTION
+PASS  DART perde eficacia fora de combate proximo
+PASS  Precisao pesada retem mais dano que submetralhadora apos alcance nominal
+PASS  Precisao responde a corrida, salto, pouso e agachamento: SPARK
+PASS  Mira e FOCO melhoram precisao: SPARK
+PASS  Rajada aumenta dispersao comum: SPARK
+PASS  Precisao responde a corrida, salto, pouso e agachamento: VEIL
+PASS  Mira e FOCO melhoram precisao: VEIL
+PASS  Rajada aumenta dispersao comum: VEIL
+PASS  Precisao responde a corrida, salto, pouso e agachamento: TALON
+PASS  Mira e FOCO melhoram precisao: TALON
+PASS  Rajada aumenta dispersao comum: TALON
+PASS  Precisao responde a corrida, salto, pouso e agachamento: RUSH
+PASS  Mira e FOCO melhoram precisao: RUSH
+PASS  Rajada aumenta dispersao comum: RUSH
+PASS  Precisao responde a corrida, salto, pouso e agachamento: DART
+PASS  Mira e FOCO melhoram precisao: DART
+PASS  Rajada aumenta dispersao comum: DART
+PASS  Precisao responde a corrida, salto, pouso e agachamento: WISP
+PASS  Mira e FOCO melhoram precisao: WISP
+PASS  Rajada aumenta dispersao comum: WISP
+PASS  Precisao responde a corrida, salto, pouso e agachamento: CIRCUIT
+PASS  Mira e FOCO melhoram precisao: CIRCUIT
+PASS  Rajada aumenta dispersao comum: CIRCUIT
+PASS  Precisao responde a corrida, salto, pouso e agachamento: ECHO
+PASS  Mira e FOCO melhoram precisao: ECHO
+PASS  Rajada aumenta dispersao comum: ECHO
+PASS  Precisao responde a corrida, salto, pouso e agachamento: SHADE
+PASS  Mira e FOCO melhoram precisao: SHADE
+PASS  Rajada aumenta dispersao comum: SHADE
+PASS  Precisao responde a corrida, salto, pouso e agachamento: HELIX
+PASS  Mira e FOCO melhoram precisao: HELIX
+PASS  Rajada aumenta dispersao comum: HELIX
+PASS  Precisao responde a corrida, salto, pouso e agachamento: MARROW
+PASS  Mira e FOCO melhoram precisao: MARROW
+PASS  Rajada aumenta dispersao comum: MARROW
+PASS  Precisao responde a corrida, salto, pouso e agachamento: BREACH
+PASS  Mira e FOCO melhoram precisao: BREACH
+PASS  Rajada aumenta dispersao comum: BREACH
+PASS  Precisao responde a corrida, salto, pouso e agachamento: RIDGE
+PASS  Mira e FOCO melhoram precisao: RIDGE
+PASS  Rajada aumenta dispersao comum: RIDGE
+PASS  Precisao responde a corrida, salto, pouso e agachamento: HORIZON
+PASS  Mira e FOCO melhoram precisao: HORIZON
+PASS  Rajada aumenta dispersao comum: HORIZON
+PASS  Precisao responde a corrida, salto, pouso e agachamento: BASTION
+PASS  Mira e FOCO melhoram precisao: BASTION
+PASS  Rajada aumenta dispersao comum: BASTION
+PASS  HORIZON exige luneta para precisao
+PASS  Penalidade aerea forte permanece no fuzil
+PASS  Jogador usa precisao compartilhada: SPARK
+PASS  Bot adiciona apenas erro de dificuldade 0: SPARK
+PASS  Bot adiciona apenas erro de dificuldade 1: SPARK
+PASS  Bot adiciona apenas erro de dificuldade 2: SPARK
+PASS  Jogador usa precisao compartilhada: VEIL
+PASS  Bot adiciona apenas erro de dificuldade 0: VEIL
+PASS  Bot adiciona apenas erro de dificuldade 1: VEIL
+PASS  Bot adiciona apenas erro de dificuldade 2: VEIL
+PASS  Jogador usa precisao compartilhada: TALON
+PASS  Bot adiciona apenas erro de dificuldade 0: TALON
+PASS  Bot adiciona apenas erro de dificuldade 1: TALON
+PASS  Bot adiciona apenas erro de dificuldade 2: TALON
+PASS  Jogador usa precisao compartilhada: RUSH
+PASS  Bot adiciona apenas erro de dificuldade 0: RUSH
+PASS  Bot adiciona apenas erro de dificuldade 1: RUSH
+PASS  Bot adiciona apenas erro de dificuldade 2: RUSH
+PASS  Jogador usa precisao compartilhada: DART
+PASS  Bot adiciona apenas erro de dificuldade 0: DART
+PASS  Bot adiciona apenas erro de dificuldade 1: DART
+PASS  Bot adiciona apenas erro de dificuldade 2: DART
+PASS  Jogador usa precisao compartilhada: WISP
+PASS  Bot adiciona apenas erro de dificuldade 0: WISP
+PASS  Bot adiciona apenas erro de dificuldade 1: WISP
+PASS  Bot adiciona apenas erro de dificuldade 2: WISP
+PASS  Jogador usa precisao compartilhada: CIRCUIT
+PASS  Bot adiciona apenas erro de dificuldade 0: CIRCUIT
+PASS  Bot adiciona apenas erro de dificuldade 1: CIRCUIT
+PASS  Bot adiciona apenas erro de dificuldade 2: CIRCUIT
+PASS  Jogador usa precisao compartilhada: ECHO
+PASS  Bot adiciona apenas erro de dificuldade 0: ECHO
+PASS  Bot adiciona apenas erro de dificuldade 1: ECHO
+PASS  Bot adiciona apenas erro de dificuldade 2: ECHO
+PASS  Jogador usa precisao compartilhada: SHADE
+PASS  Bot adiciona apenas erro de dificuldade 0: SHADE
+PASS  Bot adiciona apenas erro de dificuldade 1: SHADE
+PASS  Bot adiciona apenas erro de dificuldade 2: SHADE
+PASS  Jogador usa precisao compartilhada: HELIX
+PASS  Bot adiciona apenas erro de dificuldade 0: HELIX
+PASS  Bot adiciona apenas erro de dificuldade 1: HELIX
+PASS  Bot adiciona apenas erro de dificuldade 2: HELIX
+PASS  Jogador usa precisao compartilhada: MARROW
+PASS  Bot adiciona apenas erro de dificuldade 0: MARROW
+PASS  Bot adiciona apenas erro de dificuldade 1: MARROW
+PASS  Bot adiciona apenas erro de dificuldade 2: MARROW
+PASS  Jogador usa precisao compartilhada: BREACH
+PASS  Bot adiciona apenas erro de dificuldade 0: BREACH
+PASS  Bot adiciona apenas erro de dificuldade 1: BREACH
+PASS  Bot adiciona apenas erro de dificuldade 2: BREACH
+PASS  Jogador usa precisao compartilhada: RIDGE
+PASS  Bot adiciona apenas erro de dificuldade 0: RIDGE
+PASS  Bot adiciona apenas erro de dificuldade 1: RIDGE
+PASS  Bot adiciona apenas erro de dificuldade 2: RIDGE
+PASS  Jogador usa precisao compartilhada: HORIZON
+PASS  Bot adiciona apenas erro de dificuldade 0: HORIZON
+PASS  Bot adiciona apenas erro de dificuldade 1: HORIZON
+PASS  Bot adiciona apenas erro de dificuldade 2: HORIZON
+PASS  Jogador usa precisao compartilhada: BASTION
+PASS  Bot adiciona apenas erro de dificuldade 0: BASTION
+PASS  Bot adiciona apenas erro de dificuldade 1: BASTION
+PASS  Bot adiciona apenas erro de dificuldade 2: BASTION
+PASS  Arma guardada tambem recupera recuo no tempo de jogo
+PASS  Reequipar arma recuperada restaura precisao sem estado congelado
+PASS  Troca de direcao conserva impulso ortogonal com atrito separado
+PASS  Aceleracao projetada nao excede o limite de corrida no solo
+PASS  Atrito sem entrada inicia frenagem continua
+PASS  Atrito interrompe corrida com lamina em menos de 100 ms
+PASS  Contra-strafe usa projecao oposta e cruza o repouso em 80 ms
+PASS  Atrito de controle respeita combinacoes muito lentas de agachar e efeitos
+PASS  Entrada diagonal normalizada nao aumenta a velocidade no solo
+PASS  Giro de trinta graus redireciona impulso sem acelerar alem do limite no solo
+PASS  Atrito e mudanca de direcao sao consistentes em 60, 120 e 144 FPS
+PASS  SPARK: atravessa madeira de cinco centimetros
+PASS  SPARK: retencao de dano respeita a cobertura
+PASS  SPARK: limite individual de superficies
+PASS  VEIL: atravessa madeira de cinco centimetros
+PASS  VEIL: retencao de dano respeita a cobertura
+PASS  VEIL: limite individual de superficies
+PASS  TALON: atravessa madeira de cinco centimetros
+PASS  TALON: retencao de dano respeita a cobertura
+PASS  TALON: limite individual de superficies
+PASS  RUSH: atravessa madeira de cinco centimetros
+PASS  RUSH: retencao de dano respeita a cobertura
+PASS  RUSH: limite individual de superficies
+PASS  DART: pellets param na primeira cobertura
+PASS  WISP: atravessa madeira de cinco centimetros
+PASS  WISP: retencao de dano respeita a cobertura
+PASS  WISP: limite individual de superficies
+PASS  CIRCUIT: atravessa madeira de cinco centimetros
+PASS  CIRCUIT: retencao de dano respeita a cobertura
+PASS  CIRCUIT: limite individual de superficies
+PASS  ECHO: atravessa madeira de cinco centimetros
+PASS  ECHO: retencao de dano respeita a cobertura
+PASS  ECHO: limite individual de superficies
+PASS  SHADE: atravessa madeira de cinco centimetros
+PASS  SHADE: retencao de dano respeita a cobertura
+PASS  SHADE: limite individual de superficies
+PASS  HELIX: atravessa madeira de cinco centimetros
+PASS  HELIX: retencao de dano respeita a cobertura
+PASS  HELIX: limite individual de superficies
+PASS  MARROW: pellets param na primeira cobertura
+PASS  BREACH: pellets param na primeira cobertura
+PASS  RIDGE: atravessa madeira de cinco centimetros
+PASS  RIDGE: retencao de dano respeita a cobertura
+PASS  RIDGE: limite individual de superficies
+PASS  HORIZON: atravessa madeira de cinco centimetros
+PASS  HORIZON: retencao de dano respeita a cobertura
+PASS  HORIZON: limite individual de superficies
+PASS  BASTION: atravessa madeira de cinco centimetros
+PASS  BASTION: retencao de dano respeita a cobertura
+PASS  BASTION: limite individual de superficies
+PASS  Pistolas leves possuem potencias distintas
+PASS  SMGs possuem potencias distintas
+PASS  Fuzis possuem potencias distintas
+PASS  Armas de precisao possuem potencias distintas
+PASS  Arma pesada para na terceira superficie mesmo com potencia restante
+PASS  Metal custa mais potencia e retencao que madeira
+PASS  Bala sem potencia suficiente para dentro do metal
+PASS  Concreto bloqueia sem criar fator de dano NaN
+PASS  Espessuras consomem um unico orcamento ao longo do trajeto
+PASS  Angulo obliquo aumenta espessura fisica e pode impedir saida
+PASS  Dois paineis sobrepostos compartilham potencia sem serem ignorados
+PASS  Saidas aninhadas ficam em ordem espacial
+PASS  Dano dentro da cobertura usa apenas espessura realmente percorrida
+PASS  Coberturas sobrepostas acumulam retencao depois das duas saidas
+PASS  Orcamento acaba dentro de duas coberturas sobrepostas
+PASS  Resultado de sobreposicao independe da ordem de cadastro
+PASS  Terceiro painel interno ainda respeita limite de superficies
+PASS  Solido opaco dentro de painel interrompe a bala
+PASS  Barreira temporaria dentro de painel interrompe a bala
+PASS  Barreira temporaria coincidente nao herda penetracao do painel
+PASS  Solido opaco coincidente tem precedencia sobre painel
+PASS  Obstaculo a meio milimetro da saida nao e pulado
+PASS  Rampa dentro de painel mantem sua obstrucao geometrica
+PASS  Chao dentro de painel interrompe tiro descendente
+PASS  Raio sem geometria conserva alcance maximo de 210 metros
+PASS  Tiro real acerta alvo parcialmente interno sem cobrar espessura posterior nem dar dano integral
+PASS  Alvo alem do orcamento percorrivel permanece protegido
+PASS  Tiro real nao atinge alvo apos barreira temporaria interna
+PASS  Varredura cobre 120 triângulos recortados como referência baricêntrica
+PASS  Ordem de desenho preserva oclusão pelo objeto mais próximo
+PASS  Recorte espacial mantém superfícies do mapa 0 (diferença 0 pixels)
+PASS  Recorte espacial mantém superfícies do mapa 0 (diferença 0 pixels)
+PASS  Recorte espacial mantém superfícies do mapa 0 (diferença 0 pixels)
+PASS  Recorte espacial mantém superfícies do mapa 0 (diferença 78 pixels)
+PASS  Recorte espacial mantém superfícies do mapa 1 (diferença 0 pixels)
+PASS  Recorte espacial mantém superfícies do mapa 1 (diferença 0 pixels)
+PASS  Recorte espacial mantém superfícies do mapa 1 (diferença 0 pixels)
+PASS  Recorte espacial mantém superfícies do mapa 1 (diferença 0 pixels)
+PASS  Recorte espacial mantém superfícies do mapa 2 (diferença 0 pixels)
+PASS  Recorte espacial mantém superfícies do mapa 2 (diferença 0 pixels)
+PASS  Recorte espacial mantém superfícies do mapa 2 (diferença 0 pixels)
+PASS  Recorte espacial mantém superfícies do mapa 2 (diferença 78 pixels)
+PASS  Troca de mapa invalida terreno do minimapa sem alterar marcadores
+PASS  AUTO reduz resolução em menos de um segundo a 13 FPS
+PASS  AUTO tem resolução de emergência para CPU limitada
+PASS  Breve alívio de carga não oscila resolução
+PASS  AUTO recupera qualidade após folga sustentada
+PASS  Medição inválida não corrompe qualidade
+PASS  Filtro e modo de desempenho persistem mantendo texturas
+PASS  Perfil de desempenho preserva controles e escolha de mira
+PASS  Qualidade fixa continua respeitando escolha manual
+PASS  Otimização da malha preserva cantos, faces e cores em yaw 0.0
+PASS  Otimização da malha preserva cantos, faces e cores em yaw 0.7
+PASS  Otimização da malha preserva cantos, faces e cores em yaw 2.9
+PASS  Raster sem V temporários mantém pixels e profundidade em 90 cenas com recorte e nearsight
+PASS  IA enxerga alvo na frente com linha de visão
+PASS  IA não enxerga inimigo atrás, mesmo sem parede
+PASS  Limite de visão horizontal: 54.9 graus
+PASS  Limite de visão horizontal: 55.1 graus
+PASS  Limite de visão horizontal: -54.9 graus
+PASS  Limite de visão horizontal: -55.1 graus
+PASS  Parede bloqueia aquisição, mesmo dentro do cone
+PASS  Smoke bloqueia aquisição e não apenas renderização
+PASS  Bot cegado não adquire alvo
+PASS  Visão reduzida limita percepção a sete metros
+PASS  Último local visto não acompanha inimigo fora da visão
+PASS  Memória visual expira e encerra perseguição antiga
+PASS  Smoke nova invalida visão em cache antes do tiro
+PASS  Dificuldade 0: giro limitado por velocidade angular, sem snap
+PASS  Dificuldade 1: giro limitado por velocidade angular, sem snap
+PASS  Dificuldade 2: giro limitado por velocidade angular, sem snap
+PASS  Mira gira igualmente a 60 e 120 ticks/s
+PASS  Bot não dispara na direção do inimigo antes de alinhar a cabeça
+PASS  Tiro é liberado quando mira e linha de visão estão alinhadas
+PASS  Bots usam o mesmo padrão de recuo das armas
+PASS  Bot faz strafe em duelo a menos de 19 metros
+PASS  Duelo alterna agachamento, parada para tiro e deslocamento
+PASS  Sem balas e inimigo perto: sacar pistola tem prioridade
+PASS  Tempo de saque impede tiro instantâneo ao trocar de arma
+PASS  Sem ameaça próxima: bot volta da pistola e recarrega a arma principal
+PASS  Retirada procura cobertura que realmente bloqueia a ameaça conhecida
+PASS  Bot mantém mira na altura dos olhos ao seguir waypoint próximo
+PASS  Silêncio não entrega inimigo atrás do bot
+PASS  Passos geram pista aproximada mesmo com motor de áudio desligado
+PASS  Pista sonora não rastreia a posição atual do emissor
+PASS  Recarga distante não revela inimigo fora do alcance acústico
+PASS  Parede atenua audição de passos
+PASS  Tiro forte ainda pode ser ouvido através da parede
+PASS  Tiro de aliado não vira pista de inimigo
+PASS  Madeira fina permite wallbang com perda de dano só depois da superfície
+PASS  Metal da mesma espessura segura fuzil comum
+PASS  Sniper atravessa metal fino com maior perda de dano
+PASS  Pistola leve não atravessa painel de madeira de 20 cm
+PASS  Pellets de escopeta não atravessam cobertura
+PASS  Concreto estrutural bloqueia até arma pesada
+PASS  Duas superfícies compartilham orçamento de penetração
+PASS  Impacto oblíquo percorre mais material e pode parar a bala
+PASS  Wallbang real aplica dano reduzido à vítima através da madeira
+PASS  Mesmo número de rodada produz estratégias e papéis variados por sorteio
+PASS  Busca de rotas tem orçamento global por quadro
+PASS  Sem disparo nem nova percepção, IA reutiliza conhecimento entre quadros
+PASS  Menu inicia Bots vs. Bots com dez participantes ativos
+PASS  Espaço alterna POV no observador
+PASS  Observar partida não concede XP, rank ou vitória ao perfil
+PASS  Sair para treino devolve controle ao jogador
+PASS  Duelo 0: spawn livre J1
+PASS  Duelo 0: spawn livre J2
+PASS  Duelo 0: spawn sem linha de tiro direta
+PASS  Duelo 0: passagem entre os lados
+PASS  Duelo 0: perímetro fechado
+PASS  Duelo 1: spawn livre J1
+PASS  Duelo 1: spawn livre J2
+PASS  Duelo 1: spawn sem linha de tiro direta
+PASS  Duelo 1: passagem entre os lados
+PASS  Duelo 1: perímetro fechado
+PASS  Duelo 2: spawn livre J1
+PASS  Duelo 2: spawn livre J2
+PASS  Duelo 2: spawn sem linha de tiro direta
+PASS  Duelo 2: passagem entre os lados
+PASS  Duelo 2: perímetro fechado
+PASS  Dois jogadores prontos iniciam preparação
+PASS  Loadouts diferentes no mesmo servidor
+PASS  Munição e recarga sem referências compartilhadas
+PASS  Cosméticos independentes
+PASS  Movimento bloqueado durante preparação
+PASS  Contagem regressiva libera o duelo
+PASS  W do jogador 1 não movimenta o jogador 2
+PASS  Troca de loadout rejeitada em combate
+PASS  Troca de slot isolada
+PASS  Disparo só consome munição do atirador
+PASS  Servidor calcula headshot, armadura e eliminação
+PASS  Abate encerra rodada e soma uma vitória
+PASS  Rodada seguinte troca lados e repõe equipamentos
+PASS  Desempate por vida e escudo ao fim do tempo
+PASS  Primeiro a sete encerra a partida
+PASS  Revanche exige ambos prontos e zera o placar
+PASS  Snapshot conserva inventário e rodada
+PASS  Snapshot replica recuo e dispersão acumulados após rajada
+PASS  Snapshot respeita limite de pacote
+PASS  Desconexão finaliza duelo em andamento
+PASS  Protocolo preserva controles e sequência
+PASS  NaN rejeitado na orientação
+PASS  Teclas de habilidades e bits desconhecidos rejeitados
+PASS  Pacotes excessivos rejeitados antes de alocar memória
+PASS  Raw Input converte pontuação e Delete para binds Java
+PASS  Dispositivo J1 conserva teclado, clique e movimento bruto
+PASS  Dispositivo J1 não vaza para J2
+PASS  Ambos jogadores podem manter comandos distintos
+PASS  Pacote antigo de dispositivo é descartado
+PASS  Alt+Tab/recadastro limpa as duas entradas
+PASS  Ponte interrompida não deixa tecla presa
+PASS  Duelo rejeita cliente 1.8 antes de atribuir um assento
+PASS  Sala real rejeita código errado
+PASS  Duas conexões reais recebem assentos diferentes
+PASS  Os dois clientes recebem snapshots do servidor
+PASS  Sala 1v1 recusa um terceiro jogador
+PASS  Ready atravessa a conexão e inicia preparação
+PASS  Entrada de rede move somente o jogador autenticado
+PASS  Servidor libera teclas após 350 ms sem comandos
+PASS  Tiro enviado pela rede elimina o oponente e replica o placar
+PASS  Servidor desconecta comando não finito
+PASS  Outro cliente recebe saída e resultado
+PASS  Dois renderizadores paralelos preservam as mesmas cores e pixels
+DUEL TESTS OK
+
+1209 checks passed.

@@ -1,0 +1,5 @@
+RIFT 1.7 / combate com 10 atores vivos / 9 bots / 1280x720 / sem janela
+120 quadros de aquecimento + 240 medidos por qualidade; vida alta para manter carga contínua.
+quality=0 interno=640x360 | 21.60ms 46.3FPS p95=23.80ms | IA+sim=0.196ms | simAllocation=5533 bytes/tick | live=10
+quality=1 interno=854x480 | 26.55ms 37.7FPS p95=28.90ms | IA+sim=0.143ms | simAllocation=5381 bytes/tick | live=10
+quality=2 interno=1066x599 | 37.18ms 26.9FPS p95=59.63ms | IA+sim=0.136ms | simAllocation=5110 bytes/tick | live=10
