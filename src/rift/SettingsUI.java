@@ -22,13 +22,9 @@ final class SettingsUI {
             cycle(p,4,"Dificuldade dos bots",new String[]{"TRANQUILO","NORMAL","DIFÍCIL"}[s.difficulty],()->s.difficulty=(s.difficulty+1)%3);
             cycle(p,5,"Texturas de materiais",on(s.textures),()->s.textures=!s.textures);
             cycle(p,6,"Marcas e cápsulas de disparos",on(s.impactFX),()->s.impactFX=!s.impactFX);
-<<<<<<< HEAD
             cycle(p,7,"Ampliação do cenário",s.smoothUpscale?"SUAVE / MAIS CUSTOSA":"RÁPIDA / MAIS NÍTIDA",()->s.smoothUpscale=!s.smoothUpscale);
             v.button(p,"MODO DESEMPENHO",42,572,210,43,false,()->{s.performance();v.adaptive.reset(1);g.world.setShadows(false);s.save();});
             text(p,"AUTO reage ao tempo do quadro completo. F11: tela cheia.",295,629,11,MUTED,false);
-=======
-            text(p,"F11: tela cheia • Texturas desligadas simplificam as superfícies 3D.",295,589,12,MUTED,false);
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         }else if(tab==2){
             adjust(p,0,"Volume master",percent(s.volume),()->s.volume=Math.max(0,s.volume-.1),()->s.volume=Math.min(1,s.volume+.1));
             adjust(p,1,"Efeitos",percent(s.effectsVolume),()->s.effectsVolume=Math.max(0,s.effectsVolume-.1),()->s.effectsVolume=Math.min(1,s.effectsVolume+.1));

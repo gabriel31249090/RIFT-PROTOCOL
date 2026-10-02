@@ -42,11 +42,7 @@ final class Tests {
         g=fresh();g.beginRound();double timer=g.timer;g.ui="pause";g.tick(1,Input.Frame.empty());check(g.timer==timer,"Pausa interrompe o relógio");
         g=fresh();g.smokes.add(new Smoke(32,30));check(g.obscured(new V(32,1.6,20),new V(32,1.6,40)),"Fumaça bloqueia a percepção dos bots");
         testShooting();testTraining();testInputs();testTactical();testMapOrientation();testWeapons();testUltimates();testAce();testMatch();testMenus();UpdateTests.run();FeelTests.run();TacticalTests.run();ImpactTests.run();
-<<<<<<< HEAD
         PerformanceTests.run();BotTests.run();DuelTests.run();System.out.println("\n"+passed+" checks passed.");
-=======
-        System.out.println("\n"+passed+" checks passed.");
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     }
     static void testShooting(){
         Game g=fresh();g.beginRound();for(Actor a:g.actors)if(a!=g.player)a.dead=true;

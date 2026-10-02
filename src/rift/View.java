@@ -10,13 +10,9 @@ import static rift.World.*;
 
 final class View {
     static final Color INK=new Color(0x10232F),WHITE=new Color(0xE9EFE7),MUTED=new Color(0x91AAA9),CORAL=new Color(0xFF6D67),MINT=new Color(0xA4D6BF),GOLD=new Color(0xE4C59A);
-<<<<<<< HEAD
     final SettingsUI settingsUI;final Game game;final FlowUI flowUI;final CollectionUI collectionUI;double renderMillis=10,frameMillis=10;final Renderer renderer=new Renderer(854,480);final AdaptiveQuality adaptive=new AdaptiveQuality();
     static final int[] FIXED_WIDTHS={640,854,1066};
     BufferedImage miniTerrain;World miniWorld;
-=======
-    final SettingsUI settingsUI;final Game game;final FlowUI flowUI;final CollectionUI collectionUI;int autoQuality=1,qualityFrames;double renderMillis=10;final Renderer renderer=new Renderer(854,480);
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     final List<Button> buttons=new ArrayList<>();
     Category shopCategory;Weapon shopWeapon=Weapon.ECHO;
     final Renderer previewRenderer=new Renderer(350,195);
@@ -26,27 +22,18 @@ final class View {
     void pointer(int x,int y){mouseX=(x-offsetX)/scale;mouseY=(y-offsetY)/scale;}
     boolean click(int x,int y){pointer(x,y);for(int i=buttons.size()-1;i>=0;i--){Button b=buttons.get(i);if(b.contains(mouseX,mouseY)){b.action.run();return true;}}return false;}
     void render(Graphics2D output,int width,int height) {
-<<<<<<< HEAD
         long frameStart=System.nanoTime();boolean worldFrame=false;
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         buttons.clear();output.setColor(Color.BLACK);output.fillRect(0,0,width,height);
         scale=Math.min(width/1280.,height/720.);offsetX=(width-1280*scale)/2;offsetY=(height-720*scale)/2;
         Graphics2D g=(Graphics2D)output.create();g.translate(offsetX,offsetY);g.scale(scale,scale);
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
         g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-<<<<<<< HEAD
         int internal=game.settings.quality==3?adaptive.width():FIXED_WIDTHS[game.settings.quality];renderer.resize(internal,internal*9/16);
         g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         if(!java.util.Set.of("menu","collection","shop","agents","modes","queue","found","loading","tournament","profile","settings").contains(game.ui)){worldFrame=true;long start=System.nanoTime();BufferedImage world=renderer.render(game);renderMillis=renderMillis*.95+(System.nanoTime()-start)/1e6*.05;
             if(!game.settings.smoothUpscale)g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
             g.drawImage(world,0,0,1280,720,null);g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         }
-=======
-        int[] sizes={640,854,1066};int quality=game.settings.quality==3?autoQuality:game.settings.quality;renderer.resize(sizes[quality],sizes[quality]*9/16);
-        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-        if(!java.util.Set.of("menu","collection","shop","agents","modes","queue","found","loading","tournament","profile","settings").contains(game.ui)){long start=System.nanoTime();BufferedImage world=renderer.render(game);renderMillis=renderMillis*.95+(System.nanoTime()-start)/1e6*.05;g.drawImage(world,0,0,1280,720,null);if(game.settings.quality==3&&++qualityFrames>=120){qualityFrames=0;if(renderMillis>14&&autoQuality>0)autoQuality--;else if(renderMillis<6.5&&autoQuality<2)autoQuality++;}}
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         switch(game.ui){
             case "menu"->menu(g);
             case "collection"->collectionUI.render(g);
@@ -58,10 +45,7 @@ final class View {
         }
         if(game.noticeTime>0&&(game.ui.equals("play")||game.ui.equals("shop")||game.ui.equals("tactical"))){int tw=g.getFontMetrics(font(13,true)).stringWidth(game.notice);int y=game.ui.equals("tactical")?678:580;rect(g,640-tw/2-18,y,tw+36,32,new Color(10,28,39,222));center(g,game.notice,640,y+21,13,WHITE,true);}
         g.dispose();
-<<<<<<< HEAD
         double elapsed=(System.nanoTime()-frameStart)/1e6;frameMillis=frameMillis*.9+elapsed*.1;if(worldFrame&&game.settings.quality==3)adaptive.sample(elapsed+game.simulationMillis,game.settings.frameLimit);
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     }
     void menu(Graphics2D g){
         g.drawImage(Assets.HERO,0,0,1280,720,null);
@@ -71,32 +55,21 @@ final class View {
         tracked(g,"01  /  TACTICAL COMBAT",55,146,12,2.7f,MINT);
         text(g,"RIFT",48,252,106,WHITE,true);tracked(g,"PROTOCOL",57,301,34,9.2f,WHITE);
         text(g,"CADA SEGUNDO MUDA A RODADA.",57,344,13,MUTED,true);
-<<<<<<< HEAD
         button(g,"JOGAR SOLO",56,386,170,56,true,game.flow::play);
         button(g,"1v1 / MULTIPLAYER",238,386,225,56,false,()->game.multiplayerRequested=true);
-=======
-        button(g,"JOGAR",56,386,354,56,true,game.flow::play);
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         button(g,"CAMPO DE TREINO",56,452,354,46,false,()->game.openAgentSelect(true,true));
         button(g,"AGENTES",56,508,170,44,false,()->game.openAgentSelect(false,false));
         button(g,"CONFIGURAÇÕES",238,508,172,44,false,()->{game.backUi="menu";game.ui="settings";});
         button(g,"CARREIRA LOCAL",56,562,170,40,false,()->game.ui="profile");
         button(g,"COLEÇÃO",238,562,172,40,false,collectionUI::open);
-<<<<<<< HEAD
         button(g,"ASSISTIR BOTS",56,612,170,30,false,game::startBots);
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         button(g,"SAIR",238,612,172,30,false,()->game.quit=true);
         rect(g,871,540,362,103,new Color(9,25,37,226));Assets.portrait(g,game.settings.agent,883,551,80,80);
         tracked(g,"SEU AGENTE",979,568,9,1.5f,MUTED);text(g,game.agent.name,978,599,25,WHITE,true);text(g,game.agent.role,979,622,10,new Color(game.agent.color),true);
         buttons.add(new Button(871,540,362,103,()->game.openAgentSelect(false,false)));
         line(g,48,661,1232,661,new Color(124,164,168,72),1);
         text(g,"3 MAPAS",54,690,12,WHITE,true);text(g,"DOIS PONTOS. UMA CHANCE POR RODADA.",120,690,10,MUTED,false);
-<<<<<<< HEAD
-        right(g,"15 ARMAS + 3 LÂMINAS  /  v1.8",1228,690,11,MUTED,false);
-=======
-        right(g,"15 ARMAS + 3 LÂMINAS  /  v1.6",1228,690,11,MUTED,false);
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
+        right(g,"15 ARMAS + 3 LÂMINAS  /  v1.8.1",1228,690,11,MUTED,false);
     }
     void portrait(Graphics2D g,double x,double y,double s,Agent agent){
         Graphics2D p=(Graphics2D)g.create();p.translate(x,y+Math.sin(game.visualTime*1.6+agent.ordinal())*2);p.scale(s,s);
@@ -156,23 +129,14 @@ final class View {
         if(game.settings.captions&&!game.audio.caption.isEmpty()&&System.nanoTime()-game.audio.captionAt<1_300_000_000L){rect(g,492,554,296,25,new Color(5,18,28,210));center(g,"[ "+game.audio.caption+" ]",640,572,11,WHITE,true);}
         if(game.settings.highContrast){rect(g,0,582,1280,138,new Color(4,13,21,215));rect(g,459,0,362,95,new Color(4,13,21,215));}
         if(game.sentinels.placingWire){boolean valid=game.sentinels.preview!=null;rect(g,403,468,474,71,new Color(6,20,28,232));center(g,valid?"FIO VÁLIDO • CLIQUE PARA INSTALAR":"MIRE EM PAREDES OPOSTAS ATÉ 12 m",640,496,14,valid?MINT:CORAL,true);center(g,"ALTURA DEFINIDA PELA MIRA • DIREITO / ESC CANCELA",640,522,10,MUTED,false);}
-<<<<<<< HEAD
         if(game.player!=null){text(g,game.world.callout(game.cameraActor().x,game.cameraActor().z),28,348,10,MINT,true);
             if(!game.observing&&!game.flow.mode.respawn&&game.orbs.nearest()>=0){center(g,"SEGURE "+game.settings.key(Settings.Action.USE)+"  /  COLETAR ORBE",640,423,12,MINT,true);rect(g,580,434,120,4,new Color(0x28444D));rect(g,580,434,120*game.orbs.progress/.9,4,MINT);}
-=======
-        if(game.player!=null){text(g,game.world.callout(game.player.x,game.player.z),28,348,10,MINT,true);
-            if(!game.flow.mode.respawn&&game.orbs.nearest()>=0){center(g,"SEGURE "+game.settings.key(Settings.Action.USE)+"  /  COLETAR ORBE",640,423,12,MINT,true);rect(g,580,434,120,4,new Color(0x28444D));rect(g,580,434,120*game.orbs.progress/.9,4,MINT);}
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
             if(game.sentinels.watching()){rect(g,916,22,334,70,new Color(7,34,45,235));center(g,"● OLHO REMOTO",1083,47,13,MINT,true);center(g,"CLIQUE: MARCAR / E OU ESC: SAIR",1083,77,10,WHITE,false);}
             if(game.training&&game.bhopTrainer){rect(g,408,486,464,68,new Color(7,25,37,230));center(g,String.format(Locale.ROOT,"%.2f m/s  •  %d SALTOS  •  MÁX %.2f",Math.hypot(game.player.vx,game.player.vz),game.combat.hops,game.combat.bestSpeed),640,513,18,MINT,true);center(g,"ESPAÇO NO POUSO + A / D + GIRO DO MOUSE",640,539,11,WHITE,false);}
         }
 
         if(game.player==null)return;
-<<<<<<< HEAD
         Actor cam=game.cameraActor(),p=game.observing?cam:game.player;
-=======
-        Actor p=game.player,cam=game.cameraActor();
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         // Soft edge vignettes preserve contrast without hiding the scene.
         g.setPaint(new GradientPaint(0,0,new Color(4,17,25,95),0,150,new Color(4,17,25,0)));g.fillRect(0,0,1280,150);
         g.setPaint(new GradientPaint(0,600,new Color(4,17,25,0),0,720,new Color(4,17,25,220)));g.fillRect(0,600,1280,120);
@@ -184,17 +148,10 @@ final class View {
         if(!game.training){center(g,game.flow.mode.respawn?game.flow.mode.label+"  /  "+game.flow.mode.target+" ABATES":"RODADA "+game.round+"  /  PRIMEIRO A "+game.flow.mode.target,640,93,10,WHITE,true);for(int i=0;i<5;i++){rect(g,554+i*10,33,6,23,i<game.living(0)?MINT:new Color(80,98,105,130));rect(g,680+i*10,33,6,23,i<game.living(1)?CORAL:new Color(80,98,105,130));}}
         int fy=35;
         for(Feed f:game.feed){rect(g,967,fy-19,289,29,new Color(10,26,35,222));text(g,f.killer(),978,fy,12,f.team()==0?MINT:CORAL,true);center(g,f.head()?"◇":"›",1112,fy,16,WHITE,true);right(g,f.victim(),1244,fy,12,WHITE,false);fy+=35;}
-<<<<<<< HEAD
         if(game.fps>0)right(g,game.fps+" FPS  /  "+Math.round(frameMillis+game.simulationMillis)+" ms  /  "+renderer.width+" × "+renderer.height,1250,fy+13,10,MUTED,false);
         String role=game.attackTeam==0?"ATAQUE":"DEFESA";
         if(game.training){text(g,"CAMPO DE TREINO",28,218,12,MINT,true);text(g,"G  agente   ·   H  dano   ·   T  bhop",28,240,11,WHITE,false);text(g,"Acertos: "+game.trainingHits+"  •  Tiros: "+game.trainingShots,28,261,11,MUTED,false);if(!p.melee()){boolean steady=game.playerSpread()<.007;rect(g,28,300,156,4,new Color(0x334C59));rect(g,28,300,156*(1-Math.min(1,game.playerSpread()*10)),4,steady?MINT:GOLD);text(g,steady?"MIRA ESTÁVEL":!p.grounded?"NO AR":p.moveSpeed>1.4?"EM MOVIMENTO":"RECUPERANDO RECUO",28,322,10,steady?MINT:GOLD,true);}}
         else {text(g,(game.flow.mode.respawn?"RESPAWN":role)+" / "+World.NAMES[game.world.mapIndex],28,218,12,MINT,true);text(g,game.planted?"Núcleo armado":game.observing?"Simulação: duas equipes autônomas":p.carrier?"Você carrega o núcleo":"Elimine a equipe adversária",28,240,11,WHITE,false);}
-=======
-        if(game.fps>0)right(g,game.fps+" FPS",1250,fy+13,10,MUTED,false);
-        String role=game.attackTeam==0?"ATAQUE":"DEFESA";
-        if(game.training){text(g,"CAMPO DE TREINO",28,218,12,MINT,true);text(g,"G  agente   ·   H  dano   ·   T  bhop",28,240,11,WHITE,false);text(g,"Acertos: "+game.trainingHits+"  •  Tiros: "+game.trainingShots,28,261,11,MUTED,false);if(!p.melee()){boolean steady=game.playerSpread()<.007;rect(g,28,300,156,4,new Color(0x334C59));rect(g,28,300,156*(1-Math.min(1,game.playerSpread()*10)),4,steady?MINT:GOLD);text(g,steady?"MIRA ESTÁVEL":!p.grounded?"NO AR":p.moveSpeed>1.4?"EM MOVIMENTO":"RECUPERANDO RECUO",28,322,10,steady?MINT:GOLD,true);}}
-        else {text(g,(game.flow.mode.respawn?"RESPAWN":role)+" / "+World.NAMES[game.world.mapIndex],28,218,12,MINT,true);text(g,game.planted?"Núcleo armado":p.carrier?"Você carrega o núcleo":"Elimine a equipe adversária",28,240,11,WHITE,false);}
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         if(game.phase==Phase.BUY){
             center(g,"FASE DE COMPRA",640,164,30,WHITE,true);center(g,"B  ARSENAL    ·    ENTER  INICIAR RODADA",640,190,12,MINT,true);
         }
@@ -203,7 +160,6 @@ final class View {
             center(g,game.endTitle,640,189,30,game.roundWinner==0?MINT:CORAL,true);center(g,game.endReason,640,224,14,WHITE,false);
         }
         if(game.planted&&game.phase==Phase.LIVE){rect(g,547,111,186,29,new Color(40,26,34,210));center(g,"◆  NÚCLEO ARMADO",640,131,11,CORAL,true);}
-<<<<<<< HEAD
         if(game.observing){
             rect(g,364,598,552,106,new Color(8,25,36,232));
             center(g,"OBSERVADOR / BOTS × BOTS",640,623,12,MINT,true);
@@ -212,8 +168,6 @@ final class View {
             text(g,"IA: "+cam.mind.memory.label+" / "+cam.mind.personality.label,28,374,10,MINT,false);
             return;
         }
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         if(!p.dead){
             if(game.ui.equals("tactical")){}else if(!(game.aimLerp>.90&&p.gun().kind.scoped()))crosshair(g,p);
             else scope(g);
@@ -267,13 +221,8 @@ final class View {
         MapProjection m=new MapProjection(x+12,y+13,152,146,cam.yaw);mapTerrain(g,m,false);
         if(game.planted){g.setColor(CORAL);g.fill(new Ellipse2D.Double(m.x(game.spikeX,game.spikeZ)-4,m.y(game.spikeX,game.spikeZ)-4,8,8));}
         for(Smoke smoke:game.smokes){double r=smoke.radius()*m.scale;g.setColor(new Color(184,215,211,75));g.fill(new Ellipse2D.Double(m.x(smoke.x,smoke.z)-r,m.y(smoke.x,smoke.z)-r,r*2,r*2));}
-<<<<<<< HEAD
         for(Actor a:game.actors)if(!a.dead&&(game.observing||a.team==0||a.revealed>0)) {
             mapArrow(g,m,a.x,a.z,a.yaw,a==cam?6:4,a==cam?WHITE:a.team==0?MINT:CORAL);
-=======
-        for(Actor a:game.actors)if(!a.dead&&(a.team==0||a.revealed>0)) {
-            mapArrow(g,m,a.x,a.z,a.yaw,a.id==0?6:4,a.id==0?WHITE:a.team==0?MINT:CORAL);
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         }
         if(game.abilities.pingLife>0){V ping=game.abilities.pingPoint;double px=m.x(ping.x(),ping.z()),py=m.y(ping.x(),ping.z());polygon(g,new double[]{px,py-5,px+5,py,px,py+5,px-5,py},GOLD);}
         center(g,"▲ DIREÇÃO DA VISÃO",x+w/2,y+h-6,8,MUTED,true);line(g,x,y,x+30,y,MINT,2);line(g,x,y,x,y+20,MINT,2);
@@ -281,7 +230,6 @@ final class View {
     MapProjection tacticalMap(){boolean global=game.tacticalAbility==Ability.GLOBAL_TELEPORT;return new MapProjection(640,342,240,global?Math.hypot(World.WIDTH,World.LENGTH)/2+2:game.tacticalRange()+2,(TacticalUI.chemical(game)||TacticalUI.astral(game)?0:game.tacticalYaw),global?World.WIDTH/2:game.player.x,global?World.LENGTH/2:game.player.z);}
     Shape mapShape(MapProjection m,double x,double z,double xx,double zz){Path2D p=new Path2D.Double();p.moveTo(m.x(x,z),m.y(x,z));p.lineTo(m.x(xx,z),m.y(xx,z));p.lineTo(m.x(xx,zz),m.y(xx,zz));p.lineTo(m.x(x,zz),m.y(x,zz));p.closePath();return p;}
     void mapTerrain(Graphics2D g,MapProjection m,boolean large){
-<<<<<<< HEAD
         if(!large){
             if(miniWorld!=game.world||miniTerrain==null){miniWorld=game.world;miniTerrain=new BufferedImage(576,512,BufferedImage.TYPE_INT_RGB);Graphics2D cached=miniTerrain.createGraphics();cached.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);drawTerrain(cached,new MapProjection(0,0,576,512,0),false);cached.dispose();}
             double k=m.scale/4;g.drawImage(miniTerrain,new AffineTransform(m.cos*k,-m.sin*k,m.sin*k,m.cos*k,m.x(0,World.LENGTH),m.y(0,World.LENGTH)),null);
@@ -290,8 +238,6 @@ final class View {
         drawTerrain(g,m,true);
     }
     void drawTerrain(Graphics2D g,MapProjection m,boolean large){
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         g.setColor(new Color(0x4F6974));g.fill(mapShape(m,0,0,World.WIDTH,World.LENGTH));
         if(large){double k=m.scale/game.world.texScale;g.drawImage(game.world.ground,new AffineTransform(m.cos*k,-m.sin*k,-m.sin*k,-m.cos*k,m.x(0,0),m.y(0,0)),null);}
         g.setColor(new Color(0x708591));g.fill(mapShape(m,30,3,34,57));g.fill(mapShape(m,2,27,62,31));g.fill(mapShape(m,4,77,140,82));g.fill(mapShape(m,62,4,66,123));g.fill(mapShape(m,111,3,115,116));g.fill(mapShape(m,4,109,140,113));
@@ -302,11 +248,7 @@ final class View {
             if(large){g.setColor(new Color(0x8BA2A8));g.setStroke(new BasicStroke(1));g.draw(block);}
         }
         for(World.Ramp ramp:game.world.ramps){Shape shape=mapShape(m,ramp.x1(),ramp.z1(),ramp.x2(),ramp.z2());g.setColor(new Color(large?0xB29167:0x8BA5A3));g.fill(shape);if(large){center(g,"↗",m.x((ramp.x1()+ramp.x2())/2,(ramp.z1()+ramp.z2())/2),m.y((ramp.x1()+ramp.x2())/2,(ramp.z1()+ramp.z2())/2)+4,12,GOLD,true);}}
-<<<<<<< HEAD
         if(large)for(Site site:List.of(game.world.a,game.world.b))center(g,site.name(),m.x(site.x(),site.z()),m.y(site.x(),site.z())+8,24,GOLD,true);
-=======
-        for(Site site:List.of(game.world.a,game.world.b))center(g,site.name(),m.x(site.x(),site.z()),m.y(site.x(),site.z())+(large?8:4),large?24:11,GOLD,true);
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     }
     void mapArrow(Graphics2D g,MapProjection m,double wx,double wz,double heading,double size,Color color){
         double px=m.x(wx,wz),py=m.y(wx,wz),rx=Math.sin(heading)*m.cos-Math.cos(heading)*m.sin,fy=Math.sin(heading)*m.sin+Math.cos(heading)*m.cos;
@@ -435,11 +377,7 @@ final class View {
         }
     }
     void match(Graphics2D g){
-<<<<<<< HEAD
         rect(g,0,0,1280,720,new Color(5,20,30,214));center(g,game.endTitle,640,75,45,game.flow.matchWon?MINT:CORAL,true);scoreboard(g,104);center(g,game.observing?"SIMULAÇÃO LOCAL / SEM XP OU RANK":"+"+game.profile.lastXp+" XP  /  MAESTRIA "+game.profile.level(game.player.agentIndex)+"  /  "+game.profile.rank()+(game.profile.lastRating==0?"":" ("+(game.profile.lastRating>0?"+":"")+game.profile.lastRating+")"),640,605,13,GOLD,true);
-=======
-        rect(g,0,0,1280,720,new Color(5,20,30,214));center(g,game.endTitle,640,75,45,game.flow.matchWon?MINT:CORAL,true);scoreboard(g,104);center(g,"+"+game.profile.lastXp+" XP  /  MAESTRIA "+game.profile.level(game.player.agentIndex)+"  /  "+game.profile.rank()+(game.profile.lastRating==0?"":" ("+(game.profile.lastRating>0?"+":"")+game.profile.lastRating+")"),640,605,13,GOLD,true);
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         button(g,"JOGAR NOVAMENTE",405,622,260,49,true,game.flow::play);button(g,"MENU PRINCIPAL",681,622,222,49,false,()->{game.ui="menu";game.phase=Phase.MENU;});
     }
     void button(Graphics2D g,String label,double x,double y,double w,double h,boolean primary,Runnable action){

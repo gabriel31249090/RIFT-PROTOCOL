@@ -18,10 +18,7 @@ final class EnvironmentArt {
         g.dispose();return image;
     }
     static BufferedImage ground(World world){
-<<<<<<< HEAD
         if(world.mapIndex>=3)return DuelMaps.ground(world);
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         int s=world.texScale;BufferedImage image=new BufferedImage(world.texW,world.texH,BufferedImage.TYPE_INT_RGB);Graphics2D g=image.createGraphics();Random rng=new Random(27);
         BufferedImage tile=Assets.cell(Assets.MATERIALS,4,4,world.mapIndex==2?Assets.PLATE:world.mapIndex==1?Assets.CONCRETE:Assets.FLOOR);
         g.setPaint(new TexturePaint(tile,new Rectangle(0,0,s*3,s*3)));g.fillRect(0,0,image.getWidth(),image.getHeight());

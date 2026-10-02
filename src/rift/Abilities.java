@@ -57,10 +57,7 @@ final class Abilities {
                 if(target==null){g.tell("Nenhum aliado caído com visão em até 18 m",2);return false;}g.flow.revive(target,false);target.invulnerable=.8;g.pulses.add(new Pulse(target.center(),0xB4F7E0,4,1.2));}
             default -> {return g.sentinels.cast(a,type);}
         }
-<<<<<<< HEAD
         g.bots.noise(a,Bots.Noise.ABILITY,28);
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         g.audio.play(type==Ability.UPDRAFT||type==Ability.BLINK?"dash":"select");return true;
     }
     void launch(Actor a,Ability type){
@@ -69,10 +66,7 @@ final class Abilities {
         V velocity=a.dir().mul(speed).add(new V(0,direct||curved?0:2,0));
         SurfaceHit launchHit=SurfaceHit.cast(g.world,a.eye(),a.dir(),.32,.08);
         V start=a.eye().add(a.dir().mul(launchHit==null?.32:Math.max(0,launchHit.distance()-.01)));
-<<<<<<< HEAD
         g.bots.noise(a,Bots.Noise.ABILITY,28);
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         Projectile p=new Projectile(type,a,start,velocity,fuse);p.curve=curved?(under?-1:1)*3.6:0;projectiles.add(p);g.audio.play("equip");
     }
     void teleport(Actor a,V point,double delay){a.teleportPoint=point;a.teleportTime=delay;a.gun().burstLeft=0;g.pulses.add(new Pulse(a.center(),0xB2B1F0,2,delay));g.pulses.add(new Pulse(point.add(new V(0,.1,0)),0xB2B1F0,2,delay));}

@@ -12,10 +12,7 @@ final class Settings {
     int crossSize=7,crossGap=4,crossWidth=1,crossColor=0;
     boolean invertY=false,sound=true,shadows=true,dynamicCrosshair=true,crossDot=true;
     boolean sniperToggle=true,textures=true,impactFX=true;
-<<<<<<< HEAD
     boolean smoothUpscale=false;
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     boolean aimToggle=false,crouchToggle=false,walkToggle=false,abilityHold=false;
     boolean lowMotion=false,softFlash=false,captions=true,highContrast=false;
     final Path path;
@@ -39,10 +36,7 @@ final class Settings {
     }
     void validate(){sensitivity=clamp(sensitivity,.0003,.008);adsSensitivity=clamp(adsSensitivity,.1,1.5);volume=clamp(volume,0,1);effectsVolume=clamp(effectsVolume,0,1);musicVolume=clamp(musicVolume,0,1);quality=(int)clamp(quality,0,3);frameLimit=(int)clamp(frameLimit,60,240);difficulty=(int)clamp(difficulty,0,2);agent=(int)clamp(agent,0,Game.Agent.values().length-1);renderDistance=(int)clamp(renderDistance,60,210);fov=(int)clamp(fov,70,110);crossSize=(int)clamp(crossSize,2,16);crossGap=(int)clamp(crossGap,0,16);crossWidth=(int)clamp(crossWidth,1,4);crossColor=Math.floorMod(crossColor,4);}
     void resetBinds(){for(Action a:Action.values())binds[a.ordinal()]=a.key;}
-<<<<<<< HEAD
     void performance(){quality=3;frameLimit=120;renderDistance=100;shadows=false;impactFX=false;smoothUpscale=false;textures=true;}
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     boolean bind(Action action,int key){if(key<1||key>525||key==VK_ESCAPE||key==VK_ENTER||key==VK_F1||key==VK_F10||key==VK_F11||key==VK_F12)return false;int old=binds[action.ordinal()];for(Action a:Action.values())if(a!=action&&binds[a.ordinal()]==key)binds[a.ordinal()]=old;binds[action.ordinal()]=key;return true;}
     String key(Action a){return KeyEvent.getKeyText(binds[a.ordinal()]);}
     Input.Frame remap(Input.Frame raw){BitSet down=(BitSet)raw.down().clone(),edges=(BitSet)raw.edges().clone();for(Action a:Action.values()){down.clear(a.key);edges.clear(a.key);down.clear(binds[a.ordinal()]);edges.clear(binds[a.ordinal()]);}for(Action a:Action.values()){down.set(a.key,raw.held(binds[a.ordinal()]));edges.set(a.key,raw.pressed(binds[a.ordinal()]));}return new Input.Frame(down,edges,raw.fire(),raw.aim(),raw.click(),raw.dx(),raw.dy(),raw.mx(),raw.my());}

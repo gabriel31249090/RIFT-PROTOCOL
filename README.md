@@ -1,6 +1,6 @@
 # RIFT Protocol · Java Edition
 
-FPS tático em Java 17, com agentes, habilidades, economia por rodada e bots. A versão **1.8** adiciona duelos 1v1 por LAN/conexão direta e uma opção experimental para dois teclados e dois mouses no mesmo Windows.
+FPS tático em Java 17, com agentes, habilidades, economia por rodada e bots. A versão **1.8.1** corrige conflitos de merge e restaura a compilação da base 1.8, com duelos 1v1 por LAN/conexão direta e uma opção experimental para dois teclados e dois mouses no mesmo Windows.
 
 ![Menu do RIFT Protocol](screenshots/menu-1.8.png)
 
@@ -41,8 +41,10 @@ A compilação usa o JDK 17 e não baixa dependências. O JAR e as artes necess�
 
 - [Como jogar e controles](LEIA_PRIMEIRO.md)
 - [Multiplayer: instruções e limites](MULTIPLAYER.md)
+- [Mudanças da 1.8.1](CHANGELOG_1.8.1.md)
 - [Mudanças da 1.8](CHANGELOG_1.8.md)
 - [Mudanças da 1.7](CHANGELOG_1.7.md)
+- [Desempenho da 1.8.1 no Windows](DESEMPENHO_1.8.1.md)
 - [Desempenho e limites das medições](DESEMPENHO_1.7.md)
 - [Roadmap e funcionalidades ainda planejadas](ROADMAP.md)
 - [Verificação do pacote](VERIFICACAO.txt)

@@ -1,0 +1,46 @@
+RIFT Protocol 1.8 - verificacao de entrega
+Data: 01/10/2026
+Ambiente: Linux, OpenJDK 17.0.20, sem janela nativa.
+
+COMPILACAO
+java Build.java: aprovado; --release 17; assets incluidos no JAR.
+O pacote inclui o fonte C# da ponte Windows, compilado pelo Windows no primeiro uso.
+
+REGRESSAO E MULTIPLAYER
+java -Xmx1g -Djava.awt.headless=true -jar RiftProtocol.jar --self-test
+687 verificacoes aprovadas: 631 anteriores + 56 de duelo.
+Log: verificacao/self-test-1.8.log.
+
+Os testes novos verificam:
+- 3 arenas, spawns livres/sem visao direta, caminhos e perimetros fechados;
+- loadouts, municao, recarga, mira e cosmeticos separados;
+- bloqueio de movimento na preparacao e de troca de loadout no combate;
+- dano real, pontuacao, troca de lados, primeiro a sete, empate e revanche;
+- duas conexoes TCP reais de loopback, codigo errado e sala cheia;
+- comando enviado pela rede que movimenta somente seu jogador;
+- tiro enviado pela rede que elimina o oponente e replica o placar;
+- comandos antigos, tamanho de pacote, valores nao finitos e timeout de input;
+- desconexao e resultado para o outro cliente;
+- canal de dispositivos, teclas/cliques/deltas independentes e limpeza de foco;
+- equivalencia de pixels entre renderizacoes sequenciais e simultaneas.
+
+VISUAL
+Menu 1.8, HUD, selecao de equipamento e tres arenas renderizados em PNG.
+Capturas inspecionadas no ambiente headless. Sao previews do renderizador,
+nao capturas de uma sessao de Windows com dois dispositivos fisicos.
+
+DESEMPENHO
+Dois renderizadores simultaneos; 640x360 internos; 240 quadros por jogador.
+J1: 4.30 ms/quadro (232.3 FPS). J2: 4.15 ms/quadro (240.9 FPS).
+Sem janelas nativas nem limite de FPS; nao representa FPS garantido no PC do usuario.
+Veja DESEMPENHO_1.8.md e verificacao/duel-benchmark-1.8.log.
+
+LIMITES EXPLICITOS
+A ponte C#/Win32 nao foi compilada nem executada neste ambiente Linux.
+Nao foram testados dois teclados/mouses fisicos, dois monitores ou audio real.
+Por isso o modo local Raw Input do Windows esta identificado como experimental.
+Rede Java testada em loopback. Nao houve teste entre PCs fisicos, roteador,
+CGNAT ou internet publica. A conexao direta exige um anfitriao alcancavel.
+Duelo sem habilidades, sem previsao de movimento, sem compensacao de latencia,
+sem reconexao, sem matchmaking/relay hospedado e sem ranking global.
+A verificacao da 1.7 foi mantida em verificacao/VERIFICACAO_1.7.txt como historico.

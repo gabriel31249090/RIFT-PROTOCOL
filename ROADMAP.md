@@ -1,6 +1,21 @@
-# RIFT Protocol — roadmap após 1.8
+# RIFT Protocol — roadmap após 1.8.1
 
 A lista do projeto foi dividida por dependências. **Entregue** significa presente no pacote; **parcial** significa uma base funcional com limites; **planejado** ainda não existe. Versões futuras são propostas de escopo, sem datas prometidas.
+
+## Sequência de atualizações
+
+| Versão | Foco | Entrega |
+| --- | --- | --- |
+| 1.8.1 | Estabilidade | Resolver conflitos, recompilar e verificar solo, bots, duelo e desempenho. |
+| 1.9 | Combate e movimento | Precisão e recuo por arma, dano gradual por distância, penetração, aceleração e frenagem; adaptar algoritmos do ReGameDLL para Java. |
+| 1.9.1 | Áudio e superfícies | WAV, passos por material, impactos, recargas e pousos. |
+| 1.9.2 | Cenários | Texturas com identidade própria, importação de malhas estáticas e atualização visual de um mapa. |
+| 1.9.3 | Arsenal visual | Malhas e materiais de armas, mecanismos e animações em primeira pessoa e no mundo. |
+| 1.9.4 | Personagens | Modelos com esqueleto; validar um agente completo antes de expandir. |
+| 1.9.5 | Bots | Perfis configuráveis, rotas por risco, investigação de ruídos e coordenação por setores. |
+| 2.0 | Multiplayer | Latência, interpolação e reconciliação; depois expandir para 2–4 jogadores. |
+
+Antes dos cenários, definir materiais, símbolos, silhuetas e equipamentos do RIFT. Recursos convertidos do CS exigem verificação da licença correspondente antes da distribuição; a licença do ReGameDLL não concede automaticamente direitos sobre os modelos e texturas da instalação do jogo. Cada etapa exige testes do comportamento e comparação de tempo de quadro. As frentes abaixo detalham objetivos futuros, além dessa sequência.
 
 ## 1.8 — Entregue: base de duelo entre pessoas
 
@@ -26,7 +41,7 @@ Critério: comparação antes/depois em PCs de teste, mesmos cenários e configu
 
 Critério: quatro habilidades de cada kit têm comportamento verificável, efeitos legíveis e decisões úteis dos bots. Não basta reutilizar uma animação com outra cor.
 
-## 1.9 — Mapas, combate e treino
+## Frente futura — Mapas e treino
 
 Um mapa compacto de interiores e outro maior com linhas de sniper. Um deles terá três sites e uma mecânica específica, como porta acionável. Rever ângulos, rotas, callouts, defesa pós-plantio e tempos de rotação antes de decorar.
 

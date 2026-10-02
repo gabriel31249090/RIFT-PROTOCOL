@@ -41,10 +41,7 @@ final class MatchFlow {
         a.vx=a.vz=a.tagTime=a.landRecovery=0;a.dead=false;a.hp=100;a.armor=mode.respawn?25:0;a.vy=0;a.grounded=true;a.deathAge=0;a.flash=a.healing=a.revealed=a.emp=a.slow=a.detained=a.vulnerable=0;a.eyeHeight=1.63;a.crouch=false;a.moveSpeed=0;a.animSpeed=0;a.path=List.of();a.repath=0;a.target=null;a.respawn=0;a.returnTime=a.teleportTime=0;a.invulnerable=1.5;
         a.pistol=new Gun(a.pistol.kind);if(a.primary!=null)a.primary=new Gun(a.primary.kind);Agent kit=Agent.values()[a.agentIndex];a.qCharges=kit.qs;a.cCharges=kit.cs;a.eCharges=kit.es;
         if(relocate){double best=-1;V location=new V(72,0,120);for(int i=0;i<36;i++){double x=4+g.rng.nextDouble()*(World.WIDTH-8),z=4+g.rng.nextDouble()*(World.LENGTH-8);double y=g.world.surfaceAt(x,z);if(g.world.blocked(x,z,y,.4,1.8))continue;double closest=100;for(Actor enemy:g.actors)if(enemy!=a&&!enemy.dead&&enemy.team!=a.team)closest=Math.min(closest,Math.hypot(enemy.x-x,enemy.z-z));if(closest>best){best=closest;location=new V(x,y,z);}}a.x=location.x();a.y=location.y();a.z=location.z();a.yaw=Math.atan2(World.WIDTH/2-a.x,World.LENGTH/2-a.z);a.bodyYaw=a.yaw;}
-<<<<<<< HEAD
         g.bots.reset(a);
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         if(a==g.player){g.combat.reset();g.weaponEquip=.4;g.focus=0;g.dashTime=0;g.ui="play";}
     }
     Actor roamTarget(Actor a){Actor best=g.player;double near=1e9;for(Actor other:g.actors)if(other!=a&&!other.dead&&other.team!=a.team){double d=a.distance(other);if(d<near){best=other;near=d;}}return best;}
@@ -56,11 +53,7 @@ final class MatchFlow {
     }
     void complete(boolean win){
         g.combat.swing=g.combat.inspect=0;matchWon=win;g.phase=Phase.MATCH;g.ui="play";g.endTitle=win?"VITÓRIA":"DERROTA";g.endReason=mode.label+" / LOCAL";
-<<<<<<< HEAD
         if(!rewarded){if(!g.observing)g.profile.reward(g,win);rewarded=true;}
-=======
-        if(!rewarded){g.profile.reward(g,win);rewarded=true;}
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         if(mode==Mode.PREMIER&&seriesStage==0&&win){g.ui="tournament";return;}
         if(mode==Mode.PREMIER&&seriesStage==1&&win)g.endTitle="CAMPEÃO DA COPA";
     }

@@ -1,0 +1,3 @@
+assets\native\RawInputBridge.cs(54,12): warning CS0108: 'RiftDevices.Name(System.IntPtr, string)' oculta o membro herdado 'System.Windows.Forms.Control.Name'. Use a nova palavra-chave se a inten��o for ocultar.
+c:\Windows\Microsoft.NET\Framework64\v4.0.30319\System.Windows.Forms.dll: (Local do s�mbolo relacionado ao aviso anterior)
+RawInputBridge.cs: compilacao Windows aprovada; executavel nao iniciado.

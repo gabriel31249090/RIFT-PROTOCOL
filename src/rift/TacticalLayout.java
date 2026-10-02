@@ -33,11 +33,7 @@ final class TacticalLayout {
             for(int iz=z;iz<z2;iz++)for(int ix=x;ix<x2;ix++)used[iz][ix]=true;
             w.building(x,z,x2,z2,7+(x+z)%3,wall);
         }
-<<<<<<< HEAD
         w.panel(73,58,3,.20);w.panel(23,36,2,.20);w.panel(116,72,3,.20,Ballistics.Material.METAL);
-=======
-        w.panel(73,58,3,.20);w.panel(23,36,2,.20);w.panel(116,72,3,.20);
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         // Cover breaks sightlines without closing either lane.
         w.crate(14,20,3,3,2.4);w.crate(23,13,2,3,1.25);
         w.container(117,w.mapIndex==2?24:27,124,w.mapIndex==2?27:30,2.7,w.mapIndex==1?0x7D99B0:0xAF8060);

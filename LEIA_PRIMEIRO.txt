@@ -1,4 +1,4 @@
-RIFT PROTOCOL 1.8 - DUELO
+RIFT PROTOCOL 1.8.1 - DUELO
 
 1. Extraia o ZIP inteiro para uma pasta nova.
 2. E necessario Java 17 ou superior.

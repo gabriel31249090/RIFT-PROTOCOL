@@ -8,13 +8,8 @@ import java.util.List;
 final class World {
     static final double WIDTH = 144, LENGTH = 128;
     static final int NW=144,NH=128;
-<<<<<<< HEAD
     static final String[] NAMES={"CAIS-7","MONTE AURORA","FERROVIA","FENDA","PÁTIO ZERO","GALERIA"};
     static final String[] DETAILS={"Porto • passarela leste e docas elevadas","Observatório • duas torres e pátio central","Terminal • viaduto e plataformas de carga","1v1 • três passagens e coberturas","1v1 • passarelas e rampas","1v1 • corredores de precisão"};
-=======
-    static final String[] NAMES={"CAIS-7","MONTE AURORA","FERROVIA"};
-    static final String[] DETAILS={"Porto • passarela leste e docas elevadas","Observatório • duas torres e pátio central","Terminal • viaduto e plataformas de carga"};
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     final int mapIndex;
     record V(double x, double y, double z) {
         V add(V b) { return new V(x+b.x, y+b.y, z+b.z); }
@@ -39,11 +34,8 @@ final class World {
     record Decal(V a,V b,V c,V d,BufferedImage image) { }
     record Site(String name, double x, double z) { boolean contains(double px, double pz) { return Math.hypot(px-x,pz-z)<6.0; } }
     final List<Box> penetrable=new ArrayList<>();
-<<<<<<< HEAD
     final Map<Box,Ballistics.Material> coverMaterials=new HashMap<>();
     Ballistics.Material material(Box box){return coverMaterials.getOrDefault(box,penetrable.contains(box)?Ballistics.Material.WOOD:Ballistics.Material.CONCRETE);}
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     final List<Box> solids = new ArrayList<>();
     final List<Tri> triangles = new ArrayList<>();
     final List<Decal> decals = new ArrayList<>();
@@ -66,20 +58,12 @@ final class World {
     String yName(String site){return "PONTO "+site;}
     World(){this(0);}
     World(int mapIndex) {
-<<<<<<< HEAD
         this.mapIndex=Math.floorMod(mapIndex,6);
-=======
-        this.mapIndex=Math.floorMod(mapIndex,3);
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         a=new Site("A",this.mapIndex==0?13:18,this.mapIndex==2?27:17);
         b=new Site("B",this.mapIndex==1?122:119,this.mapIndex==2?30:24);
         solid(-1,0,-1,WIDTH+1,6,0,0xC5B79F); solid(-1,0,LENGTH,WIDTH+1,6,LENGTH+1,0xC5B79F);
         solid(-1,0,0,0,6,LENGTH,0xC2B69D); solid(WIDTH,0,0,WIDTH+1,6,LENGTH,0xC2B69D);
-<<<<<<< HEAD
         if(this.mapIndex>=3)DuelMaps.build(this);else new TacticalLayout(this).build();
-=======
-        new TacticalLayout(this).build();
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         for (int z=0;z<NH;z++) for(int x=0;x<NW;x++) {double h=surfaceAt(x+.5,z+.5);navHeight[z*NW+x]=h;nav[z*NW+x]=!blocked(x+.5,z+.5,h,.34,1.7);}
         ground=EnvironmentArt.ground(this);texture=ground.getRGB(0,0,texW,texH,null,0,texW);
     }
@@ -220,7 +204,6 @@ final class World {
         for(double zz=z+.3;zz<z2;zz+=.65)box(x2,.12,zz,x2+.07,h-.16,zz+.09,shade(col,.8));
         textureMaterial=previousMaterial;
     }
-<<<<<<< HEAD
     void panel(double x,double z,double width,double depth){panel(x,z,width,depth,Ballistics.Material.WOOD);}
     void panel(double x,double z,double width,double depth,Ballistics.Material material){
         int start=triangles.size();
@@ -229,9 +212,6 @@ final class World {
         for(double xx=x+.12;xx<x+width;xx+=.35)box(xx,.08,z-.01,xx+.03,2.1,z+depth+.01,material==Ballistics.Material.METAL?0xAAC5CC:0xC8AD83);
         paint(start,material.texture,.65);
     }
-=======
-    void panel(double x,double z,double width,double depth){int start=triangles.size();solid(x,0,z,x+width,2.2,z+depth,0x95765B);penetrable.add(solids.get(solids.size()-1));for(double xx=x+.12;xx<x+width;xx+=.35)box(xx,.08,z-.01,xx+.03,2.1,z+depth+.01,0xC8AD83);paint(start,Assets.WOOD,.65);}
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     void crate(double x,double z,double w,double d,double h) {
         int previousMaterial=textureMaterial;textureMaterial=Assets.WOOD;
         solid(x,0,z,x+w,h,z+d,0x9BA497);box(x-.03,h-.13,z-.03,x+w+.03,h+.03,z+d+.03,0xD4CDA8);
@@ -293,15 +273,10 @@ final class World {
         int head=0,tail=0;queue[tail++]=start;prev[start]=start;
         while(head<tail && prev[goal]<0) {
             int q=queue[head++],x=q%NW,z=q/NW;
-<<<<<<< HEAD
             for(int direction=0;direction<4;direction++){
                 int n=switch(direction){case 0->x>0?q-1:-1;case 1->x<NW-1?q+1:-1;case 2->z>0?q-NW:-1;default->z<NH-1?q+NW:-1;};
                 if(n>=0&&nav[n]&&prev[n]<0&&Math.abs(navHeight[n]-navHeight[q])<.45&&!temporaryBlocked(n)){prev[n]=q;queue[tail++]=n;}
             }
-=======
-            for(int n:new int[]{x>0?q-1:-1,x<NW-1?q+1:-1,z>0?q-NW:-1,z<NH-1?q+NW:-1})
-                if(n>=0&&nav[n]&&prev[n]<0&&Math.abs(navHeight[n]-navHeight[q])<.45&&!temporaryBlocked(n)){prev[n]=q;queue[tail++]=n;}
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
         }
         if(prev[goal]<0)return List.of();
         ArrayList<V> list=new ArrayList<>();int n=goal;

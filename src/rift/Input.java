@@ -17,13 +17,10 @@ final class Input {
         if (button == 1) { if (value && !left) click = true; left = value; }
         if (button == 3) right = value;
     }
-<<<<<<< HEAD
     synchronized void merge(Frame frame) {
         down.clear(); down.or(frame.down()); edges.or(frame.edges());
         left=frame.fire(); right=frame.aim(); click|=frame.click(); dx+=frame.dx(); dy+=frame.dy();
     }
-=======
->>>>>>> a28a0d3591e35d0c3bb500da202ff4a47e878941
     synchronized void position(int x, int y) { mx = x; my = y; }
     synchronized void motion(double x, double y) { dx += x; dy += y; }
     synchronized void clear() { down.clear(); edges.clear(); left = right = click = false; dx = dy = 0; }
