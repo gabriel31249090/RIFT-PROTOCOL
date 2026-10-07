@@ -1,0 +1,11 @@
+RIFT 1.7 / bots × bots / 60 ticks por segundo simulado / sem render
+Java 17.0.12 / Windows 10
+seed=17000 mapa=CAIS-7 placar=5:3 rounds=8 ataque=5 ticks=40147
+seed=17001 mapa=MONTE AURORA placar=5:2 rounds=7 ataque=4 ticks=41114
+seed=17002 mapa=FERROVIA placar=0:5 rounds=5 ataque=1 ticks=26134
+seed=17003 mapa=CAIS-7 placar=5:2 rounds=7 ataque=6 ticks=33886
+seed=17004 mapa=MONTE AURORA placar=5:3 rounds=8 ataque=7 ticks=41875
+seed=17005 mapa=FERROVIA placar=5:2 rounds=7 ataque=6 ticks=32791
+CONCLUÍDO: 6 partidas / 42 rounds / ataque 69.0% / 41 plants / 12 defuses / 0 timeouts
+CPU simulação: média 0.037 ms/tick / p95 0.109 ms / p99 0.345 ms (amostra inicial 24000)
+Amostra pequena e local; não valida win rate competitivo nem FPS com janela.

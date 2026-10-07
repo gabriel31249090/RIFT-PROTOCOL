@@ -35,7 +35,9 @@ final class World {
     record Site(String name, double x, double z) { boolean contains(double px, double pz) { return Math.hypot(px-x,pz-z)<6.0; } }
     final List<Box> penetrable=new ArrayList<>();
     final Map<Box,Ballistics.Material> coverMaterials=new HashMap<>();
+    final Map<Box,Integer> surfaceMaterials=new HashMap<>();
     Ballistics.Material material(Box box){return coverMaterials.getOrDefault(box,penetrable.contains(box)?Ballistics.Material.WOOD:Ballistics.Material.CONCRETE);}
+    int visualMaterial(Box box){return surfaceMaterials.getOrDefault(box,material(box).texture);}
     final List<Box> solids = new ArrayList<>();
     final List<Tri> triangles = new ArrayList<>();
     final List<Decal> decals = new ArrayList<>();
@@ -171,7 +173,8 @@ final class World {
         double dx=x-Math.max(b.x1,Math.min(b.x2,x)),dz=z-Math.max(b.z1,Math.min(b.z2,z));return dx*dx+dz*dz<radius*radius;
     }
     void solid(double x1,double y1,double z1,double x2,double y2,double z2,int col) {
-        solids.add(new Box(x1,y1,z1,x2,y2,z2,col)); box(x1,y1,z1,x2,y2,z2,col);
+        Box solid=new Box(x1,y1,z1,x2,y2,z2,col);solids.add(solid);int start=triangles.size();box(x1,y1,z1,x2,y2,z2,col);
+        surfaceMaterials.put(solid,triangles.get(start).material());
     }
     void building(double x1,double z1,double x2,double z2,double h,int col) {
         int previousMaterial=textureMaterial;textureMaterial=mapIndex==2?Assets.BRICK:mapIndex==1?Assets.STONE:Assets.PLASTER;
@@ -211,6 +214,7 @@ final class World {
         Box cover=solids.get(solids.size()-1);penetrable.add(cover);coverMaterials.put(cover,material);
         for(double xx=x+.12;xx<x+width;xx+=.35)box(xx,.08,z-.01,xx+.03,2.1,z+depth+.01,material==Ballistics.Material.METAL?0xAAC5CC:0xC8AD83);
         paint(start,material.texture,.65);
+        surfaceMaterials.put(cover,material.texture);
     }
     void crate(double x,double z,double w,double d,double h) {
         int previousMaterial=textureMaterial;textureMaterial=Assets.WOOD;

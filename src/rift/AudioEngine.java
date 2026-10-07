@@ -4,36 +4,86 @@ import javax.sound.sampled.*;
 import java.util.*;
 import java.util.concurrent.*;
 
-/** Small polyphonic synthesizer. No audio files, network requests or native dependencies. */
+/** Bounded stereo mixer with packaged WAV samples and original synthesis as fallback. */
 final class AudioEngine implements AutoCloseable {
-    int shotVariant;
-    final Settings settings;final ConcurrentLinkedQueue<Sound> queue=new ConcurrentLinkedQueue<>();
+    static final int MAX_PENDING=24,MAX_VOICES=20;
+    final Map<String,Integer> variants=new HashMap<>();
+    final Settings settings;final BlockingQueue<Sound> queue=new ArrayBlockingQueue<>(MAX_PENDING);
     record Sound(String name,double pan,double gain){}
     volatile boolean menu=true;volatile String caption="";volatile long captionAt;
-    volatile boolean running;Thread thread;SourceDataLine line;
-    final Map<String,float[]> bank=new HashMap<>();
+    volatile boolean running;volatile String error="";Thread thread;volatile SourceDataLine line;
+    final Map<String,float[]> bank=new ConcurrentHashMap<>();
     AudioEngine(Settings s,boolean enabled){settings=s;if(!enabled)return;running=true;thread=new Thread(this::mix,"rift-audio");thread.setDaemon(true);thread.start();}
     void play(String sound){playAt(sound,0,1);}
-    void playAt(String sound,double pan,double gain){String label=switch(sound){case "step"->"PASSOS";case "reload"->"RECARGA";case "scan"->"PULSO / ALARME";case "plant"->"NÚCLEO ARMADO";case "defuse"->"NÚCLEO DESARMADO";case "boom"->"EXPLOSÃO";case "flash"->"CLARÃO";case "beep"->"NÚCLEO ATIVO";case "distant","rifle","pistol","sniper","shotgun"->"DISPARO";default->"";};if(sound.startsWith("shot_"))label="DISPARO";if(!label.isEmpty()){caption=label;captionAt=System.nanoTime();}if(running&&settings.sound&&settings.volume>0&&queue.size()<24)queue.offer(new Sound(sound.startsWith("shot_")?sound+"#"+Math.floorMod(shotVariant++,3):sound,Settings.clamp(pan,-1,1),gain));}
-    static final class Voice{final float[] samples;final double pan,gain;int at;Voice(float[] s,double pan,double gain){samples=s;this.pan=pan;this.gain=gain;}}
+    static String caption(String sound){
+        if(sound==null)return "";
+        if(sound.startsWith("shot_"))return "DISPARO";
+        if(sound.startsWith("step_"))return "PASSOS";
+        if(sound.startsWith("land_"))return "POUSO";
+        if(sound.startsWith("impact_"))return "IMPACTO";
+        if(sound.startsWith("reload_")||sound.startsWith("magout_")||sound.startsWith("magin_")||sound.startsWith("bolt_"))return "RECARGA";
+        return switch(sound){case "step"->"PASSOS";case "land"->"POUSO";case "reload"->"RECARGA";case "scan"->"PULSO / ALARME";
+            case "plant"->"NÚCLEO ARMADO";case "defuse"->"NÚCLEO DESARMADO";case "boom"->"EXPLOSÃO";case "flash"->"CLARÃO";
+            case "beep"->"NÚCLEO ATIVO";case "distant","rifle","pistol","sniper","shotgun"->"DISPARO";default->"";};
+    }
+    synchronized String variant(String sound){
+        if(!AudioAssets.varied(sound))return sound;
+        int next=variants.getOrDefault(sound,0);variants.put(sound,(next+1)%3);return sound+"#"+next;
+    }
+    synchronized void playAt(String sound,double pan,double gain){
+        if(sound==null||!Double.isFinite(pan)||!Double.isFinite(gain)||gain<=0)return;
+        String label=caption(sound);if(!label.isEmpty()){caption=label;captionAt=System.nanoTime();}
+        if(running&&settings.sound&&settings.volume>0)queue.offer(new Sound(variant(sound),Settings.clamp(pan,-1,1),Math.min(2,gain)));
+    }
+    float[] sample(String key){return bank.computeIfAbsent(key,name->{
+        float[] wav=WavAudio.load(name);if(wav!=null)return wav;
+        float[] original=AudioAssets.render(name);return original!=null?original:synthesize(name);
+    });}
+    static final class Voice{
+        final float[] samples;final double pan,gain;int at;
+        Voice(float[] s,double pan,double gain){samples=s;this.pan=Double.isFinite(pan)?Settings.clamp(pan,-1,1):0;this.gain=Double.isFinite(gain)?Settings.clamp(gain,0,2):0;}
+    }
+    void drain(List<Voice> voices){
+        voices.removeIf(v->v.at>=v.samples.length);
+        Sound sound;while((sound=queue.poll())!=null)if(voices.size()<MAX_VOICES)voices.add(new Voice(sample(sound.name()),sound.pan(),sound.gain()));
+    }
+    static long mixBlock(List<Voice> voices,byte[] bytes,long clock,boolean menu,Settings settings){
+        if(bytes.length%4!=0)throw new IllegalArgumentException("Stereo buffer must contain complete frames");
+        for(int i=0;i<bytes.length/4;i++){
+            double left=0,right=0;
+            for(Voice voice:voices)if(voice.at<voice.samples.length){
+                double sample=voice.samples[voice.at++];double value=(Double.isFinite(sample)?sample:0)*voice.gain*settings.effectsVolume;
+                left+=value*Math.sqrt((1-voice.pan)*.5);right+=value*Math.sqrt((1+voice.pan)*.5);
+            }
+            double t=clock++/(double)WavAudio.RATE;
+            double music=menu?(.055*Math.sin(t*Math.PI*2*130.81)+.035*Math.sin(t*Math.PI*2*196)+.027*Math.sin(t*Math.PI*2*261.63))*settings.musicVolume*(.7+.3*Math.sin(t*.18)):0;
+            double master=settings.sound?settings.volume:0;
+            int l=(int)(Math.tanh(left+music)*master*21000),r=(int)(Math.tanh(right+music)*master*21000);
+            bytes[i*4]=(byte)l;bytes[i*4+1]=(byte)(l>>8);bytes[i*4+2]=(byte)r;bytes[i*4+3]=(byte)(r>>8);
+        }
+        voices.removeIf(v->v.at>=v.samples.length);return clock;
+    }
     void mix(){
+        SourceDataLine output=null;
         try {
-            AudioFormat format=new AudioFormat(22050,16,2,true,false);
-            line=AudioSystem.getSourceDataLine(format);line.open(format,4096);line.start();
+            AudioFormat format=new AudioFormat(WavAudio.RATE,16,2,true,false);
+            output=AudioSystem.getSourceDataLine(format);
+            synchronized(this){
+                if(!running)return;
+                output.open(format,4096);line=output;output.start();
+            }
             List<Voice> voices=new ArrayList<>();byte[] bytes=new byte[1024];long musicClock=0;
             while(running){
-                Sound sound;while((sound=queue.poll())!=null){if(voices.size()<20)voices.add(new Voice(bank.computeIfAbsent(sound.name(),this::synthesize),sound.pan(),sound.gain()));}
-                for(int i=0;i<256;i++){
-                    double left=0,right=0;for(Voice voice:voices)if(voice.at<voice.samples.length){double value=voice.samples[voice.at++]*voice.gain*settings.effectsVolume;left+=value*Math.sqrt((1-voice.pan)*.5);right+=value*Math.sqrt((1+voice.pan)*.5);}
-                    double t=musicClock++/22050.;double music=menu?(.055*Math.sin(t*Math.PI*2*130.81)+.035*Math.sin(t*Math.PI*2*196)+.027*Math.sin(t*Math.PI*2*261.63))*settings.musicVolume*(.7+.3*Math.sin(t*.18)):0;
-                    int l=(int)(Math.tanh(left+music)*(settings.sound?settings.volume:0)*21000),r=(int)(Math.tanh(right+music)*(settings.sound?settings.volume:0)*21000);bytes[i*4]=(byte)l;bytes[i*4+1]=(byte)(l>>8);bytes[i*4+2]=(byte)r;bytes[i*4+3]=(byte)(r>>8);
-                }
-                voices.removeIf(v->v.at>=v.samples.length);line.write(bytes,0,bytes.length);
+                drain(voices);musicClock=mixBlock(voices,bytes,musicClock,menu,settings);output.write(bytes,0,bytes.length);
             }
-        }catch(Exception ignored){running=false;}finally{if(line!=null){line.stop();line.close();}}
+        }catch(Exception ex){if(running)error="Audio unavailable: "+ex.getClass().getSimpleName();}finally{
+            synchronized(this){running=false;queue.clear();}
+            if(output!=null){try{output.stop();}finally{output.close();}}
+            line=null;
+        }
     }
     float[] synthesize(String kind){
-        if(kind.startsWith("shot_")){String[] parts=kind.substring(5).split("#");return ShotAudio.render(Game.Weapon.valueOf(parts[0]),parts.length>1?Integer.parseInt(parts[1]):1);}
+        if(kind.startsWith("shot_")){try{String[] parts=kind.substring(5).split("#");return ShotAudio.render(Game.Weapon.valueOf(parts[0]),parts.length>1?Integer.parseInt(parts[1]):1);}catch(IllegalArgumentException ex){return new float[1];}}
         double duration=switch(kind){case "ace"->1.6;case "ultimate","focus","orbital","surge"->.9;case "win","lose"->.7;case "boom"->.65;case "reload"->.22;case "scan","heal","plant","defuse"->.38;case "rifle","pistol","shotgun","sniper","revolver","heavy"->.20;case "dash","smoke"->.4;case "multi1","multi2","multi3","multi4","multi5"->.3;default->.13;};
         float[] data=new float[(int)(22050*duration)];Random noise=new Random(kind.hashCode());
         for(int i=0;i<data.length;i++){
@@ -78,5 +128,13 @@ final class AudioEngine implements AutoCloseable {
         }
         return data;
     }
-    public void close(){running=false;if(line!=null)line.close();}
+    public void close(){
+        SourceDataLine output;
+        synchronized(this){running=false;queue.clear();output=line;}
+        if(output!=null)output.close();
+        if(thread!=null&&thread!=Thread.currentThread()){
+            thread.interrupt();
+            try{thread.join(1000);}catch(InterruptedException ex){Thread.currentThread().interrupt();}
+        }
+    }
 }

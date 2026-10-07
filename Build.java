@@ -29,7 +29,7 @@ public class Build {
         Manifest manifest = new Manifest();
         manifest.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION, "1.0");
         manifest.getMainAttributes().put(Attributes.Name.MAIN_CLASS, "rift.Main");
-        manifest.getMainAttributes().put(Attributes.Name.IMPLEMENTATION_VERSION, "1.9");
+        manifest.getMainAttributes().put(Attributes.Name.IMPLEMENTATION_VERSION, "1.9.1");
         try (JarOutputStream jar = new JarOutputStream(Files.newOutputStream(Path.of("RiftProtocol.jar.tmp")), manifest);
              var files = Files.walk(out)) {
             for (Path file : files.filter(Files::isRegularFile).sorted().toList()) {

@@ -1,9 +1,24 @@
-RIFT PROTOCOL 1.9 - COMBATE E DUELO
+RIFT PROTOCOL 1.9.1 - AUDIO, COMBATE E DUELO
 
 1. Extraia o ZIP inteiro para uma pasta nova.
 2. E necessario Java 17 ou superior.
 3. Para o jogo solo: INICIAR_WINDOWS.bat.
 4. Para duelos: INICIAR_MULTIPLAYER_WINDOWS.bat.
+
+AUDIO 1.9.1
+144 WAVs originais incluidos no JAR, com sintese de reserva.
+Passos, pousos e impactos no modo solo distinguem concreto, madeira e metal.
+Recargas usam inicio curto e tres etapas para seis categorias de armas.
+Sons posicionais usam distancia, panorama estereo e atenuacao por paredes.
+No 1v1, passos, pousos e recargas seguem snapshots; os disparos usam WAVs.
+Impactos em paredes ainda nao sao transmitidos pelo protocolo de duelo.
+O protocolo continua na versao 2 da 1.9. Nenhum recurso do CS foi importado.
+Fones, dois conjuntos fisicos e partidas em LAN real ainda exigem validacao.
+
+Teste sem placa de som: java -jar RiftProtocol.jar --audio-test
+Regerar WAVs e SHA256: java -jar RiftProtocol.jar --audio-generate build/audio-original
+O gerador nao recompila o JAR. Os arquivos do banco ficam em assets/audio.
+Detalhes: CHANGELOG_1.9.1.md, DESEMPENHO_1.9.1.md e VERIFICACAO.txt.
 
 DUAS PESSOAS EM PCS DIFERENTES
 O anfitriao cria a sala. O convidado informa endereco, porta e codigo.
@@ -25,6 +40,6 @@ As habilidades estao desativadas no duelo. O solo mantem seus kits.
 Itens e perfis sao separados para cada jogador.
 
 Leia MULTIPLAYER.md para os passos completos e os limites desta versao.
-O ZIP ja inclui o JAR com artes e ponte de dispositivos embutidos.
+O ZIP ja inclui o JAR com artes, WAVs e ponte de dispositivos embutidos.
 Nao abra o JAR de dentro do WinRAR: extraia os arquivos primeiro.
 Se o ZIP der "Final inesperado", descarte a copia incompleta e baixe de novo.

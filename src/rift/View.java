@@ -69,7 +69,7 @@ final class View {
         buttons.add(new Button(871,540,362,103,()->game.openAgentSelect(false,false)));
         line(g,48,661,1232,661,new Color(124,164,168,72),1);
         text(g,"3 MAPAS",54,690,12,WHITE,true);text(g,"DOIS PONTOS. UMA CHANCE POR RODADA.",120,690,10,MUTED,false);
-        right(g,"15 ARMAS + 3 LÂMINAS  /  v1.9",1228,690,11,MUTED,false);
+        right(g,"15 ARMAS + 3 LÂMINAS  /  v1.9.1",1228,690,11,MUTED,false);
     }
     void portrait(Graphics2D g,double x,double y,double s,Agent agent){
         Graphics2D p=(Graphics2D)g.create();p.translate(x,y+Math.sin(game.visualTime*1.6+agent.ordinal())*2);p.scale(s,s);

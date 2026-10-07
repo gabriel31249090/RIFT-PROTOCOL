@@ -1,0 +1,1249 @@
+PASS  WAV PCM mono preserva a quantidade de amostras
+PASS  WAV PCM 16-bit preserva sinal, extremos e amplitude
+PASS  WAV stereo e convertido para o banco mono
+PASS  Conversao stereo considera os dois canais sem overflow
+PASS  WAV 8-bit unsigned e convertido sem deslocamento DC
+PASS  WAV PCM 24-bit e reduzido para o formato do mixer
+PASS  WAV PCM 32-bit preserva sinal e amplitude
+PASS  WAV float32 e convertido para PCM limitado
+PASS  Resampling preserva duracao e energia de WAV 8000 Hz
+PASS  Resampling preserva duracao e energia de WAV 11025 Hz
+PASS  Resampling preserva duracao e energia de WAV 44100 Hz
+PASS  Resampling preserva duracao e energia de WAV 48000 Hz
+PASS  Resampling preserva duracao e energia de WAV 96000 Hz
+PASS  WAV aceita metadata adicional com padding de chunks
+PASS  Cabecalho WAV invalido e rejeitado
+PASS  WAV truncado nao retorna amostras parciais
+PASS  WAV vazio e rejeitado
+PASS  WAV acima do limite de bytes e rejeitado antes de decodificar
+PASS  WAV sem frames e rejeitado
+PASS  Dados WAV incompletos para frame stereo sao rejeitados
+PASS  WAV multicanal nao suportado e rejeitado
+PASS  Taxa WAV zero e rejeitada
+PASS  Taxa WAV abaixo de 8000 Hz e rejeitada
+PASS  Taxa WAV acima do limite suportado e rejeitada
+PASS  WAV acima do limite de duracao e rejeitado
+PASS  WAV de exatamente dois segundos respeita o limite apos resampling: 8000 Hz
+PASS  WAV acima de dois segundos por um frame e rejeitado: 8000 Hz
+PASS  WAV de exatamente dois segundos respeita o limite apos resampling: 11025 Hz
+PASS  WAV acima de dois segundos por um frame e rejeitado: 11025 Hz
+PASS  WAV de exatamente dois segundos respeita o limite apos resampling: 22050 Hz
+PASS  WAV acima de dois segundos por um frame e rejeitado: 22050 Hz
+PASS  WAV de exatamente dois segundos respeita o limite apos resampling: 44100 Hz
+PASS  WAV acima de dois segundos por um frame e rejeitado: 44100 Hz
+PASS  WAV de exatamente dois segundos respeita o limite apos resampling: 48000 Hz
+PASS  WAV acima de dois segundos por um frame e rejeitado: 48000 Hz
+PASS  WAV de exatamente dois segundos respeita o limite apos resampling: 96000 Hz
+PASS  WAV acima de dois segundos por um frame e rejeitado: 96000 Hz
+PASS  Chave WAV insegura ou vazia nao acessa arquivos: ../shot_ECHO#0
+PASS  Chave WAV insegura ou vazia nao acessa arquivos: shot_ECHO#0/../../foo
+PASS  Chave WAV insegura ou vazia nao acessa arquivos: C:\Windows\win.ini
+PASS  Chave WAV insegura ou vazia nao acessa arquivos: 
+PASS  WAV ausente permite alternativa sintetizada
+PASS  Chave WAV nula e tratada sem falha
+PASS  Chave do banco WAV e unica: shot_SPARK#0
+PASS  WAV original esta empacotado: shot_SPARK#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_SPARK#0
+PASS  WAV inicia e termina no repouso sem clique: shot_SPARK#0
+PASS  WAV nao e silencioso: shot_SPARK#0
+PASS  Motor prefere o WAV empacotado: shot_SPARK#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_SPARK#0
+PASS  Chave do banco WAV e unica: shot_SPARK#1
+PASS  WAV original esta empacotado: shot_SPARK#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_SPARK#1
+PASS  WAV inicia e termina no repouso sem clique: shot_SPARK#1
+PASS  WAV nao e silencioso: shot_SPARK#1
+PASS  Motor prefere o WAV empacotado: shot_SPARK#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_SPARK#1
+PASS  Chave do banco WAV e unica: shot_SPARK#2
+PASS  WAV original esta empacotado: shot_SPARK#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_SPARK#2
+PASS  WAV inicia e termina no repouso sem clique: shot_SPARK#2
+PASS  WAV nao e silencioso: shot_SPARK#2
+PASS  Motor prefere o WAV empacotado: shot_SPARK#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_SPARK#2
+PASS  Chave do banco WAV e unica: shot_VEIL#0
+PASS  WAV original esta empacotado: shot_VEIL#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_VEIL#0
+PASS  WAV inicia e termina no repouso sem clique: shot_VEIL#0
+PASS  WAV nao e silencioso: shot_VEIL#0
+PASS  Motor prefere o WAV empacotado: shot_VEIL#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_VEIL#0
+PASS  Chave do banco WAV e unica: shot_VEIL#1
+PASS  WAV original esta empacotado: shot_VEIL#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_VEIL#1
+PASS  WAV inicia e termina no repouso sem clique: shot_VEIL#1
+PASS  WAV nao e silencioso: shot_VEIL#1
+PASS  Motor prefere o WAV empacotado: shot_VEIL#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_VEIL#1
+PASS  Chave do banco WAV e unica: shot_VEIL#2
+PASS  WAV original esta empacotado: shot_VEIL#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_VEIL#2
+PASS  WAV inicia e termina no repouso sem clique: shot_VEIL#2
+PASS  WAV nao e silencioso: shot_VEIL#2
+PASS  Motor prefere o WAV empacotado: shot_VEIL#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_VEIL#2
+PASS  Chave do banco WAV e unica: shot_TALON#0
+PASS  WAV original esta empacotado: shot_TALON#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_TALON#0
+PASS  WAV inicia e termina no repouso sem clique: shot_TALON#0
+PASS  WAV nao e silencioso: shot_TALON#0
+PASS  Motor prefere o WAV empacotado: shot_TALON#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_TALON#0
+PASS  Chave do banco WAV e unica: shot_TALON#1
+PASS  WAV original esta empacotado: shot_TALON#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_TALON#1
+PASS  WAV inicia e termina no repouso sem clique: shot_TALON#1
+PASS  WAV nao e silencioso: shot_TALON#1
+PASS  Motor prefere o WAV empacotado: shot_TALON#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_TALON#1
+PASS  Chave do banco WAV e unica: shot_TALON#2
+PASS  WAV original esta empacotado: shot_TALON#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_TALON#2
+PASS  WAV inicia e termina no repouso sem clique: shot_TALON#2
+PASS  WAV nao e silencioso: shot_TALON#2
+PASS  Motor prefere o WAV empacotado: shot_TALON#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_TALON#2
+PASS  Chave do banco WAV e unica: shot_RUSH#0
+PASS  WAV original esta empacotado: shot_RUSH#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_RUSH#0
+PASS  WAV inicia e termina no repouso sem clique: shot_RUSH#0
+PASS  WAV nao e silencioso: shot_RUSH#0
+PASS  Motor prefere o WAV empacotado: shot_RUSH#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_RUSH#0
+PASS  Chave do banco WAV e unica: shot_RUSH#1
+PASS  WAV original esta empacotado: shot_RUSH#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_RUSH#1
+PASS  WAV inicia e termina no repouso sem clique: shot_RUSH#1
+PASS  WAV nao e silencioso: shot_RUSH#1
+PASS  Motor prefere o WAV empacotado: shot_RUSH#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_RUSH#1
+PASS  Chave do banco WAV e unica: shot_RUSH#2
+PASS  WAV original esta empacotado: shot_RUSH#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_RUSH#2
+PASS  WAV inicia e termina no repouso sem clique: shot_RUSH#2
+PASS  WAV nao e silencioso: shot_RUSH#2
+PASS  Motor prefere o WAV empacotado: shot_RUSH#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_RUSH#2
+PASS  Chave do banco WAV e unica: shot_DART#0
+PASS  WAV original esta empacotado: shot_DART#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_DART#0
+PASS  WAV inicia e termina no repouso sem clique: shot_DART#0
+PASS  WAV nao e silencioso: shot_DART#0
+PASS  Motor prefere o WAV empacotado: shot_DART#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_DART#0
+PASS  Chave do banco WAV e unica: shot_DART#1
+PASS  WAV original esta empacotado: shot_DART#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_DART#1
+PASS  WAV inicia e termina no repouso sem clique: shot_DART#1
+PASS  WAV nao e silencioso: shot_DART#1
+PASS  Motor prefere o WAV empacotado: shot_DART#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_DART#1
+PASS  Chave do banco WAV e unica: shot_DART#2
+PASS  WAV original esta empacotado: shot_DART#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_DART#2
+PASS  WAV inicia e termina no repouso sem clique: shot_DART#2
+PASS  WAV nao e silencioso: shot_DART#2
+PASS  Motor prefere o WAV empacotado: shot_DART#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_DART#2
+PASS  Chave do banco WAV e unica: shot_WISP#0
+PASS  WAV original esta empacotado: shot_WISP#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_WISP#0
+PASS  WAV inicia e termina no repouso sem clique: shot_WISP#0
+PASS  WAV nao e silencioso: shot_WISP#0
+PASS  Motor prefere o WAV empacotado: shot_WISP#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_WISP#0
+PASS  Chave do banco WAV e unica: shot_WISP#1
+PASS  WAV original esta empacotado: shot_WISP#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_WISP#1
+PASS  WAV inicia e termina no repouso sem clique: shot_WISP#1
+PASS  WAV nao e silencioso: shot_WISP#1
+PASS  Motor prefere o WAV empacotado: shot_WISP#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_WISP#1
+PASS  Chave do banco WAV e unica: shot_WISP#2
+PASS  WAV original esta empacotado: shot_WISP#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_WISP#2
+PASS  WAV inicia e termina no repouso sem clique: shot_WISP#2
+PASS  WAV nao e silencioso: shot_WISP#2
+PASS  Motor prefere o WAV empacotado: shot_WISP#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_WISP#2
+PASS  Chave do banco WAV e unica: shot_CIRCUIT#0
+PASS  WAV original esta empacotado: shot_CIRCUIT#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_CIRCUIT#0
+PASS  WAV inicia e termina no repouso sem clique: shot_CIRCUIT#0
+PASS  WAV nao e silencioso: shot_CIRCUIT#0
+PASS  Motor prefere o WAV empacotado: shot_CIRCUIT#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_CIRCUIT#0
+PASS  Chave do banco WAV e unica: shot_CIRCUIT#1
+PASS  WAV original esta empacotado: shot_CIRCUIT#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_CIRCUIT#1
+PASS  WAV inicia e termina no repouso sem clique: shot_CIRCUIT#1
+PASS  WAV nao e silencioso: shot_CIRCUIT#1
+PASS  Motor prefere o WAV empacotado: shot_CIRCUIT#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_CIRCUIT#1
+PASS  Chave do banco WAV e unica: shot_CIRCUIT#2
+PASS  WAV original esta empacotado: shot_CIRCUIT#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_CIRCUIT#2
+PASS  WAV inicia e termina no repouso sem clique: shot_CIRCUIT#2
+PASS  WAV nao e silencioso: shot_CIRCUIT#2
+PASS  Motor prefere o WAV empacotado: shot_CIRCUIT#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_CIRCUIT#2
+PASS  Chave do banco WAV e unica: shot_ECHO#0
+PASS  WAV original esta empacotado: shot_ECHO#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_ECHO#0
+PASS  WAV inicia e termina no repouso sem clique: shot_ECHO#0
+PASS  WAV nao e silencioso: shot_ECHO#0
+PASS  Motor prefere o WAV empacotado: shot_ECHO#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_ECHO#0
+PASS  Chave do banco WAV e unica: shot_ECHO#1
+PASS  WAV original esta empacotado: shot_ECHO#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_ECHO#1
+PASS  WAV inicia e termina no repouso sem clique: shot_ECHO#1
+PASS  WAV nao e silencioso: shot_ECHO#1
+PASS  Motor prefere o WAV empacotado: shot_ECHO#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_ECHO#1
+PASS  Chave do banco WAV e unica: shot_ECHO#2
+PASS  WAV original esta empacotado: shot_ECHO#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_ECHO#2
+PASS  WAV inicia e termina no repouso sem clique: shot_ECHO#2
+PASS  WAV nao e silencioso: shot_ECHO#2
+PASS  Motor prefere o WAV empacotado: shot_ECHO#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_ECHO#2
+PASS  Chave do banco WAV e unica: shot_SHADE#0
+PASS  WAV original esta empacotado: shot_SHADE#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_SHADE#0
+PASS  WAV inicia e termina no repouso sem clique: shot_SHADE#0
+PASS  WAV nao e silencioso: shot_SHADE#0
+PASS  Motor prefere o WAV empacotado: shot_SHADE#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_SHADE#0
+PASS  Chave do banco WAV e unica: shot_SHADE#1
+PASS  WAV original esta empacotado: shot_SHADE#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_SHADE#1
+PASS  WAV inicia e termina no repouso sem clique: shot_SHADE#1
+PASS  WAV nao e silencioso: shot_SHADE#1
+PASS  Motor prefere o WAV empacotado: shot_SHADE#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_SHADE#1
+PASS  Chave do banco WAV e unica: shot_SHADE#2
+PASS  WAV original esta empacotado: shot_SHADE#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_SHADE#2
+PASS  WAV inicia e termina no repouso sem clique: shot_SHADE#2
+PASS  WAV nao e silencioso: shot_SHADE#2
+PASS  Motor prefere o WAV empacotado: shot_SHADE#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_SHADE#2
+PASS  Chave do banco WAV e unica: shot_HELIX#0
+PASS  WAV original esta empacotado: shot_HELIX#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_HELIX#0
+PASS  WAV inicia e termina no repouso sem clique: shot_HELIX#0
+PASS  WAV nao e silencioso: shot_HELIX#0
+PASS  Motor prefere o WAV empacotado: shot_HELIX#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_HELIX#0
+PASS  Chave do banco WAV e unica: shot_HELIX#1
+PASS  WAV original esta empacotado: shot_HELIX#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_HELIX#1
+PASS  WAV inicia e termina no repouso sem clique: shot_HELIX#1
+PASS  WAV nao e silencioso: shot_HELIX#1
+PASS  Motor prefere o WAV empacotado: shot_HELIX#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_HELIX#1
+PASS  Chave do banco WAV e unica: shot_HELIX#2
+PASS  WAV original esta empacotado: shot_HELIX#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_HELIX#2
+PASS  WAV inicia e termina no repouso sem clique: shot_HELIX#2
+PASS  WAV nao e silencioso: shot_HELIX#2
+PASS  Motor prefere o WAV empacotado: shot_HELIX#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_HELIX#2
+PASS  Chave do banco WAV e unica: shot_MARROW#0
+PASS  WAV original esta empacotado: shot_MARROW#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_MARROW#0
+PASS  WAV inicia e termina no repouso sem clique: shot_MARROW#0
+PASS  WAV nao e silencioso: shot_MARROW#0
+PASS  Motor prefere o WAV empacotado: shot_MARROW#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_MARROW#0
+PASS  Chave do banco WAV e unica: shot_MARROW#1
+PASS  WAV original esta empacotado: shot_MARROW#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_MARROW#1
+PASS  WAV inicia e termina no repouso sem clique: shot_MARROW#1
+PASS  WAV nao e silencioso: shot_MARROW#1
+PASS  Motor prefere o WAV empacotado: shot_MARROW#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_MARROW#1
+PASS  Chave do banco WAV e unica: shot_MARROW#2
+PASS  WAV original esta empacotado: shot_MARROW#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_MARROW#2
+PASS  WAV inicia e termina no repouso sem clique: shot_MARROW#2
+PASS  WAV nao e silencioso: shot_MARROW#2
+PASS  Motor prefere o WAV empacotado: shot_MARROW#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_MARROW#2
+PASS  Chave do banco WAV e unica: shot_BREACH#0
+PASS  WAV original esta empacotado: shot_BREACH#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_BREACH#0
+PASS  WAV inicia e termina no repouso sem clique: shot_BREACH#0
+PASS  WAV nao e silencioso: shot_BREACH#0
+PASS  Motor prefere o WAV empacotado: shot_BREACH#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_BREACH#0
+PASS  Chave do banco WAV e unica: shot_BREACH#1
+PASS  WAV original esta empacotado: shot_BREACH#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_BREACH#1
+PASS  WAV inicia e termina no repouso sem clique: shot_BREACH#1
+PASS  WAV nao e silencioso: shot_BREACH#1
+PASS  Motor prefere o WAV empacotado: shot_BREACH#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_BREACH#1
+PASS  Chave do banco WAV e unica: shot_BREACH#2
+PASS  WAV original esta empacotado: shot_BREACH#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_BREACH#2
+PASS  WAV inicia e termina no repouso sem clique: shot_BREACH#2
+PASS  WAV nao e silencioso: shot_BREACH#2
+PASS  Motor prefere o WAV empacotado: shot_BREACH#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_BREACH#2
+PASS  Chave do banco WAV e unica: shot_RIDGE#0
+PASS  WAV original esta empacotado: shot_RIDGE#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_RIDGE#0
+PASS  WAV inicia e termina no repouso sem clique: shot_RIDGE#0
+PASS  WAV nao e silencioso: shot_RIDGE#0
+PASS  Motor prefere o WAV empacotado: shot_RIDGE#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_RIDGE#0
+PASS  Chave do banco WAV e unica: shot_RIDGE#1
+PASS  WAV original esta empacotado: shot_RIDGE#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_RIDGE#1
+PASS  WAV inicia e termina no repouso sem clique: shot_RIDGE#1
+PASS  WAV nao e silencioso: shot_RIDGE#1
+PASS  Motor prefere o WAV empacotado: shot_RIDGE#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_RIDGE#1
+PASS  Chave do banco WAV e unica: shot_RIDGE#2
+PASS  WAV original esta empacotado: shot_RIDGE#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_RIDGE#2
+PASS  WAV inicia e termina no repouso sem clique: shot_RIDGE#2
+PASS  WAV nao e silencioso: shot_RIDGE#2
+PASS  Motor prefere o WAV empacotado: shot_RIDGE#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_RIDGE#2
+PASS  Chave do banco WAV e unica: shot_HORIZON#0
+PASS  WAV original esta empacotado: shot_HORIZON#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_HORIZON#0
+PASS  WAV inicia e termina no repouso sem clique: shot_HORIZON#0
+PASS  WAV nao e silencioso: shot_HORIZON#0
+PASS  Motor prefere o WAV empacotado: shot_HORIZON#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_HORIZON#0
+PASS  Chave do banco WAV e unica: shot_HORIZON#1
+PASS  WAV original esta empacotado: shot_HORIZON#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_HORIZON#1
+PASS  WAV inicia e termina no repouso sem clique: shot_HORIZON#1
+PASS  WAV nao e silencioso: shot_HORIZON#1
+PASS  Motor prefere o WAV empacotado: shot_HORIZON#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_HORIZON#1
+PASS  Chave do banco WAV e unica: shot_HORIZON#2
+PASS  WAV original esta empacotado: shot_HORIZON#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_HORIZON#2
+PASS  WAV inicia e termina no repouso sem clique: shot_HORIZON#2
+PASS  WAV nao e silencioso: shot_HORIZON#2
+PASS  Motor prefere o WAV empacotado: shot_HORIZON#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_HORIZON#2
+PASS  Chave do banco WAV e unica: shot_BASTION#0
+PASS  WAV original esta empacotado: shot_BASTION#0
+PASS  WAV possui duracao limitada e amplitudes validas: shot_BASTION#0
+PASS  WAV inicia e termina no repouso sem clique: shot_BASTION#0
+PASS  WAV nao e silencioso: shot_BASTION#0
+PASS  Motor prefere o WAV empacotado: shot_BASTION#0
+PASS  Banco reutiliza a mesma amostra em cache: shot_BASTION#0
+PASS  Chave do banco WAV e unica: shot_BASTION#1
+PASS  WAV original esta empacotado: shot_BASTION#1
+PASS  WAV possui duracao limitada e amplitudes validas: shot_BASTION#1
+PASS  WAV inicia e termina no repouso sem clique: shot_BASTION#1
+PASS  WAV nao e silencioso: shot_BASTION#1
+PASS  Motor prefere o WAV empacotado: shot_BASTION#1
+PASS  Banco reutiliza a mesma amostra em cache: shot_BASTION#1
+PASS  Chave do banco WAV e unica: shot_BASTION#2
+PASS  WAV original esta empacotado: shot_BASTION#2
+PASS  WAV possui duracao limitada e amplitudes validas: shot_BASTION#2
+PASS  WAV inicia e termina no repouso sem clique: shot_BASTION#2
+PASS  WAV nao e silencioso: shot_BASTION#2
+PASS  Motor prefere o WAV empacotado: shot_BASTION#2
+PASS  Banco reutiliza a mesma amostra em cache: shot_BASTION#2
+PASS  Chave do banco WAV e unica: step_concrete#0
+PASS  WAV original esta empacotado: step_concrete#0
+PASS  WAV possui duracao limitada e amplitudes validas: step_concrete#0
+PASS  WAV inicia e termina no repouso sem clique: step_concrete#0
+PASS  WAV nao e silencioso: step_concrete#0
+PASS  Motor prefere o WAV empacotado: step_concrete#0
+PASS  Banco reutiliza a mesma amostra em cache: step_concrete#0
+PASS  Chave do banco WAV e unica: step_concrete#1
+PASS  WAV original esta empacotado: step_concrete#1
+PASS  WAV possui duracao limitada e amplitudes validas: step_concrete#1
+PASS  WAV inicia e termina no repouso sem clique: step_concrete#1
+PASS  WAV nao e silencioso: step_concrete#1
+PASS  Motor prefere o WAV empacotado: step_concrete#1
+PASS  Banco reutiliza a mesma amostra em cache: step_concrete#1
+PASS  Chave do banco WAV e unica: step_concrete#2
+PASS  WAV original esta empacotado: step_concrete#2
+PASS  WAV possui duracao limitada e amplitudes validas: step_concrete#2
+PASS  WAV inicia e termina no repouso sem clique: step_concrete#2
+PASS  WAV nao e silencioso: step_concrete#2
+PASS  Motor prefere o WAV empacotado: step_concrete#2
+PASS  Banco reutiliza a mesma amostra em cache: step_concrete#2
+PASS  Chave do banco WAV e unica: step_wood#0
+PASS  WAV original esta empacotado: step_wood#0
+PASS  WAV possui duracao limitada e amplitudes validas: step_wood#0
+PASS  WAV inicia e termina no repouso sem clique: step_wood#0
+PASS  WAV nao e silencioso: step_wood#0
+PASS  Motor prefere o WAV empacotado: step_wood#0
+PASS  Banco reutiliza a mesma amostra em cache: step_wood#0
+PASS  Chave do banco WAV e unica: step_wood#1
+PASS  WAV original esta empacotado: step_wood#1
+PASS  WAV possui duracao limitada e amplitudes validas: step_wood#1
+PASS  WAV inicia e termina no repouso sem clique: step_wood#1
+PASS  WAV nao e silencioso: step_wood#1
+PASS  Motor prefere o WAV empacotado: step_wood#1
+PASS  Banco reutiliza a mesma amostra em cache: step_wood#1
+PASS  Chave do banco WAV e unica: step_wood#2
+PASS  WAV original esta empacotado: step_wood#2
+PASS  WAV possui duracao limitada e amplitudes validas: step_wood#2
+PASS  WAV inicia e termina no repouso sem clique: step_wood#2
+PASS  WAV nao e silencioso: step_wood#2
+PASS  Motor prefere o WAV empacotado: step_wood#2
+PASS  Banco reutiliza a mesma amostra em cache: step_wood#2
+PASS  Chave do banco WAV e unica: step_metal#0
+PASS  WAV original esta empacotado: step_metal#0
+PASS  WAV possui duracao limitada e amplitudes validas: step_metal#0
+PASS  WAV inicia e termina no repouso sem clique: step_metal#0
+PASS  WAV nao e silencioso: step_metal#0
+PASS  Motor prefere o WAV empacotado: step_metal#0
+PASS  Banco reutiliza a mesma amostra em cache: step_metal#0
+PASS  Chave do banco WAV e unica: step_metal#1
+PASS  WAV original esta empacotado: step_metal#1
+PASS  WAV possui duracao limitada e amplitudes validas: step_metal#1
+PASS  WAV inicia e termina no repouso sem clique: step_metal#1
+PASS  WAV nao e silencioso: step_metal#1
+PASS  Motor prefere o WAV empacotado: step_metal#1
+PASS  Banco reutiliza a mesma amostra em cache: step_metal#1
+PASS  Chave do banco WAV e unica: step_metal#2
+PASS  WAV original esta empacotado: step_metal#2
+PASS  WAV possui duracao limitada e amplitudes validas: step_metal#2
+PASS  WAV inicia e termina no repouso sem clique: step_metal#2
+PASS  WAV nao e silencioso: step_metal#2
+PASS  Motor prefere o WAV empacotado: step_metal#2
+PASS  Banco reutiliza a mesma amostra em cache: step_metal#2
+PASS  Chave do banco WAV e unica: land_concrete#0
+PASS  WAV original esta empacotado: land_concrete#0
+PASS  WAV possui duracao limitada e amplitudes validas: land_concrete#0
+PASS  WAV inicia e termina no repouso sem clique: land_concrete#0
+PASS  WAV nao e silencioso: land_concrete#0
+PASS  Motor prefere o WAV empacotado: land_concrete#0
+PASS  Banco reutiliza a mesma amostra em cache: land_concrete#0
+PASS  Chave do banco WAV e unica: land_concrete#1
+PASS  WAV original esta empacotado: land_concrete#1
+PASS  WAV possui duracao limitada e amplitudes validas: land_concrete#1
+PASS  WAV inicia e termina no repouso sem clique: land_concrete#1
+PASS  WAV nao e silencioso: land_concrete#1
+PASS  Motor prefere o WAV empacotado: land_concrete#1
+PASS  Banco reutiliza a mesma amostra em cache: land_concrete#1
+PASS  Chave do banco WAV e unica: land_concrete#2
+PASS  WAV original esta empacotado: land_concrete#2
+PASS  WAV possui duracao limitada e amplitudes validas: land_concrete#2
+PASS  WAV inicia e termina no repouso sem clique: land_concrete#2
+PASS  WAV nao e silencioso: land_concrete#2
+PASS  Motor prefere o WAV empacotado: land_concrete#2
+PASS  Banco reutiliza a mesma amostra em cache: land_concrete#2
+PASS  Chave do banco WAV e unica: land_wood#0
+PASS  WAV original esta empacotado: land_wood#0
+PASS  WAV possui duracao limitada e amplitudes validas: land_wood#0
+PASS  WAV inicia e termina no repouso sem clique: land_wood#0
+PASS  WAV nao e silencioso: land_wood#0
+PASS  Motor prefere o WAV empacotado: land_wood#0
+PASS  Banco reutiliza a mesma amostra em cache: land_wood#0
+PASS  Chave do banco WAV e unica: land_wood#1
+PASS  WAV original esta empacotado: land_wood#1
+PASS  WAV possui duracao limitada e amplitudes validas: land_wood#1
+PASS  WAV inicia e termina no repouso sem clique: land_wood#1
+PASS  WAV nao e silencioso: land_wood#1
+PASS  Motor prefere o WAV empacotado: land_wood#1
+PASS  Banco reutiliza a mesma amostra em cache: land_wood#1
+PASS  Chave do banco WAV e unica: land_wood#2
+PASS  WAV original esta empacotado: land_wood#2
+PASS  WAV possui duracao limitada e amplitudes validas: land_wood#2
+PASS  WAV inicia e termina no repouso sem clique: land_wood#2
+PASS  WAV nao e silencioso: land_wood#2
+PASS  Motor prefere o WAV empacotado: land_wood#2
+PASS  Banco reutiliza a mesma amostra em cache: land_wood#2
+PASS  Chave do banco WAV e unica: land_metal#0
+PASS  WAV original esta empacotado: land_metal#0
+PASS  WAV possui duracao limitada e amplitudes validas: land_metal#0
+PASS  WAV inicia e termina no repouso sem clique: land_metal#0
+PASS  WAV nao e silencioso: land_metal#0
+PASS  Motor prefere o WAV empacotado: land_metal#0
+PASS  Banco reutiliza a mesma amostra em cache: land_metal#0
+PASS  Chave do banco WAV e unica: land_metal#1
+PASS  WAV original esta empacotado: land_metal#1
+PASS  WAV possui duracao limitada e amplitudes validas: land_metal#1
+PASS  WAV inicia e termina no repouso sem clique: land_metal#1
+PASS  WAV nao e silencioso: land_metal#1
+PASS  Motor prefere o WAV empacotado: land_metal#1
+PASS  Banco reutiliza a mesma amostra em cache: land_metal#1
+PASS  Chave do banco WAV e unica: land_metal#2
+PASS  WAV original esta empacotado: land_metal#2
+PASS  WAV possui duracao limitada e amplitudes validas: land_metal#2
+PASS  WAV inicia e termina no repouso sem clique: land_metal#2
+PASS  WAV nao e silencioso: land_metal#2
+PASS  Motor prefere o WAV empacotado: land_metal#2
+PASS  Banco reutiliza a mesma amostra em cache: land_metal#2
+PASS  Chave do banco WAV e unica: impact_concrete#0
+PASS  WAV original esta empacotado: impact_concrete#0
+PASS  WAV possui duracao limitada e amplitudes validas: impact_concrete#0
+PASS  WAV inicia e termina no repouso sem clique: impact_concrete#0
+PASS  WAV nao e silencioso: impact_concrete#0
+PASS  Motor prefere o WAV empacotado: impact_concrete#0
+PASS  Banco reutiliza a mesma amostra em cache: impact_concrete#0
+PASS  Chave do banco WAV e unica: impact_concrete#1
+PASS  WAV original esta empacotado: impact_concrete#1
+PASS  WAV possui duracao limitada e amplitudes validas: impact_concrete#1
+PASS  WAV inicia e termina no repouso sem clique: impact_concrete#1
+PASS  WAV nao e silencioso: impact_concrete#1
+PASS  Motor prefere o WAV empacotado: impact_concrete#1
+PASS  Banco reutiliza a mesma amostra em cache: impact_concrete#1
+PASS  Chave do banco WAV e unica: impact_concrete#2
+PASS  WAV original esta empacotado: impact_concrete#2
+PASS  WAV possui duracao limitada e amplitudes validas: impact_concrete#2
+PASS  WAV inicia e termina no repouso sem clique: impact_concrete#2
+PASS  WAV nao e silencioso: impact_concrete#2
+PASS  Motor prefere o WAV empacotado: impact_concrete#2
+PASS  Banco reutiliza a mesma amostra em cache: impact_concrete#2
+PASS  Chave do banco WAV e unica: impact_wood#0
+PASS  WAV original esta empacotado: impact_wood#0
+PASS  WAV possui duracao limitada e amplitudes validas: impact_wood#0
+PASS  WAV inicia e termina no repouso sem clique: impact_wood#0
+PASS  WAV nao e silencioso: impact_wood#0
+PASS  Motor prefere o WAV empacotado: impact_wood#0
+PASS  Banco reutiliza a mesma amostra em cache: impact_wood#0
+PASS  Chave do banco WAV e unica: impact_wood#1
+PASS  WAV original esta empacotado: impact_wood#1
+PASS  WAV possui duracao limitada e amplitudes validas: impact_wood#1
+PASS  WAV inicia e termina no repouso sem clique: impact_wood#1
+PASS  WAV nao e silencioso: impact_wood#1
+PASS  Motor prefere o WAV empacotado: impact_wood#1
+PASS  Banco reutiliza a mesma amostra em cache: impact_wood#1
+PASS  Chave do banco WAV e unica: impact_wood#2
+PASS  WAV original esta empacotado: impact_wood#2
+PASS  WAV possui duracao limitada e amplitudes validas: impact_wood#2
+PASS  WAV inicia e termina no repouso sem clique: impact_wood#2
+PASS  WAV nao e silencioso: impact_wood#2
+PASS  Motor prefere o WAV empacotado: impact_wood#2
+PASS  Banco reutiliza a mesma amostra em cache: impact_wood#2
+PASS  Chave do banco WAV e unica: impact_metal#0
+PASS  WAV original esta empacotado: impact_metal#0
+PASS  WAV possui duracao limitada e amplitudes validas: impact_metal#0
+PASS  WAV inicia e termina no repouso sem clique: impact_metal#0
+PASS  WAV nao e silencioso: impact_metal#0
+PASS  Motor prefere o WAV empacotado: impact_metal#0
+PASS  Banco reutiliza a mesma amostra em cache: impact_metal#0
+PASS  Chave do banco WAV e unica: impact_metal#1
+PASS  WAV original esta empacotado: impact_metal#1
+PASS  WAV possui duracao limitada e amplitudes validas: impact_metal#1
+PASS  WAV inicia e termina no repouso sem clique: impact_metal#1
+PASS  WAV nao e silencioso: impact_metal#1
+PASS  Motor prefere o WAV empacotado: impact_metal#1
+PASS  Banco reutiliza a mesma amostra em cache: impact_metal#1
+PASS  Chave do banco WAV e unica: impact_metal#2
+PASS  WAV original esta empacotado: impact_metal#2
+PASS  WAV possui duracao limitada e amplitudes validas: impact_metal#2
+PASS  WAV inicia e termina no repouso sem clique: impact_metal#2
+PASS  WAV nao e silencioso: impact_metal#2
+PASS  Motor prefere o WAV empacotado: impact_metal#2
+PASS  Banco reutiliza a mesma amostra em cache: impact_metal#2
+PASS  Chave do banco WAV e unica: reload_pistol#0
+PASS  WAV original esta empacotado: reload_pistol#0
+PASS  WAV possui duracao limitada e amplitudes validas: reload_pistol#0
+PASS  WAV inicia e termina no repouso sem clique: reload_pistol#0
+PASS  WAV nao e silencioso: reload_pistol#0
+PASS  Motor prefere o WAV empacotado: reload_pistol#0
+PASS  Banco reutiliza a mesma amostra em cache: reload_pistol#0
+PASS  Chave do banco WAV e unica: reload_pistol#1
+PASS  WAV original esta empacotado: reload_pistol#1
+PASS  WAV possui duracao limitada e amplitudes validas: reload_pistol#1
+PASS  WAV inicia e termina no repouso sem clique: reload_pistol#1
+PASS  WAV nao e silencioso: reload_pistol#1
+PASS  Motor prefere o WAV empacotado: reload_pistol#1
+PASS  Banco reutiliza a mesma amostra em cache: reload_pistol#1
+PASS  Chave do banco WAV e unica: reload_pistol#2
+PASS  WAV original esta empacotado: reload_pistol#2
+PASS  WAV possui duracao limitada e amplitudes validas: reload_pistol#2
+PASS  WAV inicia e termina no repouso sem clique: reload_pistol#2
+PASS  WAV nao e silencioso: reload_pistol#2
+PASS  Motor prefere o WAV empacotado: reload_pistol#2
+PASS  Banco reutiliza a mesma amostra em cache: reload_pistol#2
+PASS  Chave do banco WAV e unica: reload_smg#0
+PASS  WAV original esta empacotado: reload_smg#0
+PASS  WAV possui duracao limitada e amplitudes validas: reload_smg#0
+PASS  WAV inicia e termina no repouso sem clique: reload_smg#0
+PASS  WAV nao e silencioso: reload_smg#0
+PASS  Motor prefere o WAV empacotado: reload_smg#0
+PASS  Banco reutiliza a mesma amostra em cache: reload_smg#0
+PASS  Chave do banco WAV e unica: reload_smg#1
+PASS  WAV original esta empacotado: reload_smg#1
+PASS  WAV possui duracao limitada e amplitudes validas: reload_smg#1
+PASS  WAV inicia e termina no repouso sem clique: reload_smg#1
+PASS  WAV nao e silencioso: reload_smg#1
+PASS  Motor prefere o WAV empacotado: reload_smg#1
+PASS  Banco reutiliza a mesma amostra em cache: reload_smg#1
+PASS  Chave do banco WAV e unica: reload_smg#2
+PASS  WAV original esta empacotado: reload_smg#2
+PASS  WAV possui duracao limitada e amplitudes validas: reload_smg#2
+PASS  WAV inicia e termina no repouso sem clique: reload_smg#2
+PASS  WAV nao e silencioso: reload_smg#2
+PASS  Motor prefere o WAV empacotado: reload_smg#2
+PASS  Banco reutiliza a mesma amostra em cache: reload_smg#2
+PASS  Chave do banco WAV e unica: reload_rifle#0
+PASS  WAV original esta empacotado: reload_rifle#0
+PASS  WAV possui duracao limitada e amplitudes validas: reload_rifle#0
+PASS  WAV inicia e termina no repouso sem clique: reload_rifle#0
+PASS  WAV nao e silencioso: reload_rifle#0
+PASS  Motor prefere o WAV empacotado: reload_rifle#0
+PASS  Banco reutiliza a mesma amostra em cache: reload_rifle#0
+PASS  Chave do banco WAV e unica: reload_rifle#1
+PASS  WAV original esta empacotado: reload_rifle#1
+PASS  WAV possui duracao limitada e amplitudes validas: reload_rifle#1
+PASS  WAV inicia e termina no repouso sem clique: reload_rifle#1
+PASS  WAV nao e silencioso: reload_rifle#1
+PASS  Motor prefere o WAV empacotado: reload_rifle#1
+PASS  Banco reutiliza a mesma amostra em cache: reload_rifle#1
+PASS  Chave do banco WAV e unica: reload_rifle#2
+PASS  WAV original esta empacotado: reload_rifle#2
+PASS  WAV possui duracao limitada e amplitudes validas: reload_rifle#2
+PASS  WAV inicia e termina no repouso sem clique: reload_rifle#2
+PASS  WAV nao e silencioso: reload_rifle#2
+PASS  Motor prefere o WAV empacotado: reload_rifle#2
+PASS  Banco reutiliza a mesma amostra em cache: reload_rifle#2
+PASS  Chave do banco WAV e unica: reload_shotgun#0
+PASS  WAV original esta empacotado: reload_shotgun#0
+PASS  WAV possui duracao limitada e amplitudes validas: reload_shotgun#0
+PASS  WAV inicia e termina no repouso sem clique: reload_shotgun#0
+PASS  WAV nao e silencioso: reload_shotgun#0
+PASS  Motor prefere o WAV empacotado: reload_shotgun#0
+PASS  Banco reutiliza a mesma amostra em cache: reload_shotgun#0
+PASS  Chave do banco WAV e unica: reload_shotgun#1
+PASS  WAV original esta empacotado: reload_shotgun#1
+PASS  WAV possui duracao limitada e amplitudes validas: reload_shotgun#1
+PASS  WAV inicia e termina no repouso sem clique: reload_shotgun#1
+PASS  WAV nao e silencioso: reload_shotgun#1
+PASS  Motor prefere o WAV empacotado: reload_shotgun#1
+PASS  Banco reutiliza a mesma amostra em cache: reload_shotgun#1
+PASS  Chave do banco WAV e unica: reload_shotgun#2
+PASS  WAV original esta empacotado: reload_shotgun#2
+PASS  WAV possui duracao limitada e amplitudes validas: reload_shotgun#2
+PASS  WAV inicia e termina no repouso sem clique: reload_shotgun#2
+PASS  WAV nao e silencioso: reload_shotgun#2
+PASS  Motor prefere o WAV empacotado: reload_shotgun#2
+PASS  Banco reutiliza a mesma amostra em cache: reload_shotgun#2
+PASS  Chave do banco WAV e unica: reload_precision#0
+PASS  WAV original esta empacotado: reload_precision#0
+PASS  WAV possui duracao limitada e amplitudes validas: reload_precision#0
+PASS  WAV inicia e termina no repouso sem clique: reload_precision#0
+PASS  WAV nao e silencioso: reload_precision#0
+PASS  Motor prefere o WAV empacotado: reload_precision#0
+PASS  Banco reutiliza a mesma amostra em cache: reload_precision#0
+PASS  Chave do banco WAV e unica: reload_precision#1
+PASS  WAV original esta empacotado: reload_precision#1
+PASS  WAV possui duracao limitada e amplitudes validas: reload_precision#1
+PASS  WAV inicia e termina no repouso sem clique: reload_precision#1
+PASS  WAV nao e silencioso: reload_precision#1
+PASS  Motor prefere o WAV empacotado: reload_precision#1
+PASS  Banco reutiliza a mesma amostra em cache: reload_precision#1
+PASS  Chave do banco WAV e unica: reload_precision#2
+PASS  WAV original esta empacotado: reload_precision#2
+PASS  WAV possui duracao limitada e amplitudes validas: reload_precision#2
+PASS  WAV inicia e termina no repouso sem clique: reload_precision#2
+PASS  WAV nao e silencioso: reload_precision#2
+PASS  Motor prefere o WAV empacotado: reload_precision#2
+PASS  Banco reutiliza a mesma amostra em cache: reload_precision#2
+PASS  Chave do banco WAV e unica: reload_heavy#0
+PASS  WAV original esta empacotado: reload_heavy#0
+PASS  WAV possui duracao limitada e amplitudes validas: reload_heavy#0
+PASS  WAV inicia e termina no repouso sem clique: reload_heavy#0
+PASS  WAV nao e silencioso: reload_heavy#0
+PASS  Motor prefere o WAV empacotado: reload_heavy#0
+PASS  Banco reutiliza a mesma amostra em cache: reload_heavy#0
+PASS  Chave do banco WAV e unica: reload_heavy#1
+PASS  WAV original esta empacotado: reload_heavy#1
+PASS  WAV possui duracao limitada e amplitudes validas: reload_heavy#1
+PASS  WAV inicia e termina no repouso sem clique: reload_heavy#1
+PASS  WAV nao e silencioso: reload_heavy#1
+PASS  Motor prefere o WAV empacotado: reload_heavy#1
+PASS  Banco reutiliza a mesma amostra em cache: reload_heavy#1
+PASS  Chave do banco WAV e unica: reload_heavy#2
+PASS  WAV original esta empacotado: reload_heavy#2
+PASS  WAV possui duracao limitada e amplitudes validas: reload_heavy#2
+PASS  WAV inicia e termina no repouso sem clique: reload_heavy#2
+PASS  WAV nao e silencioso: reload_heavy#2
+PASS  Motor prefere o WAV empacotado: reload_heavy#2
+PASS  Banco reutiliza a mesma amostra em cache: reload_heavy#2
+PASS  Chave do banco WAV e unica: magout_pistol#0
+PASS  WAV original esta empacotado: magout_pistol#0
+PASS  WAV possui duracao limitada e amplitudes validas: magout_pistol#0
+PASS  WAV inicia e termina no repouso sem clique: magout_pistol#0
+PASS  WAV nao e silencioso: magout_pistol#0
+PASS  Motor prefere o WAV empacotado: magout_pistol#0
+PASS  Banco reutiliza a mesma amostra em cache: magout_pistol#0
+PASS  Chave do banco WAV e unica: magout_pistol#1
+PASS  WAV original esta empacotado: magout_pistol#1
+PASS  WAV possui duracao limitada e amplitudes validas: magout_pistol#1
+PASS  WAV inicia e termina no repouso sem clique: magout_pistol#1
+PASS  WAV nao e silencioso: magout_pistol#1
+PASS  Motor prefere o WAV empacotado: magout_pistol#1
+PASS  Banco reutiliza a mesma amostra em cache: magout_pistol#1
+PASS  Chave do banco WAV e unica: magout_pistol#2
+PASS  WAV original esta empacotado: magout_pistol#2
+PASS  WAV possui duracao limitada e amplitudes validas: magout_pistol#2
+PASS  WAV inicia e termina no repouso sem clique: magout_pistol#2
+PASS  WAV nao e silencioso: magout_pistol#2
+PASS  Motor prefere o WAV empacotado: magout_pistol#2
+PASS  Banco reutiliza a mesma amostra em cache: magout_pistol#2
+PASS  Chave do banco WAV e unica: magout_smg#0
+PASS  WAV original esta empacotado: magout_smg#0
+PASS  WAV possui duracao limitada e amplitudes validas: magout_smg#0
+PASS  WAV inicia e termina no repouso sem clique: magout_smg#0
+PASS  WAV nao e silencioso: magout_smg#0
+PASS  Motor prefere o WAV empacotado: magout_smg#0
+PASS  Banco reutiliza a mesma amostra em cache: magout_smg#0
+PASS  Chave do banco WAV e unica: magout_smg#1
+PASS  WAV original esta empacotado: magout_smg#1
+PASS  WAV possui duracao limitada e amplitudes validas: magout_smg#1
+PASS  WAV inicia e termina no repouso sem clique: magout_smg#1
+PASS  WAV nao e silencioso: magout_smg#1
+PASS  Motor prefere o WAV empacotado: magout_smg#1
+PASS  Banco reutiliza a mesma amostra em cache: magout_smg#1
+PASS  Chave do banco WAV e unica: magout_smg#2
+PASS  WAV original esta empacotado: magout_smg#2
+PASS  WAV possui duracao limitada e amplitudes validas: magout_smg#2
+PASS  WAV inicia e termina no repouso sem clique: magout_smg#2
+PASS  WAV nao e silencioso: magout_smg#2
+PASS  Motor prefere o WAV empacotado: magout_smg#2
+PASS  Banco reutiliza a mesma amostra em cache: magout_smg#2
+PASS  Chave do banco WAV e unica: magout_rifle#0
+PASS  WAV original esta empacotado: magout_rifle#0
+PASS  WAV possui duracao limitada e amplitudes validas: magout_rifle#0
+PASS  WAV inicia e termina no repouso sem clique: magout_rifle#0
+PASS  WAV nao e silencioso: magout_rifle#0
+PASS  Motor prefere o WAV empacotado: magout_rifle#0
+PASS  Banco reutiliza a mesma amostra em cache: magout_rifle#0
+PASS  Chave do banco WAV e unica: magout_rifle#1
+PASS  WAV original esta empacotado: magout_rifle#1
+PASS  WAV possui duracao limitada e amplitudes validas: magout_rifle#1
+PASS  WAV inicia e termina no repouso sem clique: magout_rifle#1
+PASS  WAV nao e silencioso: magout_rifle#1
+PASS  Motor prefere o WAV empacotado: magout_rifle#1
+PASS  Banco reutiliza a mesma amostra em cache: magout_rifle#1
+PASS  Chave do banco WAV e unica: magout_rifle#2
+PASS  WAV original esta empacotado: magout_rifle#2
+PASS  WAV possui duracao limitada e amplitudes validas: magout_rifle#2
+PASS  WAV inicia e termina no repouso sem clique: magout_rifle#2
+PASS  WAV nao e silencioso: magout_rifle#2
+PASS  Motor prefere o WAV empacotado: magout_rifle#2
+PASS  Banco reutiliza a mesma amostra em cache: magout_rifle#2
+PASS  Chave do banco WAV e unica: magout_shotgun#0
+PASS  WAV original esta empacotado: magout_shotgun#0
+PASS  WAV possui duracao limitada e amplitudes validas: magout_shotgun#0
+PASS  WAV inicia e termina no repouso sem clique: magout_shotgun#0
+PASS  WAV nao e silencioso: magout_shotgun#0
+PASS  Motor prefere o WAV empacotado: magout_shotgun#0
+PASS  Banco reutiliza a mesma amostra em cache: magout_shotgun#0
+PASS  Chave do banco WAV e unica: magout_shotgun#1
+PASS  WAV original esta empacotado: magout_shotgun#1
+PASS  WAV possui duracao limitada e amplitudes validas: magout_shotgun#1
+PASS  WAV inicia e termina no repouso sem clique: magout_shotgun#1
+PASS  WAV nao e silencioso: magout_shotgun#1
+PASS  Motor prefere o WAV empacotado: magout_shotgun#1
+PASS  Banco reutiliza a mesma amostra em cache: magout_shotgun#1
+PASS  Chave do banco WAV e unica: magout_shotgun#2
+PASS  WAV original esta empacotado: magout_shotgun#2
+PASS  WAV possui duracao limitada e amplitudes validas: magout_shotgun#2
+PASS  WAV inicia e termina no repouso sem clique: magout_shotgun#2
+PASS  WAV nao e silencioso: magout_shotgun#2
+PASS  Motor prefere o WAV empacotado: magout_shotgun#2
+PASS  Banco reutiliza a mesma amostra em cache: magout_shotgun#2
+PASS  Chave do banco WAV e unica: magout_precision#0
+PASS  WAV original esta empacotado: magout_precision#0
+PASS  WAV possui duracao limitada e amplitudes validas: magout_precision#0
+PASS  WAV inicia e termina no repouso sem clique: magout_precision#0
+PASS  WAV nao e silencioso: magout_precision#0
+PASS  Motor prefere o WAV empacotado: magout_precision#0
+PASS  Banco reutiliza a mesma amostra em cache: magout_precision#0
+PASS  Chave do banco WAV e unica: magout_precision#1
+PASS  WAV original esta empacotado: magout_precision#1
+PASS  WAV possui duracao limitada e amplitudes validas: magout_precision#1
+PASS  WAV inicia e termina no repouso sem clique: magout_precision#1
+PASS  WAV nao e silencioso: magout_precision#1
+PASS  Motor prefere o WAV empacotado: magout_precision#1
+PASS  Banco reutiliza a mesma amostra em cache: magout_precision#1
+PASS  Chave do banco WAV e unica: magout_precision#2
+PASS  WAV original esta empacotado: magout_precision#2
+PASS  WAV possui duracao limitada e amplitudes validas: magout_precision#2
+PASS  WAV inicia e termina no repouso sem clique: magout_precision#2
+PASS  WAV nao e silencioso: magout_precision#2
+PASS  Motor prefere o WAV empacotado: magout_precision#2
+PASS  Banco reutiliza a mesma amostra em cache: magout_precision#2
+PASS  Chave do banco WAV e unica: magout_heavy#0
+PASS  WAV original esta empacotado: magout_heavy#0
+PASS  WAV possui duracao limitada e amplitudes validas: magout_heavy#0
+PASS  WAV inicia e termina no repouso sem clique: magout_heavy#0
+PASS  WAV nao e silencioso: magout_heavy#0
+PASS  Motor prefere o WAV empacotado: magout_heavy#0
+PASS  Banco reutiliza a mesma amostra em cache: magout_heavy#0
+PASS  Chave do banco WAV e unica: magout_heavy#1
+PASS  WAV original esta empacotado: magout_heavy#1
+PASS  WAV possui duracao limitada e amplitudes validas: magout_heavy#1
+PASS  WAV inicia e termina no repouso sem clique: magout_heavy#1
+PASS  WAV nao e silencioso: magout_heavy#1
+PASS  Motor prefere o WAV empacotado: magout_heavy#1
+PASS  Banco reutiliza a mesma amostra em cache: magout_heavy#1
+PASS  Chave do banco WAV e unica: magout_heavy#2
+PASS  WAV original esta empacotado: magout_heavy#2
+PASS  WAV possui duracao limitada e amplitudes validas: magout_heavy#2
+PASS  WAV inicia e termina no repouso sem clique: magout_heavy#2
+PASS  WAV nao e silencioso: magout_heavy#2
+PASS  Motor prefere o WAV empacotado: magout_heavy#2
+PASS  Banco reutiliza a mesma amostra em cache: magout_heavy#2
+PASS  Chave do banco WAV e unica: magin_pistol#0
+PASS  WAV original esta empacotado: magin_pistol#0
+PASS  WAV possui duracao limitada e amplitudes validas: magin_pistol#0
+PASS  WAV inicia e termina no repouso sem clique: magin_pistol#0
+PASS  WAV nao e silencioso: magin_pistol#0
+PASS  Motor prefere o WAV empacotado: magin_pistol#0
+PASS  Banco reutiliza a mesma amostra em cache: magin_pistol#0
+PASS  Chave do banco WAV e unica: magin_pistol#1
+PASS  WAV original esta empacotado: magin_pistol#1
+PASS  WAV possui duracao limitada e amplitudes validas: magin_pistol#1
+PASS  WAV inicia e termina no repouso sem clique: magin_pistol#1
+PASS  WAV nao e silencioso: magin_pistol#1
+PASS  Motor prefere o WAV empacotado: magin_pistol#1
+PASS  Banco reutiliza a mesma amostra em cache: magin_pistol#1
+PASS  Chave do banco WAV e unica: magin_pistol#2
+PASS  WAV original esta empacotado: magin_pistol#2
+PASS  WAV possui duracao limitada e amplitudes validas: magin_pistol#2
+PASS  WAV inicia e termina no repouso sem clique: magin_pistol#2
+PASS  WAV nao e silencioso: magin_pistol#2
+PASS  Motor prefere o WAV empacotado: magin_pistol#2
+PASS  Banco reutiliza a mesma amostra em cache: magin_pistol#2
+PASS  Chave do banco WAV e unica: magin_smg#0
+PASS  WAV original esta empacotado: magin_smg#0
+PASS  WAV possui duracao limitada e amplitudes validas: magin_smg#0
+PASS  WAV inicia e termina no repouso sem clique: magin_smg#0
+PASS  WAV nao e silencioso: magin_smg#0
+PASS  Motor prefere o WAV empacotado: magin_smg#0
+PASS  Banco reutiliza a mesma amostra em cache: magin_smg#0
+PASS  Chave do banco WAV e unica: magin_smg#1
+PASS  WAV original esta empacotado: magin_smg#1
+PASS  WAV possui duracao limitada e amplitudes validas: magin_smg#1
+PASS  WAV inicia e termina no repouso sem clique: magin_smg#1
+PASS  WAV nao e silencioso: magin_smg#1
+PASS  Motor prefere o WAV empacotado: magin_smg#1
+PASS  Banco reutiliza a mesma amostra em cache: magin_smg#1
+PASS  Chave do banco WAV e unica: magin_smg#2
+PASS  WAV original esta empacotado: magin_smg#2
+PASS  WAV possui duracao limitada e amplitudes validas: magin_smg#2
+PASS  WAV inicia e termina no repouso sem clique: magin_smg#2
+PASS  WAV nao e silencioso: magin_smg#2
+PASS  Motor prefere o WAV empacotado: magin_smg#2
+PASS  Banco reutiliza a mesma amostra em cache: magin_smg#2
+PASS  Chave do banco WAV e unica: magin_rifle#0
+PASS  WAV original esta empacotado: magin_rifle#0
+PASS  WAV possui duracao limitada e amplitudes validas: magin_rifle#0
+PASS  WAV inicia e termina no repouso sem clique: magin_rifle#0
+PASS  WAV nao e silencioso: magin_rifle#0
+PASS  Motor prefere o WAV empacotado: magin_rifle#0
+PASS  Banco reutiliza a mesma amostra em cache: magin_rifle#0
+PASS  Chave do banco WAV e unica: magin_rifle#1
+PASS  WAV original esta empacotado: magin_rifle#1
+PASS  WAV possui duracao limitada e amplitudes validas: magin_rifle#1
+PASS  WAV inicia e termina no repouso sem clique: magin_rifle#1
+PASS  WAV nao e silencioso: magin_rifle#1
+PASS  Motor prefere o WAV empacotado: magin_rifle#1
+PASS  Banco reutiliza a mesma amostra em cache: magin_rifle#1
+PASS  Chave do banco WAV e unica: magin_rifle#2
+PASS  WAV original esta empacotado: magin_rifle#2
+PASS  WAV possui duracao limitada e amplitudes validas: magin_rifle#2
+PASS  WAV inicia e termina no repouso sem clique: magin_rifle#2
+PASS  WAV nao e silencioso: magin_rifle#2
+PASS  Motor prefere o WAV empacotado: magin_rifle#2
+PASS  Banco reutiliza a mesma amostra em cache: magin_rifle#2
+PASS  Chave do banco WAV e unica: magin_shotgun#0
+PASS  WAV original esta empacotado: magin_shotgun#0
+PASS  WAV possui duracao limitada e amplitudes validas: magin_shotgun#0
+PASS  WAV inicia e termina no repouso sem clique: magin_shotgun#0
+PASS  WAV nao e silencioso: magin_shotgun#0
+PASS  Motor prefere o WAV empacotado: magin_shotgun#0
+PASS  Banco reutiliza a mesma amostra em cache: magin_shotgun#0
+PASS  Chave do banco WAV e unica: magin_shotgun#1
+PASS  WAV original esta empacotado: magin_shotgun#1
+PASS  WAV possui duracao limitada e amplitudes validas: magin_shotgun#1
+PASS  WAV inicia e termina no repouso sem clique: magin_shotgun#1
+PASS  WAV nao e silencioso: magin_shotgun#1
+PASS  Motor prefere o WAV empacotado: magin_shotgun#1
+PASS  Banco reutiliza a mesma amostra em cache: magin_shotgun#1
+PASS  Chave do banco WAV e unica: magin_shotgun#2
+PASS  WAV original esta empacotado: magin_shotgun#2
+PASS  WAV possui duracao limitada e amplitudes validas: magin_shotgun#2
+PASS  WAV inicia e termina no repouso sem clique: magin_shotgun#2
+PASS  WAV nao e silencioso: magin_shotgun#2
+PASS  Motor prefere o WAV empacotado: magin_shotgun#2
+PASS  Banco reutiliza a mesma amostra em cache: magin_shotgun#2
+PASS  Chave do banco WAV e unica: magin_precision#0
+PASS  WAV original esta empacotado: magin_precision#0
+PASS  WAV possui duracao limitada e amplitudes validas: magin_precision#0
+PASS  WAV inicia e termina no repouso sem clique: magin_precision#0
+PASS  WAV nao e silencioso: magin_precision#0
+PASS  Motor prefere o WAV empacotado: magin_precision#0
+PASS  Banco reutiliza a mesma amostra em cache: magin_precision#0
+PASS  Chave do banco WAV e unica: magin_precision#1
+PASS  WAV original esta empacotado: magin_precision#1
+PASS  WAV possui duracao limitada e amplitudes validas: magin_precision#1
+PASS  WAV inicia e termina no repouso sem clique: magin_precision#1
+PASS  WAV nao e silencioso: magin_precision#1
+PASS  Motor prefere o WAV empacotado: magin_precision#1
+PASS  Banco reutiliza a mesma amostra em cache: magin_precision#1
+PASS  Chave do banco WAV e unica: magin_precision#2
+PASS  WAV original esta empacotado: magin_precision#2
+PASS  WAV possui duracao limitada e amplitudes validas: magin_precision#2
+PASS  WAV inicia e termina no repouso sem clique: magin_precision#2
+PASS  WAV nao e silencioso: magin_precision#2
+PASS  Motor prefere o WAV empacotado: magin_precision#2
+PASS  Banco reutiliza a mesma amostra em cache: magin_precision#2
+PASS  Chave do banco WAV e unica: magin_heavy#0
+PASS  WAV original esta empacotado: magin_heavy#0
+PASS  WAV possui duracao limitada e amplitudes validas: magin_heavy#0
+PASS  WAV inicia e termina no repouso sem clique: magin_heavy#0
+PASS  WAV nao e silencioso: magin_heavy#0
+PASS  Motor prefere o WAV empacotado: magin_heavy#0
+PASS  Banco reutiliza a mesma amostra em cache: magin_heavy#0
+PASS  Chave do banco WAV e unica: magin_heavy#1
+PASS  WAV original esta empacotado: magin_heavy#1
+PASS  WAV possui duracao limitada e amplitudes validas: magin_heavy#1
+PASS  WAV inicia e termina no repouso sem clique: magin_heavy#1
+PASS  WAV nao e silencioso: magin_heavy#1
+PASS  Motor prefere o WAV empacotado: magin_heavy#1
+PASS  Banco reutiliza a mesma amostra em cache: magin_heavy#1
+PASS  Chave do banco WAV e unica: magin_heavy#2
+PASS  WAV original esta empacotado: magin_heavy#2
+PASS  WAV possui duracao limitada e amplitudes validas: magin_heavy#2
+PASS  WAV inicia e termina no repouso sem clique: magin_heavy#2
+PASS  WAV nao e silencioso: magin_heavy#2
+PASS  Motor prefere o WAV empacotado: magin_heavy#2
+PASS  Banco reutiliza a mesma amostra em cache: magin_heavy#2
+PASS  Chave do banco WAV e unica: bolt_pistol#0
+PASS  WAV original esta empacotado: bolt_pistol#0
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_pistol#0
+PASS  WAV inicia e termina no repouso sem clique: bolt_pistol#0
+PASS  WAV nao e silencioso: bolt_pistol#0
+PASS  Motor prefere o WAV empacotado: bolt_pistol#0
+PASS  Banco reutiliza a mesma amostra em cache: bolt_pistol#0
+PASS  Chave do banco WAV e unica: bolt_pistol#1
+PASS  WAV original esta empacotado: bolt_pistol#1
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_pistol#1
+PASS  WAV inicia e termina no repouso sem clique: bolt_pistol#1
+PASS  WAV nao e silencioso: bolt_pistol#1
+PASS  Motor prefere o WAV empacotado: bolt_pistol#1
+PASS  Banco reutiliza a mesma amostra em cache: bolt_pistol#1
+PASS  Chave do banco WAV e unica: bolt_pistol#2
+PASS  WAV original esta empacotado: bolt_pistol#2
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_pistol#2
+PASS  WAV inicia e termina no repouso sem clique: bolt_pistol#2
+PASS  WAV nao e silencioso: bolt_pistol#2
+PASS  Motor prefere o WAV empacotado: bolt_pistol#2
+PASS  Banco reutiliza a mesma amostra em cache: bolt_pistol#2
+PASS  Chave do banco WAV e unica: bolt_smg#0
+PASS  WAV original esta empacotado: bolt_smg#0
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_smg#0
+PASS  WAV inicia e termina no repouso sem clique: bolt_smg#0
+PASS  WAV nao e silencioso: bolt_smg#0
+PASS  Motor prefere o WAV empacotado: bolt_smg#0
+PASS  Banco reutiliza a mesma amostra em cache: bolt_smg#0
+PASS  Chave do banco WAV e unica: bolt_smg#1
+PASS  WAV original esta empacotado: bolt_smg#1
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_smg#1
+PASS  WAV inicia e termina no repouso sem clique: bolt_smg#1
+PASS  WAV nao e silencioso: bolt_smg#1
+PASS  Motor prefere o WAV empacotado: bolt_smg#1
+PASS  Banco reutiliza a mesma amostra em cache: bolt_smg#1
+PASS  Chave do banco WAV e unica: bolt_smg#2
+PASS  WAV original esta empacotado: bolt_smg#2
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_smg#2
+PASS  WAV inicia e termina no repouso sem clique: bolt_smg#2
+PASS  WAV nao e silencioso: bolt_smg#2
+PASS  Motor prefere o WAV empacotado: bolt_smg#2
+PASS  Banco reutiliza a mesma amostra em cache: bolt_smg#2
+PASS  Chave do banco WAV e unica: bolt_rifle#0
+PASS  WAV original esta empacotado: bolt_rifle#0
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_rifle#0
+PASS  WAV inicia e termina no repouso sem clique: bolt_rifle#0
+PASS  WAV nao e silencioso: bolt_rifle#0
+PASS  Motor prefere o WAV empacotado: bolt_rifle#0
+PASS  Banco reutiliza a mesma amostra em cache: bolt_rifle#0
+PASS  Chave do banco WAV e unica: bolt_rifle#1
+PASS  WAV original esta empacotado: bolt_rifle#1
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_rifle#1
+PASS  WAV inicia e termina no repouso sem clique: bolt_rifle#1
+PASS  WAV nao e silencioso: bolt_rifle#1
+PASS  Motor prefere o WAV empacotado: bolt_rifle#1
+PASS  Banco reutiliza a mesma amostra em cache: bolt_rifle#1
+PASS  Chave do banco WAV e unica: bolt_rifle#2
+PASS  WAV original esta empacotado: bolt_rifle#2
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_rifle#2
+PASS  WAV inicia e termina no repouso sem clique: bolt_rifle#2
+PASS  WAV nao e silencioso: bolt_rifle#2
+PASS  Motor prefere o WAV empacotado: bolt_rifle#2
+PASS  Banco reutiliza a mesma amostra em cache: bolt_rifle#2
+PASS  Chave do banco WAV e unica: bolt_shotgun#0
+PASS  WAV original esta empacotado: bolt_shotgun#0
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_shotgun#0
+PASS  WAV inicia e termina no repouso sem clique: bolt_shotgun#0
+PASS  WAV nao e silencioso: bolt_shotgun#0
+PASS  Motor prefere o WAV empacotado: bolt_shotgun#0
+PASS  Banco reutiliza a mesma amostra em cache: bolt_shotgun#0
+PASS  Chave do banco WAV e unica: bolt_shotgun#1
+PASS  WAV original esta empacotado: bolt_shotgun#1
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_shotgun#1
+PASS  WAV inicia e termina no repouso sem clique: bolt_shotgun#1
+PASS  WAV nao e silencioso: bolt_shotgun#1
+PASS  Motor prefere o WAV empacotado: bolt_shotgun#1
+PASS  Banco reutiliza a mesma amostra em cache: bolt_shotgun#1
+PASS  Chave do banco WAV e unica: bolt_shotgun#2
+PASS  WAV original esta empacotado: bolt_shotgun#2
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_shotgun#2
+PASS  WAV inicia e termina no repouso sem clique: bolt_shotgun#2
+PASS  WAV nao e silencioso: bolt_shotgun#2
+PASS  Motor prefere o WAV empacotado: bolt_shotgun#2
+PASS  Banco reutiliza a mesma amostra em cache: bolt_shotgun#2
+PASS  Chave do banco WAV e unica: bolt_precision#0
+PASS  WAV original esta empacotado: bolt_precision#0
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_precision#0
+PASS  WAV inicia e termina no repouso sem clique: bolt_precision#0
+PASS  WAV nao e silencioso: bolt_precision#0
+PASS  Motor prefere o WAV empacotado: bolt_precision#0
+PASS  Banco reutiliza a mesma amostra em cache: bolt_precision#0
+PASS  Chave do banco WAV e unica: bolt_precision#1
+PASS  WAV original esta empacotado: bolt_precision#1
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_precision#1
+PASS  WAV inicia e termina no repouso sem clique: bolt_precision#1
+PASS  WAV nao e silencioso: bolt_precision#1
+PASS  Motor prefere o WAV empacotado: bolt_precision#1
+PASS  Banco reutiliza a mesma amostra em cache: bolt_precision#1
+PASS  Chave do banco WAV e unica: bolt_precision#2
+PASS  WAV original esta empacotado: bolt_precision#2
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_precision#2
+PASS  WAV inicia e termina no repouso sem clique: bolt_precision#2
+PASS  WAV nao e silencioso: bolt_precision#2
+PASS  Motor prefere o WAV empacotado: bolt_precision#2
+PASS  Banco reutiliza a mesma amostra em cache: bolt_precision#2
+PASS  Chave do banco WAV e unica: bolt_heavy#0
+PASS  WAV original esta empacotado: bolt_heavy#0
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_heavy#0
+PASS  WAV inicia e termina no repouso sem clique: bolt_heavy#0
+PASS  WAV nao e silencioso: bolt_heavy#0
+PASS  Motor prefere o WAV empacotado: bolt_heavy#0
+PASS  Banco reutiliza a mesma amostra em cache: bolt_heavy#0
+PASS  Chave do banco WAV e unica: bolt_heavy#1
+PASS  WAV original esta empacotado: bolt_heavy#1
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_heavy#1
+PASS  WAV inicia e termina no repouso sem clique: bolt_heavy#1
+PASS  WAV nao e silencioso: bolt_heavy#1
+PASS  Motor prefere o WAV empacotado: bolt_heavy#1
+PASS  Banco reutiliza a mesma amostra em cache: bolt_heavy#1
+PASS  Chave do banco WAV e unica: bolt_heavy#2
+PASS  WAV original esta empacotado: bolt_heavy#2
+PASS  WAV possui duracao limitada e amplitudes validas: bolt_heavy#2
+PASS  WAV inicia e termina no repouso sem clique: bolt_heavy#2
+PASS  WAV nao e silencioso: bolt_heavy#2
+PASS  Motor prefere o WAV empacotado: bolt_heavy#2
+PASS  Banco reutiliza a mesma amostra em cache: bolt_heavy#2
+PASS  Banco WAV possui amostras originais
+PASS  Cada arma tem tres variacoes sonoras distintas
+PASS  Efeito sem WAV usa sintese como alternativa
+PASS  Alternativa sintetizada tambem e reutilizada
+PASS  Testes do banco nao abrem placa de som nem thread
+PASS  Pan esquerda nao vaza para o canal direito
+PASS  Pan direita nao vaza para o canal esquerdo
+PASS  Pan central usa ganhos iguais nos dois canais
+PASS  Volume geral escala os efeitos
+PASS  Volume zero silencia ambos os canais
+PASS  Audio desativado silencia efeitos e musica
+PASS  Vozes silenciadas sao consumidas sem retomar som antigo
+PASS  Volume de efeitos zero preserva silencio fora do menu
+PASS  Musica do menu independe de vozes de efeitos
+PASS  Musica do menu nao toca durante a partida
+PASS  Mistura de vinte vozes satura sem overflow PCM
+PASS  Relogio avanca por frame sem reler amostra encerrada
+PASS  Cauda do bloco fica silenciosa apos a voz terminar
+PASS  Mixer remove vozes encerradas apos o bloco
+PASS  Voz limita parametros nao finitos antes da mistura
+PASS  Amostra nao finita nao silencia as outras vozes
+PASS  Mixer rejeita buffer stereo com frame incompleto
+PASS  Audio sem dispositivo nao acumula eventos
+PASS  Legenda de disparo funciona sem hardware
+PASS  Eventos invalidos nao entram na fila nem no mixer
+PASS  Fila de efeitos permanece limitada em rajadas
+PASS  Eventos limitam pan ao intervalo stereo
+PASS  Disparos alternam tres variacoes sem criar chaves ilimitadas
+PASS  Fila substitui vozes encerradas e limita a polifonia
+PASS  Efeitos descartados por saturacao nao viram backlog de sons antigos
+PASS  Fila concorrente mantem o limite durante eventos simultaneos
+PASS  Audio desligado nao enfileira efeitos
+PASS  Legendas continuam disponiveis com audio desligado
+PASS  Volume zero nao enfileira efeitos
+PASS  Efeito de superficie oferece legenda: step_concrete#0
+PASS  Efeito de superficie oferece legenda: step_concrete#1
+PASS  Efeito de superficie oferece legenda: step_concrete#2
+PASS  Efeito de superficie oferece legenda: step_wood#0
+PASS  Efeito de superficie oferece legenda: step_wood#1
+PASS  Efeito de superficie oferece legenda: step_wood#2
+PASS  Efeito de superficie oferece legenda: step_metal#0
+PASS  Efeito de superficie oferece legenda: step_metal#1
+PASS  Efeito de superficie oferece legenda: step_metal#2
+PASS  Efeito de superficie oferece legenda: land_concrete#0
+PASS  Efeito de superficie oferece legenda: land_concrete#1
+PASS  Efeito de superficie oferece legenda: land_concrete#2
+PASS  Efeito de superficie oferece legenda: land_wood#0
+PASS  Efeito de superficie oferece legenda: land_wood#1
+PASS  Efeito de superficie oferece legenda: land_wood#2
+PASS  Efeito de superficie oferece legenda: land_metal#0
+PASS  Efeito de superficie oferece legenda: land_metal#1
+PASS  Efeito de superficie oferece legenda: land_metal#2
+PASS  Efeito de superficie oferece legenda: impact_concrete#0
+PASS  Efeito de superficie oferece legenda: impact_concrete#1
+PASS  Efeito de superficie oferece legenda: impact_concrete#2
+PASS  Efeito de superficie oferece legenda: impact_wood#0
+PASS  Efeito de superficie oferece legenda: impact_wood#1
+PASS  Efeito de superficie oferece legenda: impact_wood#2
+PASS  Efeito de superficie oferece legenda: impact_metal#0
+PASS  Efeito de superficie oferece legenda: impact_metal#1
+PASS  Efeito de superficie oferece legenda: impact_metal#2
+PASS  Fechar motor descarta eventos pendentes sem abrir hardware
+PASS  Produtor de audio aguarda monitor durante teste concorrente de fechamento
+PASS  Fechamento concorrente impede evento posterior a limpeza da fila
+PASS  Audio: piso comum usa concreto
+PASS  Audio: caixa de madeira usa material visual sem alterar penetracao
+PASS  Audio: registro visual nao muda resistencia balistica da caixa
+PASS  Audio: caixa acima dos pes nao troca material do piso
+PASS  Audio: conteiner usa passos de metal
+PASS  Audio: plataforma usa textura real em vez de altura
+PASS  Audio: rampa no nivel dos pes usa chapa metalica
+PASS  Audio: rampa mais alta nao muda som dos pes abaixo dela
+PASS  Audio: painel metalico resolve o material da face atingida
+PASS  Audio: painel repintado usa textura de madeira
+PASS  Audio: textura metalica 4
+PASS  Audio: textura metalica 5
+PASS  Audio: textura metalica 6
+PASS  Audio: textura metalica 7
+PASS  Audio: textura metalica 11
+PASS  Audio: textura metalica 15
+PASS  Audio: piso metalico do mapa 2
+PASS  Audio: piso metalico do mapa 5
+PASS  Audio: fonte a direita tem pan a direita
+PASS  Audio: fonte a esquerda tem pan a esquerda
+PASS  Audio: distancia reduz ganho
+PASS  Audio: cobertura atenua som sem eliminar evento
+PASS  Audio: limite de alcance nao gera voz
+PASS  Audio: entrada espacial invalida nao gera voz
+PASS  Audio: eventos nao consomem RNG de combate ou bots
+PASS  Audio: corrida real gera passos de superficie
+PASS  Audio: corrida preserva evento de audicao dos bots
+PASS  Audio: caminhada nao gera voz nem ruido de IA
+PASS  Audio: agachar nao gera voz nem ruido de IA
+PASS  Audio: passos de bot proximo usam a mesma superficie
+PASS  Audio: ator morto nao emite passos
+PASS  Audio: bot agachado nao emite passos
+PASS  Audio: velocidade de queda aumenta ganho do pouso
+PASS  Audio: contato leve com piso nao vira pouso
+PASS  Audio: gravidade real do bot emite pouso
+PASS  Audio: pouso real do jogador usa material da plataforma apos corrigir altura
+PASS  Audio: mutar preserva audicao dos bots e legenda de passos
+PASS  Audio: impacto de madeira permanece com efeitos visuais desligados
+PASS  Audio: impacto gera uma voz e uma marca sem duplicacao
+PASS  Audio: impacto final apos penetracao encontra a parede correta
+PASS  Audio: disparo sem superficie nao produz impacto
+PASS  Audio: acertar ator nao duplica impacto de parede
+PASS  Audio: disparo real contra chapa usa impacto metalico
+PASS  Audio: inicio de recarga agrupado para SPARK
+PASS  Audio: tres etapas de recarga para SPARK
+PASS  Audio: etapas de recarga nao repetem para SPARK
+PASS  Audio: inicio de recarga agrupado para VEIL
+PASS  Audio: tres etapas de recarga para VEIL
+PASS  Audio: etapas de recarga nao repetem para VEIL
+PASS  Audio: inicio de recarga agrupado para TALON
+PASS  Audio: tres etapas de recarga para TALON
+PASS  Audio: etapas de recarga nao repetem para TALON
+PASS  Audio: inicio de recarga agrupado para RUSH
+PASS  Audio: tres etapas de recarga para RUSH
+PASS  Audio: etapas de recarga nao repetem para RUSH
+PASS  Audio: inicio de recarga agrupado para DART
+PASS  Audio: tres etapas de recarga para DART
+PASS  Audio: etapas de recarga nao repetem para DART
+PASS  Audio: inicio de recarga agrupado para WISP
+PASS  Audio: tres etapas de recarga para WISP
+PASS  Audio: etapas de recarga nao repetem para WISP
+PASS  Audio: inicio de recarga agrupado para CIRCUIT
+PASS  Audio: tres etapas de recarga para CIRCUIT
+PASS  Audio: etapas de recarga nao repetem para CIRCUIT
+PASS  Audio: inicio de recarga agrupado para ECHO
+PASS  Audio: tres etapas de recarga para ECHO
+PASS  Audio: etapas de recarga nao repetem para ECHO
+PASS  Audio: inicio de recarga agrupado para SHADE
+PASS  Audio: tres etapas de recarga para SHADE
+PASS  Audio: etapas de recarga nao repetem para SHADE
+PASS  Audio: inicio de recarga agrupado para HELIX
+PASS  Audio: tres etapas de recarga para HELIX
+PASS  Audio: etapas de recarga nao repetem para HELIX
+PASS  Audio: inicio de recarga agrupado para MARROW
+PASS  Audio: tres etapas de recarga para MARROW
+PASS  Audio: etapas de recarga nao repetem para MARROW
+PASS  Audio: inicio de recarga agrupado para BREACH
+PASS  Audio: tres etapas de recarga para BREACH
+PASS  Audio: etapas de recarga nao repetem para BREACH
+PASS  Audio: inicio de recarga agrupado para RIDGE
+PASS  Audio: tres etapas de recarga para RIDGE
+PASS  Audio: etapas de recarga nao repetem para RIDGE
+PASS  Audio: inicio de recarga agrupado para HORIZON
+PASS  Audio: tres etapas de recarga para HORIZON
+PASS  Audio: etapas de recarga nao repetem para HORIZON
+PASS  Audio: inicio de recarga agrupado para BASTION
+PASS  Audio: tres etapas de recarga para BASTION
+PASS  Audio: etapas de recarga nao repetem para BASTION
+PASS  Audio: trocar arma cancela as etapas de recarga
+PASS  Audio: recarga de bot proximo e posicional
+PASS  Audio: bot proximo emite etapas de recarga
+PASS  Audio: morte interrompe etapas de recarga
+PASS  Audio: clock de recarga real emite tres etapas uma vez e em ordem
+PASS  Audio: ultimo frame de recarga termina municao e todas as etapas
+PASS  Audio: mecanismos acompanham fases da recarga sem avancar no clock visual
+PASS  Audio: tick visual isolado nao produz mecanismos de recarga
+PASS  Audio: pausa nao avanca recarga nem reproduz mecanismos
+PASS  Audio: Game.tick integra etapas ao clock real da arma
+PASS  Duelo audio: primeiro snapshot nao reproduz eventos antigos
+PASS  Duelo audio: corrida tem cadencia de passos por superficie
+PASS  Duelo audio: snapshot repetido nao gera passos
+PASS  Duelo audio: agachado nao emite passos mesmo com velocidade elevada
+PASS  Duelo audio: caminhada silenciosa permanece silenciosa
+PASS  Duelo audio: velocidade sem deslocamento nao inventa passo
+PASS  Duelo audio: movimento no ar nao gera passos
+PASS  Duelo audio: passos remotos usam material e pan da posicao replicada
+PASS  Duelo audio: contato de queda replicado emite pouso
+PASS  Duelo audio: ficar no chao nao repete pouso
+PASS  Duelo audio: contato leve nao vira pouso
+PASS  Duelo audio: atraso de snapshot nao amplifica contato leve
+PASS  Duelo audio: morte nao dispara pouso
+PASS  Duelo audio: inicio de recarga e reproduzido uma vez
+PASS  Duelo audio: mecanismos acompanham as tres etapas replicadas
+PASS  Duelo audio: recarga congelada e snapshots repetidos nao repetem mecanismos
+PASS  Duelo audio: conclusao apos etapa final nao duplica ferrolho
+PASS  Duelo audio: conclusao entre snapshots preserva ultima etapa
+PASS  Duelo audio: cancelar recarga nao gera mecanismos restantes
+PASS  Duelo audio: trocar arma nao inventa inicio ou etapas antigas
+PASS  Duelo audio: etapas futuras da nova arma seguem grupo correto
+PASS  Duelo audio: morte interrompe mecanismos de recarga
+PASS  Duelo audio: recarga remota tem pan e atenuacao espacial
+PASS  Duelo audio: deslocamento brusco nao reproduz eventos intermediarios
+PASS  Duelo audio: nova rodada estabelece base silenciosa
+PASS  Duelo audio: longa interrupcao descarta eventos atrasados
+PASS  Duelo audio: preparacao nao produz eventos de combate
+PASS  Duelo audio: primeira observacao apos respawn e silenciosa
+PASS  Duelo audio: observador nao altera arma ou RNG de combate
+PASS  Duelo audio: testes nao abrem dispositivo ou thread de audio
+PASS  Duelo audio: snapshot anterior ao tick observado nao reproduz eventos
+PASS  Duelo audio: pacote antigo nao substitui a base do proximo evento
+PASS  Duelo audio: snapshots binarios de movimento real chegam ao banco de passos
+PASS  Duelo audio: servidor nao reproduz vozes de cliente
+PASS  Duelo audio: recarga autoritativa chega ao cliente pelo protocolo existente
+1248 checks passed.

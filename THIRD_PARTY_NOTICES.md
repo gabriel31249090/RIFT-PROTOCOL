@@ -18,3 +18,9 @@ A copia da [licenca MIT da referencia](https://github.com/rehlds/ReGameDLL_CS/bl
 ## Modelos, texturas e sons de Counter-Strike
 
 Nenhum recurso da instalacao de Counter-Strike foi incorporado a esta entrega. A licenca do codigo ReGameDLL nao licencia os recursos do jogo. Modificar um modelo ou uma textura nao substitui a verificacao dos direitos de uso e distribuicao. A proxima frente visual deve usar recursos proprios ou com licenca documentada.
+
+## Banco de audio original 1.9.1
+
+Os 144 WAVs em `assets/audio` foram gerados para o RIFT por `src/rift/AudioAssets.java` e `src/rift/ShotAudio.java`, usando ruido deterministico, filtros, ressonadores e camadas mecanicas. Nao contem gravacoes, sons extraidos, conversoes ou downloads de Counter-Strike ou de outro jogo. A sintese de reserva usa as mesmas fontes originais.
+
+Os arquivos PCM mono de 16 bits a 22050 Hz e seu manifesto `SHA256SUMS.txt` acompanham os fontes e sao incluidos no JAR. O gerador usa apenas Java Sound, da biblioteca padrao Java, sem adicionar biblioteca de terceiros. A origem e a reproducao do banco estao documentadas em `assets/audio/README.txt`; o escopo da entrega esta em [CHANGELOG_1.9.1.md](CHANGELOG_1.9.1.md).

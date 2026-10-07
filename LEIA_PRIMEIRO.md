@@ -1,6 +1,14 @@
-# RIFT Protocol 1.9
+# RIFT Protocol 1.9.1
 
 FPS tático 3D original em Java, com **onze agentes, três mapas táticos com alturas, 15 armas de fogo, três lâminas e seis modos locais contra bots**. JAR compilado, código-fonte, testes, capturas incluídas. O solo funciona offline. O duelo entre PCs usa a rede; o modo de dois conjuntos no Windows usa um auxiliar Raw Input.
+
+## Atualização 1.9.1 - Áudio e superfícies
+
+O JAR agora inclui 144 WAVs originais, com três variantes por evento e síntese de reserva caso um recurso falte ou seja inválido. Passos, pousos e impactos no modo solo distinguem concreto, madeira e metal. A recarga começa com um som curto e usa retirada, inserção e ferrolho em etapas, com seis categorias de mecanismos. Sons posicionais usam distância, panorama estéreo e atenuação por paredes.
+
+No 1v1, passos, pousos e recargas são reproduzidos pelos clientes a partir dos snapshots; os disparos existentes também usam os WAVs variados. Impactos em paredes ainda não são reproduzidos no duelo, pois o protocolo não transmite esse evento. O protocolo permanece na versão 2 da 1.9, sem alterações de balanceamento ou do RNG de jogo. Nenhum som, modelo ou textura da instalação de CS foi incorporado.
+
+Veja [CHANGELOG_1.9.1.md](CHANGELOG_1.9.1.md), [DESEMPENHO_1.9.1.md](DESEMPENHO_1.9.1.md) e [VERIFICACAO.txt](VERIFICACAO.txt). Testes sem janela não aprovam a saída física de áudio; fones, dois conjuntos físicos no Windows e LAN real ainda precisam ser conferidos.
 
 ## Atualização 1.8 — Duelo
 
@@ -66,7 +74,7 @@ Nos dois modos de abate, o respawn leva 3 s e B abre o arsenal gratuito durante 
 
 Nos modos de rodadas: plantio com F por 3,2 s, desarme por 5 s e detonação após 40 s. Compra normal de 20 s e combate de 140 s. Enter adianta o início da rodada. A Spike armada mantém a rodada mesmo se os atacantes morrerem.
 
-**A fila, a classificação e a copa são locais. Os outros participantes são bots.** Este pacote não implementa servidores multiplayer, matchmaking online ou chat de voz. O ping funciona no mundo, no minimapa e nas ordens dos aliados.
+**A fila, a classificação e a copa são locais. Os outros participantes desses modos são bots.** O multiplayer disponível é o duelo 1v1 por conexão direta, separado desses modos. Não há matchmaking online ou chat de voz. O ping funciona no mundo, no minimapa e nas ordens dos aliados.
 
 ## Mapas e movimento
 
@@ -222,12 +230,16 @@ Para recompilar com um JDK 17+: `java Build.java`, `COMPILAR_WINDOWS.bat` ou `sh
 
 ```sh
 java -jar RiftProtocol.jar --self-test
+java -jar RiftProtocol.jar --audio-test
+java -jar RiftProtocol.jar --audio-generate build/audio-original
 java -jar RiftProtocol.jar --benchmark-full
 java -jar RiftProtocol.jar --impact-test
 java -jar RiftProtocol.jar --impact-capture screenshots
 ```
 
 O projeto usa apenas a biblioteca padrão Java. Os mapas, agentes, modelos e sons são próprios. As novas artes bitmap foram geradas para o projeto; formatos, mapeamento e especificações estão em `ARTES_1.6.md`. É um protótipo independente inspirado em FPS táticos, sem vínculo com Riot Games.
+
+Os WAVs estão em `assets/audio` e embutidos no JAR; o runtime não depende dessa pasta externa para tocá-los. `--audio-test` testa carregamento, mistura e eventos sem placa de som e também integra o `--self-test`. `--audio-generate` cria os 144 WAVs e `SHA256SUMS.txt` na pasta indicada, sem reconstruir o JAR. Origem e geração: `assets/audio/README.txt`.
 
 Referências de design consultadas: [notas oficiais 0.50, de 2020](https://playvalorant.com/en-gb/news/game-updates/valorant-patch-notes-0-50/) e [3.0, de 2021](https://playvalorant.com/en-us/news/game-updates/valorant-patch-notes-3-0/), sobre recuperação entre disparos e precisão em movimento. Os parâmetros e o balanceamento de RIFT são próprios; essas referências históricas não representam uma reprodução exata da versão atual de VALORANT.
 
@@ -243,7 +255,7 @@ Cinco abas: Controles, Gráficos, Áudio, Gameplay e Acessibilidade. Teclas repe
 
 Sensibilidade normal e multiplicador ADS são separados. FOV horizontal vai de 70° a 110°. A mira permite tamanho, abertura, espessura, quatro cores, modo fixo/dinâmico e ponto central. Mapa de habilidade e câmera podem alternar com a tecla ou funcionar enquanto ela estiver segurada; no mapa, soltar confirma os pontos marcados.
 
-Acessibilidade: ADS, caminhada e agachamento alternáveis; câmera com menos balanço; clarão escuro com a mesma perda de visão; legendas de efeitos; HUD com alto contraste; inversão vertical. Volumes master, efeitos e música são independentes. A trilha ambiente sintetizada toca somente nos menus. Disparos de bots usam panorama estéreo, distância e atenuação por paredes; isso não é um sistema acústico completo de áudio 3D.
+Acessibilidade: ADS, caminhada e agachamento alternáveis; câmera com menos balanço; clarão escuro com a mesma perda de visão; legendas de efeitos; HUD com alto contraste; inversão vertical. Volumes master, efeitos e música são independentes. A trilha ambiente sintetizada toca somente nos menus. Disparos de bots e os novos eventos posicionais usam panorama estéreo, distância e atenuação por paredes; isso não é um sistema acústico completo de áudio 3D. Reverberação, vozes e callouts falados ficam para versões futuras.
 
 ## Economia e tiros
 
@@ -255,6 +267,6 @@ Há dois orbes compartilhados por rodada, na Oficina e na Rota Defensora. Pare p
 
 ## Escopo e próximos sistemas
 
-A versão 1.6 melhora impacto, mira, ricochetes, fios e apresentação visual sobre o núcleo local já existente. Ainda não inclui servidores dedicados, netcode, matchmaking online, anti-cheat, amigos/party/voz, MMR de jogadores reais, temporadas online, replays, editor de mapas, Workshop, crossplay, APK ou monetização. Modos como Retake, Wingman, Escalation e Replication também ficam para futuras versões. O rank, a fila e o Premier existentes são simulações locais, identificadas assim na interface.
+A versão 1.9.1 melhora o áudio sobre o combate da 1.9 e o duelo direto entregue na 1.8. Ainda não inclui servidores dedicados hospedados, matchmaking online, anti-cheat de produção, amigos/party/voz, MMR de jogadores reais, temporadas online, replays, editor de mapas, Workshop, crossplay, APK ou monetização. Previsão/reconciliação de rede e a expansão do duelo também ficam para futuras versões. O rank, a fila e o Premier existentes são simulações locais, identificadas assim na interface. A próxima atualização planejada é a 1.9.2, com identidade visual própria e importação de malhas estáticas; veja `ROADMAP.md`.
 
-As habilidades compartilham infraestrutura de colisão, efeitos e dano, mas cada um dos 44 slots tem uma mecânica própria no elenco. Não há reprodução exata do balanceamento, dos modelos ou da física de VALORANT. O bhop usa uma implementação original de aceleração por projeção, inspirada no gênero Source/Quake, sem incorporar código desses motores.
+As habilidades compartilham infraestrutura de colisão, efeitos e dano, mas cada um dos 44 slots tem uma mecânica própria no elenco. Não há reprodução exata do balanceamento, dos modelos ou da física de VALORANT. A versão 1.9 adaptou algoritmos de combate e movimento do ReGameDLL_CS para Java, com parâmetros próprios e sem transplantar arquivos C++ ou recursos do jogo; veja `THIRD_PARTY_NOTICES.md`.

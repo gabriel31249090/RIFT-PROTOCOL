@@ -1,0 +1,5 @@
+PASS  Malformed classpath WAV permits procedural fallback
+PASS  Engine uses original synthesis when packaged WAV is malformed
+PASS  Malformed WAV fallback is cached
+PASS  Malformed WAV check never opens audio hardware
+4 malformed WAV fallback checks passed.

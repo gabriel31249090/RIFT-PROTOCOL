@@ -285,6 +285,7 @@ final class Game {
         shotFX.tick(dt);scoreboard=in.held(VK_TAB);
         for(Actor a:actors){
             a.motionStart=new V(a.x,a.y,a.z);
+            AudioSurface.reloadTick(this,a,dt);
             if(!a.dead&&a.eCharges==0&&sentinels.own(a,Agent.values()[a.agentIndex].e)==null){a.eRegen+=dt;if(a.eRegen>=30){a.eRegen=0;a.eCharges=1;if(a==player)tell("Assinatura recarregada",2);}}else a.eRegen=0;
             a.nearSight=Math.max(0,a.nearSight-dt);if(a.specialPistol!=null)a.specialPistol.tick(dt);if(a.specialRifle!=null)a.specialRifle.tick(dt);a.tagTime=Math.max(0,a.tagTime-dt);a.landRecovery=Math.max(0,a.landRecovery-dt);a.pistol.tick(dt);if(a.primary!=null)a.primary.tick(dt);a.shotGlow=Math.max(0,a.shotGlow-dt);a.damageGlow=Math.max(0,a.damageGlow-dt);a.flash=Math.max(0,a.flash-dt);a.revealed=Math.max(0,a.revealed-dt);a.energy=Math.max(0,a.energy-dt);a.emp=Math.max(0,a.emp-dt);a.slow=Math.max(0,a.slow-dt);a.stim=Math.max(0,a.stim-dt);a.vulnerable=Math.max(0,a.vulnerable-dt);a.detained=Math.max(0,a.detained-dt);a.invulnerable=Math.max(0,a.invulnerable-dt);
             CharacterModel.animate(a,dt);abilities.tickActor(a,dt);
@@ -325,10 +326,10 @@ final class Game {
         combat.jump(dt,in);double ox=player.x,oz=player.z;if(dashTime>0){player.vx=player.vz=0;advanceDash(dt);}else combat.movement(dt,speed);
         if(phase==Phase.BUY && (attackTeam==0?player.z<113:player.z>10)){player.x=ox;player.z=oz;}
         player.moveSpeed=Math.hypot(player.x-ox,player.z-oz)/dt;player.walk+=player.moveSpeed*dt;
-        footstep-=dt;if(footstep<=0&&player.moveSpeed>3.3&&player.grounded){audio.play("step");bots.noise(player,Bots.Noise.STEP,19);footstep=.36;}
+        footstep-=dt;if(footstep<=0&&player.moveSpeed>3.3&&player.grounded&&!player.crouch){AudioSurface.step(this,player);bots.noise(player,Bots.Noise.STEP,19);footstep=.36;}
         
         double oldY=player.y;player.vy-=16*dt;player.y+=player.vy*dt;double floor=world.groundAt(player.x,player.z,oldY);
-        if(player.y<=floor){if(!player.grounded&&player.vy<-3){combat.landed();player.landRecovery=.11;landing=Math.min(1,Math.abs(player.vy)*.08);audio.play("land");bots.noise(player,Bots.Noise.LAND,Math.min(28,8+Math.abs(player.vy)*1.3));}player.y=floor;player.vy=0;player.grounded=true;}else player.grounded=false;
+        if(player.y<=floor){player.y=floor;if(!player.grounded&&player.vy<-3){combat.landed();player.landRecovery=.11;landing=Math.min(1,Math.abs(player.vy)*.08);AudioSurface.land(this,player,Math.abs(player.vy));bots.noise(player,Bots.Noise.LAND,Math.min(28,8+Math.abs(player.vy)*1.3));}player.vy=0;player.grounded=true;}else player.grounded=false;
         if(in.pressed(VK_1))combat.equip(1);if(in.pressed(VK_2))combat.equip(2);if(in.pressed(VK_3))combat.equip(3);
         if(in.pressed(VK_V)&&weaponEquip<=0&&combat.swing<=0&&player.gun().reload<=0)combat.inspect=2.4;
         if(in.pressed(VK_R)&&dashTime<=0)reload(player);
@@ -355,7 +356,7 @@ final class Game {
             double floor=world.groundAt(a.x,a.z,a.y);if(a.grounded&&floor>=a.y-.18&&floor<=a.y+.35)a.y=floor;else if(floor<a.y-.18)a.grounded=false;
         }
     }
-    void actorGravity(Actor a,double dt){double old=a.y;a.vy-=16*dt;a.y+=a.vy*dt;double floor=world.groundAt(a.x,a.z,old);if(a.y<=floor){a.y=floor;a.vy=0;a.grounded=true;}else a.grounded=false;}
+    void actorGravity(Actor a,double dt){double old=a.y;a.vy-=16*dt;a.y+=a.vy*dt;double floor=world.groundAt(a.x,a.z,old);if(a.y<=floor){a.y=floor;if(!a.grounded)AudioSurface.land(this,a,Math.abs(a.vy));a.vy=0;a.grounded=true;}else a.grounded=false;}
     void castSlot(int slot){
         if(player.emp>0||player.detained>0||player.teleportTime>0){tell("Habilidades indisponíveis durante este efeito",1.5);return;}
         if(dashTime>0){tell("Aguarde o fim do impulso",1);return;}
@@ -439,7 +440,7 @@ final class Game {
     void particle(V at,V velocity,double life,double size,int color){if(particles.size()<170)particles.add(new Particle(at,velocity,life,size,color));}
     void reload(Actor a) {
         if(a.melee())return;Gun gun=a.gun();if(gun.reload>0||gun.ammo==gun.kind.mag||gun.reserve<=0)return;
-        gun.burstLeft=0;gun.reloadTotal=gun.kind.reload*(a==player&&focus>0?.6:1);gun.reload=gun.reloadTotal;gun.reloadStage=0;bots.noise(a,Bots.Noise.RELOAD,13);if(a==player){combat.inspect=0;audio.play("reload");}
+        gun.burstLeft=0;gun.reloadTotal=gun.kind.reload*(a==player&&focus>0?.6:1);gun.reload=gun.reloadTotal;gun.reloadStage=0;bots.noise(a,Bots.Noise.RELOAD,13);AudioSurface.reload(this,a);if(a==player)combat.inspect=0;
     }
     double playerSpread(){return Combat.spread(player,aiming,focus>0);}
     void firePlayer() {
@@ -469,7 +470,7 @@ final class Game {
             else if(t>=0&&t<closest){closest=t;victim=a;head=false;}
         }
         double device=abilities.hitDevice(shooter,origin,dir,closest,shooter.slot==4?70:shooter.slot==5?150:gun.body);if(device>=0){closest=device;victim=null;head=false;}
-        V endpoint=origin.add(dir.mul(closest));if(victim==null&&device<0)shotFX.hit(origin,dir,closest);
+        V endpoint=origin.add(dir.mul(closest));if(victim==null&&device<0){SurfaceHit hit=shotFX.hit(origin,dir,closest);if(hit!=null)AudioSurface.impact(this,hit);}
         traces.add(new Trace(origin.add(new V(Math.cos(shooter.yaw)*.15,-.19,-Math.sin(shooter.yaw)*.15)),endpoint,shooter.team==0?0xFFF2BE:0xFF997B));
         if(closest<209){for(int i=0;i<3;i++)particle(endpoint,new V((rng.nextDouble()-.5)*2,rng.nextDouble()*2,(rng.nextDouble()-.5)*2),.3+rng.nextDouble()*.25,.025,victim==null?0xE8D9B6:0xFFD19B);}
         if(victim!=null) {

@@ -52,7 +52,7 @@ final class Combat {
         if(in.pressed(java.awt.event.KeyEvent.VK_SPACE))jumpBuffer=.10;
         Actor a=g.player;
         if(a.grounded&&jumpBuffer>0&&a.teleportTime<=0&&a.detained<=0&&g.plantProgress<=0){
-            hops=landingAge<.10?hops+1:1;a.vy=6;a.grounded=false;a.landRecovery=0;jumpBuffer=0;g.audio.play("step");
+            hops=landingAge<.10?hops+1:1;a.vy=6;a.grounded=false;a.landRecovery=0;jumpBuffer=0;
         }
         bestSpeed=Math.max(bestSpeed,Math.hypot(a.vx,a.vz));
     }

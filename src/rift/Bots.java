@@ -222,7 +222,7 @@ final class Bots {
         a.walk += a.moveSpeed * dt;
         if (m.memory != Memory.NONE && !(seen == null && !retreat && !g.planted && distance < 1.5)) look(a, m.x, m.y, m.z, dt);
         m.footstep -= dt;
-        if (a.moveSpeed > 3.3 && a.grounded && m.footstep <= 0) { noise(a, Noise.STEP, 19); m.footstep = .36; }
+        if (a.moveSpeed > 3.3 && a.grounded && !a.crouch && m.footstep <= 0) { AudioSurface.step(g,a); noise(a, Noise.STEP, 19); m.footstep = .36; }
         if (seen != null) {
             fire(a);
             if (!seen.dead && a.skillCooldown <= 0 && a.emp <= 0 && a.detained <= 0 && a.react <= 0) {

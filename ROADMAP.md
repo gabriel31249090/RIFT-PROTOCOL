@@ -1,4 +1,4 @@
-# RIFT Protocol — roadmap após 1.9
+# RIFT Protocol - roadmap após 1.9.1
 
 A lista do projeto foi dividida por dependências. **Entregue** significa presente no pacote; **parcial** significa uma base funcional com limites; **planejado** ainda não existe. Versões futuras são propostas de escopo, sem datas prometidas.
 
@@ -8,7 +8,7 @@ A lista do projeto foi dividida por dependências. **Entregue** significa presen
 | --- | --- | --- |
 | 1.8.1 | Estabilidade | Entregue: conflitos resolvidos, pacote recompilado e base verificada. |
 | 1.9 | Combate e movimento | Perfis das 15 armas, recuperação por tempo, dano gradual, penetração por arma, atrito e aceleração; algoritmos adaptados do ReGameDLL para Java. |
-| 1.9.1 | Áudio e superfícies | WAV, passos por material, impactos, recargas e pousos. |
+| 1.9.1 | Áudio e superfícies | Entregue: 144 WAVs originais, síntese de reserva, passos/pousos por material, impactos no modo solo e recargas por etapa; áudio posicional também no cliente 1v1. |
 | 1.9.2 | Cenários | Texturas com identidade própria, importação de malhas estáticas e atualização visual de um mapa. |
 | 1.9.3 | Arsenal visual | Malhas e materiais de armas, mecanismos e animações em primeira pessoa e no mundo. |
 | 1.9.4 | Personagens | Modelos com esqueleto; validar um agente completo antes de expandir. |
@@ -19,7 +19,13 @@ Antes dos cenários, definir materiais, símbolos, silhuetas e equipamentos do R
 
 ## 1.9 — Combate e movimento
 
-Perfis próprios por arma e precisão física comum a jogador/bots. Queda contínua de dano além do alcance, orçamento de penetração por arma e movimento com atrito/aceleração separados. Verificação da entrega: [VERIFICACAO.txt](VERIFICACAO.txt). Referências/licenças: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Próxima etapa: 1.9.1, áudio e superfícies.
+Perfis próprios por arma e precisão física comum a jogador/bots. Queda contínua de dano além do alcance, orçamento de penetração por arma e movimento com atrito/aceleração separados. Verificação da entrega: [VERIFICACAO.txt](VERIFICACAO.txt). Referências/licenças: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+## 1.9.1 - Entregue: áudio e superfícies
+
+Banco de 144 WAVs próprios com três variantes por evento e síntese de reserva. Concreto, madeira e metal têm passos, pousos e impactos distintos no modo solo; recargas usam um início curto e três etapas por categoria. Distância, panorâmica e oclusão por paredes ajustam os sons posicionais. No 1v1, os clientes observam snapshots para reproduzir passos, pousos e recargas; a rede ainda não informa os impactos em paredes. O protocolo, o balanceamento e o RNG de jogo permanecem inalterados em relação à 1.9.
+
+Detalhes: [CHANGELOG_1.9.1.md](CHANGELOG_1.9.1.md). Medições: [DESEMPENHO_1.9.1.md](DESEMPENHO_1.9.1.md). Áudio em fones, dois conjuntos físicos e LAN real continuam pendentes de validação. Próxima etapa: **1.9.2**, identidade visual própria, texturas e importação de malhas estáticas.
 
 ## 1.8 — Entregue: base de duelo entre pessoas
 
@@ -49,7 +55,7 @@ Critério: quatro habilidades de cada kit têm comportamento verificável, efeit
 
 Um mapa compacto de interiores e outro maior com linhas de sniper. Um deles terá três sites e uma mecânica específica, como porta acionável. Rever ângulos, rotas, callouts, defesa pós-plantio e tempos de rotação antes de decorar.
 
-Combate: hitboxes por membros, tabela de TTK das 15 armas por distância, melhoria dos impactos, flinch configurável, miras alternativas, disparos alternativos e protótipo de tempo de viagem da sniper. Movimento: superfícies e sons distintos, pouso proporcional, queda opcional, cordas/escadas, leaning, rampas e percurso de bhop cronometrado.
+Combate: hitboxes por membros, tabela de TTK das 15 armas por distância, melhoria dos impactos, flinch configurável, miras alternativas, disparos alternativos e protótipo de tempo de viagem da sniper. Movimento: novas superfícies além dos três materiais sonoros entregues na 1.9.1, queda opcional, cordas/escadas, leaning e percurso de bhop cronometrado.
 
 Modos candidatos, nesta ordem: tutorial guiado, retake/1v1/2v2, Escalada e Sobrevivência. Replicação, regras customizadas e eventos vêm depois da infraestrutura de regras. Um editor simples começa com peças e spawns validados; workshop público exige distribuição e moderação.
 
@@ -66,12 +72,12 @@ Amigos, parties, voz, regiões, matchmaking por MMR/RR, ranking global, temporad
 | Área | Base existente / limite | Próximo trabalho |
 | --- | --- | --- |
 | Armas | 15 armas, dano por distância, cabeça/corpo/pernas, padrão de recuo e wallbang por material | Membros separados, TTK, drops, flinch, ópticas e modos alternativos |
-| Movimento | Walk, crouch, jump, air strafe, bhop e tagging; treino básico | Pistas cronometradas, passos por material, queda, leaning, cordas e rampas |
+| Movimento | Walk, crouch, jump, air strafe, bhop e tagging; treino básico e passos/pousos por material | Pistas cronometradas, novos materiais, queda, leaning e cordas |
 | Habilidades | 44 habilidades de 11 agentes, cargas, assinaturas e orbes; bots usam parte dos kits | Execuções coordenadas, supremas táticas, contra-jogo, prévias e identidade |
 | Mapas | 3 layouts de duas bases e dois sites, coberturas, rampas e alturas; grade de navegação de 1 m | Escalas distintas, três sites, interações, destruição e navmesh poligonal |
 | Modos | Competitivo local, sem ranque, Spike Rush, DM, TDM, Premier local, treino e observador POV | Tutorial, retake, arenas, Escalada, Sobrevivência, Replicação e Custom |
 | Progressão | XP, contratos, maestria, rank e histórico local básico; coleção cosmética | Precisão, HS%, KAST, ADR, resumo por rodada, missões, títulos e passe local |
-| Áudio | Síntese de efeitos, volume de música/efeitos, panorâmica e alguma atenuação | Oclusão consistente, reverberação, vozes, callouts e volume separado de UI/voz |
+| Áudio | 144 WAVs originais com síntese de reserva, sons por material, recargas por etapa, distância, panorâmica e oclusão | Validação física, eventos de impacto no 1v1, reverberação, vozes, callouts e volume separado de UI/voz |
 | Gráficos | Texturas bitmap, artes de menu/agentes, materiais, efeitos e animações articuladas | Iluminação pré-calculada, sombras, FXAA, clima, inspeções/vitória, mortes e ragdoll |
 | Câmeras | POV ao morrer e observação dos bots | Câmera livre, killcam, gravação de eventos e replay por rodada |
 | Acessibilidade | FOV, sensibilidade ADS, binds, crosshair, modos de segurar/alternar, movimento reduzido e legendas básicas | Paletas daltônicas completas, perfis de controle, gamepad, inglês/espanhol |

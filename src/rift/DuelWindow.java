@@ -12,7 +12,7 @@ import static rift.Game.*;
 /** One camera, one input stream, one independent equipment profile. */
 final class DuelWindow extends Canvas implements Runnable {
     final DuelClient client;final RawInputHub raw;final int localSeat;
-    final Game game;final DuelView view;final Input input=new Input();
+    final Game game;final DuelView view;final DuelAudio audio;final Input input=new Input();
     final DuelProtocol.State state=new DuelProtocol.State();final Runnable onClose;final String room;
     DuelProtocol.Choice choice;
     JFrame frame;Robot robot;Cursor hidden;
@@ -24,7 +24,7 @@ final class DuelWindow extends Canvas implements Runnable {
         for(int i=0;i<2;i++){Actor a=new Actor(i,i,"Jogador "+(i+1));World.V spawn=DuelMaps.spawn(i);a.x=spawn.x();a.z=spawn.z();a.yaw=i==0?Math.PI:0;a.primary=new Gun(Weapon.ECHO);a.slot=2;game.actors.add(a);}
         game.player=game.actors.get(client.seat);game.phase=Phase.BUY;game.agent=Agent.values()[settings.agent];
         Profile p=game.profile;choice=new DuelProtocol.Choice(p.savedPrimary.ordinal(),p.savedPistol.ordinal(),settings.agent,p.skins[p.savedPrimary.ordinal()],p.charms[p.savedPrimary.ordinal()],p.melee);
-        view=new DuelView(game);
+        view=new DuelView(game);audio=new DuelAudio(game);
     }
     void open(Rectangle bounds){
         frame=new JFrame("RIFT 1v1 / J"+(client.seat+1)+(raw!=null?" / dispositivos separados":" / rede"));
@@ -50,6 +50,7 @@ final class DuelWindow extends Canvas implements Runnable {
                 if(packet!=null){
                     int oldShots=state.shots,oldHits=state.hits,oldKills=game.player.kills;double hp=game.player.hp,remoteAge=game.actors.get(1-client.seat).gun().shotAge;
                     DuelProtocol.snapshot(packet,game,state,client.seat);
+                    audio.observe(state);
                     if(state.epoch!=epoch){epoch=state.epoch;yaw=game.player.yaw;pitch=game.player.pitch;input.clear();}
                     if(state.phase!=previousPhase){previousPhase=state.phase;equipment=state.phase==DuelSimulation.WAITING||state.phase==DuelSimulation.PREP||state.phase==DuelSimulation.FINISHED;}
                     if(state.shots>oldShots){game.audio.play(game.player.gun().kind.sound());game.shotFX.fired(game.player);}
