@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
 import javax.imageio.ImageIO;
+import java.util.*;
 
 /** Cached bitmap art. The same packaged images are used in the UI and the renderer. */
 final class Assets {
@@ -13,22 +14,44 @@ final class Assets {
     // Each render thread owns its palettes: two local windows cannot recolor each other's triangles.
     static final class TintCache { final long[] keys=new long[8192]; final int[][] colors=new int[8192][]; }
     static final ThreadLocal<TintCache> TINT=ThreadLocal.withInitial(TintCache::new);
-    static final int[][] average=new int[16][3];
-    static final int[][][] tiles=new int[16][5][];
-    static final byte[][][] indices=new byte[16][5][];
-    static final int[][][] palettes=new int[16][5][];
+    static final int CAPACITY=64;
+    static final int[][] average=new int[CAPACITY][3];
+    static final int[][][] tiles=new int[CAPACITY][5][];
+    static final byte[][][] indices=new byte[CAPACITY][5][];
+    static final int[][][] palettes=new int[CAPACITY][5][];
+    private static final Map<String,Integer> imported=new HashMap<>();
+    private static final BufferedImage[] images=new BufferedImage[CAPACITY];
+    private static int materialCount=16;
     static {for(int i=0;i<12;i++)portraits[i]=cell(AGENTS,4,3,i);for(int i=0;i<48;i++)icons[i]=cell(ICONS,8,6,i);
-        for(int i=0;i<16;i++){BufferedImage tile=cell(MATERIALS,4,4,i);for(int level=0;level<5;level++){int size=256>>level;BufferedImage m=new BufferedImage(size,size,BufferedImage.TYPE_INT_RGB);Graphics2D g=m.createGraphics();g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);g.drawImage(tile,0,0,size,size,null);g.dispose();tiles[i][level]=((DataBufferInt)m.getRaster().getDataBuffer()).getData();}for(int c:tiles[i][4]){average[i][0]+=c>>16&255;average[i][1]+=c>>8&255;average[i][2]+=c&255;}for(int ch=0;ch<3;ch++)average[i][ch]=Math.max(1,average[i][ch]/tiles[i][4].length);}
+        for(int i=0;i<16;i++)prepare(i,cell(MATERIALS,4,4,i));
         // Recolor a small luminance palette instead of allocating a full texture
         // for every fog/lighting value as the camera turns. Pixel positions and
         // mip levels still come directly from the packaged material bitmap.
-        for(int material=0;material<16;material++)for(int level=0;level<5;level++){
+    }
+    private static void prepare(int material,BufferedImage tile){
+        images[material]=tile;
+        for(int level=0;level<5;level++){
+            int size=256>>level;BufferedImage m=new BufferedImage(size,size,BufferedImage.TYPE_INT_RGB);Graphics2D g=m.createGraphics();
+            g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,RenderingHints.VALUE_INTERPOLATION_BILINEAR);g.drawImage(tile,0,0,size,size,null);g.dispose();
+            tiles[material][level]=((DataBufferInt)m.getRaster().getDataBuffer()).getData();
+        }
+        for(int c:tiles[material][4]){average[material][0]+=c>>16&255;average[material][1]+=c>>8&255;average[material][2]+=c&255;}
+        for(int ch=0;ch<3;ch++)average[material][ch]=Math.max(1,average[material][ch]/tiles[material][4].length);
+        for(int level=0;level<5;level++){
             int[] src=tiles[material][level],palette=new int[256];byte[] lookup=new byte[src.length];int[][] sums=new int[256][4];
             for(int i=0;i<src.length;i++){int c=src[i],r=c>>16&255,g=c>>8&255,b=c&255,key=(r*77+g*150+b*29)>>8;lookup[i]=(byte)key;sums[key][0]+=r;sums[key][1]+=g;sums[key][2]+=b;sums[key][3]++;}
             for(int i=0;i<256;i++){int count=sums[i][3];if(count>0)palette[i]=(sums[i][0]/count)<<16|(sums[i][1]/count)<<8|sums[i][2]/count;}
             indices[material][level]=lookup;palettes[material][level]=palette;
         }
     }
+    static synchronized int registerMaterial(String resource){
+        if(resource==null||!resource.matches("(?:models|textures)/[A-Za-z0-9_./-]+\\.(?:png|jpg)")||resource.contains(".."))throw new IllegalArgumentException("Caminho de textura invalido");
+        Integer present=imported.get(resource);if(present!=null)return present;
+        if(materialCount==CAPACITY)throw new IllegalStateException("Limite de materiais atingido");
+        BufferedImage image=load(resource);if(image.getWidth()>4096||image.getHeight()>4096)throw new IllegalArgumentException("Textura excede 4096 pixels");
+        int id=materialCount;prepare(id,image);imported.put(resource,id);materialCount++;return id;
+    }
+    static BufferedImage materialImage(int id){return images[id];}
     static BufferedImage load(String name){
         try(InputStream in=Assets.class.getResourceAsStream("/assets/"+name)){
             BufferedImage raw=in!=null?ImageIO.read(in):ImageIO.read(new File("assets",name));if(raw==null)throw new IOException("Imagem inválida");
@@ -39,7 +62,7 @@ final class Assets {
     static int sample(int material,double u,double v,int level){level=Math.min(4,Math.max(0,level));int size=256>>level,mask=size-1;int x=(int)Math.floor(u*size)&mask,y=(int)Math.floor(v*size)&mask;return tiles[material][level][y*size+x];}
     static int[] tinted(int material,int level,int color){
         TintCache cache=TINT.get();long[] tintKeys=cache.keys;int[][] tintCache=cache.colors;
-        color&=0xFCFCFC;long key=((long)color<<9)|(material<<4)|level;
+        color&=0xFCFCFC;long key=((long)color<<12)|(material<<4)|level;
         int slot=((int)(key^(key>>>32))*0x9E3779B9)>>>19;int[] out=tintCache[slot];if(out!=null&&tintKeys[slot]==key)return out;
         if(out==null)out=tintCache[slot]=new int[256];
         int[] src=palettes[material][level];int cr=color>>16&255,cg=color>>8&255,cb=color&255;

@@ -9,7 +9,7 @@ import static rift.Game.*;
 import static rift.World.*;
 
 final class View {
-    static final Color INK=new Color(0x10232F),WHITE=new Color(0xE9EFE7),MUTED=new Color(0x91AAA9),CORAL=new Color(0xFF6D67),MINT=new Color(0xA4D6BF),GOLD=new Color(0xE4C59A);
+    static final Color INK=UiTheme.INK,WHITE=UiTheme.WHITE,MUTED=UiTheme.MUTED,CORAL=UiTheme.CORAL,MINT=UiTheme.MINT,GOLD=UiTheme.GOLD;
     final SettingsUI settingsUI;final Game game;final FlowUI flowUI;final CollectionUI collectionUI;double renderMillis=10,frameMillis=10;final Renderer renderer=new Renderer(854,480);final AdaptiveQuality adaptive=new AdaptiveQuality();
     static final int[] FIXED_WIDTHS={640,854,1066};
     BufferedImage miniTerrain;World miniWorld;
@@ -49,27 +49,27 @@ final class View {
     }
     void menu(Graphics2D g){
         g.drawImage(Assets.HERO,0,0,1280,720,null);
-        g.setPaint(new GradientPaint(0,0,new Color(8,22,32,205),720,0,new Color(8,24,35,0)));g.fillRect(0,0,1280,720);
+        rect(g,0,0,515,720,new Color(12,18,20,220));rect(g,515,0,765,720,new Color(12,18,20,35));
         logo(g,46,38,25);tracked(g,"RIFT / PROTOCOL",84,58,15,2.6f,WHITE);
         badge(g,"EDIÇÃO JAVA",1110,40,120,26,MINT);
-        tracked(g,"01  /  TACTICAL COMBAT",55,146,12,2.7f,MINT);
-        text(g,"RIFT",48,252,106,WHITE,true);tracked(g,"PROTOCOL",57,301,34,9.2f,WHITE);
-        text(g,"CADA SEGUNDO MUDA A RODADA.",57,344,13,MUTED,true);
-        button(g,"JOGAR SOLO",56,386,170,56,true,game.flow::play);
-        button(g,"1v1 / MULTIPLAYER",238,386,225,56,false,()->game.multiplayerRequested=true);
-        button(g,"CAMPO DE TREINO",56,452,354,46,false,()->game.openAgentSelect(true,true));
-        button(g,"AGENTES",56,508,170,44,false,()->game.openAgentSelect(false,false));
-        button(g,"CONFIGURAÇÕES",238,508,172,44,false,()->{game.backUi="menu";game.ui="settings";});
-        button(g,"CARREIRA LOCAL",56,562,170,40,false,()->game.ui="profile");
-        button(g,"COLEÇÃO",238,562,172,40,false,collectionUI::open);
-        button(g,"ASSISTIR BOTS",56,612,170,30,false,game::startBots);
-        button(g,"SAIR",238,612,172,30,false,()->game.quit=true);
-        rect(g,871,540,362,103,new Color(9,25,37,226));Assets.portrait(g,game.settings.agent,883,551,80,80);
+        tracked(g,"01 / OPERAÇÕES",55,146,12,0,MINT);
+        text(g,"RIFT",48,248,88,WHITE,true);tracked(g,"PROTOCOL",55,299,32,0,WHITE);
+        line(g,56,326,108,326,CORAL,3);
+        buttonIcon(g,"play","JOGAR SOLO",56,386,170,56,true,game.flow::play);
+        buttonIcon(g,"users","1v1 / MULTIPLAYER",238,386,225,56,false,()->game.multiplayerRequested=true);
+        buttonIcon(g,"crosshair","CAMPO DE TREINO",56,452,354,46,false,()->game.openAgentSelect(true,true));
+        buttonIcon(g,"users","AGENTES",56,508,170,44,false,()->game.openAgentSelect(false,false));
+        buttonIcon(g,"settings-2","CONFIGURAÇÕES",238,508,172,44,false,()->{game.backUi="menu";game.ui="settings";});
+        buttonIcon(g,"trophy","CARREIRA LOCAL",56,562,170,40,false,()->game.ui="profile");
+        buttonIcon(g,"box","COLEÇÃO",238,562,172,40,false,collectionUI::open);
+        buttonIcon(g,"eye","ASSISTIR BOTS",56,612,170,30,false,game::startBots);
+        buttonIcon(g,"log-out","SAIR",238,612,172,30,false,()->game.quit=true);
+        UiTheme.panel(g,871,540,362,103,MINT);Assets.portrait(g,game.settings.agent,883,551,80,80);
         tracked(g,"SEU AGENTE",979,568,9,1.5f,MUTED);text(g,game.agent.name,978,599,25,WHITE,true);text(g,game.agent.role,979,622,10,new Color(game.agent.color),true);
         buttons.add(new Button(871,540,362,103,()->game.openAgentSelect(false,false)));
         line(g,48,661,1232,661,new Color(124,164,168,72),1);
         text(g,"3 MAPAS",54,690,12,WHITE,true);text(g,"DOIS PONTOS. UMA CHANCE POR RODADA.",120,690,10,MUTED,false);
-        right(g,"15 ARMAS + 3 LÂMINAS  /  v1.9.1",1228,690,11,MUTED,false);
+        right(g,"15 ARMAS + 3 LÂMINAS  /  v1.9.2",1228,690,11,MUTED,false);
     }
     void portrait(Graphics2D g,double x,double y,double s,Agent agent){
         Graphics2D p=(Graphics2D)g.create();p.translate(x,y+Math.sin(game.visualTime*1.6+agent.ordinal())*2);p.scale(s,s);
@@ -137,17 +137,14 @@ final class View {
 
         if(game.player==null)return;
         Actor cam=game.cameraActor(),p=game.observing?cam:game.player;
-        // Soft edge vignettes preserve contrast without hiding the scene.
-        g.setPaint(new GradientPaint(0,0,new Color(4,17,25,95),0,150,new Color(4,17,25,0)));g.fillRect(0,0,1280,150);
-        g.setPaint(new GradientPaint(0,600,new Color(4,17,25,0),0,720,new Color(4,17,25,220)));g.fillRect(0,600,1280,120);
         minimap(g);
-        rect(g,477,19,326,54,new Color(10,26,36,218));
+        UiTheme.panel(g,477,19,326,82,null);line(g,530,32,530,61,UiTheme.BORDER,1);line(g,735,32,735,61,UiTheme.BORDER,1);
         text(g,""+game.scoreBlue,504,58,32,MINT,true);text(g,""+game.scoreRed,752,58,32,CORAL,true);
         if(game.training)center(g,"TREINO",640,52,20,WHITE,true);
         else center(g,clock(game.planted?game.spikeTime:game.timer),640,54,27,game.planted||game.timer<15?CORAL:WHITE,true);
         if(!game.training){center(g,game.flow.mode.respawn?game.flow.mode.label+"  /  "+game.flow.mode.target+" ABATES":"RODADA "+game.round+"  /  PRIMEIRO A "+game.flow.mode.target,640,93,10,WHITE,true);for(int i=0;i<5;i++){rect(g,554+i*10,33,6,23,i<game.living(0)?MINT:new Color(80,98,105,130));rect(g,680+i*10,33,6,23,i<game.living(1)?CORAL:new Color(80,98,105,130));}}
         int fy=35;
-        for(Feed f:game.feed){rect(g,967,fy-19,289,29,new Color(10,26,35,222));text(g,f.killer(),978,fy,12,f.team()==0?MINT:CORAL,true);center(g,f.head()?"◇":"›",1112,fy,16,WHITE,true);right(g,f.victim(),1244,fy,12,WHITE,false);fy+=35;}
+        for(Feed f:game.feed){rect(g,967,fy-19,289,29,UiTheme.OVERLAY);rect(g,967,fy-19,2,29,f.team()==0?MINT:CORAL);text(g,f.killer(),978,fy,UiTheme.fit(g,f.killer(),12,122,true),f.team()==0?MINT:CORAL,true);center(g,f.head()?"◇":"›",1112,fy,16,WHITE,true);right(g,f.victim(),1244,fy,UiTheme.fit(g,f.victim(),12,120,false),WHITE,false);fy+=35;}
         if(game.fps>0)right(g,game.fps+" FPS  /  "+Math.round(frameMillis+game.simulationMillis)+" ms  /  "+renderer.width+" × "+renderer.height,1250,fy+13,10,MUTED,false);
         String role=game.attackTeam==0?"ATAQUE":"DEFESA";
         if(game.training){text(g,"CAMPO DE TREINO",28,218,12,MINT,true);text(g,"G  agente   ·   H  dano   ·   T  bhop",28,240,11,WHITE,false);text(g,"Acertos: "+game.trainingHits+"  •  Tiros: "+game.trainingShots,28,261,11,MUTED,false);if(!p.melee()){boolean steady=game.playerSpread()<.007;rect(g,28,300,156,4,new Color(0x334C59));rect(g,28,300,156*(1-Math.min(1,game.playerSpread()*10)),4,steady?MINT:GOLD);text(g,steady?"MIRA ESTÁVEL":!p.grounded?"NO AR":p.moveSpeed>1.4?"EM MOVIMENTO":"RECUPERANDO RECUO",28,322,10,steady?MINT:GOLD,true);}}
@@ -156,7 +153,7 @@ final class View {
             center(g,"FASE DE COMPRA",640,164,30,WHITE,true);center(g,"B  ARSENAL    ·    ENTER  INICIAR RODADA",640,190,12,MINT,true);
         }
         if(game.phase==Phase.END){
-            rect(g,383,140,514,110,new Color(12,31,41,231));line(g,383,140,897,140,game.roundWinner==0?MINT:CORAL,3);
+            UiTheme.panel(g,383,140,514,110,game.roundWinner==0?MINT:CORAL);
             center(g,game.endTitle,640,189,30,game.roundWinner==0?MINT:CORAL,true);center(g,game.endReason,640,224,14,WHITE,false);
         }
         if(game.planted&&game.phase==Phase.LIVE){rect(g,547,111,186,29,new Color(40,26,34,210));center(g,"◆  NÚCLEO ARMADO",640,131,11,CORAL,true);}
@@ -169,13 +166,14 @@ final class View {
             return;
         }
         if(!p.dead){
+            UiTheme.panel(g,26,606,369,105,null);UiTheme.panel(g,1009,592,244,119,null);
             if(game.ui.equals("tactical")){}else if(!(game.aimLerp>.90&&p.gun().kind.scoped()))crosshair(g,p);
             else scope(g);
             text(g,game.agent.name,49,624,11,new Color(game.agent.color),true);
-            text(g,""+(int)Math.ceil(p.hp),48,671,42,p.healing>0?MINT:WHITE,true);text(g,"VIDA",51,694,10,MUTED,true);
+            text(g,""+(int)Math.ceil(p.hp),48,671,42,p.hp<=25?CORAL:p.healing>0?MINT:WHITE,true);text(g,"VIDA",51,694,10,MUTED,true);UiTheme.bar(g,48,702,72,3,p.hp/100,p.hp<=25?CORAL:MINT);
             if(p.healing>0)text(g,"+ REPARANDO",174,625,10,MINT,true);
             line(g,144,643,144,686,new Color(133,169,166,115),1);
-            shield(g,171,652,14,MINT);text(g,""+(int)Math.ceil(p.armor),190,669,25,MINT,true);text(g,"PROTEÇÃO",174,694,9,MUTED,true);
+            shield(g,171,652,14,MINT);text(g,""+(int)Math.ceil(p.armor),190,669,25,MINT,true);text(g,"PROTEÇÃO",174,694,9,MUTED,true);UiTheme.bar(g,174,702,67,3,p.armor/50,MINT);
             text(g,"¤  "+p.credits,279,669,18,GOLD,true);text(g,"CRÉDITOS",280,692,9,MUTED,true);
             abilityHUD(g,469,game.settings.key(Settings.Action.Q),agentFor().q,p.qCharges,false);
             abilityHUD(g,574,game.settings.key(Settings.Action.E),agentFor().e,p.eCharges,false);
@@ -207,7 +205,7 @@ final class View {
     void abilityHUD(Graphics2D g,int x,String key,Ability ability,int charges,boolean ult){
         boolean active=game.player!=null&&(game.sentinels.own(game.player,ability)!=null||ability==Ability.VERDICT&&game.player.specialPistol!=null&&game.player.specialPistol.ammo>0||ability==Ability.RAIL&&game.player.specialRifle!=null&&game.player.specialRifle.ammo>0);
         Color color=active?GOLD:(ult?charges>=6:charges>0)||game.training?WHITE:MUTED;
-        rect(g,x,639,76,45,new Color(13,33,43,180));line(g,x,684,x+76,684,color,1);
+        rect(g,x,639,76,45,UiTheme.OVERLAY);line(g,x,684,x+76,684,color,1);
         center(g,key,x+14,657,11,MINT,true);icon(g,ability,x+43,661,13,color);
         if(ult){for(int i=0;i<6;i++)rect(g,x+i*13,689,10,3,i<charges||game.training?GOLD:new Color(70,92,98));}
         else if(ability==game.agent.e&&charges==0&&game.player.eRegen>0)center(g,(int)Math.ceil(30-game.player.eRegen)+"s",x+38,697,9,MUTED,true);
@@ -217,7 +215,7 @@ final class View {
     void crosshair(Graphics2D g,Actor p){SettingsUI.cross(g,game.settings,640,360,p.melee()?0:(int)Math.min(30,game.playerSpread()*420));}
     void scope(Graphics2D g){Area mask=new Area(new Rectangle2D.Double(0,0,1280,720));mask.subtract(new Area(new Ellipse2D.Double(344,64,592,592)));g.setColor(new Color(2,10,15,245));g.fill(mask);line(g,344,360,936,360,new Color(15,35,39),1);line(g,640,64,640,656,new Color(15,35,39),1);rect(g,638,358,4,4,CORAL);}
     void minimap(Graphics2D g){
-        int x=24,y=22,w=176,h=177;rect(g,x,y,w,h,new Color(9,26,35,228));Actor cam=game.cameraActor();
+        int x=24,y=22,w=176,h=177;UiTheme.panel(g,x,y,w,h,null);Actor cam=game.cameraActor();
         MapProjection m=new MapProjection(x+12,y+13,152,146,cam.yaw);mapTerrain(g,m,false);
         if(game.planted){g.setColor(CORAL);g.fill(new Ellipse2D.Double(m.x(game.spikeX,game.spikeZ)-4,m.y(game.spikeX,game.spikeZ)-4,8,8));}
         for(Smoke smoke:game.smokes){double r=smoke.radius()*m.scale;g.setColor(new Color(184,215,211,75));g.fill(new Ellipse2D.Double(m.x(smoke.x,smoke.z)-r,m.y(smoke.x,smoke.z)-r,r*2,r*2));}
@@ -297,21 +295,21 @@ final class View {
     }
     void tactical(Graphics2D g){TacticalUI.draw(this,g);}
     void shop(Graphics2D g){
-        rect(g,0,0,1280,720,new Color(9,22,34));logo(g,32,28,25);tracked(g,"EQUIPAMENTO / RIFT",71,48,12,2,MUTED);
-        text(g,"ARSENAL",30,115,47,WHITE,true);text(g,"15 armas. Escolha seu estilo de combate.",33,143,13,MUTED,false);button(g,"SKINS E PINGENTES",657,102,276,36,false,collectionUI::open);
+        rect(g,0,0,1280,720,UiTheme.BACKGROUND);logo(g,32,28,25);tracked(g,"EQUIPAMENTO / RIFT",71,48,12,0,MUTED);
+        text(g,"ARSENAL",30,115,36,WHITE,true);buttonIcon(g,"box","COLEÇÃO",657,102,276,36,false,collectionUI::open);
         right(g,game.training||game.flow.mode.respawn?"CRÉDITOS LIVRES":"¤ "+game.player.credits,1244,106,26,GOLD,true);right(g,game.training?"CAMPO DE TREINO":game.flow.mode.respawn?"RESPAWN / EQUIPAMENTO LIVRE":"FASE DE COMPRA  /  "+clock(game.timer),1243,134,10,MUTED,true);
-        button(g,"TODAS",32,167,103,34,shopCategory==null,()->shopCategory=null);
+        tab(g,"TODAS",32,167,103,34,shopCategory==null,()->shopCategory=null);
         Category[] categories=Category.values();int[] widths={106,165,92,120,111,102};int tabX=145;
-        for(int i=0;i<categories.length;i++){Category cat=categories[i];button(g,cat.label,tabX,167,widths[i],34,shopCategory==cat,()->shopCategory=cat);tabX+=widths[i]+9;}
+        for(int i=0;i<categories.length;i++){Category cat=categories[i];tab(g,cat.label,tabX,167,widths[i],34,shopCategory==cat,()->shopCategory=cat);tabX+=widths[i]+9;}
         List<Weapon> guns=Arrays.stream(Weapon.values()).filter(w->shopCategory==null||w.category==shopCategory).toList();
         for(int i=0;i<guns.size();i++){
             Weapon w=guns.get(i);int x=32+(i%5)*183,y=204+(i/5)*119;boolean owned=owns(w),selected=w==shopWeapon,hover=mouseX>=x&&mouseX<x+171&&mouseY>=y&&mouseY<y+109;
-            rect(g,x,y,171,109,new Color(selected?0x294951:hover?0x233D4A:0x172F3E));line(g,x,y,x+171,y,selected?MINT:new Color(49,76,89),selected?2:1);
+            rect(g,x,y,171,109,selected||hover?UiTheme.RAISED:UiTheme.SURFACE);line(g,x,y,x+171,y,selected?MINT:UiTheme.BORDER,selected?2:1);
             text(g,w.label,x+12,y+23,15,WHITE,true);right(g,owned?"✓":w.sidearm()?"01":"02",x+158,y+22,10,owned?MINT:MUTED,true);
             gunDrawing(g,x+12,y+33,149,46,w);text(g,w.price==0?"GRÁTIS":"¤ "+w.price,x+12,y+99,11,game.training||game.player.credits>=w.price?GOLD:MUTED,true);right(g,owned?"EQUIPADA":w.mag+" TIROS",x+158,y+99,9,owned?MINT:MUTED,false);
             buttons.add(new Button(x,y,171,109,()->{shopWeapon=w;game.audio.play("select");}));
         }
-        int x=966;Weapon w=shopWeapon;rect(g,x,167,282,461,new Color(0x18323F));text(g,w.type,x+17,192,9,MINT,true);text(g,w.label,x+15,230,30,WHITE,true);
+        int x=966;Weapon w=shopWeapon;rect(g,x,167,282,461,UiTheme.SURFACE);text(g,w.type,x+17,192,9,MINT,true);text(g,w.label,x+15,230,26,WHITE,true);
         BufferedImage preview=previewRenderer.collectionPreview(w,null,game.profile.skin(w),game.profile.charm(w),game.visualTime);g.drawImage(preview,x+7,245,268,150,null);
         text(g,w.mode.label+(w.silenced()?" / SILENCIADA":""),x+17,403,9,GOLD,true);wrap(g,w.detail(),x+17,427,247,12,WHITE);
         stat(g,"DANO / CABEÇA",w.body+" / "+w.head+(w.pellets>1?" × "+w.pellets:""),x+17,475,w.body/100.);
@@ -343,10 +341,10 @@ final class View {
         p.dispose();
     }
     void pause(Graphics2D g){
-        rect(g,0,0,1280,720,new Color(6,20,30,224));tracked(g,"RIFT / PROTOCOL",490,141,14,3,MUTED);
+        rect(g,0,0,1280,720,UiTheme.OVERLAY);tracked(g,"RIFT / PROTOCOL",490,141,14,0,MUTED);
         center(g,"PAUSADO",640,226,53,WHITE,true);center(g,"A partida fica parada enquanto você estiver aqui.",640,265,13,MUTED,false);
-        button(g,"VOLTAR À PARTIDA",452,315,376,55,true,()->game.ui="play");
-        button(g,"CONFIGURAÇÕES",452,383,376,49,false,()->{game.backUi="pause";game.ui="settings";});
+        buttonIcon(g,"play","VOLTAR À PARTIDA",452,315,376,55,true,()->game.ui="play");
+        buttonIcon(g,"settings-2","CONFIGURAÇÕES",452,383,376,49,false,()->{game.backUi="pause";game.ui="settings";});
         button(g,"MENU PRINCIPAL",452,445,376,49,false,()->{game.ui="menu";game.phase=Phase.MENU;});
         button(g,"SAIR DO JOGO",452,507,376,49,false,()->game.quit=true);
         button(g,"COLEÇÃO",452,567,376,34,false,collectionUI::open);
@@ -367,7 +365,7 @@ final class View {
         button(g,"ENTENDI",986,652,246,40,true,()->game.ui=game.helpReturn);
     }
     void scoreboard(Graphics2D g,int y){
-        rect(g,247,y,786,481,new Color(9,27,38,239));text(g,"PLACAR DA PARTIDA",272,y+36,20,WHITE,true);right(g,game.scoreBlue+" : "+game.scoreRed,1004,y+39,26,MINT,true);
+        UiTheme.panel(g,247,y,786,481,null);text(g,"PLACAR DA PARTIDA",272,y+36,20,WHITE,true);right(g,game.scoreBlue+" : "+game.scoreRed,1004,y+39,26,MINT,true);
         text(g,"JOGADOR",277,y+74,10,MUTED,true);text(g,"K",721,y+74,10,MUTED,true);text(g,"D",787,y+74,10,MUTED,true);text(g,"ACE",840,y+74,10,GOLD,true);text(g,"CRÉDITOS",908,y+74,10,MUTED,true);
         for(int i=0;i<game.actors.size();i++){
             Actor a=game.actors.get(i);int yy=y+105+i*33+(i>=5?22:0);Color col=a.team==0?MINT:CORAL;
@@ -381,23 +379,39 @@ final class View {
         button(g,"JOGAR NOVAMENTE",405,622,260,49,true,game.flow::play);button(g,"MENU PRINCIPAL",681,622,222,49,false,()->{game.ui="menu";game.phase=Phase.MENU;});
     }
     void button(Graphics2D g,String label,double x,double y,double w,double h,boolean primary,Runnable action){
+        buttonIcon(g,null,label,x,y,w,h,primary,action);
+    }
+    void buttonIcon(Graphics2D g,String icon,String label,double x,double y,double w,double h,boolean primary,Runnable action){
         boolean hover=mouseX>=x&&mouseX<x+w&&mouseY>=y&&mouseY<y+h;
-        Color fill=primary?(hover?new Color(0xFF8D79):CORAL):(hover?new Color(0x30555D):new Color(28,51,62,220));
-        Path2D p=new Path2D.Double();p.moveTo(x,y);p.lineTo(x+w-10,y);p.lineTo(x+w,y+10);p.lineTo(x+w,y+h);p.lineTo(x,y+h);p.closePath();g.setColor(fill);g.fill(p);
-        if(!primary){g.setStroke(new BasicStroke(1));g.setColor(new Color(87,124,130,160));g.draw(p);}
-        center(g,label,x+w/2,y+h/2+4,Math.max(10,Math.min(13,(int)(w/Math.max(1,label.length())*1.5))),primary?INK:WHITE,true);
+        UiTheme.control(g,x,y,w,h,primary,hover);Color color=primary?INK:WHITE;
+        int size=UiTheme.fit(g,label,h<35?11:13,w-(icon==null?20:46),true);
+        if(icon==null)center(g,label,x+w/2,y+h/2+size*.35,size,color,true);
+        else{UiIcons.draw(g,icon,x+13,y+(h-17)/2,17,color);text(g,label,x+40,y+h/2+size*.35,size,color,true);}
         buttons.add(new Button(x,y,w,h,action));
+    }
+    void tab(Graphics2D g,String label,double x,double y,double w,double h,boolean selected,Runnable action){
+        boolean hover=mouseX>=x&&mouseX<x+w&&mouseY>=y&&mouseY<y+h;
+        rect(g,x,y,w,h,selected?UiTheme.RAISED:hover?UiTheme.SURFACE:UiTheme.BACKGROUND);
+        line(g,x,y+h-1,x+w,y+h-1,selected?MINT:UiTheme.BORDER,selected?2:1);
+        center(g,label,x+w/2,y+h/2+4,UiTheme.fit(g,label,12,w-18,true),selected?MINT:MUTED,true);
+        buttons.add(new Button(x,y,w,h,action));
+    }
+    void iconButton(Graphics2D g,String icon,String tooltip,double x,double y,double w,double h,Runnable action){
+        boolean hover=mouseX>=x&&mouseX<x+w&&mouseY>=y&&mouseY<y+h;
+        UiTheme.control(g,x,y,w,h,false,hover);UiIcons.draw(g,icon,x+(w-18)/2,y+(h-18)/2,18,WHITE);
+        buttons.add(new Button(x,y,w,h,action));
+        if(hover){int width=g.getFontMetrics(font(10,false)).stringWidth(tooltip)+18;double tx=Math.min(x,1268-width),ty=y<50?y+h+6:y-30;rect(g,tx,ty,width,24,UiTheme.OVERLAY);text(g,tooltip,tx+9,ty+16,10,WHITE,false);}
     }
     void badge(Graphics2D g,String text,int x,int y,int w,int h,Color color){g.setColor(new Color(color.getRed(),color.getGreen(),color.getBlue(),22));g.fillRect(x,y,w,h);g.setColor(color);g.setStroke(new BasicStroke(1));g.drawRect(x,y,w,h);center(g,text,x+w*.5,y+h*.5+4,10,color,true);}
     void icon(Graphics2D g,Ability a,double x,double y,double r,Color c){AbilityArt.icon(g,a,x,y,r,c);}
 
     static void logo(Graphics2D g,double x,double y,double size){polygon(g,new double[]{x,y,x+size*.43,y+size*.6,x+size*.43,y+size,x,y+size*.4},CORAL);polygon(g,new double[]{x+size,y,x+size*.57,y+size*.6,x+size*.57,y+size,x+size,y+size*.4},MINT);}
     static void shield(Graphics2D g,double x,double y,double s,Color c){Path2D p=new Path2D.Double();p.moveTo(x,y);p.lineTo(x+s,y);p.lineTo(x+s,y+s*.8);p.lineTo(x+s*.5,y+s*1.2);p.lineTo(x,y+s*.8);p.closePath();g.setColor(c);g.setStroke(new BasicStroke(2));g.draw(p);}
-    static Font font(int size,boolean bold){return new Font(Font.SANS_SERIF,bold?Font.BOLD:Font.PLAIN,size);}
+    static Font font(int size,boolean bold){return new Font("Segoe UI",bold?Font.BOLD:Font.PLAIN,size);}
     static void text(Graphics2D g,String t,double x,double y,int size,Color color,boolean bold){g.setFont(font(size,bold));g.setColor(color);g.drawString(t,(float)x,(float)y);}
     static void center(Graphics2D g,String t,double x,double y,int size,Color col,boolean bold){g.setFont(font(size,bold));text(g,t,x-g.getFontMetrics().stringWidth(t)*.5,y,size,col,bold);}
     static void right(Graphics2D g,String t,double x,double y,int size,Color col,boolean bold){g.setFont(font(size,bold));text(g,t,x-g.getFontMetrics().stringWidth(t),y,size,col,bold);}
-    static void tracked(Graphics2D g,String t,double x,double y,int size,float spacing,Color color){g.setFont(font(size,true));g.setColor(color);for(char c:t.toCharArray()){g.drawString(""+c,(float)x,(float)y);x+=g.getFontMetrics().charWidth(c)+spacing;}}
+    static void tracked(Graphics2D g,String t,double x,double y,int size,float spacing,Color color){text(g,t,x,y,size,color,true);}
     static void rect(Graphics2D g,double x,double y,double w,double h,Color c){g.setColor(c);g.fill(new Rectangle2D.Double(x,y,w,h));}
     static void line(Graphics2D g,double x,double y,double xx,double yy,Color c,float stroke){g.setColor(c);g.setStroke(new BasicStroke(stroke));g.draw(new Line2D.Double(x,y,xx,yy));}
     static void polygon(Graphics2D g,double[] pts,Color c){Path2D p=new Path2D.Double();p.moveTo(pts[0],pts[1]);for(int i=2;i<pts.length;i+=2)p.lineTo(pts[i],pts[i+1]);p.closePath();g.setColor(c);g.fill(p);}

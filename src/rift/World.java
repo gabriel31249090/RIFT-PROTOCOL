@@ -66,6 +66,7 @@ final class World {
         solid(-1,0,-1,WIDTH+1,6,0,0xC5B79F); solid(-1,0,LENGTH,WIDTH+1,6,LENGTH+1,0xC5B79F);
         solid(-1,0,0,0,6,LENGTH,0xC2B69D); solid(WIDTH,0,0,WIDTH+1,6,LENGTH,0xC2B69D);
         if(this.mapIndex>=3)DuelMaps.build(this);else new TacticalLayout(this).build();
+        if(this.mapIndex==0)CaisArt.decorate(this);
         for (int z=0;z<NH;z++) for(int x=0;x<NW;x++) {double h=surfaceAt(x+.5,z+.5);navHeight[z*NW+x]=h;nav[z*NW+x]=!blocked(x+.5,z+.5,h,.34,1.7);}
         ground=EnvironmentArt.ground(this);texture=ground.getRGB(0,0,texW,texH,null,0,texW);
     }

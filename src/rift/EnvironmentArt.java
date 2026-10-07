@@ -20,7 +20,7 @@ final class EnvironmentArt {
     static BufferedImage ground(World world){
         if(world.mapIndex>=3)return DuelMaps.ground(world);
         int s=world.texScale;BufferedImage image=new BufferedImage(world.texW,world.texH,BufferedImage.TYPE_INT_RGB);Graphics2D g=image.createGraphics();Random rng=new Random(27);
-        BufferedImage tile=Assets.cell(Assets.MATERIALS,4,4,world.mapIndex==2?Assets.PLATE:world.mapIndex==1?Assets.CONCRETE:Assets.FLOOR);
+        BufferedImage tile=world.mapIndex==0?Assets.materialImage(CaisArt.FLOOR):Assets.materialImage(world.mapIndex==2?Assets.PLATE:Assets.CONCRETE);
         g.setPaint(new TexturePaint(tile,new Rectangle(0,0,s*3,s*3)));g.fillRect(0,0,image.getWidth(),image.getHeight());
         g.setColor(new Color(0x828D88));g.fillRect(30*s,3*s,4*s,54*s);g.fillRect(2*s,27*s,60*s,4*s);
         g.setColor(new Color(0xD7CEAC));g.setStroke(new BasicStroke(2));g.drawLine(30*s,3*s,30*s,57*s);g.drawLine(34*s,3*s,34*s,57*s);g.drawLine(2*s,27*s,62*s,27*s);g.drawLine(2*s,31*s,62*s,31*s);
@@ -35,6 +35,7 @@ final class EnvironmentArt {
             g.setColor(new Color(0xF8E6BC));g.setFont(new Font("SansSerif",Font.BOLD,70));g.drawString(site.name(),x+49,z+102);
             g.setStroke(new BasicStroke(5));for(int i=0;i<11;i++){g.setColor(new Color(i%2==0?0xDEBB76:0x6E766D));g.drawLine(x+i*15,z+10*s+12,x+i*15+9,z+10*s+3);}
         }
+        if(world.mapIndex==0)CaisArt.groundDetails(g,world);
         // Contact darkening and directional shadows baked into the walkable ground.
         for(Box b:world.solids)if(world.shadows&&b.x1()>0&&b.z1()>0){int x=(int)(b.x1()*s),z=(int)(b.z1()*s),w=(int)((b.x2()-b.x1())*s),h=(int)((b.z2()-b.z1())*s);double offset=b.y2()*.48*s;
             Path2D shadow=new Path2D.Double();shadow.moveTo(x,z);shadow.lineTo(x+w,z);shadow.lineTo(x+w+offset,z+h+offset*.57);shadow.lineTo(x+offset,z+h+offset*.57);shadow.closePath();g.setColor(new Color(30,58,74,75));g.fill(shadow);

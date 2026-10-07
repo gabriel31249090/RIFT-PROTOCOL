@@ -11,25 +11,25 @@ final class FlowUI {
     final View v;final Game g;final Renderer stage=new Renderer(430,475);
     FlowUI(View view){v=view;g=view.game;}
     void backdrop(Graphics2D p,String title,String step){
-        p.drawImage(Assets.HERO,0,0,1280,720,null);rect(p,0,0,1280,720,new Color(5,18,29,231));
-        for(int i=0;i<10;i++)line(p,510+i*95,0,130+i*95,720,new Color(97,150,176,12),1);
+        p.drawImage(Assets.HERO,0,0,1280,720,null);rect(p,0,0,1280,720,new Color(18,24,26,242));
         logo(p,38,32,25);text(p,title,82,56,23,WHITE,true);right(p,"LOCAL  /  VOCÊ + BOTS",1238,47,11,MINT,true);text(p,step,40,93,11,MUTED,false);
+        line(p,40,110,1238,110,UiTheme.BORDER,1);
     }
     void modes(Graphics2D p){
         backdrop(p,"JOGAR","01  MODO E MAPA     /     02  ACEITAR     /     03  AGENTE     /     04  PARTIDA");
         for(MatchFlow.Mode mode:MatchFlow.Mode.values()){int i=mode.ordinal(),x=40+(i%3)*403,y=128+(i/3)*144;boolean selected=g.flow.mode==mode;
-            rect(p,x,y,386,126,new Color(selected?0x30575C:0x193849));line(p,x,y,x+386,y,selected?MINT:new Color(0x456474),selected?3:1);
+            rect(p,x,y,386,126,selected?UiTheme.RAISED:UiTheme.SURFACE);line(p,x,y,x+386,y,selected?MINT:UiTheme.BORDER,selected?2:1);
             text(p,String.format("0%d",i+1),x+19,y+32,14,selected?MINT:MUTED,true);text(p,mode.label,x+20,y+70,23,WHITE,true);text(p,mode.description,x+20,y+102,11,MUTED,false);
             v.buttons.add(new View.Button(x,y,386,126,()->{g.flow.mode=mode;g.audio.play("select");}));
         }
         text(p,"ESCOLHA O MAPA",40,454,12,MINT,true);
         for(int i=0;i<3;i++){int x=40+i*403;final int index=i;boolean selected=g.flow.mapIndex==i;
-            rect(p,x,473,386,117,new Color(selected?0x3E5158:0x20333F));Color color=new Color(new int[]{0xB5AE91,0x9BB9D1,0xC49C75}[i]);
+            rect(p,x,473,386,117,selected?UiTheme.RAISED:UiTheme.SURFACE);Color color=new Color(new int[]{0xB5AE91,0x9BB9D1,0xC49C75}[i]);
             for(int k=0;k<6;k++){int bx=x+216+k*24,by=497+((k+i)%3)*11;polygon(p,new double[]{bx,562,bx,by,bx+15,by-8,bx+28,by,bx+28,562},new Color(color.getRed(),color.getGreen(),color.getBlue(),65));}
             text(p,World.NAMES[i],x+16,506,20,WHITE,true);wrap(p,World.DETAILS[i],x+17,532,208,11,MUTED);if(selected)line(p,x,590,x+386,590,color,3);v.buttons.add(new View.Button(x,473,386,117,()->g.flow.mapIndex=index));
         }
         text(p,"Classificação e torneio são salvos neste computador. A fila prepara uma partida com bots.",40,624,12,MUTED,false);
-        v.button(p,"VOLTAR",40,653,150,43,false,()->g.ui="menu");v.button(p,"CONFIRMAR E ENTRAR NA FILA",855,643,383,51,true,g.flow::queue);
+        v.buttonIcon(p,"arrow-left","VOLTAR",40,653,150,43,false,()->g.ui="menu");v.buttonIcon(p,"play","CONFIRMAR E ENTRAR NA FILA",855,643,383,51,true,g.flow::queue);
     }
     void queue(Graphics2D p){
         boolean found=g.ui.equals("found");backdrop(p,found?"PARTIDA ENCONTRADA":"PREPARANDO PARTIDA LOCAL","02  /  ACEITE");
@@ -44,15 +44,15 @@ final class FlowUI {
         backdrop(p,"SELEÇÃO DE AGENTES",g.pendingTraining?"TREINO  /  TODOS OS AGENTES LIVRES":g.flow.accepted?"03  /  ESCOLHA E TRAVE SEU AGENTE":"CONTRATOS  /  300 XP POR AGENTE  /  1.800 XP INICIAIS");
         text(p,"ELENCO  /  11 AGENTES",40,137,12,MINT,true);
         for(int i=0;i<Agent.values().length;i++){final int index=i;Agent a=Agent.values()[i];int x=40+(i%3)*117,y=157+(i/3)*109;boolean selected=g.settings.agent==i,unlocked=g.pendingTraining||g.profile.unlocked(i);
-            rect(p,x,y,108,100,new Color(selected?0x31565D:0x203A4B));Shape clip=p.getClip();p.clipRect(x,y,108,65);Assets.portrait(p,i,x,y-15,108,108);p.setClip(clip);
-            line(p,x,y,x+108,y,selected?new Color(a.color):new Color(0x46616D),selected?3:1);text(p,a.name,x+8,y+81,11,WHITE,true);text(p,unlocked?String.format("%02d",i+1):"300 XP",x+8,y+95,8,unlocked?MUTED:GOLD,false);v.buttons.add(new View.Button(x,y,108,100,()->g.selectAgent(index)));
+            rect(p,x,y,108,100,selected?UiTheme.RAISED:UiTheme.SURFACE);Shape clip=p.getClip();p.clipRect(x,y,108,65);Assets.portrait(p,i,x,y-15,108,108);p.setClip(clip);
+            line(p,x,y,x+108,y,selected?new Color(a.color):UiTheme.BORDER,selected?2:1);text(p,a.name,x+8,y+81,11,WHITE,true);text(p,unlocked?String.format("%02d",i+1):"300 XP",x+8,y+95,8,unlocked?MUTED:GOLD,false);v.buttons.add(new View.Button(x,y,108,100,()->g.selectAgent(index)));
         }
         text(p,"SALDO  "+g.profile.wallet+" XP",41,611,13,GOLD,true);
         Agent a=Agent.values()[g.settings.agent];Assets.portrait(p,a.ordinal(),421,169,430,430);
-        rect(p,421,125,430,76,new Color(8,21,32,210));
-        text(p,a.name,437,163,39,new Color(a.color),true);text(p,a.role,439,185,11,MINT,true);text(p,"MAESTRIA "+g.profile.level(a.ordinal()),439,581,11,MUTED,true);
+        rect(p,421,125,430,76,UiTheme.OVERLAY);
+        text(p,a.name,437,163,30,new Color(a.color),true);text(p,a.role,439,185,11,MINT,true);text(p,"MAESTRIA "+g.profile.level(a.ordinal()),439,581,11,MUTED,true);
         text(p,"KIT DO AGENTE",897,137,12,MINT,true);int[] slots={0,3,1,2};String[] keys={"Q","E","C","X"};
-        for(int i=0;i<4;i++){Ability ability=a.slot(slots[i]);int y=164+i*108;rect(p,889,y,349,97,new Color(15,34,47,215));v.icon(p,ability,915,y+23,11,new Color(a.color));text(p,keys[i]+"  "+abilityName(ability),938,y+28,13,WHITE,true);wrap(p,abilityDescription(ability),902,y+50,318,11,MUTED);}
+        for(int i=0;i<4;i++){Ability ability=a.slot(slots[i]);int y=164+i*108;rect(p,889,y,349,97,UiTheme.SURFACE);v.icon(p,ability,915,y+23,11,new Color(a.color));text(p,keys[i]+"  "+abilityName(ability),938,y+28,13,WHITE,true);wrap(p,abilityDescription(ability),902,y+50,318,11,MUTED);}
         if(g.flow.accepted){for(int i=0;i<10;i++){int x=40+i*83;boolean ready=i==0?g.flow.locked:i<=g.flow.botLocks;rect(p,x,650,74,37,new Color(ready?0x365F56:0x213B4A));center(p,i==0?"VOCÊ":"BOT "+i,x+37,665,9,WHITE,true);center(p,ready?"TRAVADO":"ESCOLHENDO",x+37,680,8,ready?MINT:MUTED,false);}}
         else v.button(p,"VOLTAR",40,650,149,41,false,()->{g.pendingStart=false;g.flow.accepted=false;g.flow.locked=false;g.ui=g.agentReturn;});
         boolean unlocked=g.pendingTraining||g.profile.unlocked(a.ordinal());

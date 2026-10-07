@@ -1,10 +1,12 @@
 package rift;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.function.UnaryOperator;
 import static rift.World.*;
 import static rift.Game.*;
 
-/** Original procedural gun meshes, shared by first-person view and the arsenal viewer. */
+/** Shared weapon meshes; ECHO combines a licensed receiver with original RIFT equipment. */
 final class WeaponModel {
     final List<Tri> out;final double ox,oy,oz,yaw,size;final int metal,dark,trim;
     WeaponModel(List<Tri> out,double x,double y,double z,double yaw,double size,int trim){this.out=out;ox=x;oy=y;oz=z;this.yaw=yaw;this.size=size;this.trim=trim;metal=0x293943;dark=0x15232D;}
@@ -34,8 +36,65 @@ final class WeaponModel {
     }
     void grip(double z,int color){body(-.047,-.27,z-.035,.047,-.095,z+.10,color);for(int i=0;i<4;i++)box(-.049,-.245+i*.028,z-.007,.049,-.235+i*.028,z+.075,shade(color,.75));}
     void sights(double end){body(-.034,.018,.21,.034,.065,.26,dark);box(-.017,.037,.205,.017,.051,.22,0x8BDCCB);box(-.015,.018,end-.02,.015,.068,end+.005,dark);box(-.008,.048,end-.027,.008,.059,end-.02,0xF2D5A4);}
+    private static final class EchoAssets {
+        static final MeshAssets.Mesh BODY=MeshAssets.tryLoad("models/echo/echo-body.obj");
+        static final MeshAssets.Mesh WORLD_BODY=MeshAssets.tryLoad("models/echo/echo-world-body.obj");
+        static final List<Tri> WORLD_FIXED=worldEquipment(false),WORLD_MAGAZINE=worldEquipment(true);
+    }
+    int echoColor(String material){return switch(material){case "Black"->dark;case "Metal"->trim;case "DarkWood"->shade(trim,.58);default->metal;};}
+    static int echoTexture(String material){return material.equals("Black")||material.equals("DarkWood")?Assets.RUBBER:Assets.STEEL;}
+    void echo(double magazine,double cycle){
+        if(EchoAssets.BODY!=null)EchoAssets.BODY.add(out,v->p(v.x(),v.y(),v.z()),this::echoColor,WeaponModel::echoTexture);
+        else {body(-.065,-.075,.018,.065,.080,.57,metal);body(-.062,-.052,.57,.062,.075,.815,trim);}
+        // Original modular stock and segmented magazine keep the ECHO silhouette and reload motion.
+        body(-.052,-.060,-.17,.052,.018,.08,metal);body(-.072,-.132,-.28,.072,-.026,-.12,dark);
+        box(-.054,-.103,-.265,.054,-.047,-.244,shade(trim,.60));box(-.047,.019,-.15,.047,.042,.048,dark);
+        grip(.19,dark);box(-.030,-.142,.275,.030,-.119,.38,metal);box(-.030,-.179,.29,.030,-.163,.40,metal);box(-.030,-.17,.385,.030,-.11,.40,metal);
+        echoMagazine(magazine,true);
+        for(int side:new int[]{-1,1}){
+            double x=side*.060;for(int i=0;i<4;i++)box(x-.002,-.023,.60+i*.042,x+.002,-.008,.619+i*.042,dark);
+            box(side*.070-.002,-.010,.35,side*.070+.002,.009,.46,0x86D4C0);
+            box(side*.071-.002,-.048,.15,side*.071+.002,-.034,.24,shade(trim,1.10));
+        }
+        box(-.039,.079,.11,.039,.085,.58,dark);for(int i=0;i<7;i++)box(-.038,.086,.14+i*.055,.038,.094,.159+i*.055,metal);
+        double slide=Math.sin(Math.PI*Math.min(1,cycle*5))*.067;
+        box(.052,-.024,.28-slide,.077,.005,.41-slide,dark);tube(.080,-.009,.31-slide,.052,.012,trim,6);
+        tube(0,-.023,.808,.195,.028,metal,8);tube(0,-.023,1.0,.075,.038,dark,8);
+        for(int i=0;i<2;i++){double z=1.025+i*.025;box(-.039,-.017,z,.039,-.008,z+.008,shade(metal,1.2));}
+        sights(.78);box(-.017,.082,.16,.017,.101,.25,dark);
+        for(double z:new double[]{.19,.49}){box(-.071,-.037,z,-.068,-.025,z+.012,0xA6ADAA);box(.068,-.037,z,.071,-.025,z+.012,0xA6ADAA);}
+    }
+    void echoMagazine(double drop,boolean detailed){
+        body(-.047,-.232-drop,.31,.047,-.089-drop,.425,dark);
+        body(-.043,-.300-drop,.335,.043,-.222-drop,.447,dark);
+        body(-.041,-.367-drop,.370,.041,-.291-drop,.483,dark);
+        box(-.045,-.372-drop,.367,.045,-.352-drop,.491,shade(trim,.68));
+        if(detailed)for(int side:new int[]{-1,1})for(int i=0;i<3;i++){
+            double x=side*.048;box(x-.002,-.203+i*.032-drop,.324,x+.002,-.192+i*.032-drop,.414,shade(trim,.45));
+        }
+    }
+    static List<Tri> worldEquipment(boolean magazine){
+        List<Tri> tris=new ArrayList<>();WeaponModel m=new WeaponModel(tris,0,0,0,0,1,Weapon.ECHO.color);
+        if(magazine){m.box(-.046,-.27,.32,.046,-.10,.43,m.dark);m.box(-.041,-.36,.37,.041,-.25,.48,m.dark);}
+        else {
+            if(EchoAssets.WORLD_BODY==null)m.box(-.064,-.075,.02,.064,.080,.81,m.metal);
+            m.box(-.052,-.06,-.17,.052,.018,.08,m.metal);m.box(-.071,-.13,-.28,.071,-.025,-.12,m.dark);
+            m.box(-.046,-.25,.15,.046,-.078,.25,m.dark);m.box(-.059,-.052,.59,.059,.075,.815,shade(m.trim,.58));
+            m.tube(0,-.023,.808,.195,.028,m.metal,6);m.tube(0,-.023,1.0,.075,.037,m.dark,6);
+            m.box(-.032,.081,.13,.032,.095,.53,m.dark);m.box(-.018,.095,.20,.018,.127,.25,m.dark);
+            m.box(-.015,.080,.74,.015,.121,.77,m.dark);m.box(-.070,-.010,.35,.070,.009,.46,0x86D4C0);
+        }
+        return List.copyOf(tris);
+    }
+    /** Local +Z forward; no first-person hands, collection ornaments or extra actor hitboxes. */
+    static void addEchoWorld(List<Tri> out,UnaryOperator<V> pose,double magazineDrop){
+        if(EchoAssets.WORLD_BODY!=null)EchoAssets.WORLD_BODY.add(out,pose,name->switch(name){case "Black"->0x15232D;case "Metal"->Weapon.ECHO.color;default->0x293943;},WeaponModel::echoTexture);
+        for(Tri t:EchoAssets.WORLD_FIXED)out.add(t.at(pose.apply(t.a()),pose.apply(t.b()),pose.apply(t.c())));
+        for(Tri t:EchoAssets.WORLD_MAGAZINE)out.add(t.at(pose.apply(t.a().add(new V(0,-magazineDrop,0))),pose.apply(t.b().add(new V(0,-magazineDrop,0))),pose.apply(t.c().add(new V(0,-magazineDrop,0)))));
+    }
     void gun(Weapon w,double magazine,double cycle){
         double slide=Math.sin(Math.PI*Math.min(1,cycle*5))*.067;
+        if(w==Weapon.ECHO){echo(magazine,cycle);return;}
         if(w.sidearm()){
             grip(.24,metal);body(-.057,-.12,.09,.057,-.063,.53,metal);box(-.034,-.204-magazine,.235,.034,-.105-magazine,.32,dark);
             if(w==Weapon.TALON){

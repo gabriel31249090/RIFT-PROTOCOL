@@ -7,6 +7,9 @@ import static rift.Game.*;
 /** Articulated low-poly rig: feet, knees, hips, spine, elbows and independently aimed head. */
 final class CharacterModel {
     static final int[] SKIN={0xCEB8A1,0xAF9073,0x7B8C9A,0xAE9579,0x84909C,0xAE8064,0xCFAC8C,0xB28D76,0xC1A082,0xAC8063,0xD1B299};
+    static final MeshAssets.Mesh VERTICE_HELMET=MeshAssets.tryLoad("models/vertice/helmet.obj"),
+            VERTICE_CHEST=MeshAssets.tryLoad("models/vertice/chest.obj"),
+            VERTICE_PACK=MeshAssets.tryLoad("models/vertice/impulse-pack.obj");
     final List<Tri> out;final Actor actor;final double yaw,base,lean,sinYaw,cosYaw,sinLean,cosLean;final int coat,dark=0x263844,skin;
     CharacterModel(List<Tri> out,Actor a,double base,double lean){this.out=out;actor=a;this.base=base;this.lean=lean;yaw=a.bodyYaw;sinYaw=Math.sin(yaw);cosYaw=Math.cos(yaw);sinLean=Math.sin(lean);cosLean=Math.cos(lean);coat=Agent.values()[a.agentIndex].color;skin=SKIN[a.agentIndex];}
     static void animate(Actor a,double dt){
@@ -15,9 +18,36 @@ final class CharacterModel {
     }
     V p(V p){double y=p.y(),z=p.z(),c=cosLean,s=sinLean;double yy=(y-.85)*c-z*s+.85,zz=(y-.85)*s+z*c;return new V(actor.x+p.x()*cosYaw+zz*sinYaw,base+yy,actor.z-p.x()*sinYaw+zz*cosYaw);}
     void tri(V a,V b,V c,int color){out.add(new Tri(p(a),p(b),p(c),color));}
+    void tri(V a,V b,V c,int color,int material){
+        Tri t=World.texture(new Tri(a,b,c,color),material,8);
+        out.add(t.at(p(a),p(b),p(c)));
+    }
     void bone(V a,V b,double ra,double rb,int color,int sides){
+        bone(a,b,ra,rb,color,sides,-1);
+    }
+    void bone(V a,V b,double ra,double rb,int color,int sides,int material){
         V dir=b.sub(a).unit(),side=new V(dir.z(),0,-dir.x());if(side.length()<.05)side=new V(1,0,0);side=side.unit();V up=new V(dir.y()*side.z()-dir.z()*side.y(),dir.z()*side.x()-dir.x()*side.z(),dir.x()*side.y()-dir.y()*side.x());
-        for(int i=0;i<sides;i++){double t=i*Math.PI*2/sides,tt=(i+1)*Math.PI*2/sides;V n=side.mul(Math.cos(t)).add(up.mul(Math.sin(t))),nn=side.mul(Math.cos(tt)).add(up.mul(Math.sin(tt)));V aa=a.add(n.mul(ra)),ab=a.add(nn.mul(ra)),bb=b.add(nn.mul(rb)),ba=b.add(n.mul(rb));int shade=World.shade(color,.70+.28*Math.max(0,Math.sin(t+.5)));tri(aa,ab,bb,shade);tri(aa,bb,ba,shade);tri(a,ab,aa,World.shade(color,.85));tri(b,ba,bb,World.shade(color,1.1));}
+        for(int i=0;i<sides;i++){double t=i*Math.PI*2/sides,tt=(i+1)*Math.PI*2/sides;V n=side.mul(Math.cos(t)).add(up.mul(Math.sin(t))),nn=side.mul(Math.cos(tt)).add(up.mul(Math.sin(tt)));V aa=a.add(n.mul(ra)),ab=a.add(nn.mul(ra)),bb=b.add(nn.mul(rb)),ba=b.add(n.mul(rb));int shade=World.shade(color,.70+.28*Math.max(0,Math.sin(t+.5)));if(material<0){tri(aa,ab,bb,shade);tri(aa,bb,ba,shade);tri(a,ab,aa,World.shade(color,.85));tri(b,ba,bb,World.shade(color,1.1));}else{tri(aa,ab,bb,shade,material);tri(aa,bb,ba,shade,material);tri(a,ab,aa,World.shade(color,.85),material);tri(b,ba,bb,World.shade(color,1.1),material);}}
+    }
+    int verticeColor(String material){return switch(material){
+        case "ceramic"->coat;case "visor"->0xA3E9DE;case "emitter"->0x79CABA;
+        case "edge"->0x607A79;default->0x303A3F;
+    };}
+    static int verticeTexture(String material){return switch(material){
+        case "visor","emitter"->-1;case "graphite"->Assets.RUBBER;default->Assets.STEEL;
+    };}
+    void verticeArmor(double hip,double torso){
+        double origin=hip+.14,height=Math.max(.12,torso-.015-origin)/.30;
+        if(VERTICE_CHEST!=null)VERTICE_CHEST.add(out,v->p(new V(v.x(),origin+v.y()*height,v.z())),this::verticeColor,CharacterModel::verticeTexture);
+        else box(-.175,hip+.14,.18,.175,torso-.02,.23,0x304955);
+        if(VERTICE_PACK!=null)VERTICE_PACK.add(out,v->p(new V(v.x(),origin+v.y()*height,v.z())),this::verticeColor,CharacterModel::verticeTexture);
+        for(int side=-1;side<=1;side+=2){
+            box(side<0?-.19:.115,hip+.07,.235,side<0?-.115:.19,hip+.18,.30,0x364548);
+            bone(new V(side*.14,torso-.11,.225),new V(side*.17,torso+.035,.025),.027,.03,0x3A494C,4,Assets.RUBBER);
+        }
+        double badge=origin+.17*height;
+        tri(new V(-.065,badge+.027,.274),new V(0,badge-.024,.274),new V(-.042,badge+.028,.274),0x344B4E);
+        tri(new V(0,badge-.024,.274),new V(.065,badge+.027,.274),new V(.042,badge+.028,.274),0x344B4E);
     }
     void box(double x,double y,double z,double xx,double yy,double zz,int color){
         // Share eight transformed corners, instead of transforming 36 triangle vertices.
@@ -35,6 +65,7 @@ final class CharacterModel {
         int start=out.size();double speed=Math.min(1,a.animSpeed/4.5),cycle=a.walk*3.9,duck=a.animCrouch;
         double breathe=Math.sin(time*2.2+a.id)*.008,bob=Math.cos(cycle*2)*.020*speed*(1-duck),base=a.y+breathe+bob;
         CharacterModel m=new CharacterModel(out,a,base, a.dead?0:a.lean*.1+duck*.15);int sides=detailed?6:4;
+        boolean vertice=detailed&&a.agentIndex==0;
         double hip=.91-duck*.27,torso=1.32-duck*.38,head=1.65-duck*.46;
         // Each foot plants during its stance phase; the swing phase lifts the knee.
         for(int side=-1;side<=1;side+=2){
@@ -42,15 +73,19 @@ final class CharacterModel {
             V h=new V(side*.135,hip,-duck*.08),foot=new V(side*.15,.10+lift,stride+duck*.12);
             if(!a.grounded)foot=new V(side*.18,.32+(side==1?.15:0),side*.12-.12);
             double kneeY=(h.y()+foot.y())*.52;V knee=new V(side*.145,kneeY,(h.z()+foot.z())*.5+.18+duck*.2);
-            m.bone(h,knee,.112,.098,m.dark,sides);m.bone(knee,foot,.096,.071,m.coat,sides);if(detailed)m.oval(knee,.105,.108,.105,World.shade(m.coat,.7),6);
+            m.bone(h,knee,.112,.098,vertice?0x394849:m.dark,sides,vertice?Assets.CLOTH:-1);m.bone(knee,foot,.096,.071,vertice?0x506766:m.coat,sides,vertice?Assets.CLOTH:-1);
+            if(vertice)m.bone(knee.add(new V(0,-.065,.069)),knee.add(new V(0,.065,.069)),.095,.10,0x7A9996,4,Assets.STEEL);
+            else if(detailed)m.oval(knee,.105,.108,.105,World.shade(m.coat,.7),6);
             m.box(foot.x()-.085,foot.y()-.1,foot.z()-.1,foot.x()+.085,foot.y()+.035,foot.z()+.22,m.dark);
+            if(vertice)m.box(foot.x()-.089,foot.y()-.105,foot.z()-.104,foot.x()+.089,foot.y()-.082,foot.z()+.226,0x222A2C);
         }
         m.bone(new V(0,hip-.06,0),new V(0,hip+.18,0),.235,.21,m.dark,8);
         // Tapered chest and shoulder armor, instead of a rigid rectangular torso.
-        m.bone(new V(0,hip+.08,0),new V(0,torso,.015),.20,.28,m.coat,8);
-        m.box(-.175,hip+.14,.18,.175,torso-.02,.23,0x304955);m.box(-.21,hip-.02,-.15,.21,hip+.055,.19,0xAFB6A0);
+        m.bone(new V(0,hip+.08,0),new V(0,torso,.015),vertice?.18:.20,vertice?.22:.28,vertice?0x516D6B:m.coat,8,vertice?Assets.CLOTH:-1);
+        if(vertice)m.verticeArmor(hip,torso);else m.box(-.175,hip+.14,.18,.175,torso-.02,.23,0x304955);
+        m.box(-.21,hip-.02,-.15,.21,hip+.055,.19,vertice?0x536062:0xAFB6A0);
         m.bone(new V(0,torso-.015,0),new V(0,head-.13,0),.073,.065,m.skin,sides);
-        if(detailed){
+        if(detailed&&!vertice){
             m.box(-.19,hip+.12,.205,-.11,torso-.08,.25,World.shade(m.coat,.7));
             m.box(.10,hip+.15,.205,.17,torso-.15,.26,0xA2B0A2);
             for(int i=0;i<3;i++)m.box(-.11+i*.075,hip+.16,.228,-.06+i*.075,hip+.30,.27,0x7B8B87);
@@ -62,7 +97,12 @@ final class CharacterModel {
         int ai=a.agentIndex;
         if(ai==9){m.box(-.17,head+.06,.08,.17,head+.10,.17,0xDEC275);}
         if(ai==10){m.oval(new V(0,head+.18,0),.28,.045,.24,0x6C8998,8);m.box(-.15,head-.04,.13,.15,head+.045,.18,0x273E50);m.box(-.06,head-.005,.185,.06,head+.018,.2,0x83E7F2);}
-        if(ai==0){m.bone(new V(0,head+.12,-.01),new V(.025,head+.28,-.11),.15,.035,0xDFEDE3,6);m.box(-.145,head-.02,.144,.145,head+.038,.17,0xA3E9DE);}
+        if(ai==0){
+            if(vertice&&VERTICE_HELMET!=null){
+                VERTICE_HELMET.add(out,v->m.p(new V(v.x(),head+v.y(),v.z())),m::verticeColor,CharacterModel::verticeTexture);
+                m.bone(new V(0,head+.185,-.10),new V(0,head+.248,-.065),.055,.024,0xDFEDE3,4);
+            }else{m.bone(new V(0,head+.12,-.01),new V(.025,head+.28,-.11),.15,.035,0xDFEDE3,6);m.box(-.145,head-.02,.144,.145,head+.038,.17,0xA3E9DE);}
+        }
         else if(ai==1||ai==4){m.bone(new V(0,head-.20,-.12),new V(0,head+.2,-.08),.22,.19,World.shade(m.coat,.65),8);m.box(-.105,head-.10,.15,.105,head-.035,.19,0x334B58);}
         else if(ai==2){m.box(-.17,head+.05,-.15,.17,head+.19,.15,m.dark);m.box(-.15,head-.01,.15,.15,head+.085,.17,0xC5C2FF);}
         else if(ai==3){m.bone(new V(-.18,torso-.27,-.20),new V(-.18,torso+.04,-.20),.09,.09,0x789643,6);m.bone(new V(.18,torso-.27,-.20),new V(.18,torso+.04,-.20),.09,.09,0x789643,6);m.box(-.11,head-.16,.12,.11,head-.055,.22,m.dark);}
@@ -74,7 +114,7 @@ final class CharacterModel {
         else {m.box(-.18,head+.08,-.17,.18,head+.2,.18,0xCFB268);m.box(-.17,head+.07,.13,.17,head+.11,.23,0xE8D69B);m.box(-.13,head-.025,.143,.13,head+.026,.176,0x374D56);}
         // Head follows aim while the body eases into turns.
         double turn=Math.atan2(Math.sin(a.yaw-a.bodyYaw),Math.cos(a.yaw-a.bodyYaw));V pivot=m.p(new V(0,head,0));
-        for(int i=headStart;i<out.size();i++){Tri t=out.get(i);out.set(i,new Tri(rotateHead(t.a(),pivot,turn,a.pitch),rotateHead(t.b(),pivot,turn,a.pitch),rotateHead(t.c(),pivot,turn,a.pitch),t.color()));}
+        for(int i=headStart;i<out.size();i++){Tri t=out.get(i);out.set(i,t.at(rotateHead(t.a(),pivot,turn,a.pitch),rotateHead(t.b(),pivot,turn,a.pitch),rotateHead(t.c(),pivot,turn,a.pitch)));}
         if(ai==1||ai==4){
             m.bone(new V(0,torso-.02,-.09),new V(0,hip-.27,-.14),.245,.30,World.shade(m.coat,ai==4?.52:.70),8);
             m.box(-.16,hip+.1,.195,.16,torso-.05,.24,0x334B57);
@@ -91,7 +131,7 @@ final class CharacterModel {
         if(a.flash>0){support=new V(-.14,head-.08,.26);grip=new V(.17,torso-.35,.22);}
         for(int side=-1;side<=1;side+=2){
             V shoulder=new V(side*.255,torso-.02,armSwing*side),hand=side==1?grip:support,elbow=new V(side*.30,torso-.29-reach*(side==-1?.12:0),.10+armSwing*side);
-            m.bone(shoulder,elbow,.115,.08,m.coat,sides);m.bone(elbow,hand,.08,.064,m.dark,sides);if(detailed)m.oval(hand,.075,.075,.09,0x455763,6);
+            m.bone(shoulder,elbow,.115,.08,m.coat,sides,vertice?Assets.CLOTH:-1);m.bone(elbow,hand,.08,.064,vertice?0x303A3F:m.dark,sides,vertice?Assets.RUBBER:-1);if(detailed)m.oval(hand,.075,.075,.09,vertice?0x354447:0x455763,6);
             if(side==1)m.bone(shoulder.add(elbow.sub(shoulder).mul(.35)),shoulder.add(elbow.sub(shoulder).mul(.55)),.113,.105,a.team==0?0xADE8CE:0xE78275,sides);
         }
         double gy=grip.y(),gz=grip.z(),end=a.gun().kind.sidearm()?.37:.76;

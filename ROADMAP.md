@@ -9,13 +9,15 @@ A lista do projeto foi dividida por dependências. **Entregue** significa presen
 | 1.8.1 | Estabilidade | Entregue: conflitos resolvidos, pacote recompilado e base verificada. |
 | 1.9 | Combate e movimento | Perfis das 15 armas, recuperação por tempo, dano gradual, penetração por arma, atrito e aceleração; algoritmos adaptados do ReGameDLL para Java. |
 | 1.9.1 | Áudio e superfícies | Entregue: 144 WAVs originais, síntese de reserva, passos/pousos por material, impactos no modo solo e recargas por etapa; áudio posicional também no cliente 1v1. |
-| 1.9.2 | Cenários | Texturas com identidade própria, importação de malhas estáticas e atualização visual de um mapa. |
+| 1.9.2 | Base visual, cenários e UI | Planejado: importação de malhas estáticas, CAIS-7 mais realista, tema de UI consistente e protótipos de uma arma e um agente. |
 | 1.9.3 | Arsenal visual | Malhas e materiais de armas, mecanismos e animações em primeira pessoa e no mundo. |
 | 1.9.4 | Personagens | Modelos com esqueleto; validar um agente completo antes de expandir. |
 | 1.9.5 | Bots | Perfis configuráveis, rotas por risco, investigação de ruídos e coordenação por setores. |
 | 2.0 | Multiplayer | Latência, interpolação e reconciliação; depois expandir para 2–4 jogadores. |
 
 Antes dos cenários, definir materiais, símbolos, silhuetas e equipamentos do RIFT. Recursos convertidos do CS exigem verificação da licença correspondente antes da distribuição; a licença do ReGameDLL não concede automaticamente direitos sobre os modelos e texturas da instalação do jogo. Cada etapa exige testes do comportamento e comparação de tempo de quadro. As frentes abaixo detalham objetivos futuros, além dessa sequência.
+
+O escopo visual foi ampliado em 07/10/2026 para combinar realismo militar, tecnologia sci-fi própria e estilização legível. Pesquisa de repositórios, licenças, limites do motor e sequência de implementação: [Plano visual da 1.9.2](PLANO_VISUAL_1.9.2.md). Os repositórios pesquisados ainda não foram incorporados ao jogo.
 
 ## 1.9 — Combate e movimento
 
@@ -26,6 +28,12 @@ Perfis próprios por arma e precisão física comum a jogador/bots. Queda contí
 Banco de 144 WAVs próprios com três variantes por evento e síntese de reserva. Concreto, madeira e metal têm passos, pousos e impactos distintos no modo solo; recargas usam um início curto e três etapas por categoria. Distância, panorâmica e oclusão por paredes ajustam os sons posicionais. No 1v1, os clientes observam snapshots para reproduzir passos, pousos e recargas; a rede ainda não informa os impactos em paredes. O protocolo, o balanceamento e o RNG de jogo permanecem inalterados em relação à 1.9.
 
 Detalhes: [CHANGELOG_1.9.1.md](CHANGELOG_1.9.1.md). Medições: [DESEMPENHO_1.9.1.md](DESEMPENHO_1.9.1.md). Áudio em fones, dois conjuntos físicos e LAN real continuam pendentes de validação. Próxima etapa: **1.9.2**, identidade visual própria, texturas e importação de malhas estáticas.
+
+## 1.9.2 - Planejado: cenário, modelos-piloto e UI
+
+Primeiro, validar malhas OBJ com UV e texturas no renderizador atual. Renovar a UI por componentes compartilhados e atualizar CAIS-7 com materiais, iluminação pré-calculada e objetos industriais, sem mudar colisão ou navegação. Criar um modelo-piloto da ECHO e de um agente antes da expansão para todas as armas/personagens nas versões 1.9.3 e 1.9.4. A direção combina materiais e proporções críveis com equipamentos sci-fi e silhuetas legíveis.
+
+Ferramentas de criação offline, assets licenciados e bibliotecas Java têm funções distintas. Importar um arquivo glTF não implementa animação esquelética ou PBR no motor. Preservar o orçamento de quadro, LOD e funcionamento do JAR sem ferramentas externas instaladas. Critérios e fontes estão em [PLANO_VISUAL_1.9.2.md](PLANO_VISUAL_1.9.2.md).
 
 ## 1.8 — Entregue: base de duelo entre pessoas
 
