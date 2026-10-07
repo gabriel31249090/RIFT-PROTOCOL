@@ -1,4 +1,4 @@
-# RIFT Protocol - roadmap após 1.9.1
+# RIFT Protocol - roadmap após 1.9.2
 
 A lista do projeto foi dividida por dependências. **Entregue** significa presente no pacote; **parcial** significa uma base funcional com limites; **planejado** ainda não existe. Versões futuras são propostas de escopo, sem datas prometidas.
 
@@ -9,7 +9,7 @@ A lista do projeto foi dividida por dependências. **Entregue** significa presen
 | 1.8.1 | Estabilidade | Entregue: conflitos resolvidos, pacote recompilado e base verificada. |
 | 1.9 | Combate e movimento | Perfis das 15 armas, recuperação por tempo, dano gradual, penetração por arma, atrito e aceleração; algoritmos adaptados do ReGameDLL para Java. |
 | 1.9.1 | Áudio e superfícies | Entregue: 144 WAVs originais, síntese de reserva, passos/pousos por material, impactos no modo solo e recargas por etapa; áudio posicional também no cliente 1v1. |
-| 1.9.2 | Base visual, cenários e UI | Planejado: importação de malhas estáticas, CAIS-7 mais realista, tema de UI consistente e protótipos de uma arma e um agente. |
+| 1.9.2 | Base visual, cenários e UI | Entregue: importação OBJ, materiais fotografados no CAIS-7, tema de UI compartilhado, ECHO importada/adaptada e armadura modular do Vértice. |
 | 1.9.3 | Arsenal visual | Malhas e materiais de armas, mecanismos e animações em primeira pessoa e no mundo. |
 | 1.9.4 | Personagens | Modelos com esqueleto; validar um agente completo antes de expandir. |
 | 1.9.5 | Bots | Perfis configuráveis, rotas por risco, investigação de ruídos e coordenação por setores. |
@@ -17,7 +17,7 @@ A lista do projeto foi dividida por dependências. **Entregue** significa presen
 
 Antes dos cenários, definir materiais, símbolos, silhuetas e equipamentos do RIFT. Recursos convertidos do CS exigem verificação da licença correspondente antes da distribuição; a licença do ReGameDLL não concede automaticamente direitos sobre os modelos e texturas da instalação do jogo. Cada etapa exige testes do comportamento e comparação de tempo de quadro. As frentes abaixo detalham objetivos futuros, além dessa sequência.
 
-O escopo visual foi ampliado em 07/10/2026 para combinar realismo militar, tecnologia sci-fi própria e estilização legível. Pesquisa de repositórios, licenças, limites do motor e sequência de implementação: [Plano visual da 1.9.2](PLANO_VISUAL_1.9.2.md). Os repositórios pesquisados ainda não foram incorporados ao jogo.
+O escopo visual foi ampliado em 07/10/2026 para combinar realismo militar, tecnologia sci-fi própria e estilização legível. Pesquisa e limites: [Plano visual da 1.9.2](PLANO_VISUAL_1.9.2.md). A primeira integração usa javagl/Obj, uma base CC0 da Quaternius, cinco texturas CC0 da Poly Haven e ícones Lucide. Blender, MPFB e MakeHuman continuam como candidatos de produção, não como ferramentas já instaladas.
 
 ## 1.9 — Combate e movimento
 
@@ -29,11 +29,11 @@ Banco de 144 WAVs próprios com três variantes por evento e síntese de reserva
 
 Detalhes: [CHANGELOG_1.9.1.md](CHANGELOG_1.9.1.md). Medições: [DESEMPENHO_1.9.1.md](DESEMPENHO_1.9.1.md). Áudio em fones, dois conjuntos físicos e LAN real continuam pendentes de validação. Próxima etapa: **1.9.2**, identidade visual própria, texturas e importação de malhas estáticas.
 
-## 1.9.2 - Planejado: cenário, modelos-piloto e UI
+## 1.9.2 - Entregue: cenário, modelos-piloto e UI
 
-Primeiro, validar malhas OBJ com UV e texturas no renderizador atual. Renovar a UI por componentes compartilhados e atualizar CAIS-7 com materiais, iluminação pré-calculada e objetos industriais, sem mudar colisão ou navegação. Criar um modelo-piloto da ECHO e de um agente antes da expansão para todas as armas/personagens nas versões 1.9.3 e 1.9.4. A direção combina materiais e proporções críveis com equipamentos sci-fi e silhuetas legíveis.
+Parser OBJ com cache, UV e limites de arquivo/triângulos integrado ao renderizador e ao JAR offline. UI compartilhada renovada, CAIS-7 com materiais fotografados e objetos fora da área jogável, ECHO adaptada em primeira pessoa/coleção/mundo e três peças originais de armadura do Vértice seguindo a articulação existente. Colisão, navegação e balanceamento permanecem inalterados. Os demais modelos ficam para 1.9.3 e 1.9.4.
 
-Ferramentas de criação offline, assets licenciados e bibliotecas Java têm funções distintas. Importar um arquivo glTF não implementa animação esquelética ou PBR no motor. Preservar o orçamento de quadro, LOD e funcionamento do JAR sem ferramentas externas instaladas. Critérios e fontes estão em [PLANO_VISUAL_1.9.2.md](PLANO_VISUAL_1.9.2.md).
+O piloto mantém LOD, carregador/ferrolho animados, skins, charms, movimentos e morte. Não entrega skinning genérico, novos corpos humanos completos, glTF animado nem PBR. Procedência em [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), entrega em [CHANGELOG_1.9.2.md](CHANGELOG_1.9.2.md). A próxima etapa é **1.9.3: expandir o padrão visual para o arsenal**, com validação por arma.
 
 ## 1.8 — Entregue: base de duelo entre pessoas
 

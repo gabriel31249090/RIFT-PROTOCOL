@@ -16,6 +16,8 @@ public final class Main extends Canvas implements Runnable,KeyListener,MouseList
     public static void main(String[] args)throws Exception {
         if(args.length>0){
             switch(args[0]){
+                case "--visual-test"->{MeshTests.run();CharacterVisualTests.run();UiTests.run();System.out.println(Tests.passed+" checks passed.");return;}
+                case "--visual-capture"->{VisualCapture.run(Path.of(args.length>1?args[1]:"screenshots/visual-1.9.2"));return;}
                 case "--audio-test"->{AudioTests.run();AudioSurfaceTests.run();DuelAudioTests.run();System.out.println(Tests.passed+" checks passed.");return;}
                 case "--audio-generate"->{AudioAssets.main(args.length>1?new String[]{args[1]}:new String[0]);return;}
                 case "--combat-test"->{CombatTests.run();MovementTests.run();BallisticsTests.run();System.out.println(Tests.passed+" checks passed.");return;}

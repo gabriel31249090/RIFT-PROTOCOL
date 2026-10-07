@@ -1,1 +1,1 @@
-2a87e96e9471dc968b3e1356e14abe96c3eabf4711f23854f079dcadaad3d75e  RiftProtocol.jar
+00dea15fdeffd793a41550c7d6a26c9845ef32ffa00ea125e861e4406da72fb1  RiftProtocol.jar

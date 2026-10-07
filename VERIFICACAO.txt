@@ -1,78 +1,60 @@
-RIFT Protocol 1.9.1 - verificacao de entrega
+RIFT Protocol 1.9.2 - verificacao do piloto visual
 Data: 07/10/2026
-Ambiente: Windows 10 informado pelo Java, Temurin/OpenJDK 17.0.12, 4 CPUs logicas.
+Ambiente: Windows informado pelo Java, Temurin/OpenJDK 17.0.12, i5-3470,
+4 CPUs logicas e Intel HD Graphics. Renderizacao CPU, sem janela nos testes.
 
-BASE
-1.9 preservada no commit e28f65a.
-Registro anterior: verificacao/VERIFICACAO_1.9.txt.
-Sem importacao de modelos, texturas, gravacoes ou arquivos C++ do CS.
-Referencias/avisos: THIRD_PARTY_NOTICES.md; licenca MIT da referencia no JAR.
+BASE E ESCOPO
+1.9.1 preservada para comparacao: SHA256
+2a87e96e9471dc968b3e1356e14abe96c3eabf4711f23854f079dcadaad3d75e.
+Registro anterior: verificacao/VERIFICACAO_1.9.1.txt.
+Nenhum modelo, textura ou som de Counter-Strike foi importado.
+Piloto: importador OBJ, UI compartilhada, CAIS-7, ECHO e armadura do Vertice.
+Nao substitui todo o arsenal, agentes ou mapas; nao entrega PBR/skinning generico.
 
 COMPILACAO E PACOTE
-java Build.java: aprovado; --release 17; Implementation-Version 1.9.1.
-Log: verificacao/build-1.9.1.log.
-JAR: 14.900.505 bytes. Hash do executavel: SHA256SUMS.txt.
-Auditoria: verificacao/package-1.9.1.log.
-144 WAVs e licenca da referencia conferem byte a byte com os fontes.
-WAVs originais: 2.105.898 bytes; 45 disparos, 27 superficies, 72 recargas.
-Tres variacoes por evento; PCM mono 16-bit little-endian, 22050 Hz.
-Manifesto de audio: assets/audio/SHA256SUMS.txt.
-SHA256 desse manifesto:
-4f1e564c6ad50fd19182e6ce41371a53ea830171df10577a294dc65a6ed159c0
-Duas geracoes independentes e --audio-generate do JAR produzem os mesmos hashes.
-Log do comando: verificacao/audio-generate-1.9.1.log.
+java Build.java: Java 17, sem downloads, Implementation-Version 1.9.2.
+Parser javagl/Obj 0.4.0 MIT verificado por SHA256 e incluido no executavel.
+205 recursos da pasta assets conferem byte a byte com os fontes.
+7 OBJ (incluindo o original upstream), 5 fotografias diffuse e 144 WAVs.
+Hashes dos modelos/bitmaps e licencas inclusos, sem dependencias externas.
+Hash final: SHA256SUMS.txt; auditoria reproduzivel: java tools/AuditAssets.java.
+Logs: verificacao/build-1.9.2.log e verificacao/package-1.9.2.log.
+Procedencia: THIRD_PARTY_NOTICES.md e assets/models/*/SHA256SUMS.txt.
 
-REGRESSAO FINAL
---self-test: 2457 verificacoes aprovadas em pasta contendo somente o JAR,
-sem fontes nem assets externos. Log: verificacao/self-test-1.9.1.log.
---audio-test: 1248 verificacoes aprovadas. Log: verificacao/audio-1.9.1.log.
-Fallback com WAV de classpath corrompido: 4 verificacoes adicionais;
-harness isolado, sem alterar os assets. Log: verificacao/audio-fallback-1.9.1.log.
-Nenhum desses testes abre placa de som ou thread de mixer.
+REGRESSAO
+--self-test executado em diretorio contendo somente o JAR, sem assets/fontes/lib.
+2629 verificacoes aprovadas. Log: verificacao/self-test-1.9.2.log.
+Inclui combate, movimento, audio, bots, TCP loopback, isolamento de dois
+renderizadores, importacao OBJ, modelos/animacoes e cliques da UI.
+--visual-test: 172 verificacoes aprovadas; log verificacao/visual-test-1.9.2.log.
+OBJ: UV, orientacao, triangulacao, indices negativos, materiais persistentes,
+vertices finitos, indices invalidos, arquivos excessivos e fallback opcional.
+Texturas: limites antes do decode, IDs/mipmaps/cache e registro repetido.
+ECHO: recarga, mecanismos, skins/charms, LOD, transformacao e ponta do flash.
+Vertice: tres modulos OBJ (88 triangulos), poses e UV preservados na cabeca.
+UI: menu/fluxo/colecao/arsenal/configuracoes/duelo, 1280x720 e 800x450,
+hitboxes escaladas, letterbox, switches, steppers, segmentos e swatches.
 
-WAV: PCM 8/16/24/32 e float32, mono/stereo, 8000 a 96000 Hz;
-conversao para 22050 Hz, metadata com padding, limite exato de 2 segundos.
-Frames incompletos, truncamento, canais/taxas nao suportados e arquivos
-acima de 2 MiB sao rejeitados; recurso ausente/invalido usa sintese original.
-Banco em cache, 20 vozes e fila de 24 eventos, sem backlog por saturacao.
-Pan, volumes, musica, mute, entradas nao finitas e fechamento concorrente.
-
-EVENTOS DO JOGO
-Concreto/madeira/metal seguem o material visual, sem alterar resistencia balistica.
-Passos, pousos e impactos solo: posicao, distancia e atenuacao por cobertura.
-Caminhar/agachar nao emitem passos; mute preserva IA e legendas.
-Impactos continuam com marcas visuais desligadas e apos penetracao de cobertura.
-Recarga inicial curta; retirada, insercao e ferrolho em tres etapas separadas.
-Relogio antes de Gun.tick; pausa, ultimo frame, troca de arma e morte cobertos.
-Audio nao consome RNG de combate/bots; ShotEffects atualiza somente efeitos visuais.
-
-MULTIPLAYER
-Protocolo 2 da 1.9 preservado; testes TCP reais em loopback aprovados na suite geral.
-Passos/pousos/recargas do cliente seguem snapshots, nao o relogio de render.
-Roundtrip binario de movimento/recarga real aprovado; servidor nao reproduz vozes.
-Primeiro estado, rodada nova, repeticao, pacote antigo, morte, teleporte e
-atrasos longos nao repetem eventos antigos. Observador nao altera ator/arma.
-Impactos de parede no cliente pendentes: protocolo nao identifica a causa terminal.
-
-PARTIDAS COMPLETAS DOS BOTS
---simulate-bots 6: 6 partidas, 42 rodadas, 41 plants, 12 defuses e 0 timeouts.
-Seeds 17000 a 17005, dois jogos por mapa; mesmos placares registrados na 1.9.
-CAIS-7: 5:3 e 5:2; MONTE AURORA: 5:2 e 5:3; FERROVIA: 0:5 e 5:2.
-Nenhuma partida travou; estados finitos e creditos/municao nao negativos.
-CPU: media 0.037 ms/tick, p95 0.109 e p99 0.345 (amostra inicial 24000).
-Log: verificacao/bots-1.9.1.log. Nao valida equilibrio competitivo/FPS com janela.
+SIMULACAO
+--simulate-bots 6: 6 partidas, 42 rodadas, 41 plants, 12 defuses, 0 timeouts.
+Mesmos placares da 1.9.1, seeds 17000-17005:
+CAIS-7 5:3/5:2; MONTE AURORA 5:2/5:3; FERROVIA 0:5/5:2.
+Nao alterados: balanceamento, RNG de combate, hitboxes, solids, ramps, nav,
+surfaceMaterials, coverMaterials e protocolo de rede.
+Log: verificacao/bots-1.9.2.log.
 
 VISUAL E DESEMPENHO
-Capturas do menu, tres arenas e equipamento: verificacao/duelo-1.9.1.
-Menu v1.9.1 e todas as quatro visoes de duelo inspecionados, sem sobreposicoes novas.
-PNGs do renderizador sem janela, nao capturas de partida presencial.
-Comparacao sequencial dos JARs 1.9 e 1.9.1: DESEMPENHO_1.9.1.md.
-Mede simulacao/render/HUD; nao mede placa de som, latencia de audio ou FPS com janela.
+Capturas nativas: verificacao/visual-1.9.2; --visual-capture reproduz o conjunto.
+38 PNGs: menu/HUD, configuracoes/colecao, ECHO/ADS/recarga, Vertice e prop.
+Capturas selecionadas inspecionadas em 1280x720/800x450, sem novas sobreposicoes.
+Objetos de servico/gruas novos ficam fora da area jogavel, inclusive em voo.
+Comparacao sequencial com a 1.9.1: DESEMPENHO_1.9.2.md.
+Nao confundir a medicao sem janela com FPS garantido, nem cores diffuse com PBR.
 
 LIMITES
-Nao testados: saida fisica em fones/alto-falantes, dois teclados/mouses reais,
-dois monitores, foco/cursor, tela cheia, LAN entre PCs, roteador e internet publica.
-Modo de dois conjuntos Windows permanece experimental; ponte Raw Input nao mudou.
-Duelo sem habilidades, previsao/reconciliacao, compensacao de latencia, reconexao
-ou matchmaking/relay hospedado. Reverb, vozes e callouts falados nao foram incluidos.
-Proxima etapa planejada: 1.9.2, identidade visual propria e malhas estaticas.
+Saida fisica de audio, foco/cursor/tela cheia, LAN entre PCs, internet publica,
+dois teclados/mouses e dois monitores continuam sem validacao presencial.
+Modo Windows de dois conjuntos continua experimental. Duelo sem habilidades,
+reconexao, previsao/reconciliacao, compensacao de latencia ou relay hospedado.
+Blender, MPFB e MakeHuman nao foram instalados; nenhuma geracao com GPU local.
+Proxima etapa: 1.9.3, expandir o piloto para outras armas com orcamento por modelo.

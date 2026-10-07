@@ -8,19 +8,20 @@ import static rift.Game.*;
 
 /** Shared weapon meshes; ECHO combines a licensed receiver with original RIFT equipment. */
 final class WeaponModel {
-    final List<Tri> out;final double ox,oy,oz,yaw,size;final int metal,dark,trim;
-    WeaponModel(List<Tri> out,double x,double y,double z,double yaw,double size,int trim){this.out=out;ox=x;oy=y;oz=z;this.yaw=yaw;this.size=size;this.trim=trim;metal=0x293943;dark=0x15232D;}
-    WeaponModel(List<Tri> out,double x,double y,double z,double yaw,double size,Cosmetics.Skin skin){this.out=out;ox=x;oy=y;oz=z;this.yaw=yaw;this.size=size;trim=skin.trim;metal=skin.metal;dark=skin.dark;}
+    final List<Tri> out;final double ox,oy,oz,yaw,size,sinYaw,cosYaw;final int metal,dark,trim;
+    int textureMetal=Assets.STEEL;
+    WeaponModel(List<Tri> out,double x,double y,double z,double yaw,double size,int trim){this.out=out;ox=x;oy=y;oz=z;this.yaw=yaw;this.size=size;sinYaw=Math.sin(yaw);cosYaw=Math.cos(yaw);this.trim=trim;metal=0x293943;dark=0x15232D;}
+    WeaponModel(List<Tri> out,double x,double y,double z,double yaw,double size,Cosmetics.Skin skin){this.out=out;ox=x;oy=y;oz=z;this.yaw=yaw;this.size=size;sinYaw=Math.sin(yaw);cosYaw=Math.cos(yaw);trim=skin.trim;metal=skin.metal;dark=skin.dark;}
     static void add(List<Tri> out,Weapon w,double x,double y,double z,double yaw,double size,double magazine,double cycle){
         WeaponModel m=new WeaponModel(out,x,y,z,yaw,size,w.color);m.gun(w,magazine,cycle);
     }
     static void add(List<Tri> out,Weapon w,double x,double y,double z,double yaw,double size,double magazine,double cycle,Cosmetics.Skin skin,Cosmetics.Charm charm,double swing,double twist){
         WeaponModel m=skin==Cosmetics.Skin.STANDARD?new WeaponModel(out,x,y,z,yaw,size,w.color):new WeaponModel(out,x,y,z,yaw,size,skin);m.gun(w,magazine,cycle);Cosmetics.decorate(m,w,skin);Cosmetics.charm(m,charm,swing,twist);
     }
-    V p(double x,double y,double z){return new V(ox+size*(x*Math.cos(yaw)+z*Math.sin(yaw)),oy+y*size,oz+size*(-x*Math.sin(yaw)+z*Math.cos(yaw)));}
-    int material(int color){return color==dark?Assets.RUBBER:color==0x8A6851||color==0xB38A65?Assets.WOOD:color==0xC6A064||color==0xC79B65?Assets.BRASS:Assets.STEEL;}
+    V p(double x,double y,double z){return new V(ox+size*(x*cosYaw+z*sinYaw),oy+y*size,oz+size*(-x*sinYaw+z*cosYaw));}
+    int material(int color){return color==dark?Assets.RUBBER:color==0x8A6851||color==0xB38A65?Assets.WOOD:color==0xC6A064||color==0xC79B65?Assets.BRASS:textureMetal;}
     void textured(int start,int color){for(int i=start;i<out.size();i++){Tri t=out.get(i);Tri local=new Tri(local(t.a()),local(t.b()),local(t.c()),t.color());Tri tex=World.texture(local,material(color),3.5);out.set(i,new Tri(t.a(),t.b(),t.c(),t.color(),tex.material(),tex.ua(),tex.va(),tex.ub(),tex.vb(),tex.uc(),tex.vc()));}}
-    V local(V v){double x=(v.x()-ox)/size,z=(v.z()-oz)/size;return new V(x*Math.cos(yaw)-z*Math.sin(yaw),(v.y()-oy)/size,x*Math.sin(yaw)+z*Math.cos(yaw));}
+    V local(V v){double x=(v.x()-ox)/size,z=(v.z()-oz)/size;return new V(x*cosYaw-z*sinYaw,(v.y()-oy)/size,x*sinYaw+z*cosYaw);}
     void face(V a,V b,V c,V d,int color){int start=out.size();quad(out,a,b,c,d,color);textured(start,color);}
     void box(double x,double y,double z,double xx,double yy,double zz,int c){int start=out.size();addBox(out,x*size,y*size,z*size,xx*size,yy*size,zz*size,c,ox,oy,oz,yaw);textured(start,c);}
     void body(double x,double y,double z,double xx,double yy,double zz,int color){
@@ -41,9 +42,10 @@ final class WeaponModel {
         static final MeshAssets.Mesh WORLD_BODY=MeshAssets.tryLoad("models/echo/echo-world-body.obj");
         static final List<Tri> WORLD_FIXED=worldEquipment(false),WORLD_MAGAZINE=worldEquipment(true);
     }
-    int echoColor(String material){return switch(material){case "Black"->dark;case "Metal"->trim;case "DarkWood"->shade(trim,.58);default->metal;};}
-    static int echoTexture(String material){return material.equals("Black")||material.equals("DarkWood")?Assets.RUBBER:Assets.STEEL;}
+    int echoColor(String material){return switch(material){case "Black"->dark;case "Metal"->shade(metal,1.9);case "DarkWood"->shade(trim,.58);default->metal;};}
+    static int echoTexture(String material){return material.equals("Black")||material.equals("DarkWood")?Assets.RUBBER:ModelMaterials.METAL;}
     void echo(double magazine,double cycle){
+        textureMetal=ModelMaterials.METAL;
         if(EchoAssets.BODY!=null)EchoAssets.BODY.add(out,v->p(v.x(),v.y(),v.z()),this::echoColor,WeaponModel::echoTexture);
         else {body(-.065,-.075,.018,.065,.080,.57,metal);body(-.062,-.052,.57,.062,.075,.815,trim);}
         // Original modular stock and segmented magazine keep the ECHO silhouette and reload motion.
@@ -75,6 +77,7 @@ final class WeaponModel {
     }
     static List<Tri> worldEquipment(boolean magazine){
         List<Tri> tris=new ArrayList<>();WeaponModel m=new WeaponModel(tris,0,0,0,0,1,Weapon.ECHO.color);
+        m.textureMetal=ModelMaterials.METAL;
         if(magazine){m.box(-.046,-.27,.32,.046,-.10,.43,m.dark);m.box(-.041,-.36,.37,.041,-.25,.48,m.dark);}
         else {
             if(EchoAssets.WORLD_BODY==null)m.box(-.064,-.075,.02,.064,.080,.81,m.metal);
@@ -88,7 +91,7 @@ final class WeaponModel {
     }
     /** Local +Z forward; no first-person hands, collection ornaments or extra actor hitboxes. */
     static void addEchoWorld(List<Tri> out,UnaryOperator<V> pose,double magazineDrop){
-        if(EchoAssets.WORLD_BODY!=null)EchoAssets.WORLD_BODY.add(out,pose,name->switch(name){case "Black"->0x15232D;case "Metal"->Weapon.ECHO.color;default->0x293943;},WeaponModel::echoTexture);
+        if(EchoAssets.WORLD_BODY!=null)EchoAssets.WORLD_BODY.add(out,pose,name->switch(name){case "Black"->0x15232D;case "Metal"->0x4E6C7F;default->0x293943;},WeaponModel::echoTexture);
         for(Tri t:EchoAssets.WORLD_FIXED)out.add(t.at(pose.apply(t.a()),pose.apply(t.b()),pose.apply(t.c())));
         for(Tri t:EchoAssets.WORLD_MAGAZINE)out.add(t.at(pose.apply(t.a().add(new V(0,-magazineDrop,0))),pose.apply(t.b().add(new V(0,-magazineDrop,0))),pose.apply(t.c().add(new V(0,-magazineDrop,0)))));
     }

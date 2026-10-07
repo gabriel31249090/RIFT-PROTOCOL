@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
 import javax.imageio.ImageIO;
+import javax.imageio.stream.ImageInputStream;
 import java.util.*;
 
 /** Cached bitmap art. The same packaged images are used in the UI and the renderer. */
@@ -48,8 +49,24 @@ final class Assets {
         if(resource==null||!resource.matches("(?:models|textures)/[A-Za-z0-9_./-]+\\.(?:png|jpg)")||resource.contains(".."))throw new IllegalArgumentException("Caminho de textura invalido");
         Integer present=imported.get(resource);if(present!=null)return present;
         if(materialCount==CAPACITY)throw new IllegalStateException("Limite de materiais atingido");
-        BufferedImage image=load(resource);if(image.getWidth()>4096||image.getHeight()>4096)throw new IllegalArgumentException("Textura excede 4096 pixels");
+        BufferedImage image;
+        try(InputStream packaged=Assets.class.getResourceAsStream("/assets/"+resource)){
+            if(packaged!=null)image=readMaterial(packaged);
+            else try(InputStream disk=new FileInputStream(new File("assets",resource))){image=readMaterial(disk);}
+        }catch(IOException e){throw new IllegalStateException("Textura invalida ou ausente: "+resource,e);}
         int id=materialCount;prepare(id,image);imported.put(resource,id);materialCount++;return id;
+    }
+    static BufferedImage readMaterial(InputStream stream)throws IOException{
+        byte[] data=stream.readNBytes(16*1024*1024+1);if(data.length>16*1024*1024)throw new IOException("Textura excede limite de bytes");
+        try(ImageInputStream input=ImageIO.createImageInputStream(new ByteArrayInputStream(data))){
+            var readers=ImageIO.getImageReaders(input);if(!readers.hasNext())throw new IOException("Formato de textura invalido");
+            var reader=readers.next();try{
+                reader.setInput(input,true,true);int width=reader.getWidth(0),height=reader.getHeight(0);
+                if(width<1||height<1||width>4096||height>4096)throw new IOException("Textura excede 4096 pixels");
+                BufferedImage raw=reader.read(0),rgb=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+                Graphics2D g=rgb.createGraphics();g.drawImage(raw,0,0,null);g.dispose();return rgb;
+            }finally{reader.dispose();}
+        }
     }
     static BufferedImage materialImage(int id){return images[id];}
     static BufferedImage load(String name){

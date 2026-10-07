@@ -35,3 +35,9 @@ equipment only at the existing detailed-actor distance. Distant ECHO keeps the
 established simple weapon silhouette.
 
 SHA-256 checksums are recorded in `SHA256SUMS.txt` beside these files.
+
+The surface bitmap `metal_plate_02_diff_1k.jpg` is an unmodified CC0 diffuse
+photograph by Rob Tuytel / Poly Haven, retrieved 2026-10-07:
+https://polyhaven.com/a/metal_plate_02 . It is used for subtle weathering,
+recolored by the RIFT skin palette, without PBR/normal/roughness maps.
+SHA-256: `6e80877d0e9d5973d96298c6091df7ace906b0a6760afc4f3592e4855f3f1d4c`.

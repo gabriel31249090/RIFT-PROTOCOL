@@ -1,0 +1,176 @@
+PASS  OBJ parser imports a real triangle
+PASS  OBJ outward winding converts to engine inward winding
+PASS  OBJ cached template reports finite local bounds
+PASS  OBJ triangulated quad keeps material on every generated face
+PASS  OBJ UV vertical origin flips and follows reversed vertices
+PASS  OBJ materials persist across faces and switch explicitly
+PASS  Negative OBJ indices resolve without opening MTL paths
+PASS  Cached OBJ transforms operate on copies, not source vertices
+PASS  Repeated OBJ instance retains original local geometry
+PASS  Empty OBJ is rejected
+PASS  Out of range OBJ index is rejected
+PASS  Nonfinite OBJ vertex is rejected
+PASS  Excessive OBJ coordinate is rejected
+PASS  Degenerate-only OBJ is rejected
+PASS  Invalid OBJ UV is rejected
+PASS  OBJ triangle budget is enforced before triangulation
+PASS  OBJ byte budget is enforced before parsing
+PASS  OBJ resource path cannot escape asset directory
+PASS  Optional model fallback caches absent resources
+PASS  CAIS service unit uses one cached 32-triangle template
+PASS  Imported material retains bounded five-level mip pyramid 16
+PASS  Imported material uses bounded palette tint cache 16
+PASS  Imported material retains bounded five-level mip pyramid 17
+PASS  Imported material uses bounded palette tint cache 17
+PASS  Imported material retains bounded five-level mip pyramid 18
+PASS  Imported material uses bounded palette tint cache 18
+PASS  Repeated material registration reuses the same ID
+PASS  Imported texture dimensions are rejected before pixel decoding
+PASS  CAIS concrete uses imported photographic texture
+PASS  CAIS decoration never changes collision or navigation
+PASS  CAIS imported service props stay outside playable boundary
+PASS  ECHO Quaternius receiver reduced to 280 triangles
+PASS  Weapon cached rotation preserves exact world transform and inverse: 0.0
+PASS  Weapon cached rotation preserves exact world transform and inverse: 0.6
+PASS  Weapon cached rotation preserves exact world transform and inverse: 2.4
+PASS  Third-person ECHO imports reduced 144-triangle receiver
+PASS  ECHO pilot stays within first-person geometry budget
+PASS  ECHO magazine moves during reload without replacing the receiver
+PASS  ECHO charging mechanism retains firing cycle
+PASS  ECHO fixed imported receiver is stable while magazine animates
+PASS  ECHO skin renders finite imported and original geometry: STANDARD
+PASS  ECHO skin renders finite imported and original geometry: CARBON
+PASS  ECHO skin renders finite imported and original geometry: AURORA
+PASS  ECHO skin renders finite imported and original geometry: PULSE
+PASS  ECHO skin renders finite imported and original geometry: EMBER
+PASS  ECHO skin renders finite imported and original geometry: ROYAL
+PASS  ECHO charm remains attached: NONE
+PASS  ECHO charm remains attached: CRYSTAL
+PASS  ECHO charm remains attached: DICE
+PASS  ECHO charm remains attached: BOT
+PASS  ECHO charm remains attached: STAR
+PASS  ECHO charm remains attached: CORE
+PASS  Detailed ECHO and VERTICE preserve cheaper distant actor LOD
+PASS  Third-person ECHO follows existing reload animation
+PASS  Third-person ECHO muzzle flash starts at the imported barrel tip
+WEAPON VISUAL TESTS OK
+MESH TESTS OK
+PASS  VERTICE original OBJ is present and bounded: helmet.obj
+PASS  VERTICE original OBJ is present and bounded: chest.obj
+PASS  VERTICE original OBJ is present and bounded: impulse-pack.obj
+PASS  VERTICE three rigid meshes stay within the 120-triangle budget
+PASS  VERTICE detailed mesh includes fixed UV cloth and rigid materials
+PASS  VERTICE preserves bounded detailed and distant LOD geometry
+PASS  Head aim preserves imported texture material assignments
+PASS  Head rotates real vertices without losing OBJ UVs
+PASS  VERTICE rigid pilot follows existing animation bounds, pose 0
+PASS  VERTICE rigid pilot follows existing animation bounds, pose 1
+PASS  VERTICE rigid pilot follows existing animation bounds, pose 2
+PASS  VERTICE rigid pilot follows existing animation bounds, pose 3
+PASS  VERTICE rigid pilot follows existing animation bounds, pose 4
+PASS  VERTICE rigid pilot follows existing animation bounds, pose 5
+PASS  VERTICE front and back produce distinct nonblank native raster frames
+PASS  UI: Lucide empacotado play
+PASS  UI: mascara de icone transparente e nao vazia play
+PASS  UI: Lucide empacotado crosshair
+PASS  UI: mascara de icone transparente e nao vazia crosshair
+PASS  UI: Lucide empacotado settings-2
+PASS  UI: mascara de icone transparente e nao vazia settings-2
+PASS  UI: Lucide empacotado users
+PASS  UI: mascara de icone transparente e nao vazia users
+PASS  UI: Lucide empacotado trophy
+PASS  UI: mascara de icone transparente e nao vazia trophy
+PASS  UI: Lucide empacotado box
+PASS  UI: mascara de icone transparente e nao vazia box
+PASS  UI: Lucide empacotado eye
+PASS  UI: mascara de icone transparente e nao vazia eye
+PASS  UI: Lucide empacotado log-out
+PASS  UI: mascara de icone transparente e nao vazia log-out
+PASS  UI: Lucide empacotado arrow-left
+PASS  UI: mascara de icone transparente e nao vazia arrow-left
+PASS  UI: Lucide empacotado chevron-left
+PASS  UI: mascara de icone transparente e nao vazia chevron-left
+PASS  UI: Lucide empacotado chevron-right
+PASS  UI: mascara de icone transparente e nao vazia chevron-right
+PASS  UI: Lucide empacotado minus
+PASS  UI: mascara de icone transparente e nao vazia minus
+PASS  UI: Lucide empacotado plus
+PASS  UI: mascara de icone transparente e nao vazia plus
+PASS  UI: Lucide empacotado check
+PASS  UI: mascara de icone transparente e nao vazia check
+PASS  UI: Lucide empacotado save
+PASS  UI: mascara de icone transparente e nao vazia save
+PASS  UI: menu nao vazio em 1280x720
+PASS  UI: botoes de menu dentro da tela
+PASS  UI: modes nao vazio em 1280x720
+PASS  UI: botoes de modes dentro da tela
+PASS  UI: queue nao vazio em 1280x720
+PASS  UI: botoes de queue dentro da tela
+PASS  UI: found nao vazio em 1280x720
+PASS  UI: botoes de found dentro da tela
+PASS  UI: loading nao vazio em 1280x720
+PASS  UI: botoes de loading dentro da tela
+PASS  UI: tournament nao vazio em 1280x720
+PASS  UI: botoes de tournament dentro da tela
+PASS  UI: agents nao vazio em 1280x720
+PASS  UI: botoes de agents dentro da tela
+PASS  UI: profile nao vazio em 1280x720
+PASS  UI: botoes de profile dentro da tela
+PASS  UI: collection nao vazio em 1280x720
+PASS  UI: botoes de collection dentro da tela
+PASS  UI: shop nao vazio em 1280x720
+PASS  UI: botoes de shop dentro da tela
+PASS  UI: settings nao vazio em 1280x720
+PASS  UI: botoes de settings dentro da tela
+PASS  UI: play nao vazio em 1280x720
+PASS  UI: botoes de play dentro da tela
+PASS  UI: pause nao vazio em 1280x720
+PASS  UI: botoes de pause dentro da tela
+PASS  UI: jogar usa hitbox escalada em 1280
+PASS  UI: menu nao vazio em 800x450
+PASS  UI: botoes de menu dentro da tela
+PASS  UI: modes nao vazio em 800x450
+PASS  UI: botoes de modes dentro da tela
+PASS  UI: queue nao vazio em 800x450
+PASS  UI: botoes de queue dentro da tela
+PASS  UI: found nao vazio em 800x450
+PASS  UI: botoes de found dentro da tela
+PASS  UI: loading nao vazio em 800x450
+PASS  UI: botoes de loading dentro da tela
+PASS  UI: tournament nao vazio em 800x450
+PASS  UI: botoes de tournament dentro da tela
+PASS  UI: agents nao vazio em 800x450
+PASS  UI: botoes de agents dentro da tela
+PASS  UI: profile nao vazio em 800x450
+PASS  UI: botoes de profile dentro da tela
+PASS  UI: collection nao vazio em 800x450
+PASS  UI: botoes de collection dentro da tela
+PASS  UI: shop nao vazio em 800x450
+PASS  UI: botoes de shop dentro da tela
+PASS  UI: settings nao vazio em 800x450
+PASS  UI: botoes de settings dentro da tela
+PASS  UI: play nao vazio em 800x450
+PASS  UI: botoes de play dentro da tela
+PASS  UI: pause nao vazio em 800x450
+PASS  UI: botoes de pause dentro da tela
+PASS  UI: jogar usa hitbox escalada em 800
+PASS  UI: margem de letterbox nao aciona botao
+PASS  UI: configuracoes mantem acao do menu
+PASS  UI: icone menos diminui valor
+PASS  UI: icone mais aumenta valor
+PASS  UI: qualidade seleciona opcao diretamente
+PASS  UI: switch binario alterna sombras
+PASS  UI: swatch seleciona cor da mira
+PASS  UI: switches de mira sao independentes
+PASS  UI: aba de configuracoes 0 em janela compacta
+PASS  UI: aba de configuracoes 1 em janela compacta
+PASS  UI: aba de configuracoes 2 em janela compacta
+PASS  UI: aba de configuracoes 3 em janela compacta
+PASS  UI: aba de configuracoes 4 em janela compacta
+PASS  UI: lista de armas seleciona sem mudar equipagem
+PASS  UI: duelo HUD em 1280
+PASS  UI: duelo equipamento em 1280
+PASS  UI: duelo HUD em 800
+PASS  UI: duelo equipamento em 800
+UI TESTS OK
+172 checks passed.

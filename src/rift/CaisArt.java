@@ -23,15 +23,13 @@ final class CaisArt {
             }
             w.triangles.set(i,t);
         }
-        int count=0;
-        for(Box box:w.solids){
-            if(box.y2()<6.9||box.x1()<1||box.z1()<1||box.x2()-box.x1()<4||box.z2()-box.z1()<4)continue;
-            double x=box.x1()+2,z=box.z1()+2,y=box.y2()+.11;
+        // Even airborne actors cannot cross the map boundary. Keep new props outside it.
+        for(int module=0;module<12;module++){
+            double x=12+module*11,z=-2.1,y=6.11;
             UNIT.add(w.triangles,v->new V(x+v.x(),y+v.y(),z+v.z()),name->name.equals("grille")?0x303A3A:0x9AA9A7,name->name.equals("grille")?Assets.RUBBER:METAL);
             int start=w.triangles.size();
             for(int i=0;i<5;i++)w.box(x-.57,y+.24+i*.066,z-.43,x+.57,y+.263+i*.066,z-.418,0x556362);
             w.paint(start,Assets.STEEL,1);
-            if(++count==12)break;
         }
         // Exterior dock cranes are beyond the playable boundary, never visual-only cover.
         for(double x:new double[]{24,92}){

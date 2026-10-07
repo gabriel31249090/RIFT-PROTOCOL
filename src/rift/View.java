@@ -43,7 +43,7 @@ final class View {
             case "settings"->settings(g);
             default->{if(game.ui.equals("shop"))shop(g);else{hud(g);if(game.ui.equals("tactical"))tactical(g);else if(game.ui.equals("pause"))pause(g);else if(game.phase==Phase.MATCH)match(g);else if(game.scoreboard)scoreboard(g,120);}}
         }
-        if(game.noticeTime>0&&(game.ui.equals("play")||game.ui.equals("shop")||game.ui.equals("tactical"))){int tw=g.getFontMetrics(font(13,true)).stringWidth(game.notice);int y=game.ui.equals("tactical")?678:580;rect(g,640-tw/2-18,y,tw+36,32,new Color(10,28,39,222));center(g,game.notice,640,y+21,13,WHITE,true);}
+        if(game.noticeTime>0&&(game.ui.equals("play")||game.ui.equals("shop")||game.ui.equals("tactical"))){int size=UiTheme.fit(g,game.notice,13,1120,true),tw=g.getFontMetrics(font(size,true)).stringWidth(game.notice);int y=game.ui.equals("tactical")?678:game.ui.equals("shop")?66:580;rect(g,640-tw/2-18,y,tw+36,32,UiTheme.OVERLAY);center(g,game.notice,640,y+21,size,WHITE,true);}
         g.dispose();
         double elapsed=(System.nanoTime()-frameStart)/1e6;frameMillis=frameMillis*.9+elapsed*.1;if(worldFrame&&game.settings.quality==3)adaptive.sample(elapsed+game.simulationMillis,game.settings.frameLimit);
     }

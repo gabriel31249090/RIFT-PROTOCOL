@@ -44,7 +44,7 @@ final class Tests {
         testShooting();testTraining();testInputs();testTactical();testMapOrientation();testWeapons();testUltimates();testAce();testMatch();testMenus();UpdateTests.run();FeelTests.run();TacticalTests.run();ImpactTests.run();
         CombatTests.run();MovementTests.run();BallisticsTests.run();
         AudioTests.run();AudioSurfaceTests.run();DuelAudioTests.run();
-        PerformanceTests.run();BotTests.run();DuelTests.run();System.out.println("\n"+passed+" checks passed.");
+        PerformanceTests.run();BotTests.run();DuelTests.run();MeshTests.run();CharacterVisualTests.run();UiTests.run();System.out.println("\n"+passed+" checks passed.");
     }
     static void testShooting(){
         Game g=fresh();g.beginRound();for(Actor a:g.actors)if(a!=g.player)a.dead=true;

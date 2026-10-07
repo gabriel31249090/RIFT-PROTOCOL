@@ -1,0 +1,78 @@
+RIFT Protocol 1.9.1 - verificacao de entrega
+Data: 07/10/2026
+Ambiente: Windows 10 informado pelo Java, Temurin/OpenJDK 17.0.12, 4 CPUs logicas.
+
+BASE
+1.9 preservada no commit e28f65a.
+Registro anterior: verificacao/VERIFICACAO_1.9.txt.
+Sem importacao de modelos, texturas, gravacoes ou arquivos C++ do CS.
+Referencias/avisos: THIRD_PARTY_NOTICES.md; licenca MIT da referencia no JAR.
+
+COMPILACAO E PACOTE
+java Build.java: aprovado; --release 17; Implementation-Version 1.9.1.
+Log: verificacao/build-1.9.1.log.
+JAR: 14.900.505 bytes. Hash do executavel: SHA256SUMS.txt.
+Auditoria: verificacao/package-1.9.1.log.
+144 WAVs e licenca da referencia conferem byte a byte com os fontes.
+WAVs originais: 2.105.898 bytes; 45 disparos, 27 superficies, 72 recargas.
+Tres variacoes por evento; PCM mono 16-bit little-endian, 22050 Hz.
+Manifesto de audio: assets/audio/SHA256SUMS.txt.
+SHA256 desse manifesto:
+4f1e564c6ad50fd19182e6ce41371a53ea830171df10577a294dc65a6ed159c0
+Duas geracoes independentes e --audio-generate do JAR produzem os mesmos hashes.
+Log do comando: verificacao/audio-generate-1.9.1.log.
+
+REGRESSAO FINAL
+--self-test: 2457 verificacoes aprovadas em pasta contendo somente o JAR,
+sem fontes nem assets externos. Log: verificacao/self-test-1.9.1.log.
+--audio-test: 1248 verificacoes aprovadas. Log: verificacao/audio-1.9.1.log.
+Fallback com WAV de classpath corrompido: 4 verificacoes adicionais;
+harness isolado, sem alterar os assets. Log: verificacao/audio-fallback-1.9.1.log.
+Nenhum desses testes abre placa de som ou thread de mixer.
+
+WAV: PCM 8/16/24/32 e float32, mono/stereo, 8000 a 96000 Hz;
+conversao para 22050 Hz, metadata com padding, limite exato de 2 segundos.
+Frames incompletos, truncamento, canais/taxas nao suportados e arquivos
+acima de 2 MiB sao rejeitados; recurso ausente/invalido usa sintese original.
+Banco em cache, 20 vozes e fila de 24 eventos, sem backlog por saturacao.
+Pan, volumes, musica, mute, entradas nao finitas e fechamento concorrente.
+
+EVENTOS DO JOGO
+Concreto/madeira/metal seguem o material visual, sem alterar resistencia balistica.
+Passos, pousos e impactos solo: posicao, distancia e atenuacao por cobertura.
+Caminhar/agachar nao emitem passos; mute preserva IA e legendas.
+Impactos continuam com marcas visuais desligadas e apos penetracao de cobertura.
+Recarga inicial curta; retirada, insercao e ferrolho em tres etapas separadas.
+Relogio antes de Gun.tick; pausa, ultimo frame, troca de arma e morte cobertos.
+Audio nao consome RNG de combate/bots; ShotEffects atualiza somente efeitos visuais.
+
+MULTIPLAYER
+Protocolo 2 da 1.9 preservado; testes TCP reais em loopback aprovados na suite geral.
+Passos/pousos/recargas do cliente seguem snapshots, nao o relogio de render.
+Roundtrip binario de movimento/recarga real aprovado; servidor nao reproduz vozes.
+Primeiro estado, rodada nova, repeticao, pacote antigo, morte, teleporte e
+atrasos longos nao repetem eventos antigos. Observador nao altera ator/arma.
+Impactos de parede no cliente pendentes: protocolo nao identifica a causa terminal.
+
+PARTIDAS COMPLETAS DOS BOTS
+--simulate-bots 6: 6 partidas, 42 rodadas, 41 plants, 12 defuses e 0 timeouts.
+Seeds 17000 a 17005, dois jogos por mapa; mesmos placares registrados na 1.9.
+CAIS-7: 5:3 e 5:2; MONTE AURORA: 5:2 e 5:3; FERROVIA: 0:5 e 5:2.
+Nenhuma partida travou; estados finitos e creditos/municao nao negativos.
+CPU: media 0.037 ms/tick, p95 0.109 e p99 0.345 (amostra inicial 24000).
+Log: verificacao/bots-1.9.1.log. Nao valida equilibrio competitivo/FPS com janela.
+
+VISUAL E DESEMPENHO
+Capturas do menu, tres arenas e equipamento: verificacao/duelo-1.9.1.
+Menu v1.9.1 e todas as quatro visoes de duelo inspecionados, sem sobreposicoes novas.
+PNGs do renderizador sem janela, nao capturas de partida presencial.
+Comparacao sequencial dos JARs 1.9 e 1.9.1: DESEMPENHO_1.9.1.md.
+Mede simulacao/render/HUD; nao mede placa de som, latencia de audio ou FPS com janela.
+
+LIMITES
+Nao testados: saida fisica em fones/alto-falantes, dois teclados/mouses reais,
+dois monitores, foco/cursor, tela cheia, LAN entre PCs, roteador e internet publica.
+Modo de dois conjuntos Windows permanece experimental; ponte Raw Input nao mudou.
+Duelo sem habilidades, previsao/reconciliacao, compensacao de latencia, reconexao
+ou matchmaking/relay hospedado. Reverb, vozes e callouts falados nao foram incluidos.
+Proxima etapa planejada: 1.9.2, identidade visual propria e malhas estaticas.

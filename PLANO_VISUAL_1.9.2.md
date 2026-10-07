@@ -1,6 +1,6 @@
 # RIFT Protocol - plano visual ampliado
 
-Pesquisa: 07/10/2026. Estado: planejamento e referencias verificadas; nenhum modelo, biblioteca ou ferramenta abaixo foi incorporado ao jogo nesta pesquisa.
+Pesquisa e primeira integracao: 07/10/2026. Estado: piloto implementado com OBJ, UI compartilhada, CAIS-7, ECHO e armadura do Vertice. As ferramentas de producao listadas nao foram instaladas. Escopo efetivo: [CHANGELOG_1.9.2.md](CHANGELOG_1.9.2.md).
 
 ## Direcao visual
 
@@ -23,7 +23,7 @@ Combinar as tres preferencias indicadas: proporcoes e materiais militares crivei
 | [Poly Haven Assets](https://github.com/Poly-Haven/polyhavenassets) | Ferramenta de acesso a materiais e props realistas do Poly Haven. | Addon GPLv3, com distribuicao oficial do ZIP via compra/Patreon; nao e necessario instala-lo. Os [assets oficiais](https://polyhaven.com/license) sao CC0 e podem ser obtidos diretamente, separados do addon. |
 | [Lucide](https://github.com/lucide-icons/lucide) | Icones consistentes para ferramentas e controles da UI. | Preservar os avisos ISC/MIT descritos na [licenca](https://github.com/lucide-icons/lucide/blob/main/LICENSE). Preparar bitmaps offline, sem adicionar runtime JavaScript ao jogo. |
 
-Ferramentas, bibliotecas e assets sao categorias distintas. Ao incorporar qualquer recurso, registrar URL, revisao/versao, autor, licenca, hash e modificacoes. A pesquisa nao altera os avisos de recursos efetivamente incluidos em THIRD_PARTY_NOTICES.md.
+Ferramentas, bibliotecas e assets sao categorias distintas. Os recursos efetivamente importados possuem URL, versao/origem, autor, licenca, hash e modificacoes registrados em THIRD_PARTY_NOTICES.md e nas pastas assets/models e assets/ui. A pesquisa continua mais ampla que a entrega.
 
 ## Candidatos para depois
 
@@ -33,7 +33,7 @@ Ferramentas, bibliotecas e assets sao categorias distintas. Ao incorporar qualqu
 
 ## Encaixe no motor atual
 
-O RIFT desenha triangulos na CPU em BufferedImage. World.Tri tem posicoes, cor, material e UV; nao tem juntas/pesos, normais de vertice, tangentes ou mapas PBR. Assets usa um atlas de 16 materiais com mipmaps; TextureRaster ja tem UV em perspectiva.
+O RIFT desenha triangulos na CPU em BufferedImage. World.Tri tem posicoes, cor, material e UV; nao tem juntas/pesos, normais de vertice, tangentes ou mapas PBR. Assets mantem os 16 materiais de jogo e agora aceita ate 64 materiais visuais com mipmaps; TextureRaster ja tem UV em perspectiva.
 
 Assim, a primeira integracao proposta e OBJ triangulado + texturas PNG com cor e sombras de contato pre-calculadas. Mapas de normal/roughness de um asset externo nao serao exibidos automaticamente. glTF animado requer uma etapa propria de esqueleto, skinning e clips.
 
@@ -58,4 +58,4 @@ Nao exigir ferramentas de criacao para executar o jogo. A geracao de assets pode
 
 A [medicao da 1.9.1](DESEMPENHO_1.9.1.md) nao demonstra folga para malhas pesadas. Usar LOD (malhas simplificadas a distancia), cache, texturas dimensionadas e budget por ativo; medir com dez atores, smokes e dois renderizadores. Nao prometer realismo fotorealista ou ganho de FPS com essa base.
 
-Verificar UV/culling/recorte, ausencia de superficies sumidas, equipar/ADS/recarregar, silhuetas dos agentes, clicks da UI, isolamento do duelo e recursos carregados apenas do JAR. Rodar --self-test, capturas de solo/duelo/animacoes e benchmarks antes/depois. A 1.9.1 permanece a ultima versao entregue ate concluir essas verificacoes.
+Verificar UV/culling/recorte, ausencia de superficies sumidas, equipar/ADS/recarregar, silhuetas dos agentes, clicks da UI, isolamento do duelo e recursos carregados apenas do JAR. A primeira entrega preserva as animacoes da articulacao existente: os modulos do Vertice sao rigidos, nao um corpo MakeHuman com skinning. Evidencias da 1.9.2 estao em VERIFICACAO.txt e verificacao/visual-1.9.2.

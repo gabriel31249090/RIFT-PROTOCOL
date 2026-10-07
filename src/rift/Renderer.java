@@ -89,8 +89,8 @@ final class Renderer {
     V transform(V p){double x=p.x()-cx,y=p.y()-cy,z=p.z()-cz,f=x*sinY+z*cosY;return new V(x*cosY-z*sinY,y*cosP-f*sinP,y*sinP+f*cosP);}
     BufferedImage preview(Game.Weapon weapon,double time){return collectionPreview(weapon,null,Cosmetics.Skin.STANDARD,Cosmetics.Charm.NONE,time);}
     BufferedImage collectionPreview(Game.Weapon weapon,Cosmetics.Melee melee,Cosmetics.Skin skin,Cosmetics.Charm charm,double time){
-        for(int y=0;y<height;y++){int col=blend(0x203E4B,0x122B3B,(int)(y*180./height));Arrays.fill(pixels,y*width,(y+1)*width,col);}Arrays.fill(depth,0);
-        java.awt.Graphics2D g=image.createGraphics();g.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,java.awt.RenderingHints.VALUE_ANTIALIAS_ON);g.setColor(new java.awt.Color(64,100,111,80));g.drawOval(31,26,width-62,height-44);g.drawLine(15,height-31,width-15,height-31);g.dispose();
+        Arrays.fill(pixels,UiTheme.BACKGROUND.getRGB());Arrays.fill(depth,0);
+        java.awt.Graphics2D g=image.createGraphics();g.setColor(UiTheme.BORDER);g.drawLine(15,height-31,width-15,height-31);g.dispose();
         dynamic.clear();double angle=-Math.PI/2-.36+Math.sin(time*.4)*.16;if(melee!=null){Cosmetics.melee(dynamic,melee,skin,0,0,0,angle,1);for(int i=0;i<dynamic.size();i++){Tri t=dynamic.get(i);dynamic.set(i,t.at(tiltBlade(t.a()),tiltBlade(t.b()),tiltBlade(t.c())));}}else WeaponModel.add(dynamic,weapon,0,0,0,angle,1,0,1,skin,charm,Math.sin(time*2)*.13,Math.cos(time*1.8)*.16);
         double minX=1e9,minY=1e9,minZ=1e9,maxX=-1e9,maxY=-1e9,maxZ=-1e9;
         for(Tri t:dynamic)for(V p:new V[]{t.a(),t.b(),t.c()}){minX=Math.min(minX,p.x());maxX=Math.max(maxX,p.x());minY=Math.min(minY,p.y());maxY=Math.max(maxY,p.y());minZ=Math.min(minZ,p.z());maxZ=Math.max(maxZ,p.z());}
